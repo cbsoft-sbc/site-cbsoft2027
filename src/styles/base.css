@@ -1,0 +1,79 @@
+/* ---------- Base: reset, typography, layout primitives ---------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  /* Safety net: nothing on this site scrolls horizontally, so clip any
+     stray sub-pixel / wide-element overflow rather than let the page pan. */
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  text-wrap: balance;
+}
+
+.font-mono {
+  /* Legacy numeric labels use the official family; .num-tabular handles figures. */
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--pink);
+  color: #fff;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.container-xl {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-xl {
+    padding-inline: 2rem;
+  }
+}
+
+.num-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}

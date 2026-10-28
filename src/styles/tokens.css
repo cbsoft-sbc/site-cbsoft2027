@@ -1,0 +1,158 @@
+/* ---------- Design tokens - CBSOFT'27 visual identity ---------- */
+:root {
+  /*
+   * Official palette from the CBSOFT'27 brand manual.
+   * Keep these four tokens unchanged in every theme and use them for
+   * official artwork, graphics and any faithfully reproduced brand mark.
+   */
+  --brand-green: #629109;
+  --brand-magenta: #e60d7e;
+  --brand-purple: #702a82;
+  --brand-cyan: #2cafca;
+
+  /* UI colors. Deep variants are suitable for text and interactive states. */
+  --purple: var(--brand-purple);
+  --purple-deep: #4f1d5c;
+  --pink: var(--brand-magenta);
+  /* Backward-compatible name for magenta. */
+  --pink-deep: #a9075d;
+  --magenta: var(--pink);
+  --magenta-deep: var(--pink-deep);
+  --cyan: var(--brand-cyan);
+  --cyan-deep: #08768b;
+  --leaf: var(--brand-green);
+  /* Backward-compatible name for green. */
+  --leaf-deep: #3d6500;
+  --green: var(--leaf);
+  --green-deep: var(--leaf-deep);
+
+  /* Ronzino is the official CBSOFT'27 typeface. */
+  --font-sans: "Ronzino", Arial, sans-serif;
+  --font-display: "Ronzino", Arial, sans-serif;
+
+  /* Warm, purple-tinted neutrals instead of generic grey. */
+  --paper: #fbfafc;
+  --surface: #ffffff;
+  --surface-alt: #f6f2f7;
+  --line: #ded4e3;
+  --line-soft: #ece5ef;
+  --ink: #17131b;
+  --slate: #5f5664;
+  --slate-soft: #84798a;
+  /* Long-form reading text: darker than --slate for comfortable contrast. */
+  --text-body: #45414a;
+
+  /* Functional colors that are not part of the official brand palette. */
+  --tier-diamond: #3568c8;
+  --tier-gold: #9a711f;
+  --tier-silver: #687585;
+  --tier-bronze: #95502a;
+  --focus: var(--brand-magenta);
+
+  /* Fixed dark chrome for the header, footer and keynote band. */
+  --brand-ink: #190d1d;
+  --brand-ink-soft: #2b1732;
+  --brand-on: #ffffff;
+
+  /* Official logo colors never change with the page theme. */
+  --logo-purple: var(--brand-purple);
+  --logo-pink: var(--brand-magenta);
+  --logo-magenta: var(--brand-magenta);
+  --logo-cyan: var(--brand-cyan);
+  --logo-leaf: var(--brand-green);
+  --logo-green: var(--brand-green);
+
+  /* Four-colour bar: the official colours in equal parts, in the logo's
+     stripe order. Use as linear-gradient(<angle>, var(--brand-bar-stops)). */
+  --brand-bar-stops:
+    var(--brand-green) 0 25%,
+    var(--brand-cyan) 25% 50%,
+    var(--brand-purple) 50% 75%,
+    var(--brand-magenta) 75% 100%;
+
+  /* Fixed CTA gradient using official palette endpoints. */
+  --grad-a: var(--brand-magenta);
+  --grad-b: var(--brand-purple);
+  --grad-a-deep: #a9075d;
+  --grad-b-deep: #4f1d5c;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    /* Accessible UI adaptations; official --brand-* and --logo-* stay exact. */
+    --purple: #d7afe4;
+    --purple-deep: #ecdaf2;
+    --pink: #ff78b6;
+    --pink-deep: #ffa6cf;
+    --cyan: #70d7e8;
+    --cyan-deep: #a6e8f2;
+    --leaf: #a9d85c;
+    --leaf-deep: #cae995;
+
+    --paper: #120e16;
+    --surface: #1b1520;
+    --surface-alt: #241c2a;
+    --line: #3d3144;
+    --line-soft: #302638;
+    --ink: #f7f3f7;
+    --slate: #d0c6d2;
+    --slate-soft: #a99dad;
+    --text-body: #e4dce6;
+
+    --tier-diamond: #8eb4f4;
+    --tier-gold: #e5c477;
+    --tier-silver: #bdc7d3;
+    --tier-bronze: #dda073;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme='dark'] {
+  /* Accessible UI adaptations; official --brand-* and --logo-* stay exact. */
+  --purple: #d7afe4;
+  --purple-deep: #ecdaf2;
+  --pink: #ff78b6;
+  --pink-deep: #ffa6cf;
+  --cyan: #70d7e8;
+  --cyan-deep: #a6e8f2;
+  --leaf: #a9d85c;
+  --leaf-deep: #cae995;
+
+  --paper: #120e16;
+  --surface: #1b1520;
+  --surface-alt: #241c2a;
+  --line: #3d3144;
+  --line-soft: #302638;
+  --ink: #f7f3f7;
+  --slate: #d0c6d2;
+  --slate-soft: #a99dad;
+  --text-body: #e4dce6;
+
+  --tier-diamond: #8eb4f4;
+  --tier-gold: #e5c477;
+  --tier-silver: #bdc7d3;
+  --tier-bronze: #dda073;
+
+  color-scheme: dark;
+}
+/* ---------- Header ---------- */
+
+
+:root {
+  /* SBC logo height in the strip. SBC manual: the version with subtitle
+     stays legible down to 2cm wide (about 48px tall in this lockup). */
+  --sbc-logo-h: 4.5rem;
+  /* Height of the "Realização: SBC" strip: label, logo and their clear space.
+     SBC manual: X is the stem width of the "B" (about 5.2% of the logo's
+     height); the margin is 2X on top/right and 3X on bottom/left. */
+  --sbc-strip-height: calc(var(--sbc-logo-h) + 2.75rem);
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --sbc-logo-h: 3.5rem;
+  }
+}
