@@ -1,0 +1,4 @@
+include:
+  - project: 'ci-config/cicd-files'
+    file: '/.gitlab-ci_cbsoft.yml'
+    ref: 'main'
