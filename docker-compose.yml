@@ -6,5 +6,5 @@ services:
         VITE_BASE: /cbsoft27/
     image: cbsoft-web
     ports:
-      - "8080:80"
+      - "8003:80"
     restart: unless-stopped
