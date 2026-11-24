@@ -64,6 +64,27 @@ it('reveals the SBC logo only when scrolling up at the top of the current visit'
   }
 });
 
+it('opens the desktop menu and track with the arrow keys and restores focus with Escape', () => {
+  renderHeader('/');
+  const sbes = screen.getByRole('button', { name: 'SBES' });
+  sbes.focus();
+  fireEvent.keyDown(sbes, { key: 'ArrowDown' });
+
+  const track = screen.getByRole('button', { name: 'Trilha de Pesquisa' });
+  expect(document.activeElement).toBe(track);
+  fireEvent.keyDown(track, { key: 'ArrowRight' });
+
+  const call = screen.getByRole('link', { name: 'Chamada de Trabalhos' });
+  expect(document.activeElement).toBe(call);
+  fireEvent.keyDown(call, { key: 'Escape' });
+  expect(document.activeElement).toBe(track);
+  expect(track.getAttribute('aria-expanded')).toBe('false');
+
+  fireEvent.keyDown(track, { key: 'Escape' });
+  expect(document.activeElement).toBe(sbes);
+  expect(sbes.getAttribute('aria-expanded')).toBe('false');
+});
+
 describe('Header current section', () => {
   it.each([
     ['/', "CBSOFT'27"],

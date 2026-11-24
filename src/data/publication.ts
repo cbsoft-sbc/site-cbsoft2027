@@ -1,3 +1,5 @@
+const CONGRESS_START_DATE = '2027-09-27';
+
 /**
  * Publication switchboard: every value that still depends on an official
  * decision lives here, next to its approval state. Components read from
@@ -13,15 +15,15 @@
 export const PUBLICATION = {
   /** Hero countdown. Belo Horizonte follows Brasília time (UTC-3, no DST). */
   countdown: {
-    /** Full-paper submission deadline, 23:59 in Belo Horizonte. */
-    target: '2027-03-15T23:59:59-03:00',
+    /** Midnight at the start of the congress date in Brasília time. */
+    target: `${CONGRESS_START_DATE}T00:00:00-03:00`,
     timeZone: 'America/Sao_Paulo',
   },
 
   /** Congress dates. While `null`, pages say "a definir" and the
    *  "dias de programação" figure is hidden. ISO 'YYYY-MM-DD'. */
   dates: {
-    start: '2027-09-27' as string | null,
+    start: CONGRESS_START_DATE as string | null,
     end: '2027-10-01' as string | null,
   },
 

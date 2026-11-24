@@ -35,6 +35,21 @@ function photos() {
   return document.querySelectorAll<HTMLImageElement>('.home-hero__photo');
 }
 
+it.each([
+  ['pt', 'O congresso começa em', 'Tempo restante até o início do congresso', '00 Dias, 00 Horas, 00 Minutos', 'Segundos'],
+  ['en', 'The congress starts in', 'Time remaining until the congress begins', '00 Days, 00 Hours, 00 Minutes', 'Seconds'],
+])('counts down to midnight in Brasília and labels the timer in %s', async (lang, title, label, units, seconds) => {
+  await i18n.changeLanguage(lang);
+  vi.setSystemTime(new Date('2027-09-27T02:59:59Z'));
+  render(<Hero />);
+
+  expect(screen.getByRole('heading', { name: title })).toBeTruthy();
+  expect(screen.getByRole('timer', { name: `${label}: ${units}, 01 ${seconds}` })).toBeTruthy();
+
+  act(() => vi.advanceTimersByTime(1_000));
+  expect(screen.getByRole('timer', { name: `${label}: ${units}, 00 ${seconds}` })).toBeTruthy();
+});
+
 describe('Hero carousel', () => {
   it('prioritizes only the first decorative image and preserves the timer and sponsor CTA', () => {
     render(<Hero />);
@@ -89,7 +104,7 @@ describe('Hero carousel', () => {
 
   it('pauses while hovering the hero, then waits a full interval before resuming', () => {
     render(<Hero />);
-    const hero = screen.getByRole('region', { name: 'Faltam' });
+    const hero = screen.getByRole('region', { name: 'O congresso começa em' });
     fireEvent.mouseEnter(hero);
     advance();
     expect(currentPhoto()).toBe('Mostrar foto 1');
@@ -116,7 +131,7 @@ describe('Hero carousel', () => {
 
   it('pauses during touch or pointer interaction and resumes after release', () => {
     render(<Hero />);
-    fireEvent.pointerDown(screen.getByRole('region', { name: 'Faltam' }));
+    fireEvent.pointerDown(screen.getByRole('region', { name: 'O congresso começa em' }));
     advance();
     expect(currentPhoto()).toBe('Mostrar foto 1');
     fireEvent.pointerUp(window);

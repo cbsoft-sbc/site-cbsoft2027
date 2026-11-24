@@ -22,8 +22,8 @@
     "sbcAria": "Sociedade Brasileira de Computação (abre em nova aba)"
   },
   "hero": {
-    "countdownTitle": "Faltam",
-    "countdownAria": "Tempo restante até o prazo de submissão",
+    "countdownTitle": "O congresso começa em",
+    "countdownAria": "Tempo restante até o início do congresso",
     "units": {
       "days": "Dias",
       "hours": "Horas",

@@ -21,7 +21,7 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const focusFirstLink = useRef(false);
+  const focusFirstItem = useRef(false);
   const showSbc = useTopScrollReveal(key);
 
   function cancelClose() {
@@ -33,7 +33,7 @@ export function Header() {
 
   function closeMegaMenu() {
     cancelClose();
-    focusFirstLink.current = false;
+    focusFirstItem.current = false;
     setActiveMenu(null);
   }
 
@@ -49,11 +49,11 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (activeMenu && focusFirstLink.current) {
+    if (activeMenu && focusFirstItem.current) {
       headerRef.current
-        ?.querySelector<HTMLElement>(`#header-mega-menu-${activeMenu} a`)
+        ?.querySelector<HTMLElement>(`#header-mega-menu-${activeMenu} :is(a, button)`)
         ?.focus();
-      focusFirstLink.current = false;
+      focusFirstItem.current = false;
     }
   }, [activeMenu]);
 
@@ -91,11 +91,11 @@ export function Header() {
       ref={headerRef}
       className="site-header"
       onKeyDown={(event) => {
-        if (event.key === 'Escape' && mobileMenuOpen) {
-          event.preventDefault();
-          closeAllMenus();
-          mobileTriggerRef.current?.focus();
-        }
+        if (event.key !== 'Escape' || !mobileMenuOpen) return;
+        event.preventDefault();
+        event.stopPropagation();
+        mobileTriggerRef.current?.focus();
+        closeAllMenus();
       }}
     >
       <div key={key} className="site-header__sbc" aria-hidden={!showSbc}>
@@ -151,24 +151,26 @@ export function Header() {
                 }}
                 onPointerLeave={(event) => {
                   if (event.pointerType !== 'mouse') return;
+                  const panel = event.currentTarget.querySelector('.header-mega-menu');
                   cancelClose();
                   closeTimer.current = setTimeout(() => {
-                    setActiveMenu((current) => current === item.id ? null : current);
                     closeTimer.current = null;
+                    if (!panel?.contains(document.activeElement)) {
+                      setActiveMenu((current) => current === item.id ? null : current);
+                    }
                   }, 150);
                 }}
                 onBlurCapture={(event) => {
-                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  if (open && !event.currentTarget.contains(event.relatedTarget)) {
                     closeMegaMenu();
                   }
                 }}
                 onKeyDown={(event) => {
-                  if (event.key === 'Escape' && open) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    closeMegaMenu();
-                    event.currentTarget.querySelector('button')?.focus();
-                  }
+                  if (event.key !== 'Escape' || !open) return;
+                  event.preventDefault();
+                  event.stopPropagation();
+                  event.currentTarget.querySelector('button')?.focus();
+                  closeMegaMenu();
                 }}
               >
                 <button
@@ -177,19 +179,22 @@ export function Header() {
                   className={`site-header__nav-item${open ? ' is-active' : ''}${currentMenu === item.id ? ' is-current' : ''}`}
                   aria-current={currentMenu === item.id ? 'location' : undefined}
                   aria-expanded={open}
-                  aria-controls={`header-mega-menu-${item.id}`}
-                  onClick={() => {
+                  aria-controls={open ? `header-mega-menu-${item.id}` : undefined}
+                  onClick={(event) => {
                     cancelClose();
-                    setActiveMenu((current) => current === item.id ? null : item.id);
+                    const mouse = 'pointerType' in event.nativeEvent && event.nativeEvent.pointerType === 'mouse';
+                    setActiveMenu((current) => current === item.id && !mouse ? null : item.id);
                   }}
                   onKeyDown={(event) => {
                     if (event.key === 'ArrowDown') {
                       event.preventDefault();
                       cancelClose();
                       if (open) {
-                        event.currentTarget.parentElement?.querySelector('a')?.focus();
+                        event.currentTarget.parentElement
+                          ?.querySelector<HTMLElement>('.header-mega-menu :is(a, button)')
+                          ?.focus();
                       } else {
-                        focusFirstLink.current = true;
+                        focusFirstItem.current = true;
                         setActiveMenu(item.id);
                       }
                     }
@@ -225,7 +230,7 @@ export function Header() {
           className={`site-header__mobile-toggle${mobileMenuOpen ? ' is-open' : ''}`}
           aria-label={t(mobileMenuOpen ? 'header.closeMenu' : 'header.openMenu')}
           aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-menu"
+          aria-controls={mobileMenuOpen ? 'mobile-menu' : undefined}
           onClick={() => {
             closeMegaMenu();
             setMobileMenuOpen((open) => !open);
