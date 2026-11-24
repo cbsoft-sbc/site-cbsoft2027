@@ -87,9 +87,8 @@
   },
   "visualIdentity": {
     "title": "Identidade Visual do CBSOFT 2027",
-    "intro": "A identidade visual do CBSOFT 2027 conecta tecnologia, arquitetura e a identidade de Belo Horizonte. Inspirada no Edifício Niemeyer, a marca utiliza suas curvas para representar movimento, criatividade, inovação e conexão com a cidade.",
     "photoAlt": "Edifício Niemeyer, em Belo Horizonte, com sua fachada de linhas curvas e árvores floridas em primeiro plano",
-    "photoCaption": "Edifício Niemeyer — Oscar Niemeyer, 1954 · Belo Horizonte, MG",
+    "photoCaption": "Edifício Niemeyer, Oscar Niemeyer, 1954, Belo Horizonte, Minas Gerais",
     "logoAlt": "Logo oficial do CBSOFT'27 — Congresso Brasileiro de Software, Belo Horizonte, Minas Gerais",
     "conceptTitle": "Conceito da marca",
     "conceptP1": "A principal inspiração visual da marca é o Edifício Niemeyer, projetado por Oscar Niemeyer em 1954 e situado próximo à Praça da Liberdade, no coração de Belo Horizonte. Suas linhas curvas dialogam com a leveza e a fluidez da arquitetura modernista e evocam a silhueta das montanhas de Minas Gerais.",
@@ -638,18 +637,16 @@
   },
   "acceptedPapersPage": {
     "metaTitle": "Artigos Aceitos — {{track}} — SBES — CBSOFT'27",
-    "eyebrow": "SBES 2027",
+    "trackLabel": "SBES · {{track}}",
     "title": "Artigos Aceitos",
     "pending": "A lista de artigos aceitos nesta trilha será divulgada após a notificação dos autores.",
     "otherTracks": "Outras trilhas do SBES",
     "notFound": "Trilha não encontrada.",
     "generalMetaTitle": "Artigos Aceitos — CBSOFT'27",
-    "generalEyebrow": "CBSoft 2027",
     "generalPending": "A lista de artigos aceitos será divulgada após a notificação dos autores."
   },
   "previousEditionsPage": {
     "title": "Edições Anteriores",
-    "description": "Conheça a história do CBSoft e acesse os sites das edições anteriores do congresso.",
     "online": "(Online)",
     "visit": "Acessar edição",
     "newTab": "(abre em uma nova aba)",

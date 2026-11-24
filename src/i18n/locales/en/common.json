@@ -87,9 +87,8 @@
   },
   "visualIdentity": {
     "title": "CBSOFT 2027 Visual Identity",
-    "intro": "The CBSOFT 2027 visual identity connects technology, architecture and the identity of Belo Horizonte. Inspired by the Niemeyer Building, the brand uses its curves to represent movement, creativity, innovation and connection with the city.",
     "photoAlt": "The Niemeyer Building in Belo Horizonte, with its curved façade and flowering trees in the foreground",
-    "photoCaption": "Niemeyer Building — Oscar Niemeyer, 1954 · Belo Horizonte, MG",
+    "photoCaption": "Niemeyer Building, Oscar Niemeyer, 1954, Belo Horizonte, Minas Gerais",
     "logoAlt": "Official CBSOFT'27 logo — Brazilian Conference on Software, Belo Horizonte, Minas Gerais",
     "conceptTitle": "Brand concept",
     "conceptP1": "The brand's main visual inspiration is the Niemeyer Building, designed by Oscar Niemeyer in 1954 and located near Praça da Liberdade, in the heart of Belo Horizonte. Its curved lines echo the lightness and fluidity of modernist architecture and evoke the silhouette of the mountains of Minas Gerais.",
@@ -638,18 +637,16 @@
   },
   "acceptedPapersPage": {
     "metaTitle": "Accepted Papers — {{track}} — SBES — CBSOFT'27",
-    "eyebrow": "SBES 2027",
+    "trackLabel": "SBES · {{track}}",
     "title": "Accepted Papers",
     "pending": "The list of papers accepted in this track will be published after authors are notified.",
     "otherTracks": "Other SBES tracks",
     "notFound": "Track not found.",
     "generalMetaTitle": "Accepted Papers — CBSOFT'27",
-    "generalEyebrow": "CBSoft 2027",
     "generalPending": "The list of accepted papers will be published after authors are notified."
   },
   "previousEditionsPage": {
     "title": "Previous Editions",
-    "description": "Discover the history of CBSoft and visit the websites of previous conference editions.",
     "online": "(Online)",
     "visit": "Visit edition",
     "newTab": "(opens in a new tab)",

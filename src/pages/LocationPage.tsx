@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom';
 import { VenueDetails } from '@/components/ui/VenueDetails';
 import { YouTubeEmbed } from '@/components/ui/YouTubeEmbed';
 import { Button } from '@/components/ui/Button';
+import { BrandBar } from '@/components/ui/BrandBar';
 import { VENUE } from '@/data/venue';
 import { useLang } from '@/hooks/useLang';
 import { pick } from '@/lib/localized';
@@ -37,8 +38,10 @@ export function LocationPage() {
     <main className="about-page location-page" id="local-evento">
       <section className="about-section about-top">
         <div className="container-xl">
-          <p className="about-eyebrow">{t('location.eyebrow')}</p>
-          <h1 className="about-title">{t('locationPage.title')}</h1>
+          <h1 className="about-title">
+            <BrandBar />
+            {t('locationPage.title')}
+          </h1>
           <p className="about-lead">
             {VENUE.name ? pick(VENUE.name, lang) : t('location.unconfirmed')}
           </p>

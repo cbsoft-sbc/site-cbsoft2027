@@ -16,6 +16,7 @@ export function AcceptedPapersPage() {
   const { t } = useTranslation();
   const { track: slug } = useParams();
   const track = SBES_TRACKS.find((item) => item.slug === slug);
+  const trackNotFound = Boolean(slug && !track);
   const trackTitle = track ? t(`headerMenu.sbes.tracks.${track.id}.title`) : '';
 
   useEffect(() => {
@@ -32,22 +33,18 @@ export function AcceptedPapersPage() {
     <main className="about-page" id="artigos-aceitos">
       <section className="about-section about-top" aria-labelledby="artigos-titulo">
         <div className="container-xl">
+          <h1 id="artigos-titulo" className="about-title">
+            {!trackNotFound && <BrandBar />}
+            {t(trackNotFound ? 'acceptedPapersPage.notFound' : 'acceptedPapersPage.title')}
+          </h1>
+
           {!slug ? (
+            <p className="papers-pending">{t('acceptedPapersPage.generalPending')}</p>
+          ) : track && (
             <>
-              <p className="about-eyebrow">{t('acceptedPapersPage.generalEyebrow')}</p>
-              <h1 id="artigos-titulo" className="about-title papers-title">
-                {t('acceptedPapersPage.title')}
-              </h1>
-              <p className="papers-pending">{t('acceptedPapersPage.generalPending')}</p>
-            </>
-          ) : track ? (
-            <>
-              <p className="about-eyebrow">
-                {t('acceptedPapersPage.eyebrow')} · {trackTitle}
+              <p className="papers-track">
+                {t('acceptedPapersPage.trackLabel', { track: trackTitle })}
               </p>
-              <h1 id="artigos-titulo" className="about-title papers-title">
-                {t('acceptedPapersPage.title')}
-              </h1>
 
               {track.papers.length > 0 ? (
                 <ol className="papers-list">
@@ -76,10 +73,6 @@ export function AcceptedPapersPage() {
                 ))}
               </ul>
             </>
-          ) : (
-            <h1 id="artigos-titulo" className="about-title">
-              {t('acceptedPapersPage.notFound')}
-            </h1>
           )}
         </div>
       </section>

@@ -30,7 +30,9 @@ describe('event locality', () => {
     render(<App />);
     fireEvent.click(screen.getByRole('link', { name: 'Endereço, orientações e mapa' }));
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}local`);
-    expect(screen.getByRole('heading', { level: 1, name: 'Local do evento' })).toBeTruthy();
+    const heading = screen.getByRole('heading', { level: 1, name: 'Local do evento' });
+    expect(heading.previousElementSibling).toBeNull();
+    expect(heading.firstElementChild?.matches('.brand-bar[aria-hidden="true"]')).toBe(true);
     expect(screen.getByText(/Av\. Dom José Gaspar, 500/)).toBeTruthy();
     const map = screen.getByRole('link', { name: /Traçar rota no Google Maps/ });
     const destination = new URL(map.getAttribute('href')!).searchParams.get('destination');
@@ -56,7 +58,9 @@ describe('event locality', () => {
   it('provides English directions and preserves pending event access details', async () => {
     renderPage();
     await act(async () => { await i18n.changeLanguage('en'); });
-    expect(screen.getByRole('heading', { level: 1, name: 'Event venue' })).toBeTruthy();
+    const heading = screen.getByRole('heading', { level: 1, name: 'Event venue' });
+    expect(heading.previousElementSibling).toBeNull();
+    expect(heading.firstElementChild?.matches('.brand-bar[aria-hidden="true"]')).toBe(true);
     expect(screen.getByText('Event access details to be confirmed')).toBeTruthy();
     expect(screen.getByText(/Gameleira station/)).toBeTruthy();
     expect(screen.getByRole('link', { name: /Get directions on Google Maps/ })).toBeTruthy();
