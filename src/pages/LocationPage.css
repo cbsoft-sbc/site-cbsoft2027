@@ -8,7 +8,7 @@
   border: 1px solid var(--line);
   border-radius: 1rem;
   background: var(--surface);
-  scroll-margin-top: 7rem;
+  scroll-margin-top: var(--site-header-offset, 7rem);
 }
 
 .venue-map .about-prose {

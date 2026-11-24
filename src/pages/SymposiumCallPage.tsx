@@ -138,8 +138,10 @@ export function SymposiumCallPage({ id, track }: SymposiumCallPageProps) {
                     <ul className="scall-committee">
                       {committee.members.map((member, index) => (
                         <li key={index}>
-                          <span className="scall-committee__name">{member.name}</span>
-                          <span className="scall-committee__affiliation">{member.affiliation}</span>
+                          <span className="scall-committee__name">{member.name ?? t('symposiumCallPage.memberTbd')}</span>
+                          {member.affiliation && (
+                            <span className="scall-committee__affiliation">{member.affiliation}</span>
+                          )}
                         </li>
                       ))}
                     </ul>
@@ -195,8 +197,10 @@ export function SymposiumCallPage({ id, track }: SymposiumCallPageProps) {
                               <PersonIcon />
                             </span>
                             <span className="wcall-org__body">
-                              <span className="wcall-org__name">{chair.name}</span>
-                              <span className="wcall-org__affiliation">{chair.affiliation}</span>
+                              <span className="wcall-org__name">{chair.name ?? t('symposiumCallPage.memberTbd')}</span>
+                              {chair.affiliation && (
+                                <span className="wcall-org__affiliation">{chair.affiliation}</span>
+                              )}
                             </span>
                           </li>
                         ))}

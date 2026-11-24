@@ -1,12 +1,12 @@
 import './Header.css';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { HEADER_MENUS, type HeaderMenuId } from '@/data/headerMenu';
 import { getCurrentHeaderMenu, NAV_ITEMS } from '@/data/nav';
 import { IMAGES } from '@/data/config';
-import { useScrolledPastTop } from '@/hooks/useScrolledPastTop';
+import { useTopScrollReveal } from '@/hooks/useTopScrollReveal';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import { HeaderMegaMenu } from './HeaderMegaMenu';
 import { MobileMenu } from './MobileMenu';
@@ -14,7 +14,7 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function Header() {
   const { t } = useTranslation();
-  const { pathname } = useLocation();
+  const { key, pathname } = useLocation();
   const currentMenu = getCurrentHeaderMenu(pathname);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<HeaderMenuId | null>(null);
@@ -22,8 +22,7 @@ export function Header() {
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const focusFirstLink = useRef(false);
-  // The SBC strip only shows at the top of the page.
-  const sbcHidden = useScrolledPastTop();
+  const showSbc = useTopScrollReveal(key);
 
   function cancelClose() {
     if (closeTimer.current !== null) {
@@ -68,39 +67,29 @@ export function Header() {
     return () => breakpoint.removeEventListener('change', onChange);
   }, []);
 
-  // Publish how far the fixed header reaches down the viewport (main bar,
-  // plus the SBC strip while it is shown) as --site-header-offset, so content
-  // such as scroll targets can stop just below it. Measured
-  // from the main bar, not the header box, so an open mega menu is ignored.
-  useEffect(() => {
+  // Anchor targets and the mobile menu clear the full visible header.
+  useLayoutEffect(() => {
     const header = headerRef.current;
-    const strip = header?.querySelector<HTMLElement>('.site-header__sbc');
-    const bar = header?.querySelector<HTMLElement>('.site-header__inner');
-    if (!header || !strip || !bar) return;
+    if (!header) return;
 
+    const rootStyle = document.documentElement.style;
     const update = () => {
-      const style = getComputedStyle(header);
-      const bottom =
-        bar.offsetTop +
-        bar.offsetHeight +
-        parseFloat(style.paddingBottom) +
-        parseFloat(style.borderBottomWidth) -
-        (sbcHidden ? strip.offsetHeight : 0);
-      document.documentElement.style.setProperty('--site-header-offset', `${bottom}px`);
+      rootStyle.setProperty('--site-header-offset', `${header.offsetHeight}px`);
     };
 
     update();
-    if (typeof ResizeObserver === 'undefined') return;
-    const observer = new ResizeObserver(update);
-    observer.observe(strip);
-    observer.observe(bar);
-    return () => observer.disconnect();
-  }, [sbcHidden]);
+    const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(update);
+    observer?.observe(header);
+    return () => {
+      observer?.disconnect();
+      rootStyle.removeProperty('--site-header-offset');
+    };
+  }, [key]);
 
   return (
     <header
       ref={headerRef}
-      className={`site-header${sbcHidden ? ' is-sbc-hidden' : ''}`}
+      className="site-header"
       onKeyDown={(event) => {
         if (event.key === 'Escape' && mobileMenuOpen) {
           event.preventDefault();
@@ -109,8 +98,7 @@ export function Header() {
         }
       }}
     >
-      {/* "Realização: SBC" strip — slides away once the page scrolls. */}
-      <div className="site-header__sbc" aria-hidden={sbcHidden || undefined}>
+      <div key={key} className="site-header__sbc" aria-hidden={!showSbc}>
         <div className="site-header__sbc-inner">
           <span className="site-header__sbc-label">{t('header.organizedBy')}</span>
           <a
@@ -119,7 +107,7 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t('header.sbcAria')}
-            tabIndex={sbcHidden ? -1 : undefined}
+            tabIndex={showSbc ? undefined : -1}
           >
             <img src={IMAGES.sbc_logo} alt="" width={597} height={288} />
           </a>

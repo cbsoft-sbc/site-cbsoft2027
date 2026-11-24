@@ -50,12 +50,11 @@
   margin-top: 1.15rem;
 }
 
-/* Single "Sobre o CBSoft" section; clears the fixed site header. */
 .about-top {
-  padding-top: clamp(9rem, 14vw, 12rem);
+  padding-top: clamp(3rem, 4.5vw, 4rem);
 }
 
-/* /organizacao#comite lands below the fixed header. */
+/* /organizacao#comite lands below the sticky header. */
 #comite {
   scroll-margin-top: var(--site-header-offset, 7rem);
 }

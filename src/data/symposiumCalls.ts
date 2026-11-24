@@ -28,8 +28,8 @@ export interface CallMilestone {
 }
 
 export interface CallMember {
-  name: string;
-  affiliation: string;
+  name: string | null;
+  affiliation: string | null;
 }
 
 export interface SymposiumCall {
@@ -53,6 +53,7 @@ export interface CallCommittee {
  *  are confirmed. */
 const PLACEHOLDER_MEMBER: CallMember = { name: 'xxxxxx', affiliation: 'xxxxxx' };
 const PLACEHOLDER_COMMITTEE: CallMember[] = [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER];
+const UNANNOUNCED_MEMBER: CallMember = { name: null, affiliation: null };
 
 const SBC_AUTHOR_CONDUCT_URL = 'https://sol.sbc.org.br/index.php/indice/conduta';
 
@@ -1260,8 +1261,8 @@ const SBES_RESEARCH_CALL: SymposiumCall = {
     },
   ],
   milestones: sbesMilestones(),
-  chairs: [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER],
-  committees: [{ members: PLACEHOLDER_COMMITTEE }],
+  chairs: [UNANNOUNCED_MEMBER, UNANNOUNCED_MEMBER],
+  committees: [{ members: [UNANNOUNCED_MEMBER, UNANNOUNCED_MEMBER, UNANNOUNCED_MEMBER] }],
 };
 
 /** SBES 2027 Education Track (formerly FEES). */
