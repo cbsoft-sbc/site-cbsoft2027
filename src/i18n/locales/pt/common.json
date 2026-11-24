@@ -300,10 +300,13 @@
     "metaTitle": "Local do evento | CBSOFT 2027",
     "title": "Local do evento",
     "mapTitle": "Mapa e navegação",
+    "mapEmbedTitle": "Google Maps: PUC Minas — Campus Coração Eucarístico",
     "mapDescription": "Use o endereço do campus como destino no Google Maps. A rota depende do seu ponto de partida. A entrada, o prédio e as salas do evento ainda serão confirmados.",
     "directions": "Traçar rota no Google Maps ↗",
-    "openMap": "Abrir mapa do campus ↗",
-    "officialLocation": "Conferir endereço no site oficial da PUC Minas ↗"
+    "openMap": "Abrir no Google Maps ↗",
+    "officialLocation": "Conferir endereço no site oficial da PUC Minas ↗",
+    "campusMapFullSize": "Ver mapa em tamanho original ↗",
+    "campusMapAlt": "Planta do campus Coração Eucarístico da PUC Minas, com portarias, prédios numerados e legenda."
   },
   "committee": {
     "eyebrow": "COMITÊ ORGANIZADOR",
@@ -382,8 +385,8 @@
         "description": "Veja onde acontece o CBSOFT’27 e como chegar."
       },
       "map": {
-        "title": "Mapa",
-        "description": "Encontre os espaços e as atividades do evento."
+        "title": "Mapa PUC",
+        "description": "Veja as portarias e os prédios do campus Coração Eucarístico."
       },
       "accommodation": {
         "title": "Acomodações",

@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import i18n from '@/i18n';
@@ -28,22 +28,35 @@ function renderPage() {
 describe('event locality', () => {
   it('navigates from the home section to the venue route and provides a real map destination', () => {
     render(<App />);
+    expect(screen.getByRole('link', { name: /Localização.*PUC Minas/i }).getAttribute('href')).toBe(
+      `${import.meta.env.BASE_URL}local`,
+    );
+    expect(screen.getByText('Ônibus — 5401, 9410, 4110 e 4111')).toBeTruthy();
     fireEvent.click(screen.getByRole('link', { name: 'Endereço, orientações e mapa' }));
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}local`);
     const heading = screen.getByRole('heading', { level: 1, name: 'Local do evento' });
     expect(heading.previousElementSibling).toBeNull();
     expect(heading.firstElementChild?.matches('.brand-bar[aria-hidden="true"]')).toBe(true);
-    expect(screen.getByText(/Av\. Dom José Gaspar, 500/)).toBeTruthy();
+    expect(screen.queryByText(/Av\. Dom José Gaspar, 500/)).toBeNull();
+    expect(screen.queryByText(/Ônibus — 5401/)).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Reproduzir o vídeo do CBSOFT 2027' })).toBeNull();
     const map = screen.getByRole('link', { name: /Traçar rota no Google Maps/ });
     const destination = new URL(map.getAttribute('href')!).searchParams.get('destination');
     expect(destination).toContain('Coração Eucarístico');
     expect(destination).toContain('500');
+    const embed = new URL(screen.getByTitle(/Google Maps: PUC Minas/).getAttribute('src')!);
+    expect(embed.origin).toBe('https://www.google.com');
+    expect(embed.pathname).toBe('/maps/embed');
+    expect(embed.searchParams.get('pb')).toContain('Dom José Gaspar, 500');
+    expect(screen.getByRole('link', { name: /Abrir no Google Maps/ }).getAttribute('href')).toBe(
+      'https://www.google.com/maps?cid=5139803446538321391',
+    );
     expect(screen.queryByText(/Campus Lourdes|Estação Central|Linha 4403|Raul Soares/)).toBeNull();
   });
 
   it('loads the approved player only on demand and retains its YouTube fallback after poster failure', () => {
-    const { container } = renderPage();
-    expect(container.querySelector('iframe')).toBeNull();
+    const { container } = render(<App />);
+    expect(container.querySelector('.home-location__media iframe')).toBeNull();
     fireEvent.error(container.querySelector('.yt-poster')!);
     expect(container.querySelector('.yt-poster')).toBeNull();
     const fallback = screen.getByRole('link', { name: /Assistir no YouTube/ });
@@ -61,10 +74,10 @@ describe('event locality', () => {
     const heading = screen.getByRole('heading', { level: 1, name: 'Event venue' });
     expect(heading.previousElementSibling).toBeNull();
     expect(heading.firstElementChild?.matches('.brand-bar[aria-hidden="true"]')).toBe(true);
-    expect(screen.getByText('Event access details to be confirmed')).toBeTruthy();
-    expect(screen.getByText(/Gameleira station/)).toBeTruthy();
+    expect(screen.getByText(/The event entrance, building and rooms are still to be confirmed/)).toBeTruthy();
     expect(screen.getByRole('link', { name: /Get directions on Google Maps/ })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Play the CBSOFT 2027 video' })).toBeTruthy();
+    expect(screen.getByTitle('Google Maps: PUC Minas — Coração Eucarístico Campus')).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'PUC Campus Map' })).toBeTruthy();
   });
 
   it('hides address, transport and navigation if the venue is no longer confirmed', () => {
@@ -75,19 +88,45 @@ describe('event locality', () => {
     expect(container.querySelector('address')).toBeNull();
     expect(container.querySelector('.venue-transit')).toBeNull();
     expect(screen.queryByRole('link', { name: /Traçar rota/ })).toBeNull();
+    expect(screen.queryByTitle(/Google Maps: PUC Minas/)).toBeNull();
+    expect(screen.queryByRole('heading', { name: 'Mapa PUC' })).toBeNull();
   });
 
-  it('opens the map section from the desktop or mobile navigation without exposing unapproved social events', () => {
+  it.each(['desktop', 'mobile'])('opens each map from the %s navigation', (mode) => {
     const scroll = vi.fn();
     const previous = Element.prototype.scrollIntoView;
     Element.prototype.scrollIntoView = scroll;
-    render(<App />);
-    fireEvent.click(screen.getAllByRole('button', { name: "CBSOFT'27" })[0]);
-    expect(screen.queryByRole('link', { name: /Eventos sociais/i })).toBeNull();
-    fireEvent.click(screen.getByRole('link', { name: /^Mapa/ }));
-    expect(window.location.hash).toBe('#mapa');
-    expect(screen.getByRole('heading', { name: 'Mapa e navegação' })).toBeTruthy();
-    expect(scroll).toHaveBeenCalled();
-    Element.prototype.scrollIntoView = previous;
+    const openMenu = () => {
+      if (mode === 'mobile') {
+        fireEvent.click(screen.getByRole('button', { name: 'Abrir menu' }));
+        const navigation = screen.getByRole('navigation', { name: 'Navegação móvel' });
+        fireEvent.click(within(navigation).getByRole('button', { name: "CBSOFT'27" }));
+      } else {
+        fireEvent.click(screen.getByRole('button', { name: "CBSOFT'27" }));
+      }
+    };
+
+    try {
+      render(<App />);
+      openMenu();
+      expect(screen.queryByRole('link', { name: /Eventos sociais/i })).toBeNull();
+      fireEvent.click(screen.getByRole('link', { name: 'Local do Evento' }));
+      expect(window.location.hash).toBe('#mapa');
+      const googleMap = screen.getByRole('region', { name: 'Mapa e navegação' });
+      expect(scroll.mock.contexts.at(-1)).toBe(googleMap);
+      expect(within(googleMap).getByTitle(/Google Maps: PUC Minas/)).toBeTruthy();
+
+      openMenu();
+      fireEvent.click(screen.getByRole('link', { name: 'Mapa PUC' }));
+      expect(window.location.hash).toBe('#mapa-puc');
+      const campusMap = screen.getByRole('region', { name: 'Mapa PUC' });
+      expect(scroll.mock.contexts.at(-1)).toBe(campusMap);
+      const image = within(campusMap).getByRole('img', { name: /Planta do campus/ });
+      const path = `${import.meta.env.BASE_URL}assets/images/mapa-puc-coracao-eucaristico.png`;
+      expect(image.getAttribute('src')).toBe(path);
+      expect(within(campusMap).getByRole('link', { name: /Ver mapa em tamanho original/ }).getAttribute('href')).toBe(path);
+    } finally {
+      Element.prototype.scrollIntoView = previous;
+    }
   });
 });

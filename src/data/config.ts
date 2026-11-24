@@ -80,6 +80,7 @@ export const IMAGES = {
   praca2: asset('assets/images/praca-liberdade-2.jpg'),
   praca3: asset('assets/images/praca-liberdade-3.jpg'),
   edificio_niemeyer: asset('assets/images/edificio-niemeyer.jpg'),
+  mapa_puc: asset('assets/images/mapa-puc-coracao-eucaristico.png'),
   sbc_logo: asset('assets/images/sbc-logo.svg'),
   chevron_down: asset('assets/icons/chevron-down.png'),
 } as const;

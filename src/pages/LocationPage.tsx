@@ -6,10 +6,9 @@ import './LocationPage.css';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
-import { VenueDetails } from '@/components/ui/VenueDetails';
-import { YouTubeEmbed } from '@/components/ui/YouTubeEmbed';
 import { Button } from '@/components/ui/Button';
 import { BrandBar } from '@/components/ui/BrandBar';
+import { IMAGES } from '@/data/config';
 import { VENUE } from '@/data/venue';
 import { useLang } from '@/hooks/useLang';
 import { pick } from '@/lib/localized';
@@ -17,7 +16,7 @@ import { pick } from '@/lib/localized';
 export function LocationPage() {
   const { t } = useTranslation();
   const lang = useLang();
-  const { hash } = useLocation();
+  const { hash, key } = useLocation();
   const confirmed = Boolean(VENUE.name && VENUE.address);
 
   useEffect(() => {
@@ -27,12 +26,15 @@ export function LocationPage() {
   }, [t]);
 
   useEffect(() => {
-    if (hash === '#mapa') {
-      document.getElementById('mapa')?.scrollIntoView();
+    const map = hash === '#mapa' || hash === '#mapa-puc'
+      ? document.getElementById(hash.slice(1))
+      : null;
+    if (map) {
+      map.scrollIntoView();
     } else {
       window.scrollTo(0, 0);
     }
-  }, [hash]);
+  }, [hash, key]);
 
   return (
     <main className="about-page location-page" id="local-evento">
@@ -45,44 +47,49 @@ export function LocationPage() {
           <p className="about-lead">
             {VENUE.name ? pick(VENUE.name, lang) : t('location.unconfirmed')}
           </p>
-        </div>
-      </section>
-      <section className="about-section venue-section">
-        <div className="container-xl">
-          <div className="venue-panel venue-panel--page">
-            <div className="venue-grid">
-              <div className="venue-info"><VenueDetails /></div>
-              <figure className="venue-media">
-                <YouTubeEmbed
-                  id={VENUE.video.id}
-                  title={t('location.videoTitle')}
-                  playAria={t('location.playAria')}
-                  fallbackLabel={t('location.videoFallback')}
-                />
-                <figcaption className="venue-video-cap">
-                  <span className="venue-video-title">{t('location.videoTitle')}</span>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
           {confirmed && (
-            <section id="mapa" className="venue-map" aria-labelledby="venue-map-title">
-              <h2 className="about-h2" id="venue-map-title">{t('locationPage.mapTitle')}</h2>
-              <p className="about-prose">{t('locationPage.mapDescription')}</p>
-              <div className="venue-map-actions">
-                <Button variant="accent" href={VENUE.directionsUrl} target="_blank" rel="noopener noreferrer">
-                  {t('locationPage.directions')}
-                </Button>
-                <Button variant="outline" href={VENUE.mapsUrl} target="_blank" rel="noopener noreferrer">
-                  {t('locationPage.openMap')}
-                </Button>
-              </div>
-              <p className="venue-source">
-                <a href={VENUE.officialUrl} target="_blank" rel="noopener noreferrer">
-                  {t('locationPage.officialLocation')}
-                </a>
-              </p>
-            </section>
+            <>
+              <section id="mapa" className="venue-map" aria-labelledby="venue-map-title">
+                <h2 className="about-h2" id="venue-map-title">{t('locationPage.mapTitle')}</h2>
+                <iframe
+                  className="venue-map__embed"
+                  title={t('locationPage.mapEmbedTitle')}
+                  src={`${VENUE.mapsEmbedUrl}&hl=${lang}`}
+                  loading="lazy"
+                  allowFullScreen
+                />
+                <p className="about-prose">{t('locationPage.mapDescription')}</p>
+                <div className="venue-map-actions">
+                  <Button variant="accent" href={VENUE.directionsUrl} target="_blank" rel="noopener noreferrer">
+                    {t('locationPage.directions')}
+                  </Button>
+                  <Button variant="outline" href={VENUE.mapsUrl} target="_blank" rel="noopener noreferrer">
+                    {t('locationPage.openMap')}
+                  </Button>
+                </div>
+                <p className="venue-source">
+                  <a href={VENUE.officialUrl} target="_blank" rel="noopener noreferrer">
+                    {t('locationPage.officialLocation')}
+                  </a>
+                </p>
+              </section>
+              <section id="mapa-puc" className="venue-map" aria-labelledby="venue-campus-map-title">
+                <h2 className="about-h2" id="venue-campus-map-title">{t('headerMenu.guide.map.title')}</h2>
+                <div className="venue-map-actions">
+                  <Button variant="outline" href={IMAGES.mapa_puc} target="_blank" rel="noopener noreferrer">
+                    {t('locationPage.campusMapFullSize')}
+                  </Button>
+                </div>
+                <img
+                  className="venue-map__image"
+                  src={IMAGES.mapa_puc}
+                  alt={t('locationPage.campusMapAlt')}
+                  width={1086}
+                  height={1448}
+                  loading="lazy"
+                />
+              </section>
+            </>
           )}
         </div>
       </section>

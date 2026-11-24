@@ -94,8 +94,8 @@ export const HEADER_MENUS: Record<HeaderMenuId, HeaderMenuDefinition> = {
         {
             titleKey: 'headerMenu.guide.title',
             links: [
-                link('guide.venue', '/local'),
-                link('guide.map', '/local#mapa'),
+                link('guide.venue', '/local#mapa'),
+                link('guide.map', '/local#mapa-puc'),
                 link('guide.accommodation', '/acomodacoes'),
                 // link('guide.experiences', '#experiencias-bh'),
             ],

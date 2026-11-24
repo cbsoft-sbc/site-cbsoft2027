@@ -300,10 +300,13 @@
     "metaTitle": "Event venue | CBSOFT 2027",
     "title": "Event venue",
     "mapTitle": "Map and directions",
+    "mapEmbedTitle": "Google Maps: PUC Minas — Coração Eucarístico Campus",
     "mapDescription": "Use the campus address as your destination in Google Maps. Directions depend on your starting point. The event entrance, building and rooms are still to be confirmed.",
     "directions": "Get directions on Google Maps ↗",
-    "openMap": "Open the campus map ↗",
-    "officialLocation": "Check the address on the official PUC Minas website ↗"
+    "openMap": "Open in Google Maps ↗",
+    "officialLocation": "Check the address on the official PUC Minas website ↗",
+    "campusMapFullSize": "View full-size campus map ↗",
+    "campusMapAlt": "PUC Minas Coração Eucarístico campus plan with entrances, numbered buildings and a legend."
   },
   "committee": {
     "eyebrow": "ORGANIZING COMMITTEE",
@@ -382,8 +385,8 @@
         "description": "Find out where CBSOFT’27 takes place and how to get there."
       },
       "map": {
-        "title": "Map",
-        "description": "Find the event spaces and activities."
+        "title": "PUC Campus Map",
+        "description": "See the entrances and buildings of the Coração Eucarístico campus."
       },
       "accommodation": {
         "title": "Accommodation",
