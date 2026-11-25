@@ -31,13 +31,24 @@
       "sec": "Segundos"
     },
     "carousel": {
-      "label": "Fotos da Praça da Liberdade",
+      "label": "Fotos de Belo Horizonte",
       "previous": "Foto anterior",
       "next": "Próxima foto",
       "goTo": "Mostrar foto {{number}}",
       "pause": "Pausar",
       "play": "Reproduzir",
-      "position": "Foto {{number}} de {{total}}"
+      "position": "Foto {{number}} de {{total}}",
+      "photoInfo": "Créditos e licença da foto",
+      "photoEdits": "WebP redimensionado e reenquadrado",
+      "photos": {
+        "fontes-praca-liberdade": "Jatos d’água e jardins na Praça da Liberdade, em Belo Horizonte",
+        "coreto-praca-liberdade": "Coreto da Praça da Liberdade com o Edifício Niemeyer ao fundo",
+        "secretaria-da-fazenda": "Fachada histórica da Secretaria da Fazenda na Praça da Liberdade",
+        "igreja-da-pampulha": "Vista aérea da Igreja de São Francisco de Assis às margens da Lagoa da Pampulha",
+        "cidade-administrativa-mg": "Palácio Tiradentes iluminado ao anoitecer, com reflexo no lago da Cidade Administrativa",
+        "mercado-central": "Fachada do Mercado Central de Belo Horizonte vista da praça arborizada em frente à entrada",
+        "palacio-tiradentes": "Palácio Tiradentes visto do outro lado do lago da Cidade Administrativa de Minas Gerais"
+      }
     }
   },
   "agenda": {

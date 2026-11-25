@@ -76,9 +76,6 @@ export const IMAGES = {
   logo_text_mono: asset('assets/images/logo-text-mono.png'),
   // Top line of logo-text.png: the manual's short typographic signature.
   logo_wordmark: asset('assets/images/logo-wordmark.png'),
-  praca: asset('assets/images/praca-liberdade.jpg'),
-  praca2: asset('assets/images/praca-liberdade-2.jpg'),
-  praca3: asset('assets/images/praca-liberdade-3.jpg'),
   edificio_niemeyer: asset('assets/images/edificio-niemeyer.jpg'),
   mapa_puc: asset('assets/images/mapa-puc-coracao-eucaristico.png'),
   sbc_logo: asset('assets/images/sbc-logo.svg'),
