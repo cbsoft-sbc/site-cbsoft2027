@@ -28,9 +28,12 @@ jobs:
       - run: npm test
       - run: npm run build
         env:
-          # Project page: https://<user>.github.io/cbsoft/
-          # Set to "/" here (or via repo variable) for a custom domain.
-          VITE_BASE: /cbsoft/
+          # Project page: https://<owner>.github.io/<repository>/
+          # Set to "/" here for a custom domain.
+          VITE_BASE: /${{ github.event.repository.name }}/
+      # SPA: GitHub Pages serves 404.html for unknown paths, so direct
+      # access to routes like /programacao still loads the app.
+      - run: cp dist/index.html dist/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
