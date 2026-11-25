@@ -18,18 +18,67 @@
   line-height: 1.2;
 }
 
+h3.committee-portraits__title {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+}
+
 .committee-portraits__list {
+  --portrait-gap: clamp(1rem, 5vw, 3.5rem);
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: clamp(1rem, 5vw, 3.5rem);
+  gap: var(--portrait-gap);
+  max-width: calc(48rem + 2 * var(--portrait-gap));
+  margin-inline: auto;
 }
 
 .committee-portraits__person {
-  flex: 0 1 clamp(8rem, 40vw, 16rem);
+  flex: 0 1 min(16rem, calc((100% - var(--portrait-gap)) / 2));
   min-width: 0;
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 700;
   line-height: 1.25;
+}
+
+@media (min-width: 768px) {
+  .committee-portraits__person {
+    flex-basis: min(16rem, calc((100% - 2 * var(--portrait-gap)) / 3));
+  }
+}
+
+.committee-portraits__tracks {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  margin-block-start: 1.75rem;
+}
+
+.committee-portraits__tracks .committee-portraits__list {
+  --portrait-gap: clamp(0.75rem, 2.5vw, 1.5rem);
+}
+
+.committee-portraits__tracks .committee-portraits__person {
+  flex-basis: min(12rem, calc((100% - var(--portrait-gap)) / 2));
+}
+
+@media (min-width: 900px) {
+  .committee-portraits__tracks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .committee-portraits__tracks > section {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 2;
+    row-gap: 1.25rem;
+  }
+
+  .committee-portraits__tracks .committee-portraits__title {
+    margin-block-end: 0;
+  }
+
+  .committee-portraits__tracks .committee-portraits__list {
+    width: 100%;
+  }
 }
 
 .committee-portraits__photo {
@@ -41,6 +90,25 @@
   object-fit: cover;
   background: var(--line-soft);
   margin-block-end: 0.75rem;
+}
+
+.committee-portraits__photo--top {
+  object-position: center top;
+}
+
+.committee-portraits__photo--rotate-left {
+  object-position: right center;
+  transform: rotate(-90deg);
+}
+
+.committee-portraits__placeholder {
+  display: grid;
+  place-items: center;
+  color: var(--slate);
+}
+
+.committee-portraits__placeholder svg {
+  width: 40%;
 }
 
 .committee-portraits__affiliation {

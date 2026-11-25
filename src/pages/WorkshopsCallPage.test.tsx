@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, describe, expect, it } from 'vitest';
 import i18n from '@/i18n';
@@ -41,5 +41,8 @@ describe('WorkshopsCallPage', () => {
     for (const title of [call.contextTitle, call.generalTitle, call.submissionTitle, call.preApprovedTitle, call.ethicsTitle]) {
       expect(screen.getByRole('heading', { level: 2, name: title })).toBeTruthy();
     }
+    const organization = within(screen.getByRole('complementary', { name: call.organizationTitle }));
+    expect(organization.getByText(strings.committee.tbc)).toBeTruthy();
+    expect(organization.queryByRole('link')).toBeNull();
   });
 });

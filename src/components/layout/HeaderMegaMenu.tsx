@@ -26,15 +26,8 @@ function MenuLink({
     label: string;
     onNavigate: () => void;
 }) {
-    const contents = (
-        <>
-            {label}
-            <span className="header-mega-menu__chevron" aria-hidden="true">›</span>
-        </>
-    );
-
     return link.href.startsWith('/') ? (
-        <Link to={link.href} onClick={onNavigate}>{contents}</Link>
+        <Link to={link.href} onClick={onNavigate}>{label}</Link>
     ) : (
         <a
             href={link.href}
@@ -42,7 +35,7 @@ function MenuLink({
             target={link.external ? '_blank' : undefined}
             rel={link.external ? 'noopener noreferrer' : undefined}
         >
-            {contents}
+            {label}
         </a>
     );
 }
@@ -56,6 +49,7 @@ export function HeaderMegaMenu({
     const { t } = useTranslation();
     const prefix = mobile ? 'mobile-header' : 'header';
     const panelId = `${prefix}-mega-menu-${id}`;
+    const hasSectionTitles = menu.some((section) => section.titleKey);
     const panelRef = useRef<HTMLDivElement>(null);
     const flyoutRef = useRef<HTMLDivElement>(null);
     const focusFirstChild = useRef(false);
@@ -114,10 +108,13 @@ export function HeaderMegaMenu({
             role="region"
             aria-labelledby={`${prefix}-trigger-${id}`}
         >
-            <div className="header-mega-menu__content" ref={panelRef}>
+            <div
+                className={`header-mega-menu__content${hasSectionTitles ? '' : ' header-mega-menu__content--untitled'}`}
+                ref={panelRef}
+            >
                 {menu.map((section) => (
-                    <section className="header-mega-menu__section" key={section.titleKey}>
-                        <h2>{t(section.titleKey)}</h2>
+                    <section className="header-mega-menu__section" key={section.titleKey ?? section.links[0]?.titleKey}>
+                        {section.titleKey && <h2>{t(section.titleKey)}</h2>}
                         <ul className="header-mega-menu__links">
                             {section.links.map((link) => {
                                 const label = t(link.titleKey);
@@ -173,9 +170,7 @@ export function HeaderMegaMenu({
                                             }}
                                         >
                                             {label}
-                                            <span className="header-mega-menu__chevron" aria-hidden="true">
-                                                {open && !mobile ? '»' : '›'}
-                                            </span>
+                                            <span className="header-mega-menu__chevron" aria-hidden="true">&gt;</span>
                                         </button>
                                         {open && (
                                             <div

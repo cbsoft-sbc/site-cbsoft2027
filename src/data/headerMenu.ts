@@ -28,7 +28,7 @@ export interface HeaderMenuLink {
 }
 
 export interface HeaderMenuSection {
-    titleKey: string;
+    titleKey?: string;
     links: HeaderMenuLink[];
 }
 
@@ -60,7 +60,6 @@ const sbesTrack = (track: SbesTrack): HeaderMenuLink => ({
 
 const symposiumMenu = (id: 'sblp' | 'sbcars' | 'sast'): HeaderMenuDefinition => [
     {
-        titleKey: `headerMenu.${id}.title`,
         links: [
             link(`${id}.call`, symposiumCallPath(id)),
             link(`${id}.program`, programPath(id)),

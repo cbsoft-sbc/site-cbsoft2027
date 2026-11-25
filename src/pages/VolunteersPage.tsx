@@ -158,18 +158,18 @@ export function VolunteersPage() {
               <div className="about-prose wcall-prose">
                 {VOLUNTEER_COORDINATORS.map((person, index) => (
                   <p key={index}>
-                    {person.name} — {person.affiliation}{' '}
-                    {/* Only real addresses become mailto links, not placeholders. */}
-                    {person.email.includes('@') ? (
+                    {person.name ?? t('committee.tbc')}
+                    {person.affiliation && ` — ${person.affiliation}`}
+                    {person.email?.includes('@') ? (
                       <>
-                        &lt;
+                        {' <'}
                         <a href={`mailto:${person.email}`} className="wcall-link">
                           {person.email}
                         </a>
                         &gt;
                       </>
-                    ) : (
-                      <span>&lt;{person.email}&gt;</span>
+                    ) : person.email && (
+                      <span>{' <'}{person.email}&gt;</span>
                     )}
                   </p>
                 ))}

@@ -106,7 +106,6 @@
     "datesTitle": "Datas Importantes",
     "tbd": "A definir",
     "hardDeadline": "Prazo final (hard deadline)",
-    "memberTbd": "A Definir",
     "organizationTitle": "Organização",
     "chairsTitle": "Coordenadores do Comitê de Programa",
     "committeeTitle": "Comitê de Programa"
@@ -311,12 +310,10 @@
     "imageAlt": "Planta do campus Coração Eucarístico da PUC Minas, com portarias, prédios numerados e legenda."
   },
   "committee": {
-    "generalChairs": "Coordenação Geral",
+    "generalOrganization": "Organização Geral",
     "website": "Website",
-    "pcChairs": "Coordenação do Programa Científico",
-    "localCommittee": "Comitê Local",
-    "chairTbc": "coordenação a confirmar",
-    "tbc": "a confirmar"
+    "sbesTrackChairs": "Coordenação das Trilhas do SBES",
+    "tbc": "A definir"
   },
   "accommodationPage": {
     "metaTitle": "Acomodações — CBSOFT'27",
@@ -532,7 +529,6 @@
       "trackPapers": "Artigos Aceitos"
     },
     "sblp": {
-      "title": "SBLP",
       "call": {
         "title": "Chamada de Trabalhos",
         "description": "Tópicos, prazos e normas de submissão do SBLP."
@@ -547,7 +543,6 @@
       }
     },
     "sbcars": {
-      "title": "SBCARS",
       "call": {
         "title": "Chamada de Trabalhos",
         "description": "Tópicos, prazos e normas de submissão do SBCARS."
@@ -562,7 +557,6 @@
       }
     },
     "sast": {
-      "title": "SAST",
       "call": {
         "title": "Chamada de Trabalhos",
         "description": "Tópicos, prazos e normas de submissão do SAST."

@@ -285,14 +285,14 @@ export function WorkshopsCallPage() {
                         </span>
                         <span className="wcall-org__body">
                           <span className="wcall-org__name">
-                            {chair.name} <span>— {chair.affiliation}</span>
+                            {chair.name ?? t('committee.tbc')}
+                            {chair.affiliation && <span> — {chair.affiliation}</span>}
                           </span>
-                          {/* Only real addresses become mailto links, not placeholders. */}
-                          {chair.email.includes('@') ? (
+                          {chair.email?.includes('@') ? (
                             <a href={`mailto:${chair.email}`} className="wcall-link">
                               {chair.email}
                             </a>
-                          ) : (
+                          ) : chair.email && (
                             <span className="wcall-org__email">{chair.email}</span>
                           )}
                         </span>

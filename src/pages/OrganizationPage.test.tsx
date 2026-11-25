@@ -23,13 +23,41 @@ describe('OrganizationPage', () => {
     expect(screen.getByText('Realização')).toBeTruthy();
     expect(screen.queryByRole('heading', { name: /Quem organiza o CBSoft 2027/i })).toBeNull();
 
-    const chairs = screen.getByRole('region', { name: 'Coordenação Geral' });
-    const chair = within(chairs).getByRole('listitem');
-    expect(within(chair).getByText('José Laerte Xavier')).toBeTruthy();
-    expect(within(chair).getByText('PUC Minas')).toBeTruthy();
-    expect(chair.querySelector('img')?.getAttribute('src')).toBe(
-      `${import.meta.env.BASE_URL}images/organization/jose-laerte-xavier.jpg`,
-    );
+    const generalOrganization = screen.getByRole('region', { name: 'Organização Geral' });
+    const photoBase = `${import.meta.env.BASE_URL}images/organization/`;
+    const portraits = within(generalOrganization).getAllByRole('listitem');
+    expect(portraits.map((person) => [person.querySelector('p')?.textContent, person.querySelector('img')?.getAttribute('src')])).toEqual([
+      ['Laerte Xavier', photoBase + 'laerte-xavier.png'],
+      ['João Eduardo Montandon', photoBase + 'joao-eduardo-montandon.jpg'],
+      ['Johnatan Alves', photoBase + 'johnatan-alves.png'],
+      ['Aline Brito', photoBase + 'aline-brito.jpg'],
+      ['Lucas Vegi', photoBase + 'lucas-vegi.jpg'],
+      ['Luciana Lourdes', photoBase + 'luciana-lourdes.jpg'],
+    ]);
+    expect(within(generalOrganization).queryByText('Coordenação Geral')).toBeNull();
+    expect(within(generalOrganization).queryByText('Função a definir')).toBeNull();
+    for (const affiliation of ['PUC Minas', 'UFMG', 'UFLA', 'UFOP', 'UFV', 'IFMG']) {
+      expect(within(generalOrganization).getByText(affiliation)).toBeTruthy();
+    }
+    expect(screen.queryByRole('heading', { name: 'Coordenação do Programa Científico' })).toBeNull();
+    expect(screen.queryByRole('heading', { name: 'Comitê Local' })).toBeNull();
+    const trackChairs = screen.getByRole('region', { name: 'Coordenação das Trilhas do SBES' });
+    const trackPortraits = within(trackChairs).getAllByRole('listitem');
+    expect(trackPortraits.map((person) => [person.querySelector('p')?.textContent, person.querySelector('img')?.getAttribute('src')])).toEqual([
+      ['Thelma Colanzi', photoBase + 'thelma-colanzi.png'],
+      ['Cleidson de Souza', photoBase + 'cleidson-de-souza.png'],
+      ['Edna', undefined],
+      ['Rodrigo Santos', photoBase + 'rodrigo-santos.png'],
+      ['Simone Souza', photoBase + 'simone-souza.png'],
+      ['Davi Viana', photoBase + 'davi-viana.png'],
+      ['Patricia Matsubara', photoBase + 'patricia-matsubara.png'],
+      ['Allyson Araújo', photoBase + 'allyson-araujo.png'],
+    ]);
+    const ideas = within(trackChairs).getByRole('region', { name: 'Trilha de Ideias Inovadoras e Resultados Emergentes' });
+    expect(within(ideas).getByText('UnB')).toBeTruthy();
+    expect(ideas.querySelector('.committee-portraits__placeholder')).toBeTruthy();
+    expect(screen.queryByRole('heading', { level: 2, name: 'Comitê Consultivo' })).toBeNull();
+    expect(screen.queryByText('A definir')).toBeNull();
 
     const website = screen.getByRole('region', { name: 'Website' });
     const team = within(website).getAllByRole('listitem');
@@ -62,7 +90,21 @@ describe('OrganizationPage', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Organization' })).toBeTruthy();
     expect(screen.getByText('Promoted by')).toBeTruthy();
     expect(screen.queryByRole('heading', { name: /Who is organizing CBSoft 2027/i })).toBeNull();
-    expect(screen.getByRole('heading', { level: 2, name: 'General Chairs' })).toBeTruthy();
+    const generalOrganization = screen.getByRole('region', { name: 'General Organization' });
+    expect(within(generalOrganization).getAllByRole('listitem')).toHaveLength(6);
+    expect(within(generalOrganization).queryByText('General Chair')).toBeNull();
+    expect(screen.queryByRole('heading', { name: 'Program Committee Chairs' })).toBeNull();
+    expect(screen.queryByRole('heading', { name: 'Local Committee' })).toBeNull();
+    const trackChairs = screen.getByRole('region', { name: 'SBES Track Chairs' });
+    expect(within(trackChairs).getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent)).toEqual([
+      'Research Track',
+      'New Ideas and Emerging Results Track',
+      'Tools Track',
+      'Education Track',
+    ]);
+    expect(screen.queryByRole('heading', { level: 2, name: 'Advisory Committee' })).toBeNull();
+    expect(within(generalOrganization).queryByText('Role to be determined')).toBeNull();
+    expect(screen.queryByText('To be determined')).toBeNull();
     expect(screen.getByRole('heading', { level: 2, name: 'Website Development' })).toBeTruthy();
     expect(screen.getAllByText('PUC Minas')).toHaveLength(3);
   });
