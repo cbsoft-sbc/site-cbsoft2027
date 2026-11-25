@@ -36,7 +36,11 @@
   padding-top: clamp(3rem, 4.5vw, 4rem);
 }
 
-/* /organizacao#comite lands below the sticky header. */
+.organization-people {
+  background: var(--surface-alt);
+}
+
+/* /organizacao#comite lands below the sticky site header. */
 #comite {
   scroll-margin-top: var(--site-header-offset, 7rem);
 }

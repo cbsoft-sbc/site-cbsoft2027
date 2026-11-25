@@ -314,10 +314,8 @@
     "imageAlt": "Planta do campus Coração Eucarístico da PUC Minas, com portarias, prédios numerados e legenda."
   },
   "committee": {
-    "eyebrow": "COMITÊ ORGANIZADOR",
-    "title": "Quem organiza o CBSOFT 2027",
-    "note": "Os nomes abaixo são provisórios, pendentes de confirmação pela SBC e pelas instituições locais organizadoras.",
     "generalChairs": "Coordenação Geral",
+    "website": "Website",
     "pcChairs": "Coordenação do Programa Científico",
     "localCommittee": "Comitê Local",
     "chairTbc": "coordenação a confirmar",

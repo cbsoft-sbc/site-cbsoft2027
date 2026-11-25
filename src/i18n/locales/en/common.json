@@ -314,10 +314,8 @@
     "imageAlt": "PUC Minas Coração Eucarístico campus plan with entrances, numbered buildings and a legend."
   },
   "committee": {
-    "eyebrow": "ORGANIZING COMMITTEE",
-    "title": "Who is organizing CBSOFT 2027",
-    "note": "Names below are placeholders pending confirmation by SBC and the local organizing institutions.",
     "generalChairs": "General Chairs",
+    "website": "Website Development",
     "pcChairs": "Program Committee Chairs",
     "localCommittee": "Local Committee",
     "chairTbc": "chair to be confirmed",

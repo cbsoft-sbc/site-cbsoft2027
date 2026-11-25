@@ -20,18 +20,20 @@ export function OrganizationPage() {
   }, [hash]);
 
   return (
-    <main className="about-page" id="organizacao">
-      <section className="about-section about-top" aria-labelledby="organizacao-titulo">
-        <div className="container-xl">
+    <main className="about-page" id="organizacao" aria-labelledby="organizacao-titulo">
+      <div className="organization-people">
+        <header className="about-top container-xl">
           <h1 id="organizacao-titulo" className="about-title">
             <BrandBar />
             {t('organizationPage.title')}
           </h1>
-          <PartnerRows />
-        </div>
-      </section>
+        </header>
+        <Committee />
+      </div>
 
-      <Committee />
+      <div className="container-xl">
+        <PartnerRows />
+      </div>
     </main>
   );
 }

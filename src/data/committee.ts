@@ -1,20 +1,18 @@
 import type { Localized } from '@/lib/localized';
 
 export interface CommitteePerson {
-  name: Localized;
-  detail: Localized;
+  name: string;
+  affiliation: string;
+  photo: string;
 }
 
-/** Coordenação Geral — name + affiliation, still to be confirmed. */
-export const GENERAL_CHAIRS: CommitteePerson[] = [
-  {
-    name: { pt: 'Nome a confirmar', en: 'Name to be confirmed' },
-    detail: { pt: 'Instituição local organizadora', en: 'Local organizing institution' },
-  },
-  {
-    name: { pt: 'Nome a confirmar', en: 'Name to be confirmed' },
-    detail: { pt: 'SBC', en: 'SBC' },
-  },
+export const GENERAL_CHAIRS: readonly CommitteePerson[] = [
+  { name: 'José Laerte Xavier', affiliation: 'PUC Minas', photo: 'jose-laerte-xavier.jpg' },
+];
+
+export const WEBSITE_TEAM: readonly CommitteePerson[] = [
+  { name: 'Abner Almeida', affiliation: 'PUC Minas', photo: 'abner-almeida.jpg' },
+  { name: 'Enzo Casaes', affiliation: 'PUC Minas', photo: 'enzo-casaes.jpg' },
 ];
 
 /** Program-committee chairs, one line per symposium (chair TBC). */
