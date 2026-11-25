@@ -18,7 +18,7 @@ function renderPage() {
 
 describe('AboutPage', () => {
   it.each([
-    ['pt', ['XLI SBES', 'XXXI SBLP', 'XXI SBCARS', 'XII SAST'], 'Chamada de Trabalhos'],
+    ['pt', ['41º SBES', '31º SBLP', '21º SBCARS', '12º SAST'], 'Chamada de Trabalhos'],
     ['en', ['41st SBES', '31st SBLP', '21st SBCARS', '12th SAST'], 'Call for Papers'],
   ])('links each symposium card to its Call for Papers (%s)', async (lang, acronyms, cta) => {
     await i18n.changeLanguage(lang);
@@ -116,7 +116,7 @@ describe('AboutPage', () => {
   it('presents the 2027 edition with the confirmed congress period', () => {
     const { container } = renderPage();
     const text = container.textContent ?? '';
-    expect(text).toMatch(/XVIII edição do CBSoft/);
+    expect(text).toMatch(/18ª edição do CBSoft/);
     expect(text).toMatch(/Belo Horizonte/);
     expect(text).toContain('de 27 de setembro a 1º de outubro');
   });

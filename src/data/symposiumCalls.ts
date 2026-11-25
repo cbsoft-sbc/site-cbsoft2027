@@ -2306,7 +2306,7 @@ const SBES_CTD_CALL: SymposiumCall = {
         {
           kind: 'p',
           text: {
-            pt: 'Serão premiadas as três melhores teses de doutorado e as três melhores dissertações de mestrado. Os trabalhos deverão, obrigatoriamente, ser apresentados pelo(a) estudante de maneira oral na sessão de apresentações do CTD-ES e também na sessão de pôsteres da III Mostra de Trabalhos dos Concursos do Simpósio Brasileiro de Engenharia de Software, durante o XLI Simpósio Brasileiro de Engenharia de Software (SBES 2027).',
+            pt: 'Serão premiadas as três melhores teses de doutorado e as três melhores dissertações de mestrado. Os trabalhos deverão, obrigatoriamente, ser apresentados pelo(a) estudante de maneira oral na sessão de apresentações do CTD-ES e também na sessão de pôsteres da III Mostra de Trabalhos dos Concursos do Simpósio Brasileiro de Engenharia de Software, durante o 41º Simpósio Brasileiro de Engenharia de Software (SBES 2027).',
             en: 'The three best PhD theses and the three best master\'s dissertations will be awarded. The works must be presented by the student both orally in the CTD-ES presentation session and in the poster session of the 3rd Showcase of the Brazilian Symposium on Software Engineering Competitions, during the 41st Brazilian Symposium on Software Engineering (SBES 2027).',
           },
         },
