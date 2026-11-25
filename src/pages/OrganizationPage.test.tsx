@@ -21,7 +21,7 @@ describe('OrganizationPage', () => {
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}organizacao`);
     expect(screen.getByRole('heading', { level: 1, name: 'Organização' })).toBeTruthy();
     expect(screen.getByText('Realização')).toBeTruthy();
-    expect(screen.queryByRole('heading', { name: 'Quem organiza o CBSOFT 2027' })).toBeNull();
+    expect(screen.queryByRole('heading', { name: /Quem organiza o CBSoft 2027/i })).toBeNull();
 
     const chairs = screen.getByRole('region', { name: 'Coordenação Geral' });
     const chair = within(chairs).getByRole('listitem');
@@ -61,7 +61,7 @@ describe('OrganizationPage', () => {
     render(<App />);
     expect(screen.getByRole('heading', { level: 1, name: 'Organization' })).toBeTruthy();
     expect(screen.getByText('Promoted by')).toBeTruthy();
-    expect(screen.queryByRole('heading', { name: 'Who is organizing CBSOFT 2027' })).toBeNull();
+    expect(screen.queryByRole('heading', { name: /Who is organizing CBSoft 2027/i })).toBeNull();
     expect(screen.getByRole('heading', { level: 2, name: 'General Chairs' })).toBeTruthy();
     expect(screen.getByRole('heading', { level: 2, name: 'Website Development' })).toBeTruthy();
     expect(screen.getAllByText('PUC Minas')).toHaveLength(3);

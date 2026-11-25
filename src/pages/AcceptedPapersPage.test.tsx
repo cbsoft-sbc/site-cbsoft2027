@@ -15,6 +15,7 @@ function renderAt(path: string) {
       <Routes>
         <Route path="/artigos-aceitos" element={<AcceptedPapersPage />} />
         <Route path="/sbes/:track/artigos-aceitos" element={<AcceptedPapersPage />} />
+        <Route path="/sbcars/artigos-aceitos" element={<AcceptedPapersPage symposium="sbcars" />} />
       </Routes>
     </MemoryRouter>,
   );
@@ -62,6 +63,16 @@ describe('AcceptedPapersPage', () => {
     } finally {
       track.papers.pop();
     }
+  });
+
+  it('renders one symposium with its own pending notice', () => {
+    renderAt('/sbcars/artigos-aceitos');
+    const heading = screen.getByRole('heading', { level: 1, name: 'Artigos Aceitos' });
+    expect(heading.previousElementSibling).toBeNull();
+    expect(heading.firstElementChild?.matches('.brand-bar[aria-hidden="true"]')).toBe(true);
+    expect(heading.nextElementSibling).toBe(screen.getByText('SBCARS 2027'));
+    expect(screen.getByText(/aceitos no SBCARS será divulgada/)).toBeTruthy();
+    expect(document.title).toBe("Artigos Aceitos — SBCARS — CBSOFT'27");
   });
 
   it('handles an unknown track', () => {

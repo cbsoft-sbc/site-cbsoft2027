@@ -11,6 +11,8 @@ const PAGE_KEYS: Record<string, string> = {
   '/sobre': 'aboutPage',
   [CAMPUS_MAP_PATH]: 'campusMapPage',
   '/acomodacoes': 'accommodationPage',
+  '/experiencias': 'experiencesPage',
+  '/programacao': 'programPage',
   '/organizacao': 'organizationPage',
   '/edicoes-anteriores': 'previousEditionsPage',
   '/workshops/chamada': 'workshopsCallPage',

@@ -34,12 +34,12 @@ describe('event locality', () => {
     expect(screen.getByText('Ônibus — 5401, 9410, 4110 e 4111')).toBeTruthy();
     fireEvent.click(screen.getByRole('link', { name: 'Endereço, orientações e mapa' }));
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}local`);
-    const heading = screen.getByRole('heading', { level: 1, name: 'Local do evento' });
+    const heading = screen.getByRole('heading', { level: 1, name: 'Local do Evento' });
     expect(heading.previousElementSibling).toBeNull();
     expect(heading.firstElementChild?.matches('.brand-bar[aria-hidden="true"]')).toBe(true);
     expect(screen.queryByText(/Av\. Dom José Gaspar, 500/)).toBeNull();
     expect(screen.queryByText(/Ônibus — 5401/)).toBeNull();
-    expect(screen.queryByRole('button', { name: 'Reproduzir o vídeo do CBSOFT 2027' })).toBeNull();
+    expect(screen.queryByRole('button', { name: 'Reproduzir o vídeo do CBSoft 2027' })).toBeNull();
     const map = screen.getByRole('link', { name: /Traçar rota no Google Maps/ });
     const destination = new URL(map.getAttribute('href')!).searchParams.get('destination');
     expect(destination).toContain('Coração Eucarístico');
@@ -66,8 +66,8 @@ describe('event locality', () => {
     expect(container.querySelector('.yt-poster')).toBeNull();
     const fallback = screen.getByRole('link', { name: /Assistir no YouTube/ });
     expect(fallback.getAttribute('href')).toBe('https://www.youtube.com/watch?v=HPzwyRFs37I');
-    fireEvent.click(screen.getByRole('button', { name: 'Reproduzir o vídeo do CBSOFT 2027' }));
-    const player = screen.getByTitle('CBSOFT 2027 em Belo Horizonte');
+    fireEvent.click(screen.getByRole('button', { name: 'Reproduzir o vídeo do CBSoft 2027' }));
+    const player = screen.getByTitle('CBSoft 2027 em Belo Horizonte');
     expect(player.getAttribute('src')).toContain('youtube-nocookie.com/embed/HPzwyRFs37I');
     expect(player.getAttribute('loading')).toBe('lazy');
     expect(screen.getByRole('link', { name: /Assistir no YouTube/ })).toBeTruthy();
@@ -76,7 +76,7 @@ describe('event locality', () => {
   it('provides English directions and preserves pending event access details', async () => {
     renderPage();
     await act(async () => { await i18n.changeLanguage('en'); });
-    const heading = screen.getByRole('heading', { level: 1, name: 'Event venue' });
+    const heading = screen.getByRole('heading', { level: 1, name: 'Event Venue' });
     expect(heading.previousElementSibling).toBeNull();
     expect(heading.firstElementChild?.matches('.brand-bar[aria-hidden="true"]')).toBe(true);
     expect(screen.getByText(/The event entrance, building and rooms are still to be confirmed/)).toBeTruthy();

@@ -10,9 +10,9 @@ beforeEach(async () => {
 });
 
 it.each([
-  ['pt', 'Sobre', 'Acomodações'],
-  ['en', 'About', 'Accommodation'],
-])('shows only the translated labels and keeps the congress destinations in %s', async (lang, about, accommodation) => {
+  ['pt', 'Sobre', 'Acomodações', 'Programação', 'Experiências'],
+  ['en', 'About', 'Accommodation', 'Schedule', 'Experiences'],
+])('shows only the translated labels and keeps the congress destinations in %s', async (lang, about, accommodation, program, experiences) => {
   await i18n.changeLanguage(lang);
   render(
     <MemoryRouter>
@@ -21,8 +21,10 @@ it.each([
   );
   expect(screen.getByRole('link', { name: about }).getAttribute('href')).toBe('/sobre');
   expect(screen.getByRole('link', { name: accommodation }).getAttribute('href')).toBe('/acomodacoes');
+  expect(screen.getByRole('link', { name: program }).getAttribute('href')).toBe('/programacao');
+  expect(screen.getByRole('link', { name: experiences }).getAttribute('href')).toBe('/experiencias');
   const links = screen.getAllByRole('link');
-  expect(links).toHaveLength(8);
+  expect(links).toHaveLength(10);
   for (const link of links) {
     expect(link.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
   }
@@ -56,7 +58,7 @@ describe('HeaderMegaMenu — SBES tracks', () => {
     const call = within(flyout).getByRole('link', { name: 'Chamada de Trabalhos' });
     const papers = within(flyout).getByRole('link', { name: 'Artigos Aceitos' });
     expect(call.getAttribute('href')).toBe('/sbes/educacao/chamada');
-    expect(papers.getAttribute('href')).toBe('/artigos-aceitos');
+    expect(papers.getAttribute('href')).toBe('/sbes/educacao/artigos-aceitos');
     expect(call.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
     expect(papers.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
 
@@ -71,6 +73,6 @@ describe('HeaderMegaMenu — SBES tracks', () => {
     const trigger = screen.getByRole('button', { name: /Trilha de Pesquisa/ });
     fireEvent.click(trigger);
     expect(trigger.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
-    expect(screen.getByRole('link', { name: 'Artigos Aceitos' }).getAttribute('href')).toBe('/artigos-aceitos');
+    expect(screen.getByRole('link', { name: 'Artigos Aceitos' }).getAttribute('href')).toBe('/sbes/pesquisa/artigos-aceitos');
   });
 });

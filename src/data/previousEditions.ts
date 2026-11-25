@@ -90,7 +90,7 @@ export const PREVIOUS_EDITIONS: readonly PreviousEdition[] = [
   {
     "year": 2011,
     "url": "https://cbsoft.sbc.org.br/2011/",
-    "location": "São Paulo"
+    "location": "São Paulo, São Paulo"
   },
   {
     "year": 2010,

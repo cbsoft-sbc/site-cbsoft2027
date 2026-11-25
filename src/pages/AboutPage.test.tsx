@@ -27,7 +27,7 @@ describe('AboutPage', () => {
     expect(items[2].textContent).toMatch(/; e$/);
     expect(items[3].textContent).toMatch(/^XII Simpósio Brasileiro de Teste de Software.*\.$/);
 
-    expect(screen.getByText(/A programação do CBSoft incluirá/)).toBeTruthy();
+    expect(screen.getByText(/A programação inclui sessões técnicas/)).toBeTruthy();
   });
 
   it('uses a spaced, localized conjunction in the English symposium list', async () => {
@@ -45,21 +45,21 @@ describe('AboutPage', () => {
   it.each([
     {
       lang: 'pt',
-      title: 'Identidade Visual do CBSOFT 2027',
+      title: 'Identidade Visual do CBSoft 2027',
       concept: 'Conceito da marca',
       photo: /Edifício Niemeyer/,
       logo: /Logo oficial do CBSOFT'27/,
       caption: 'Edifício Niemeyer, Oscar Niemeyer, 1954, Belo Horizonte, Minas Gerais',
-      intro: /conecta tecnologia, arquitetura/,
+      intro: /identidade visual.*(conecta|relaciona) tecnologia, arquitetura/i,
     },
     {
       lang: 'en',
-      title: 'CBSOFT 2027 Visual Identity',
+      title: 'CBSoft 2027 Visual Identity',
       concept: 'Brand concept',
       photo: /Niemeyer Building/,
       logo: /Official CBSOFT'27 logo/,
       caption: 'Niemeyer Building, Oscar Niemeyer, 1954, Belo Horizonte, Minas Gerais',
-      intro: /visual identity connects technology, architecture/,
+      intro: /visual identity (connects|relates) technology, architecture/i,
     },
   ])('shows the visual identity with heading bars and a single photo caption in $lang', async ({
     lang, title, concept, photo, logo, caption, intro,
@@ -85,9 +85,9 @@ describe('AboutPage', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Sobre a SBC' })).toBeTruthy();
     expect(screen.getByText(/fundada em julho de 1978/)).toBeTruthy();
     expect(
-      screen.getByRole('link', { name: 'listas de e-mail das Comissões Especiais (CE)' }).getAttribute('href'),
+      screen.getByRole('link', { name: 'listas de e-mail das Comissões Especiais' }).getAttribute('href'),
     ).toBe('https://www.sbc.org.br/comissoes-especiais/');
-    expect(screen.getByRole('link', { name: 'clique aqui' }).getAttribute('href')).toBe(
+    expect(screen.getByRole('link', { name: 'acesse a página de associação' }).getAttribute('href')).toBe(
       'https://centraldesistemas.sbc.org.br/mom',
     );
   });
@@ -97,6 +97,6 @@ describe('AboutPage', () => {
     const text = container.textContent ?? '';
     expect(text).toMatch(/XVIII edição do CBSoft/);
     expect(text).toMatch(/Belo Horizonte/);
-    expect(text).toContain('de 27 de setembro a 1 de outubro');
+    expect(text).toContain('de 27 de setembro a 1º de outubro');
   });
 });

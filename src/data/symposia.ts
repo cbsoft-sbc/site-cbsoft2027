@@ -40,8 +40,8 @@ export const SYMPOSIA: Symposium[] = ([
     },
     edition: { pt: 'XLI', en: '41st' },
     blurb: {
-      pt: 'O principal evento de Engenharia de Software na América Latina.',
-      en: 'The leading Software Engineering event in Latin America.',
+      pt: 'Pesquisa e prática em Engenharia de Software.',
+      en: 'Research and practice in Software Engineering.',
     },
   },
   {
@@ -86,15 +86,15 @@ export const SYMPOSIA: Symposium[] = ([
     edition: { pt: 'XII', en: '12th' },
     blurb: {
       pt: 'Sistematização e automação da atividade de teste de software.',
-      en: 'Systematisation and automation of software testing.',
+      en: 'Systematization and automation of software testing.',
     },
   },
 ] satisfies SymposiumSource[]).map(withName);
 
 export const COMPLEMENTARY_TRACKS: Localized[] = [
-  { pt: 'Trilha de Indústria', en: 'Industry Track' },
+  { pt: 'Trilha da Indústria', en: 'Industry Track' },
   { pt: 'Sessão de Ferramentas', en: 'Tools Session' },
-  { pt: 'Concurso de Teses e Dissertações', en: 'Thesis & Dissertation Contest' },
+  { pt: 'Concurso de Teses e Dissertações', en: 'Theses and Dissertations Competition' },
 ];
 
 /** Maps an accent token to the matching CSS custom properties. */

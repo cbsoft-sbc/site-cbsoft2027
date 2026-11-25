@@ -8,26 +8,46 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 import { BrandBar } from '@/components/ui/BrandBar';
-import { SBES_TRACKS, acceptedPapersPath } from '@/data/sbesTracks';
+import { SYMPOSIUM_PAPERS, type PapersSymposiumId } from '@/data/acceptedPapers';
+import { SBES_TRACKS, acceptedPapersPath, type AcceptedPaper } from '@/data/sbesTracks';
+import { SYMPOSIA } from '@/data/symposia';
 
-/** Accepted papers: the shared page (/artigos-aceitos) every menu link uses
- *  for now, or one SBES track (/sbes/:track/artigos-aceitos). */
-export function AcceptedPapersPage() {
+function PaperList({ papers, pending }: { papers: AcceptedPaper[]; pending: string }) {
+  return papers.length > 0 ? (
+    <ol className="papers-list">
+      {papers.map((paper) => (
+        <li key={paper.title}>
+          <strong>{paper.title}</strong>
+          <span>{paper.authors.join(', ')}</span>
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <p className="papers-pending">{pending}</p>
+  );
+}
+
+/** Accepted papers: the general page (/artigos-aceitos, CBSOFT'27 menu),
+ *  one symposium (/sbcars/artigos-aceitos) or one SBES track
+ *  (/sbes/:track/artigos-aceitos). */
+export function AcceptedPapersPage({ symposium }: { symposium?: PapersSymposiumId }) {
   const { t } = useTranslation();
   const { track: slug } = useParams();
   const track = SBES_TRACKS.find((item) => item.slug === slug);
   const trackNotFound = Boolean(slug && !track);
   const trackTitle = track ? t(`headerMenu.sbes.tracks.${track.id}.title`) : '';
+  const acronym = symposium ? SYMPOSIA.find((s) => s.id === symposium)?.acronym ?? '' : '';
 
   useEffect(() => {
     const previous = document.title;
-    if (!slug) document.title = t('acceptedPapersPage.generalMetaTitle');
+    if (symposium) document.title = t('acceptedPapersPage.symposiumMetaTitle', { acronym });
+    else if (!slug) document.title = t('acceptedPapersPage.generalMetaTitle');
     else if (track) document.title = t('acceptedPapersPage.metaTitle', { track: trackTitle });
     window.scrollTo(0, 0);
     return () => {
       document.title = previous;
     };
-  }, [t, slug, track, trackTitle]);
+  }, [t, symposium, acronym, slug, track, trackTitle]);
 
   return (
     <main className="about-page" id="artigos-aceitos">
@@ -38,7 +58,15 @@ export function AcceptedPapersPage() {
             {t(trackNotFound ? 'acceptedPapersPage.notFound' : 'acceptedPapersPage.title')}
           </h1>
 
-          {!slug ? (
+          {symposium ? (
+            <>
+              <p className="papers-track">{acronym} 2027</p>
+              <PaperList
+                papers={SYMPOSIUM_PAPERS[symposium]}
+                pending={t('acceptedPapersPage.symposiumPending', { acronym })}
+              />
+            </>
+          ) : !slug ? (
             <p className="papers-pending">{t('acceptedPapersPage.generalPending')}</p>
           ) : track && (
             <>
@@ -46,18 +74,7 @@ export function AcceptedPapersPage() {
                 {t('acceptedPapersPage.trackLabel', { track: trackTitle })}
               </p>
 
-              {track.papers.length > 0 ? (
-                <ol className="papers-list">
-                  {track.papers.map((paper) => (
-                    <li key={paper.title}>
-                      <strong>{paper.title}</strong>
-                      <span>{paper.authors.join(', ')}</span>
-                    </li>
-                  ))}
-                </ol>
-              ) : (
-                <p className="papers-pending">{t('acceptedPapersPage.pending')}</p>
-              )}
+              <PaperList papers={track.papers} pending={t('acceptedPapersPage.pending')} />
 
               <h2 className="about-h2 wcall-h2">
                 <BrandBar />
