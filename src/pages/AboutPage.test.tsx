@@ -17,29 +17,50 @@ function renderPage() {
 }
 
 describe('AboutPage', () => {
-  it('renders a single "Sobre o CBSoft" section with the four symposia', () => {
+  it.each([
+    ['pt', ['XLI SBES', 'XXXI SBLP', 'XXI SBCARS', 'XII SAST'], 'Chamada de Trabalhos'],
+    ['en', ['41st SBES', '31st SBLP', '21st SBCARS', '12th SAST'], 'Call for Papers'],
+  ])('links each symposium card to its Call for Papers (%s)', async (lang, acronyms, cta) => {
+    await i18n.changeLanguage(lang);
+    const { container } = renderPage();
+    const cards = [...container.querySelectorAll<HTMLAnchorElement>('a.symposium-card')];
+    expect(cards.map((card) => card.getAttribute('href'))).toEqual([
+      '/sbes/pesquisa/chamada',
+      '/sblp/chamada',
+      '/sbcars/chamada',
+      '/sast/chamada',
+    ]);
+    cards.forEach((card, index) => {
+      expect(card.textContent).toContain(acronyms[index]);
+      expect(card.textContent).toContain(cta);
+    });
+    expect(within(cards[0]).getByText(lang === 'pt'
+      ? 'Simpósio Brasileiro de Engenharia de Software'
+      : 'Brazilian Symposium on Software Engineering')).toBeTruthy();
+  });
+
+  it('renders a single "Sobre o CBSoft" section with the four symposia as cards', () => {
     const { container } = renderPage();
     expect(screen.getByRole('heading', { level: 1, name: 'Sobre o CBSoft' })).toBeTruthy();
 
-    const items = container.querySelectorAll('.about-symposia li');
-    expect(items).toHaveLength(4);
-    expect(items[0].textContent).toMatch(/^XLI Simpósio Brasileiro de Engenharia de Software, .*;$/);
-    expect(items[2].textContent).toMatch(/; e$/);
-    expect(items[3].textContent).toMatch(/^XII Simpósio Brasileiro de Teste de Software.*\.$/);
+    // The cards replace the former bulleted list.
+    expect(container.querySelector('.about-symposia')).toBeNull();
+    const cards = container.querySelectorAll('.symposium-card');
+    expect(cards).toHaveLength(4);
+    expect(cards[0].textContent).toContain('Dedicado à pesquisa e à prática em Engenharia de Software.');
+    expect(cards[3].textContent).toContain('Dedicado à sistematização e à automação do teste de software.');
 
     expect(screen.getByText(/A programação inclui sessões técnicas/)).toBeTruthy();
   });
 
-  it('uses a spaced, localized conjunction in the English symposium list', async () => {
+  it('describes each symposium in English inside its card', async () => {
     await i18n.changeLanguage('en');
     const { container } = renderPage();
-    const items = container.querySelectorAll('.about-symposia li');
+    const descriptions = [...container.querySelectorAll('.symposium-card__description')].map((el) => el.textContent);
 
-    expect(items).toHaveLength(4);
-    expect(items[0].textContent).toMatch(/;$/);
-    expect(items[1].textContent).toMatch(/;$/);
-    expect(items[2].textContent).toMatch(/; and$/);
-    expect(items[3].textContent).toMatch(/\.$/);
+    expect(descriptions).toHaveLength(4);
+    expect(descriptions[1]).toMatch(/^Brings together researchers and practitioners/);
+    expect(descriptions.every((text) => /^[A-Z].*\.$/.test(text ?? ''))).toBe(true);
   });
 
   it.each([

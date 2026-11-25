@@ -88,6 +88,7 @@ it('opens the desktop menu and track with the arrow keys and restores focus with
 describe('Header current section', () => {
   it.each([
     ['/', "CBSOFT'27"],
+    ['/local', "CBSOFT'27"],
     ['/local#mapa', "CBSOFT'27"],
     ['/sbes/educacao/chamada', 'SBES'],
     ['/sbes/pesquisa/artigos-aceitos', 'SBES'],

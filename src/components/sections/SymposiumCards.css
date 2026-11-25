@@ -1,0 +1,101 @@
+/* ---------- Symposium cards (Sobre, Chamada de Workshops) ---------- */
+.symposium-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.875rem;
+  margin: 1.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.symposium-cards > li {
+  display: flex;
+}
+
+.symposium-card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.1rem 1.15rem 1.4rem;
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--accent);
+  border-radius: 0.6rem;
+  background: var(--surface);
+  color: inherit;
+  text-decoration: none;
+}
+
+.symposium-card__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--accent);
+}
+
+.symposium-card__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.symposium-card__acronym {
+  margin-top: 0.25rem;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.symposium-card__name {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  text-wrap: balance;
+  color: var(--slate);
+}
+
+/* With a description (Sobre), the full name reads as the card's subtitle
+   and the description as its body. */
+.symposium-cards--described .symposium-card__name {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.symposium-card__description {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--slate);
+}
+
+/* Linked cards (Sobre): the whole card opens the Call for Papers. */
+/* Same hover as the Edições Anteriores cards: lift and a soft purple shadow. */
+.symposium-card--link {
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.symposium-card__cta {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  color: color-mix(in srgb, var(--accent) 70%, var(--ink));
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.symposium-card--link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgb(112 42 130 / 16%);
+}
+
+.symposium-card--link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .symposium-card--link {
+    transition: none;
+  }
+
+  .symposium-card--link:hover {
+    transform: none;
+  }
+}

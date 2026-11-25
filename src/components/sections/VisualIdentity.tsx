@@ -33,10 +33,10 @@ export function VisualIdentity() {
           <div className="brand-id__concept">
             <img
               className="brand-id__logo"
-              src={IMAGES.logo_horizontal}
+              src={IMAGES.logo_horizontal_large}
               alt={t('visualIdentity.logoAlt')}
-              width={5196}
-              height={1802}
+              width={840}
+              height={291}
               loading="lazy"
             />
             <h3 className="brand-id__h3">

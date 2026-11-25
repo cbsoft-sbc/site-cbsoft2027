@@ -5,6 +5,7 @@ import { IMAGES } from '@/data/config';
 import { useHeroCarousel } from '@/hooks/useHeroCarousel';
 import { useHeroWave } from '@/hooks/useHeroWave';
 import { Countdown } from './Countdown';
+import { HeroEventPills } from './HeroEventPills';
 
 const PHOTOS = [IMAGES.praca, IMAGES.praca2, IMAGES.praca3];
 
@@ -49,6 +50,8 @@ export function Hero() {
         <Countdown />
 
         <div className="home-hero__details">
+          <HeroEventPills />
+
           <div className="home-hero__actions">
             <a className="home-hero__button_2" href="#patrocinio">
               {t('sponsorship.cta.sponsor.title')}
@@ -90,7 +93,7 @@ export function Hero() {
       </div>
 
       <div className="home-hero__wave" aria-hidden="true">
-        <img src={IMAGES.grafismo_3} alt="" />
+        <img src={IMAGES.grafismo_3} alt="" decoding="async" />
       </div>
     </section>
   );

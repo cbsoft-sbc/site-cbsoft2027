@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import i18n from '@/i18n';
 import { App } from '@/App';
+import { renderApp } from '@/test/renderApp';
 
 beforeEach(async () => {
   await i18n.changeLanguage('pt');
@@ -13,13 +14,13 @@ afterEach(() => {
 });
 
 describe('OrganizationPage', () => {
-  it('opens from the CBSOFT\'27 menu and shows partners and committee', () => {
+  it('opens from the CBSOFT\'27 menu and shows partners and committee', async () => {
     window.history.replaceState(null, '', import.meta.env.BASE_URL);
     render(<App />);
     fireEvent.click(screen.getAllByRole('button', { name: "CBSOFT'27" })[0]);
     fireEvent.click(screen.getByRole('link', { name: /^Organização/ }));
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}organizacao`);
-    expect(screen.getByRole('heading', { level: 1, name: 'Organização' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { level: 1, name: 'Organização' })).toBeTruthy();
     expect(screen.getByText('Realização')).toBeTruthy();
     expect(screen.queryByRole('heading', { name: /Quem organiza o CBSoft 2027/i })).toBeNull();
 
@@ -71,7 +72,7 @@ describe('OrganizationPage', () => {
     ]);
   });
 
-  it('opens from the mobile CBSOFT menu and closes the menu after navigating', () => {
+  it('opens from the mobile CBSOFT menu and closes the menu after navigating', async () => {
     window.history.replaceState(null, '', import.meta.env.BASE_URL);
     render(<App />);
     fireEvent.click(screen.getByRole('button', { name: 'Abrir menu' }));
@@ -79,14 +80,14 @@ describe('OrganizationPage', () => {
     fireEvent.click(within(menu).getByRole('button', { name: "CBSOFT'27" }));
     fireEvent.click(within(menu).getByRole('link', { name: /^Organização/ }));
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}organizacao`);
-    expect(screen.getByRole('heading', { level: 1, name: 'Organização' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { level: 1, name: 'Organização' })).toBeTruthy();
     expect(screen.queryByRole('navigation', { name: 'Navegação móvel' })).toBeNull();
   });
 
   it('renders on direct access in English', async () => {
     await act(async () => { await i18n.changeLanguage('en'); });
     window.history.replaceState(null, '', `${import.meta.env.BASE_URL}organizacao`);
-    render(<App />);
+    await renderApp();
     expect(screen.getByRole('heading', { level: 1, name: 'Organization' })).toBeTruthy();
     expect(screen.getByText('Promoted by')).toBeTruthy();
     expect(screen.queryByRole('heading', { name: /Who is organizing CBSoft 2027/i })).toBeNull();
@@ -109,13 +110,13 @@ describe('OrganizationPage', () => {
     expect(screen.getAllByText('PUC Minas')).toHaveLength(3);
   });
 
-  it('scrolls to the committee when opened with #comite', () => {
+  it('scrolls to the committee when opened with #comite', async () => {
     const original = Element.prototype.scrollIntoView;
     const scrollIntoView = vi.fn();
     Element.prototype.scrollIntoView = scrollIntoView;
     try {
       window.history.replaceState(null, '', `${import.meta.env.BASE_URL}organizacao#comite`);
-      render(<App />);
+      await renderApp();
       expect(scrollIntoView).toHaveBeenCalled();
     } finally {
       Element.prototype.scrollIntoView = original;

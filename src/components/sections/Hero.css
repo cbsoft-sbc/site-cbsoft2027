@@ -237,7 +237,8 @@
 }
 
 .home-hero a:focus-visible,
-.home-hero button:focus-visible {
+.home-hero button:focus-visible,
+.home-hero summary:focus-visible {
   outline: 2px solid #fff;
   outline-offset: 3px;
 }

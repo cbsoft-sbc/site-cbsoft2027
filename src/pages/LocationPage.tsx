@@ -10,7 +10,6 @@ import { Button } from '@/components/ui/Button';
 import { BrandBar } from '@/components/ui/BrandBar';
 import { CAMPUS_MAP_PATH, VENUE } from '@/data/venue';
 import { useLang } from '@/hooks/useLang';
-import { pick } from '@/lib/localized';
 
 export function LocationPage() {
   const { t } = useTranslation();
@@ -43,9 +42,7 @@ export function LocationPage() {
             <BrandBar />
             {t('locationPage.title')}
           </h1>
-          <p className="about-lead">
-            {VENUE.name ? pick(VENUE.name, lang) : t('location.unconfirmed')}
-          </p>
+          {!confirmed && <p className="about-lead">{t('location.unconfirmed')}</p>}
           {confirmed && (
             <section id="mapa" className="venue-map" aria-labelledby="venue-map-title">
               <h2 className="about-h2" id="venue-map-title">{t('locationPage.mapTitle')}</h2>

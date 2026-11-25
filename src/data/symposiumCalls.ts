@@ -1,6 +1,6 @@
 import type { Localized } from '@/lib/localized';
 import type { SymposiumId } from './symposia';
-import { SBES_TRACKS, type SbesTrackId } from './sbesTracks';
+import type { SbesTrackId } from './sbesTracks';
 import { PROGRAM_CHAIRS, SBES_TRACK_CHAIRS } from './committee';
 
 /**
@@ -2458,7 +2458,4 @@ export const SYMPOSIUM_CALLS: Record<SymposiumId, SymposiumCall | null> = {
   sast: SAST_CALL,
 };
 
-export const symposiumCallPath = (id: SymposiumId) => `/${id}/chamada`;
-
-export const sbesTrackCallPath = (id: SbesTrackId) =>
-  `/sbes/${SBES_TRACKS.find((track) => track.id === id)!.slug}/chamada`;
+export { sbesTrackCallPath, symposiumCallPath } from './callPaths';

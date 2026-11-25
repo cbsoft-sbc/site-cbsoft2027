@@ -2,7 +2,10 @@ import { act, fireEvent, render, screen } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import i18n from '@/i18n';
 import { HERO_SLIDE_INTERVAL } from '@/hooks/useHeroCarousel';
+import { MemoryRouter } from 'react-router-dom';
 import { Hero } from './Hero';
+
+const renderHero = () => render(<MemoryRouter><Hero /></MemoryRouter>);
 
 let motion: MediaQueryList;
 let motionChange: () => void;
@@ -41,7 +44,7 @@ it.each([
 ])('counts down to midnight in Brasília and labels the timer in %s', async (lang, title, label, units, seconds) => {
   await i18n.changeLanguage(lang);
   vi.setSystemTime(new Date('2027-09-27T02:59:59Z'));
-  render(<Hero />);
+  renderHero();
 
   expect(screen.getByRole('heading', { name: title })).toBeTruthy();
   expect(screen.getByRole('timer', { name: `${label}: ${units}, 01 ${seconds}` })).toBeTruthy();
@@ -52,9 +55,9 @@ it.each([
 
 describe('Hero carousel', () => {
   it('prioritizes only the first decorative image and preserves the timer and sponsor CTA', () => {
-    render(<Hero />);
+    renderHero();
     expect(photos()).toHaveLength(1);
-    expect(photos()[0].getAttribute('src')).toContain('praca-liberdade.jpg');
+    expect(photos()[0].getAttribute('src')).toContain('praca-liberdade-1920.webp');
     expect(photos()[0].getAttribute('fetchpriority')).toBe('high');
     expect(photos()[0].getAttribute('loading')).toBe('eager');
     expect(photos()[0].alt).toBe('');
@@ -64,20 +67,20 @@ describe('Hero carousel', () => {
   });
 
   it('advances automatically through all three photos and wraps around', () => {
-    render(<Hero />);
+    renderHero();
     advance();
     expect(currentPhoto()).toBe('Mostrar foto 2');
-    expect(photos()[1].getAttribute('src')).toContain('praca-liberdade-2.jpg');
+    expect(photos()[1].getAttribute('src')).toContain('praca-liberdade-2-1920.webp');
     expect(photos()[1].getAttribute('loading')).toBe('lazy');
     advance();
     expect(currentPhoto()).toBe('Mostrar foto 3');
-    expect(photos()[2].getAttribute('src')).toContain('praca-liberdade-3.jpg');
+    expect(photos()[2].getAttribute('src')).toContain('praca-liberdade-3-1920.webp');
     advance();
     expect(currentPhoto()).toBe('Mostrar foto 1');
   });
 
   it('supports previous, next, direct selection and keyboard arrows', () => {
-    render(<Hero />);
+    renderHero();
     fireEvent.click(screen.getByRole('button', { name: 'Foto anterior' }));
     expect(currentPhoto()).toBe('Mostrar foto 3');
     fireEvent.click(screen.getByRole('button', { name: 'Próxima foto' }));
@@ -92,7 +95,7 @@ describe('Hero carousel', () => {
   });
 
   it('keeps the previous image visible until the selected photo loads', () => {
-    render(<Hero />);
+    renderHero();
     fireEvent.load(photos()[0]);
     fireEvent.click(screen.getByRole('button', { name: 'Próxima foto' }));
     expect(photos()[0].classList.contains('is-visible')).toBe(true);
@@ -103,7 +106,7 @@ describe('Hero carousel', () => {
   });
 
   it('pauses while hovering the hero, then waits a full interval before resuming', () => {
-    render(<Hero />);
+    renderHero();
     const hero = screen.getByRole('region', { name: 'O congresso começa em' });
     fireEvent.mouseEnter(hero);
     advance();
@@ -114,7 +117,7 @@ describe('Hero carousel', () => {
   });
 
   it('pauses while the CTA or a control has focus, including focus moving inside the hero', () => {
-    render(<Hero />);
+    renderHero();
     const link = screen.getByRole('link', { name: 'Seja nosso patrocinador' });
     const next = screen.getByRole('button', { name: 'Próxima foto' });
     fireEvent.focus(link);
@@ -130,7 +133,7 @@ describe('Hero carousel', () => {
   });
 
   it('pauses during touch or pointer interaction and resumes after release', () => {
-    render(<Hero />);
+    renderHero();
     fireEvent.pointerDown(screen.getByRole('region', { name: 'O congresso começa em' }));
     advance();
     expect(currentPhoto()).toBe('Mostrar foto 1');
@@ -141,7 +144,7 @@ describe('Hero carousel', () => {
 
   it('disables autoplay for reduced motion while preserving manual navigation', () => {
     Object.defineProperty(motion, 'matches', { value: true, configurable: true });
-    render(<Hero />);
+    renderHero();
     advance();
     expect(currentPhoto()).toBe('Mostrar foto 1');
     fireEvent.click(screen.getByRole('button', { name: 'Próxima foto' }));
@@ -153,7 +156,7 @@ describe('Hero carousel', () => {
   });
 
   it('pauses in hidden tabs and resumes when visible', () => {
-    render(<Hero />);
+    renderHero();
     vi.spyOn(document, 'hidden', 'get').mockReturnValue(true);
     fireEvent(document, new Event('visibilitychange'));
     advance();
@@ -165,7 +168,7 @@ describe('Hero carousel', () => {
   });
 
   it('skips a broken photo and keeps the countdown visible', () => {
-    render(<Hero />);
+    renderHero();
     fireEvent.click(screen.getByRole('button', { name: 'Próxima foto' }));
     fireEvent.error(photos()[1]);
     expect(currentPhoto()).toBe('Mostrar foto 3');
@@ -174,7 +177,7 @@ describe('Hero carousel', () => {
   });
 
   it('translates controls into English', async () => {
-    render(<Hero />);
+    renderHero();
     await act(async () => { await i18n.changeLanguage('en'); });
     expect(screen.getByRole('button', { name: 'Previous photo' })).toBeTruthy();
     expect(screen.getByRole('button', { name: 'Next photo' })).toBeTruthy();
@@ -182,7 +185,7 @@ describe('Hero carousel', () => {
   });
 
   it('no longer shows the CBSoft logo; the header carries the brand', () => {
-    const { container } = render(<Hero />);
+    const { container } = renderHero();
     expect(container.querySelector('.home-hero__logo')).toBeNull();
     expect(container.querySelector('img[src*="logo"]')).toBeNull();
     // The auxiliary wave graphic stays.

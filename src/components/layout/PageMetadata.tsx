@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { SYMPOSIA } from '@/data/symposia';
 import { SBES_TRACKS } from '@/data/sbesTracks';
-import { sbesTrackCallPath, symposiumCallPath } from '@/data/symposiumCalls';
+import { sbesTrackCallPath, symposiumCallPath } from '@/data/callPaths';
 import { CAMPUS_MAP_PATH } from '@/data/venue';
 
 const PAGE_KEYS: Record<string, string> = {

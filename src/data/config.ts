@@ -58,7 +58,8 @@ export const IMAGES = {
   logo: asset('assets/images/logo-horizontal-white.png'),
   grafismo: asset('assets/images/grafismo.png'),
   grafismo_2: asset('assets/images/grafismo-2.png'),
-  grafismo_3: asset('assets/images/grafismo-3.png'),
+  // Hero wave, resized from 9593px to what the stretched wave needs.
+  grafismo_3: asset('assets/images/grafismo-3-4800.webp'),
   grafismo_4: asset('assets/images/grafismo-4.png'),
   grafismo_5: asset('assets/images/grafismo-5.png'),
   grafismo_6: asset('assets/images/grafismo-6.png'),
@@ -75,10 +76,15 @@ export const IMAGES = {
   logo_text_black: asset('assets/images/logo-text-black.png'),
   logo_text_mono: asset('assets/images/logo-text-mono.png'),
   // Top line of logo-text.png: the manual's short typographic signature.
-  logo_wordmark: asset('assets/images/logo-wordmark.png'),
-  praca: asset('assets/images/praca-liberdade.jpg'),
-  praca2: asset('assets/images/praca-liberdade-2.jpg'),
-  praca3: asset('assets/images/praca-liberdade-3.jpg'),
+  logo_wordmark: asset('assets/images/logo-wordmark-432.webp'),
+  // The full logo sized for where it is shown: header (220px) and the
+  // visual identity section (up to 416px). Originals stay as PNG.
+  logo_horizontal_header: asset('assets/images/logo-horizontal-440.webp'),
+  logo_horizontal_large: asset('assets/images/logo-horizontal-840.webp'),
+  // Hero photos: WebP at the original 1920px width (JPGs kept as sources).
+  praca: asset('assets/images/praca-liberdade-1920.webp'),
+  praca2: asset('assets/images/praca-liberdade-2-1920.webp'),
+  praca3: asset('assets/images/praca-liberdade-3-1920.webp'),
   edificio_niemeyer: asset('assets/images/edificio-niemeyer.jpg'),
   mapa_puc: asset('assets/images/mapa-puc-coracao-eucaristico.png'),
   sbc_logo: asset('assets/images/sbc-logo.svg'),

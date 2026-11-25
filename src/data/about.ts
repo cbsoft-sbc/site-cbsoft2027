@@ -21,43 +21,25 @@ export const ABOUT_CONGRESS = {
   symposiaCount: SYMPOSIA.length,
 } as const;
 
-/** One coalocated symposium as shown in the "integrando quatro eventos" list. */
-export interface AboutSymposium {
-  id: string;
-  /** Edition + official name, per language (from SYMPOSIA). */
-  name: Localized;
-  /** Trailing clause describing the symposium's scope. */
-  description: Localized;
-}
-
-const DESCRIPTIONS: Record<SymposiumId, Localized> = {
+/** One sentence per symposium, shown on its card on the "Sobre" page. */
+export const SYMPOSIUM_DESCRIPTIONS: Record<SymposiumId, Localized> = {
   sbes: {
-    pt: 'dedicado à pesquisa e à prática em Engenharia de Software',
-    en: 'dedicated to research and practice in Software Engineering',
+    pt: 'Dedicado à pesquisa e à prática em Engenharia de Software.',
+    en: 'Dedicated to research and practice in Software Engineering.',
   },
   sblp: {
-    pt: 'que reúne pesquisadores e profissionais interessados no projeto, na implementação e na teoria de linguagens de programação',
-    en: 'bringing together researchers and practitioners interested in the design, implementation and theory of programming languages',
+    pt: 'Reúne pesquisadores e profissionais interessados no projeto, na implementação e na teoria de linguagens de programação.',
+    en: 'Brings together researchers and practitioners interested in the design, implementation and theory of programming languages.',
   },
   sbcars: {
-    pt: 'que abrange temas como linhas de produto de software, desenvolvimento de software baseado em componentes, arquiteturas de software e reutilização',
-    en: 'covering topics such as software product lines, component-based software development, software architectures and reuse',
+    pt: 'Abrange temas como linhas de produto de software, desenvolvimento de software baseado em componentes, arquiteturas de software e reutilização.',
+    en: 'Covers topics such as software product lines, component-based software development, software architectures and reuse.',
   },
   sast: {
-    pt: 'dedicado à sistematização e à automação do teste de software',
-    en: 'dedicated to the systematization and automation of software testing',
+    pt: 'Dedicado à sistematização e à automação do teste de software.',
+    en: 'Dedicated to the systematization and automation of software testing.',
   },
 };
-
-/** Names come from the canonical SYMPOSIA list, so they never drift. */
-export const ABOUT_SYMPOSIA: AboutSymposium[] = SYMPOSIA.map((s) => ({
-  id: s.id,
-  name: {
-    pt: `${s.edition.pt} ${s.title.pt}`,
-    en: `${s.edition.en} ${s.title.en}`,
-  },
-  description: DESCRIPTIONS[s.id],
-}));
 
 /** Links in the "Sobre a SBC" section. The 2026 site pointed to a misspelt
  *  /comissoes-especiasis/ URL (404); this is the working address. */

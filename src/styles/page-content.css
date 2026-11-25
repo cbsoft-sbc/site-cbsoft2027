@@ -70,8 +70,7 @@
   color: var(--pink-deep);
 }
 
-.about-text strong,
-.about-symposia strong {
+.about-text strong {
   font-weight: 600;
   color: var(--ink);
 }

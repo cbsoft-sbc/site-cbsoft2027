@@ -1,0 +1,118 @@
+/* ---------- Hero date and venue pills ---------- */
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+  width: 100%;
+}
+
+.hero-pill {
+  position: relative;
+  margin: 0;
+}
+
+/* Frosted glass over the photo; the hero shade keeps white text legible. */
+.hero-pill__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: clamp(0.85rem, 0.95vw, 1rem);
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  list-style: none;
+  transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+a.hero-pill__trigger,
+summary.hero-pill__trigger {
+  cursor: pointer;
+}
+
+a.hero-pill__trigger:hover,
+summary.hero-pill__trigger:hover,
+.hero-pill[open] > .hero-pill__trigger {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.hero-pill__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.hero-pill__icon {
+  flex: none;
+  width: 1.15em;
+  height: 1.15em;
+}
+
+.hero-pill__chevron {
+  flex: none;
+  width: 1em;
+  height: 1em;
+  transition: transform 0.18s ease;
+}
+
+.hero-pill[open] .hero-pill__chevron {
+  transform: rotate(180deg);
+}
+
+.hero-pill__arrow {
+  font-size: 0.9em;
+}
+
+/* Floats below the pill so opening it never shifts the hero layout. */
+.hero-pill__menu {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 0.5rem);
+  left: 50%;
+  display: grid;
+  gap: 0.125rem;
+  min-width: 13rem;
+  margin: 0;
+  padding: 0.375rem;
+  list-style: none;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 14px 34px rgba(16, 9, 22, 0.3);
+  text-align: left;
+  transform: translateX(-50%);
+}
+
+.hero-pill__menu a {
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  color: #a9075d;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.hero-pill__menu a:hover {
+  background: #f6eef3;
+}
+
+.home-hero .hero-pill__menu a:focus-visible {
+  outline-color: #a9075d;
+  outline-offset: -2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-pill__trigger,
+  .hero-pill__chevron {
+    transition: none;
+  }
+}

@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { MemoryRouter } from 'react-router-dom';
 import { App } from '@/App';
+import { renderApp } from '@/test/renderApp';
 import { HEADER_MENUS } from '@/data/headerMenu';
 import { HeaderMegaMenu } from '@/components/layout/HeaderMegaMenu';
 import i18n from '@/i18n';
@@ -49,7 +50,7 @@ describe('PreviousEditionsPage', () => {
     meta.name = 'description';
     document.head.append(meta);
     try {
-      render(<App />);
+      await renderApp();
       expect(document.title).toBe("Edições Anteriores — CBSOFT'27");
       expect(screen.queryByText(/Conheça a história do CBSoft/)).toBeNull();
       await act(async () => { await i18n.changeLanguage('en'); });
@@ -64,11 +65,11 @@ describe('PreviousEditionsPage', () => {
     }
   });
 
-  it('navigates from CBSOFT in the header and closes its menu', () => {
+  it('navigates from CBSOFT in the header and closes its menu', async () => {
     render(<App />);
     fireEvent.click(screen.getByRole('button', { name: "CBSOFT'27" }));
     fireEvent.click(screen.getByRole('link', { name: /Edições anteriores/i }));
-    expect(screen.getByRole('heading', { level: 1, name: 'Edições Anteriores' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { level: 1, name: 'Edições Anteriores' })).toBeTruthy();
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}edicoes-anteriores`);
     expect(screen.getByRole('button', { name: "CBSOFT'27" }).getAttribute('aria-expanded')).toBe('false');
   });

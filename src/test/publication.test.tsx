@@ -1,8 +1,8 @@
 import { readFileSync } from 'node:fs';
-import { act, render } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import i18n from '@/i18n';
-import { App } from '@/App';
+import { renderApp } from '@/test/renderApp';
 import { SYMPOSIA } from '@/data/symposia';
 import { PUBLICATION, congressDays, registrationOpen } from '@/data/publication';
 import pt from '@/i18n/locales/pt/common.json';
@@ -25,7 +25,7 @@ const ROUTES = [
 
 function renderAt(path: string) {
   window.history.replaceState(null, '', import.meta.env.BASE_URL + path.replace(/^\//, ''));
-  return render(<App />);
+  return renderApp();
 }
 
 afterEach(async () => {
@@ -45,7 +45,8 @@ describe('publication guard', () => {
   it.each(['pt', 'en'])('no public link points to a bare "#" (%s)', async (lang) => {
     await i18n.changeLanguage(lang);
     for (const route of ROUTES) {
-      const { container, unmount } = renderAt(route);
+      const { container, unmount } = await renderAt(route);
+      expect(container.querySelector('main'), `page content on ${route}`).not.toBeNull();
       const dead = [...container.ownerDocument.querySelectorAll('a')]
         .map((a) => a.getAttribute('href'))
         .filter((href) => href == null || href.trim() === '' || href.trim() === '#');
@@ -78,24 +79,24 @@ describe('publication guard', () => {
 
   it('keeps registration "Em breve" until it is approved', async () => {
     expect(registrationOpen()).toBe(false);
-    const { container, unmount } = renderAt('/inscricoes');
+    const { container, unmount } = await renderAt('/inscricoes');
     expect(container.querySelector('table')).toBeNull();
     expect(container.textContent).toContain(pt.registrationPage.ctaSoon);
     expect(container.textContent).toContain(pt.registrationPage.soon);
     unmount();
 
     await act(async () => { await i18n.changeLanguage('en'); });
-    const enView = renderAt('/inscricoes');
+    const enView = await renderAt('/inscricoes');
     expect(enView.container.textContent).toContain(en.registrationPage.ctaSoon);
     enView.unmount();
   });
 
-  it('shows fees and the SBC link once registration is approved', () => {
+  it('shows fees and the SBC link once registration is approved', async () => {
     const saved = { ...PUBLICATION.registration };
     PUBLICATION.registration.feesApproved = true;
     PUBLICATION.registration.url = 'https://example.org/inscricao';
     try {
-      const { container } = renderAt('/inscricoes');
+      const { container } = await renderAt('/inscricoes');
       expect(container.querySelector('table')).not.toBeNull();
       expect(container.querySelector('a[href="https://example.org/inscricao"]')).not.toBeNull();
     } finally {
@@ -103,12 +104,12 @@ describe('publication guard', () => {
     }
   });
 
-  it('hides the congress length while the dates are pending', () => {
+  it('hides the congress length while the dates are pending', async () => {
     const saved = { ...PUBLICATION.dates };
     PUBLICATION.dates.start = null;
     PUBLICATION.dates.end = null;
     try {
-      const { container } = renderAt('/');
+      const { container } = await renderAt('/');
       expect(congressDays()).toBeNull();
       expect(container.textContent).not.toContain(pt.about.statDays);
     } finally {

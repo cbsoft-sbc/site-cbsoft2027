@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import i18n from '@/i18n';
 import { App } from '@/App';
+import { renderApp } from '@/test/renderApp';
 
 const BASE = import.meta.env.BASE_URL;
 
@@ -32,7 +33,7 @@ describe('CBSOFT\'27 menu → Experiências', () => {
     const link = screen.getByRole('link', { name: label });
     fireEvent.click(link);
     expect(window.location.pathname).toBe(`${BASE}experiencias`);
-    expect(screen.getByRole('heading', { level: 1, name: label })).toBeTruthy();
+    expect(await screen.findByRole('heading', { level: 1, name: label })).toBeTruthy();
   });
 
   it('is reachable with the keyboard', () => {
@@ -67,24 +68,51 @@ describe('CBSOFT\'27 menu → Experiências', () => {
 });
 
 describe('ExperiencesPage', () => {
-  it('shows every category with a waiting message on direct access', () => {
+  it('shows the Belo Horizonte guide in five sections on direct access', async () => {
     window.history.replaceState(null, '', `${BASE}experiencias`);
-    render(<App />);
+    await renderApp();
     expect(screen.getByRole('heading', { level: 1, name: 'Experiências' })).toBeTruthy();
-    for (const name of ['Turismo em BH', 'Shows e Concertos', 'Gastronomia em BH']) {
+    const sections = ['Conjunto da Pampulha', 'Pontos turísticos', 'Gastronomia e vida noturna', 'Passeios culturais', 'Como se deslocar'];
+    for (const name of sections) {
       expect(screen.getByRole('heading', { level: 2, name })).toBeTruthy();
     }
-    expect(screen.getAllByText('Em breve')).toHaveLength(3);
+    // Every section has content now; none is "to be announced".
+    expect(screen.queryByText('Em breve')).toBeNull();
+    expect(screen.getByRole('heading', { level: 3, name: 'Igreja São Francisco de Assis (Igrejinha da Pampulha)' })).toBeTruthy();
+    expect(screen.getByText(/Não deixe de provar pão de queijo/)).toBeTruthy();
+    expect(screen.getByText('Patrimônio Mundial da UNESCO')).toBeTruthy();
     expect(document.title).toBe("Experiências — CBSOFT'27");
+  });
+
+  it('has no photo or page index above the sections', async () => {
+    window.history.replaceState(null, '', `${BASE}experiencias`);
+    const { container } = await renderApp();
+    const main = container.querySelector('main')!;
+    expect(main.querySelector('img')).toBeNull();
+    expect(screen.queryByRole('navigation', { name: 'Nesta página' })).toBeNull();
+  });
+
+  it('keeps the venue at PUC Minas and points transport to the venue page', async () => {
+    window.history.replaceState(null, '', `${BASE}experiencias`);
+    const { container } = await renderApp();
+    const main = container.querySelector('main')!;
+    // Pampulha is a destination here, not the event venue.
+    expect(main.textContent).not.toMatch(/realizado na região do Campus Pampulha/);
+    expect(main.textContent).not.toMatch(/5106|5102/);
+    const transport = screen.getByRole('region', { name: /Como se deslocar/ });
+    expect(within(transport).getByRole('link', { name: /Como chegar ao local do evento/ }).getAttribute('href')).toBe(`${BASE}local`);
+    expect(screen.getByRole('link', { name: /portal oficial de turismo/ }).getAttribute('href')).toBe('https://portalbelohorizonte.com.br/');
   });
 
   it('renders in English', async () => {
     await setLang('en');
     window.history.replaceState(null, '', `${BASE}experiencias`);
-    render(<App />);
+    await renderApp();
     expect(screen.getByRole('heading', { level: 1, name: 'Experiences' })).toBeTruthy();
-    expect(screen.getByRole('heading', { level: 2, name: 'Food in BH' })).toBeTruthy();
-    expect(screen.getAllByText('Coming soon')).toHaveLength(3);
+    expect(screen.getByRole('heading', { level: 2, name: 'Food and nightlife' })).toBeTruthy();
+    expect(screen.getByRole('heading', { level: 3, name: 'Pampulha Lake' })).toBeTruthy();
+    expect(screen.getByText('UNESCO World Heritage')).toBeTruthy();
+    expect(screen.queryByText('Coming soon')).toBeNull();
     expect(document.title).toBe("Experiences — CBSOFT'27");
   });
 });

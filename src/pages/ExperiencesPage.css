@@ -1,54 +1,90 @@
 /* Experiências (/experiencias) */
+.guide-intro {
+  max-width: var(--about-measure);
+}
+
+/* Each section: title, short intro, then its places. */
+.guide-section {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: clamp(2rem, 4vw, 2.75rem);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 6rem;
+}
+
+.guide-section__head p {
+  max-width: var(--about-measure);
+  margin-top: 0.6rem;
+  color: var(--text-body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+/* Places: one column on phones, two on wider screens. */
+.guide-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: clamp(2rem, 5vw, 4rem);
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .guide-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.guide-list > li {
+  padding-block: 1.1rem;
+  border-top: 1px solid var(--line-soft, var(--line));
+}
+
+.guide-list__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.15rem 0.75rem;
+}
+
+.guide-list h3 {
+  color: var(--ink);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.guide-list__tag {
+  color: var(--pink-deep);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.guide-list p {
+  margin-top: 0.35rem;
+  color: var(--text-body);
+  line-height: 1.65;
+}
+
+.guide-note {
+  max-width: var(--about-measure);
+  margin-top: 0.5rem;
+  color: var(--ink);
+  font-style: italic;
+  line-height: 1.65;
+}
+
+.guide-more {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
 .experiences-pending {
-  margin-top: clamp(1.5rem, 3vw, 2rem);
+  margin-top: 1.5rem;
   padding: 1rem 1.25rem;
   border-left: 3px solid var(--pink);
   background: var(--surface-alt);
   color: var(--text-body);
   font-size: 1.05rem;
-}
-
-.experiences-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.25rem;
-  margin-top: clamp(1.5rem, 3vw, 2rem);
-}
-
-@media (min-width: 720px) {
-  .experiences-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 1100px) {
-  .experiences-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-.experiences-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.25rem;
-  border: 1px solid var(--line);
-  border-radius: 0.5rem;
-  background: var(--surface-alt);
-  color: var(--text-body);
-}
-
-.experiences-card h3 {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.experiences-card a {
-  margin-top: auto;
-}
-
-.experiences-category {
-  margin-top: clamp(2rem, 5vw, 3rem);
-  scroll-margin-top: 6rem;
 }
