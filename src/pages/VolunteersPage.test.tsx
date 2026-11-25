@@ -30,7 +30,7 @@ describe('VolunteersPage', () => {
 
     const text = container.textContent ?? '';
     expect(text).toMatch(/CBSoft 2027/);
-    expect(text).toMatch(/encontrá-lo em Belo Horizonte!/);
+    expect(text).toMatch(/encontrar você em Belo Horizonte!/);
     expect(text).not.toMatch(/2026|São Paulo|USP|dia 7/);
   });
 });

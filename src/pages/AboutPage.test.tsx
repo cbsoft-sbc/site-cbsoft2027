@@ -27,7 +27,7 @@ describe('AboutPage', () => {
     expect(items[2].textContent).toMatch(/; e$/);
     expect(items[3].textContent).toMatch(/^XII Simpósio Brasileiro de Teste de Software.*\.$/);
 
-    expect(screen.getByText(/A programação do CBSoft incluirá/)).toBeTruthy();
+    expect(screen.getByText(/A programação inclui sessões técnicas/)).toBeTruthy();
   });
 
   it('uses a spaced, localized conjunction in the English symposium list', async () => {
@@ -45,7 +45,7 @@ describe('AboutPage', () => {
   it('renders the visual identity section with the photo and logo', () => {
     renderPage();
     expect(
-      screen.getByRole('heading', { level: 2, name: 'Identidade Visual do CBSOFT 2027' }),
+      screen.getByRole('heading', { level: 2, name: 'Identidade Visual do CBSoft 2027' }),
     ).toBeTruthy();
     expect(screen.getByAltText(/Edifício Niemeyer/)).toBeTruthy();
     expect(screen.getByAltText(/Logo oficial do CBSOFT'27/)).toBeTruthy();
@@ -56,9 +56,9 @@ describe('AboutPage', () => {
     expect(screen.getByRole('heading', { level: 2, name: 'Sobre a SBC' })).toBeTruthy();
     expect(screen.getByText(/fundada em julho de 1978/)).toBeTruthy();
     expect(
-      screen.getByRole('link', { name: 'listas de e-mail das Comissões Especiais (CE)' }).getAttribute('href'),
+      screen.getByRole('link', { name: 'listas de e-mail das Comissões Especiais' }).getAttribute('href'),
     ).toBe('https://www.sbc.org.br/comissoes-especiais/');
-    expect(screen.getByRole('link', { name: 'clique aqui' }).getAttribute('href')).toBe(
+    expect(screen.getByRole('link', { name: 'acesse a página de associação' }).getAttribute('href')).toBe(
       'https://centraldesistemas.sbc.org.br/mom',
     );
   });
@@ -68,6 +68,6 @@ describe('AboutPage', () => {
     const text = container.textContent ?? '';
     expect(text).toMatch(/XVIII edição do CBSoft/);
     expect(text).toMatch(/Belo Horizonte/);
-    expect(text).toContain('de 27 de setembro a 1 de outubro');
+    expect(text).toContain('de 27 de setembro a 1º de outubro');
   });
 });

@@ -82,7 +82,7 @@ const SAST_CALL: SymposiumCall = {
     },
     {
       pt: 'O principal objetivo do SAST é disponibilizar um fórum de discussão para congregar as comunidades da indústria e da academia envolvidas com a sistematização e automação de testes de software para diferentes categorias de sistemas.',
-      en: 'The main goal of SAST is to provide a discussion forum that brings together the industry and academic communities involved in the systematisation and automation of software testing for different kinds of systems.',
+      en: 'The main goal of SAST is to provide a discussion forum that brings together the industry and academic communities involved in the systematization and automation of software testing for different kinds of systems.',
     },
     {
       pt: 'Em sua décima segunda edição como simpósio co-localizado ao Congresso Brasileiro de Software: Teoria e Prática (CBSoft), o SAST 2027 convida toda a comunidade de teste de software a submeter resultados de suas inovações na área. Esta edição do simpósio continua a promover o diálogo entre indústria e academia incentivando a participação da indústria. Como resultado, além dos trabalhos de pesquisa, teremos também a categoria de resumos industriais. Para esse tipo de submissão, os profissionais de teste são convidados a submeter trabalhos com foco nas dificuldades pragmáticas associadas à realização de atividades de teste na indústria.',
@@ -310,7 +310,7 @@ const SBCARS_CALL: SymposiumCall = {
             { pt: 'Mineração de Repositórios de Software', en: 'Mining Software Repositories' },
             { pt: 'Reutilização de Software', en: 'Software Reuse' },
             { pt: 'Sustentabilidade de Software', en: 'Software Sustainability' },
-            { pt: 'Visualização de Software', en: 'Software Visualisation' },
+            { pt: 'Visualização de Software', en: 'Software Visualization' },
             { pt: 'Gerenciamento de Variabilidade', en: 'Variability Management' },
           ],
         },
@@ -407,7 +407,7 @@ const SBCARS_CALL: SymposiumCall = {
       ],
     },
     {
-      title: { pt: 'Anonimização', en: 'Anonymisation' },
+      title: { pt: 'Anonimização', en: 'Anonymization' },
       blocks: [
         {
           kind: 'p',
@@ -425,11 +425,11 @@ const SBCARS_CALL: SymposiumCall = {
             },
             {
               pt: 'O artigo submetido não deve mencionar artefatos em repositórios ou websites que permitam a identificação dos autores. A disponibilização de artefatos da pesquisa deve ser feita de forma anônima. Para anonimizar repositórios hospedados na plataforma GitHub, sugere-se o uso do serviço [Anonymous GitHub](https://anonymous.4open.science/);',
-              en: 'The submitted paper must not mention artefacts in repositories or websites that allow the authors to be identified. Research artefacts must be shared anonymously. To anonymise repositories hosted on GitHub, we suggest the [Anonymous GitHub](https://anonymous.4open.science/) service;',
+              en: 'The submitted paper must not mention artefacts in repositories or websites that allow the authors to be identified. Research artefacts must be shared anonymously. To anonymize repositories hosted on GitHub, we suggest the [Anonymous GitHub](https://anonymous.4open.science/) service;',
             },
             {
               pt: 'Se o artigo submetido apresentar uma evolução de um trabalho anterior, pode-se anonimizar a referência a esse trabalho. Por exemplo, "baseado no trabalho de Silva et al." pode ser substituído por "baseado em nosso trabalho anterior [Ref]" e a referência pode ser apresentada como "[Ref] referência omitida devido à revisão duplo anônimo" na seção de referências bibliográficas;',
-              en: 'If the submitted paper extends previous work, the reference to that work may be anonymised. For example, "based on the work of Silva et al." may be replaced by "based on our previous work [Ref]", and the reference may be listed as "[Ref] reference omitted for double-anonymous review" in the bibliography;',
+              en: 'If the submitted paper extends previous work, the reference to that work may be anonymized. For example, "based on the work of Silva et al." may be replaced by "based on our previous work [Ref]", and the reference may be listed as "[Ref] reference omitted for double-anonymous review" in the bibliography;',
             },
             {
               pt: 'Os revisores não serão encorajados a procurar referências que identifiquem os autores em outras fontes. Buscas em bibliotecas digitais ou em artefatos existentes não invalidam as regras de duplo anônimo.',
@@ -445,7 +445,7 @@ const SBCARS_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'Dúvidas sobre a preparação de artigos segundo as regras de anonimização do SBCARS podem ser enviadas aos Coordenadores do Comitê de Programa.',
-            en: 'Questions about preparing papers under the SBCARS anonymisation rules can be sent to the Program Committee Chairs.',
+            en: 'Questions about preparing papers under the SBCARS anonymization rules can be sent to the Program Committee Chairs.',
           },
         },
       ],
@@ -457,14 +457,14 @@ const SBCARS_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'Artigos fora do escopo do SBCARS 2027 ou que não estiverem em conformidade com o formato exigido e com as regras de anonimização serão desclassificados e rejeitados, sem passar pelo processo de revisão.',
-            en: 'Papers outside the scope of SBCARS 2027, or that do not comply with the required format and anonymisation rules, will be disqualified and rejected without review.',
+            en: 'Papers outside the scope of SBCARS 2027, or that do not comply with the required format and anonymization rules, will be disqualified and rejected without review.',
           },
         },
         {
           kind: 'p',
           text: {
             pt: 'Se uma submissão simultânea ou publicação prévia em outro fórum (evento ou periódico) de artigo submetido ao SBCARS for identificada e reportada a qualquer tempo, o artigo será rejeitado e os autores poderão ficar impedidos de submeter artigos nas próximas edições do SBCARS. Além disso, os organizadores do outro fórum serão comunicados sobre a ocorrência.',
-            en: 'If a simultaneous submission or prior publication in another venue (conference or journal) of a paper submitted to SBCARS is identified and reported at any time, the paper will be rejected and the authors may be barred from submitting to the next editions of SBCARS. The organisers of the other venue will also be notified.',
+            en: 'If a simultaneous submission or prior publication in another venue (conference or journal) of a paper submitted to SBCARS is identified and reported at any time, the paper will be rejected and the authors may be barred from submitting to the next editions of SBCARS. The organizers of the other venue will also be notified.',
           },
         },
         {
@@ -544,7 +544,7 @@ const SBLP_CALL: SymposiumCall = {
   intro: [
     {
       pt: 'O SBLP 2027 é a 31ª edição do Simpósio Brasileiro de Linguagens de Programação. Organizado pela Sociedade Brasileira de Computação (SBC), o SBLP é um fórum consolidado para pesquisadores, estudantes e profissionais interessados em todos os aspectos de linguagens de programação, abrangendo desde fundamentos teóricos até aplicações práticas. O simpósio reúne as comunidades de linguagens de programação para apresentar e discutir avanços em projeto de linguagens, semântica, análise, técnicas de implementação e ferramentas que apoiam o desenvolvimento de sistemas de software confiáveis, seguros e eficientes, fomentando a colaboração, a troca de ideias e a disseminação de resultados de pesquisa de alta qualidade.',
-      en: 'SBLP 2027 is the 31st edition of the Brazilian Symposium on Programming Languages. Organised by the Brazilian Computer Society (SBC), SBLP is an established forum for researchers, students and practitioners interested in every aspect of programming languages, from theoretical foundations to practical applications. The symposium brings together the programming languages communities to present and discuss advances in language design, semantics, analysis, implementation techniques and tools that support the development of reliable, secure and efficient software systems, fostering collaboration, the exchange of ideas and the dissemination of high-quality research.',
+      en: 'SBLP 2027 is the 31st edition of the Brazilian Symposium on Programming Languages. Organized by the Brazilian Computer Society (SBC), SBLP is an established forum for researchers, students and practitioners interested in every aspect of programming languages, from theoretical foundations to practical applications. The symposium brings together the programming languages communities to present and discuss advances in language design, semantics, analysis, implementation techniques and tools that support the development of reliable, secure and efficient software systems, fostering collaboration, the exchange of ideas and the dissemination of high-quality research.',
     },
   ],
   sections: [
@@ -642,7 +642,7 @@ const SBLP_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'Os manuscritos devem, portanto, ser submetidos de forma anônima: nomes dos autores, afiliações, agradecimentos e qualquer outra informação que permita a identificação pessoal devem ser removidos do PDF. Referências a trabalhos anteriores dos próprios autores devem ser escritas em terceira pessoa, como se fossem de autores distintos, e não devem revelar a identidade dos autores. Em caso de dúvida sobre como anonimizar materiais específicos (tais como artefatos suplementares ou repositórios on-line), os autores devem priorizar a preservação do anonimato e podem fornecer links anonimizados ou indicar claramente que o material adicional será disponibilizado após a aceitação.',
-            en: 'Manuscripts must therefore be submitted anonymously: authors\' names, affiliations, acknowledgements and any other personally identifying information must be removed from the PDF. References to the authors\' own previous work must be written in the third person, as if by different authors, and must not reveal the authors\' identities. When unsure how to anonymise specific material (such as supplementary artefacts or online repositories), authors should prioritise preserving anonymity and may provide anonymised links or clearly state that the additional material will be made available after acceptance.',
+            en: 'Manuscripts must therefore be submitted anonymously: authors\' names, affiliations, acknowledgements and any other personally identifying information must be removed from the PDF. References to the authors\' own previous work must be written in the third person, as if by different authors, and must not reveal the authors\' identities. When unsure how to anonymize specific material (such as supplementary artefacts or online repositories), authors should prioritize preserving anonymity and may provide anonymized links or clearly state that the additional material will be made available after acceptance.',
           },
         },
         {
@@ -704,14 +704,14 @@ const SBLP_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'Submissões que não se enquadrarem no escopo do SBLP 2027, ou que não atenderem aos requisitos de formatação e anonimização especificados, serão imediatamente rejeitadas sem revisão por pares.',
-            en: 'Submissions outside the scope of SBLP 2027, or that do not meet the specified formatting and anonymisation requirements, will be rejected immediately without peer review.',
+            en: 'Submissions outside the scope of SBLP 2027, or that do not meet the specified formatting and anonymization requirements, will be rejected immediately without peer review.',
           },
         },
         {
           kind: 'p',
           text: {
             pt: 'Qualquer artigo identificado como já publicado ou submetido concomitantemente a outro evento ou periódico revisado por pares será rejeitado em qualquer etapa do processo de revisão. Autores envolvidos em tais casos poderão enfrentar sanções, incluindo a proibição de submeter a futuras edições do SBLP, e os organizadores do outro evento serão notificados.',
-            en: 'Any paper found to be already published or under simultaneous submission to another peer-reviewed conference or journal will be rejected at any stage of the review process. Authors involved in such cases may face sanctions, including a ban from submitting to future editions of SBLP, and the organisers of the other venue will be notified.',
+            en: 'Any paper found to be already published or under simultaneous submission to another peer-reviewed conference or journal will be rejected at any stage of the review process. Authors involved in such cases may face sanctions, including a ban from submitting to future editions of SBLP, and the organizers of the other venue will be notified.',
           },
         },
         {
@@ -737,14 +737,14 @@ const SBLP_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'Uma seleção dos melhores artigos de edições recentes do SBLP tem sido convidada a ser estendida e considerada para publicação em um número especial do Journal of Computer Languages (COLA), publicado pela Elsevier. Para o SBLP 2027, os organizadores pretendem contatar o COLA para um número especial semelhante, convidando autores dos artigos mais bem avaliados e promissores a submeter versões estendidas de seus trabalhos para nova rodada de revisão por pares. Tais extensões tipicamente exigem uma adição significativa de novo material, avaliação mais aprofundada e uma discussão mais ampla dos resultados.',
-            en: 'A selection of the best papers from recent SBLP editions has been invited to be extended and considered for publication in a special issue of the Journal of Computer Languages (COLA), published by Elsevier. For SBLP 2027, the organisers intend to approach COLA for a similar special issue, inviting the authors of the best-rated and most promising papers to submit extended versions of their work for a new round of peer review. Such extensions typically require a significant amount of new material, a deeper evaluation and a broader discussion of the results.',
+            en: 'A selection of the best papers from recent SBLP editions has been invited to be extended and considered for publication in a special issue of the Journal of Computer Languages (COLA), published by Elsevier. For SBLP 2027, the organizers intend to approach COLA for a similar special issue, inviting the authors of the best-rated and most promising papers to submit extended versions of their work for a new round of peer review. Such extensions typically require a significant amount of new material, a deeper evaluation and a broader discussion of the results.',
           },
         },
         {
           kind: 'p',
           text: {
             pt: 'Para reconhecer contribuições de destaque, serão concedidos três prêmios de melhor artigo: dois entre as submissões de artigos completos da Trilha Principal e um entre as submissões de artigos completos da Trilha de Graduação. A seleção levará em conta a qualidade científica, a originalidade, a clareza da apresentação e o impacto potencial na comunidade de linguagens de programação. Os artigos premiados serão destacados durante o simpósio e na divulgação do evento, e seus autores receberão um certificado formal.',
-            en: 'To recognise outstanding contributions, three best paper awards will be given: two among the Main Track full papers and one among the Undergraduate Track full papers. The selection will consider scientific quality, originality, clarity of presentation and potential impact on the programming languages community. Award-winning papers will be highlighted during the symposium and in the event\'s communications, and their authors will receive a formal certificate.',
+            en: 'To recognize outstanding contributions, three best paper awards will be given: two among the Main Track full papers and one among the Undergraduate Track full papers. The selection will consider scientific quality, originality, clarity of presentation and potential impact on the programming languages community. Award-winning papers will be highlighted during the symposium and in the event\'s communications, and their authors will receive a formal certificate.',
           },
         },
       ],
@@ -756,7 +756,7 @@ const SBLP_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'Todas as dúvidas sobre submissões ou sobre a organização do SBLP 2027 devem ser enviadas por e-mail para xxxxxx em xxxxxx.',
-            en: 'All questions about submissions or the organisation of SBLP 2027 should be sent by e-mail to xxxxxx at xxxxxx.',
+            en: 'All questions about submissions or the organization of SBLP 2027 should be sent by e-mail to xxxxxx at xxxxxx.',
           },
         },
       ],
@@ -797,7 +797,7 @@ const sbesOpenScience = (track: TrackName): CallSection => ({
       kind: 'p',
       text: {
         pt: 'O SBES 2027 incentiva autores a adotarem princípios e práticas de Ciência Aberta, buscando promover a transparência, a replicabilidade e a reprodutibilidade na pesquisa. Encorajamos todos os autores contribuintes a divulgarem dados/artefatos (anonimizados e curados) para aumentar a reprodutibilidade e replicabilidade. Reconhecemos que a reprodutibilidade ou replicabilidade não é um objetivo em pesquisas qualitativas e que, assim como em estudos industriais, estudos qualitativos frequentemente enfrentam desafios ao compartilhar dados de pesquisa.',
-        en: 'SBES 2027 encourages authors to adopt Open Science principles and practices, promoting transparency, replicability and reproducibility in research. We encourage all contributing authors to disclose (anonymised and curated) data/artefacts to increase reproducibility and replicability. We recognise that reproducibility or replicability is not a goal of qualitative research and that, as with industrial studies, qualitative studies often face challenges in sharing research data.',
+        en: 'SBES 2027 encourages authors to adopt Open Science principles and practices, promoting transparency, replicability and reproducibility in research. We encourage all contributing authors to disclose (anonymized and curated) data/artefacts to increase reproducibility and replicability. We recognize that reproducibility or replicability is not a goal of qualitative research and that, as with industrial studies, qualitative studies often face challenges in sharing research data.',
       },
     },
     {
@@ -950,14 +950,14 @@ const sbesPreparation = (track: TrackName): CallSection => ({
       kind: 'p',
       text: {
         pt: `A publicação de artigos aceitos na ${track.pt} requer a inscrição de pelo menos um de seus autores no CBSoft 2027 (segundo as regras de inscrição estabelecidas pela organização local do evento), bem como a apresentação do artigo presencialmente durante o SBES 2027. Os artigos que não forem apresentados não serão incluídos nos anais do SBES 2027.`,
-        en: `Publication of papers accepted in the ${track.en} requires at least one of the authors to register for CBSoft 2027 (under the registration rules set by the local organisers) and to present the paper in person during SBES 2027. Papers that are not presented will not be included in the SBES 2027 proceedings.`,
+        en: `Publication of papers accepted in the ${track.en} requires at least one of the authors to register for CBSoft 2027 (under the registration rules set by the local organizers) and to present the paper in person during SBES 2027. Papers that are not presented will not be included in the SBES 2027 proceedings.`,
       },
     },
   ],
 });
 
 const sbesAnonymisation = (track: TrackName): CallSection => ({
-  title: { pt: 'Anonimização', en: 'Anonymisation' },
+  title: { pt: 'Anonimização', en: 'Anonymization' },
   blocks: [
     {
       kind: 'p',
@@ -975,11 +975,11 @@ const sbesAnonymisation = (track: TrackName): CallSection => ({
         },
         {
           pt: 'O artigo submetido não deve mencionar artefatos em repositórios ou websites que permitam a identificação dos autores. A disponibilização de artefatos da pesquisa deve ser feita de forma anônima. Para anonimizar repositórios hospedados na plataforma GitHub, sugere-se o uso do serviço [Anonymous GitHub](https://anonymous.4open.science/);',
-          en: 'The submitted paper must not mention artefacts in repositories or websites that allow the authors to be identified. Research artefacts must be shared anonymously. To anonymise repositories hosted on GitHub, we suggest the [Anonymous GitHub](https://anonymous.4open.science/) service;',
+          en: 'The submitted paper must not mention artefacts in repositories or websites that allow the authors to be identified. Research artefacts must be shared anonymously. To anonymize repositories hosted on GitHub, we suggest the [Anonymous GitHub](https://anonymous.4open.science/) service;',
         },
         {
           pt: 'Se o artigo submetido apresentar uma evolução de um trabalho anterior, pode-se anonimizar a referência a esse trabalho. Por exemplo, "baseado no trabalho de Silva et al." pode ser substituído por "baseado em nosso trabalho anterior [Ref]" e a referência pode ser apresentada como "[Ref] referência omitida devido à revisão duplo anônimo" na seção de referências bibliográficas;',
-          en: 'If the submitted paper extends previous work, the reference to that work may be anonymised. For example, "based on the work of Silva et al." may be replaced by "based on our previous work [Ref]", and the reference may be listed as "[Ref] reference omitted for double-anonymous review" in the bibliography;',
+          en: 'If the submitted paper extends previous work, the reference to that work may be anonymized. For example, "based on the work of Silva et al." may be replaced by "based on our previous work [Ref]", and the reference may be listed as "[Ref] reference omitted for double-anonymous review" in the bibliography;',
         },
         {
           pt: 'Os revisores não serão encorajados a procurar referências que identifiquem os autores em outras fontes. Buscas em bibliotecas digitais ou em artefatos existentes não invalidam as regras de duplo anônimo.',
@@ -998,7 +998,7 @@ const sbesAnonymisation = (track: TrackName): CallSection => ({
       kind: 'p',
       text: {
         pt: `Dúvidas sobre a preparação de artigos segundo as regras de anonimização da ${track.pt} do SBES podem ser enviadas aos Coordenadores do Comitê de Programa.`,
-        en: `Questions about preparing papers under the anonymisation rules of the SBES ${track.en} can be sent to the Program Committee Chairs.`,
+        en: `Questions about preparing papers under the anonymization rules of the SBES ${track.en} can be sent to the Program Committee Chairs.`,
       },
     },
   ],
@@ -1011,14 +1011,14 @@ const sbesDisqualification = (track: TrackName): CallSection => ({
       kind: 'p',
       text: {
         pt: `Artigos fora do escopo da ${track.pt} do SBES 2027 ou que não estiverem em conformidade com o formato exigido e as regras de anonimização serão desclassificados e rejeitados sem passar pelo processo de revisão.`,
-        en: `Papers outside the scope of the SBES 2027 ${track.en}, or that do not comply with the required format and anonymisation rules, will be disqualified and rejected without review.`,
+        en: `Papers outside the scope of the SBES 2027 ${track.en}, or that do not comply with the required format and anonymization rules, will be disqualified and rejected without review.`,
       },
     },
     {
       kind: 'p',
       text: {
         pt: 'Se uma submissão simultânea ou publicação prévia em outro fórum (evento ou periódico) de artigo submetido ao SBES for identificada e reportada a qualquer tempo, o artigo será rejeitado e os autores poderão ficar impedidos de submeter artigos nas próximas edições do SBES. Além disso, os organizadores do outro fórum serão comunicados sobre a ocorrência.',
-        en: 'If a simultaneous submission or prior publication in another venue (conference or journal) of a paper submitted to SBES is identified and reported at any time, the paper will be rejected and the authors may be barred from submitting to the next editions of SBES. The organisers of the other venue will also be notified.',
+        en: 'If a simultaneous submission or prior publication in another venue (conference or journal) of a paper submitted to SBES is identified and reported at any time, the paper will be rejected and the authors may be barred from submitting to the next editions of SBES. The organizers of the other venue will also be notified.',
       },
     },
     {
@@ -1160,7 +1160,7 @@ const SBES_RESEARCH_CALL: SymposiumCall = {
             { pt: 'Teste de Software', en: 'Software Testing' },
             { pt: 'Validação e Verificação de Software', en: 'Software Validation and Verification' },
             { pt: 'Variabilidade e Linhas de Produto de Software', en: 'Variability and Software Product Lines' },
-            { pt: 'Visualização de Software', en: 'Software Visualisation' },
+            { pt: 'Visualização de Software', en: 'Software Visualization' },
           ],
         },
       ],
@@ -1215,7 +1215,7 @@ const SBES_RESEARCH_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'Autores de artigos aceitos em periódicos e sobre os temas de interesse do SBES são convidados a apresentar seus trabalhos no SBES 2027. Isso proporciona aos autores a oportunidade de discutir seus trabalhos com a comunidade e também enriquece o programa técnico-científico do SBES 2027. Podem ser submetidos artigos que tenham sido publicados nos seguintes periódicos:',
-            en: 'Authors of journal papers on SBES topics of interest are invited to present their work at SBES 2027. This gives authors the chance to discuss their work with the community and also enriches the SBES 2027 technical programme. Papers published in the following journals may be submitted:',
+            en: 'Authors of journal papers on SBES topics of interest are invited to present their work at SBES 2027. This gives authors the chance to discuss their work with the community and also enriches the SBES 2027 technical program. Papers published in the following journals may be submitted:',
           },
         },
         {
@@ -1331,7 +1331,7 @@ const SBES_EDUCATION_CALL: SymposiumCall = {
             { pt: 'Educação e Treinamento em Engenharia de Software através de metodologias ativas de aprendizagem: Aprendizagem Baseada em Problemas, Aprendizagem Baseada em Projetos, Aprendizagem Baseada em Desafios, Sala de Aula Invertida, entre outras;', en: 'Software Engineering education and training through active learning methodologies: Problem-Based Learning, Project-Based Learning, Challenge-Based Learning, Flipped Classroom, among others;' },
             { pt: 'Boas práticas e práticas inovadoras para a Educação e Treinamento em Engenharia de Software;', en: 'Good and innovative practices for Software Engineering education and training;' },
             { pt: 'Currículo ou projetos de cursos inovadores;', en: 'Innovative curricula or course designs;' },
-            { pt: 'Educação e treinamento de Engenharia de Software no contexto de diferentes cursos de graduação e pós-graduação;', en: 'Software Engineering education and training in different undergraduate and graduate programmes;' },
+            { pt: 'Educação e treinamento de Engenharia de Software no contexto de diferentes cursos de graduação e pós-graduação;', en: 'Software Engineering education and training in different undergraduate and graduate programs;' },
             { pt: 'Educação e treinamento de métodos, técnicas e ferramentas para o desenvolvimento de software;', en: 'Education and training in software development methods, techniques and tools;' },
             { pt: 'Educação e treinamento de Engenharia de Software em contextos informais, como hackathons e Stack overflow;', en: 'Software Engineering education and training in informal contexts, such as hackathons and Stack Overflow;' },
             { pt: 'Ambientes educacionais emergentes para Engenharia de Software, tais como aprendizagem online;', en: 'Emerging educational environments for Software Engineering, such as online learning;' },
@@ -1384,7 +1384,7 @@ const SBES_EDUCATION_CALL: SymposiumCall = {
             { pt: '**Verificabilidade:** até que ponto o artigo inclui informações suficientes para apoiar a verificação independente ou a replicação das contribuições apresentadas no artigo. Isto inclui a disponibilização pública de dados da pesquisa ou uma declaração explícita da razão pela qual tais dados não podem ser disponibilizados publicamente;', en: '**Verifiability:** the extent to which the paper includes enough information to support independent verification or replication of its contributions. This includes making the research data publicly available or explicitly stating why it cannot be made public;' },
             { pt: '**Capacidade de Ação:** até que ponto o documento fornece recomendações práticas com mensagens claras.', en: '**Actionability:** the extent to which the paper provides practical recommendations with clear messages.' },
             { pt: '**Lições:** Até que ponto o documento discute significativamente as lições aprendidas em termos do que deu certo, do que deu errado e do que poderia ser melhorado se a experiência se repetisse.', en: '**Lessons:** the extent to which the paper meaningfully discusses lessons learned in terms of what went right, what went wrong and what could be improved if the experience were repeated.' },
-            { pt: '**Apresentação:** Até que ponto a organização e a qualidade da escrita do artigo estão de acordo com o padrão: o artigo é bem estruturado, emprega linguagem acadêmica clara e correta, evita ambiguidade, inclui figuras e tabelas claramente legíveis e está formatado adequadamente.', en: '**Presentation:** the extent to which the organisation and writing quality of the paper meet the standard: the paper is well structured, uses clear and correct academic language, avoids ambiguity, includes clearly legible figures and tables and is properly formatted.' },
+            { pt: '**Apresentação:** Até que ponto a organização e a qualidade da escrita do artigo estão de acordo com o padrão: o artigo é bem estruturado, emprega linguagem acadêmica clara e correta, evita ambiguidade, inclui figuras e tabelas claramente legíveis e está formatado adequadamente.', en: '**Presentation:** the extent to which the organization and writing quality of the paper meet the standard: the paper is well structured, uses clear and correct academic language, avoids ambiguity, includes clearly legible figures and tables and is properly formatted.' },
           ],
         },
       ],
@@ -1469,7 +1469,7 @@ const SBES_IDEAS_CALL: SymposiumCall = {
             { pt: 'Diversidade, inclusão e fairness em software', en: 'Diversity, inclusion and fairness in software' },
             { pt: 'Ecossistemas de software e sistemas de sistemas', en: 'Software ecosystems and systems of systems' },
             { pt: 'Engenharia de release e DevOps', en: 'Release engineering and DevOps' },
-            { pt: 'Engenharia de requisitos, modelagem e design', en: 'Requirements engineering, modelling and design' },
+            { pt: 'Engenharia de requisitos, modelagem e design', en: 'Requirements engineering, modeling and design' },
             { pt: 'Engenharia de Software Baseada em Busca', en: 'Search-Based Software Engineering' },
             { pt: 'Engenharia de software baseada em multidão (crowd)', en: 'Crowd-based software engineering' },
             { pt: 'Engenharia de software contínua', en: 'Continuous software engineering' },
@@ -1499,7 +1499,7 @@ const SBES_IDEAS_CALL: SymposiumCall = {
             { pt: 'Tecnologias verdes e sustentáveis', en: 'Green and sustainable technologies' },
             { pt: 'Variabilidade e linhas de produtos', en: 'Variability and product lines' },
             { pt: 'Verificação, validação e teste de software', en: 'Software verification, validation and testing' },
-            { pt: 'Visualização de software', en: 'Software visualisation' },
+            { pt: 'Visualização de software', en: 'Software visualization' },
           ],
         },
       ],
@@ -1520,7 +1520,7 @@ const SBES_IDEAS_CALL: SymposiumCall = {
             { pt: '**Novidade:** até que ponto as contribuições são suficientemente originais e inovadoras em relação ao estado da arte;', en: '**Novelty:** the extent to which the contributions are sufficiently original and innovative with respect to the state of the art;' },
             { pt: '**Significância:** até que ponto as contribuições do artigo podem impactar a área de Engenharia de Software e sob quais condições (se houver), incluindo forte motivação para demonstrar que é um problema que vale a pena ser tratado;', en: '**Significance:** the extent to which the paper\'s contributions can impact the Software Engineering field and under which conditions (if any), including strong motivation showing that the problem is worth addressing;' },
             { pt: '**Solidez:** até que ponto as contribuições do artigo e os planos dos autores para trabalhos futuros são baseados na aplicação rigorosa de métodos de pesquisa apropriados;', en: '**Soundness:** the extent to which the paper\'s contributions and the authors\' plans for future work rest on the rigorous application of appropriate research methods;' },
-            { pt: '**Verificabilidade:** até que ponto o documento inclui informações suficientes para entender como o trabalho proposto funciona e entender como os dados foram obtidos, analisados e interpretados;', en: '**Verifiability:** the extent to which the paper includes enough information to understand how the proposed work functions and how the data was obtained, analysed and interpreted;' },
+            { pt: '**Verificabilidade:** até que ponto o documento inclui informações suficientes para entender como o trabalho proposto funciona e entender como os dados foram obtidos, analisados e interpretados;', en: '**Verifiability:** the extent to which the paper includes enough information to understand how the proposed work functions and how the data was obtained, analyzed and interpreted;' },
             { pt: '**Apresentação:** até que ponto a qualidade da redação do artigo atende a altos padrões, incluindo descrições claras, bem como uso adequado do idioma inglês/português, ausência de ambiguidade, figuras e tabelas claramente legíveis e adesão às instruções de formatação fornecidas; e', en: '**Presentation:** the extent to which the writing quality meets high standards, including clear descriptions, proper use of English/Portuguese, absence of ambiguity, clearly legible figures and tables, and adherence to the formatting instructions; and' },
             { pt: '**Reprodutibilidade e Replicabilidade:** até que ponto o documento apóia a verificação ou replicação independente das contribuições alegadas do artigo, dentro das limitações esperadas por um trabalho submetido a esta trilha e considerando as considerações sobre políticas de ciência aberta.', en: '**Reproducibility and Replicability:** the extent to which the paper supports independent verification or replication of its claimed contributions, within the limitations expected of a paper submitted to this track and in light of the open science policies.' },
           ],
@@ -1534,7 +1534,7 @@ const SBES_IDEAS_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'O SBES 2027 incentiva autores a adotarem princípios e práticas de Ciência Aberta, buscando promover a transparência, a replicabilidade e a reprodutibilidade na pesquisa. Encorajamos todas as pessoas autoras a divulgarem dados/artefatos (anonimizados e curados) para aumentar a reprodutibilidade e replicabilidade. Reconhecemos que a reprodutibilidade ou replicabilidade não é um objetivo em pesquisas qualitativas e que, assim como em estudos industriais, estudos qualitativos frequentemente enfrentam desafios ao compartilhar dados de pesquisa.',
-            en: 'SBES 2027 encourages authors to adopt Open Science principles and practices, promoting transparency, replicability and reproducibility in research. We encourage all authors to disclose (anonymised and curated) data/artefacts to increase reproducibility and replicability. We recognise that reproducibility or replicability is not a goal of qualitative research and that, as with industrial studies, qualitative studies often face challenges in sharing research data.',
+            en: 'SBES 2027 encourages authors to adopt Open Science principles and practices, promoting transparency, replicability and reproducibility in research. We encourage all authors to disclose (anonymized and curated) data/artefacts to increase reproducibility and replicability. We recognize that reproducibility or replicability is not a goal of qualitative research and that, as with industrial studies, qualitative studies often face challenges in sharing research data.',
           },
         },
         {
@@ -1600,7 +1600,7 @@ const SBES_IDEAS_CALL: SymposiumCall = {
     },
     ethicsSection,
     {
-      title: { pt: 'Anonimização', en: 'Anonymisation' },
+      title: { pt: 'Anonimização', en: 'Anonymization' },
       blocks: [
         {
           kind: 'p',
@@ -1618,7 +1618,7 @@ const SBES_IDEAS_CALL: SymposiumCall = {
             },
             {
               pt: 'O artigo submetido não deve mencionar artefatos em repositórios ou websites que possibilitem a identificação dos autores. A disponibilização de artefatos da pesquisa deve ser feita de forma anônima. Para anonimizar repositórios hospedados na plataforma GitHub, sugere-se o uso do serviço [Anonymous GitHub](https://anonymous.4open.science/);',
-              en: 'The submitted paper must not mention artefacts in repositories or websites that allow the authors to be identified. Research artefacts must be shared anonymously. To anonymise repositories hosted on GitHub, we suggest the [Anonymous GitHub](https://anonymous.4open.science/) service;',
+              en: 'The submitted paper must not mention artefacts in repositories or websites that allow the authors to be identified. Research artefacts must be shared anonymously. To anonymize repositories hosted on GitHub, we suggest the [Anonymous GitHub](https://anonymous.4open.science/) service;',
             },
             {
               pt: 'Os revisores não serão encorajados a procurar referências que identifiquem os autores em outras fontes. Buscas em bibliotecas digitais ou artefatos existentes não invalidam as regras de duplo-anônimo; e',
@@ -1626,7 +1626,7 @@ const SBES_IDEAS_CALL: SymposiumCall = {
             },
             {
               pt: 'Se o artigo submetido apresentar uma evolução de um trabalho anterior, deve-se anonimizar a referência a esse trabalho. Por exemplo, "baseado no trabalho de Silva et al." deve ser substituído por "baseado em um trabalho anterior [Ref]" e a referência não deve ser apresentada na íntegra no final do artigo. Por favor, indique a referência como "[Ref] referência omitida devido à revisão anônima." na seção de referências bibliográficas.',
-              en: 'If the submitted paper extends previous work, the reference to that work must be anonymised. For example, "based on the work of Silva et al." must be replaced by "based on previous work [Ref]", and the full reference must not appear at the end of the paper. Please list it as "[Ref] reference omitted for anonymous review." in the bibliography.',
+              en: 'If the submitted paper extends previous work, the reference to that work must be anonymized. For example, "based on the work of Silva et al." must be replaced by "based on previous work [Ref]", and the full reference must not appear at the end of the paper. Please list it as "[Ref] reference omitted for anonymous review." in the bibliography.',
             },
           ],
         },
@@ -1641,7 +1641,7 @@ const SBES_IDEAS_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'Dúvidas sobre a preparação de artigos segundo as regras de anonimização do SBES podem ser enviadas para os Coordenadores do Comitê de Programa.',
-            en: 'Questions about preparing papers under the SBES anonymisation rules can be sent to the Program Committee Chairs.',
+            en: 'Questions about preparing papers under the SBES anonymization rules can be sent to the Program Committee Chairs.',
           },
         },
       ],
@@ -1655,7 +1655,7 @@ const SBES_IDEAS_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'A Trilha de Ideias Inovadoras e Resultados Emergentes reconhece a generosidade dos membros do Comitê de Programa que dedicam tempo e esforço para revisar os trabalhos submetidos. Um certificado de Revisor de Destaque vai ser concedido aos revisores que submeterem revisões no prazo, com qualidade técnica, atendendo os critérios de avaliação da trilha, e que participem ativamente nas discussões que envolvem o Comitê de Programa.',
-            en: 'The New Ideas and Emerging Results Track recognises the generosity of the Program Committee members who devote time and effort to reviewing the submitted papers. A Distinguished Reviewer certificate will be awarded to reviewers who submit timely, technically sound reviews that follow the track\'s evaluation criteria, and who take an active part in the Program Committee discussions.',
+            en: 'The New Ideas and Emerging Results Track recognizes the generosity of the Program Committee members who devote time and effort to reviewing the submitted papers. A Distinguished Reviewer certificate will be awarded to reviewers who submit timely, technically sound reviews that follow the track\'s evaluation criteria, and who take an active part in the Program Committee discussions.',
           },
         },
       ],
@@ -1821,7 +1821,7 @@ const SBES_TOOLS_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'A publicação do trabalho implica em pelo menos um autor se inscrever (de acordo com as regras de inscrição estabelecidas pela organização local do evento) e participar PRESENCIALMENTE do SBES 2027 em Belo Horizonte para apresentar o artigo e a ferramenta. A apresentação do artigo e a demonstração da ferramenta são obrigatórias para todas as ferramentas aceitas. Demonstrações de ferramentas devem ser PRESENCIALMENTE e os vídeos de demonstração enviados NÃO devem ser usados. O formato e o horário das apresentações serão anunciados posteriormente. Os artigos aceitos que não forem apresentados não serão incluídos nos anais do SBES 2027.',
-            en: 'Publication requires at least one author to register (under the registration rules set by the local organisers) and attend SBES 2027 IN PERSON in Belo Horizonte to present the paper and the tool. Presenting the paper and demonstrating the tool are mandatory for all accepted tools. Tool demonstrations must be IN PERSON, and the submitted demonstration videos must NOT be used. The format and schedule of the presentations will be announced later. Accepted papers that are not presented will not be included in the SBES 2027 proceedings.',
+            en: 'Publication requires at least one author to register (under the registration rules set by the local organizers) and attend SBES 2027 IN PERSON in Belo Horizonte to present the paper and the tool. Presenting the paper and demonstrating the tool are mandatory for all accepted tools. Tool demonstrations must be IN PERSON, and the submitted demonstration videos must NOT be used. The format and schedule of the presentations will be announced later. Accepted papers that are not presented will not be included in the SBES 2027 proceedings.',
           },
         },
       ],
@@ -1870,7 +1870,7 @@ const SBES_INDUSTRY_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'A trilha está aberta para acadêmicos e profissionais do setor produtivo (organizações públicas ou privadas) que queiram compartilhar suas experiências ("experience reports") ou seus conhecimentos teóricos e tecnológicos e conjuntamente identificar possibilidades no desenvolvimento de redes de colaboração e de pesquisa na relação entre academia e empresas.',
-            en: 'The track is open to academics and practitioners from industry (public or private organisations) who want to share their experience ("experience reports") or their theoretical and technological knowledge, and jointly identify opportunities to build collaboration and research networks between academia and companies.',
+            en: 'The track is open to academics and practitioners from industry (public or private organizations) who want to share their experience ("experience reports") or their theoretical and technological knowledge, and jointly identify opportunities to build collaboration and research networks between academia and companies.',
           },
         },
         {
@@ -1890,13 +1890,13 @@ const SBES_INDUSTRY_CALL: SymposiumCall = {
         {
           kind: 'list',
           items: [
-            { pt: 'Engenharia de software empírica / experimental, como aplicações ou uso de ferramentas, diferentes processos e práticas de software e como elas impactaram a organização', en: 'Empirical / experimental software engineering, such as applying or using tools, different software processes and practices, and how they affected the organisation' },
+            { pt: 'Engenharia de software empírica / experimental, como aplicações ou uso de ferramentas, diferentes processos e práticas de software e como elas impactaram a organização', en: 'Empirical / experimental software engineering, such as applying or using tools, different software processes and practices, and how they affected the organization' },
             { pt: 'Detalhamento de ferramentas internas, suas decisões arquiteturais e de usabilidade, e impacto na produtividade do time e resiliência da aplicação', en: 'In-depth looks at in-house tools, their architecture and usability decisions, and their impact on team productivity and application resilience' },
             { pt: 'Práticas, processos e ferramentas relacionadas a testes e resiliência de software', en: 'Practices, processes and tools for software testing and resilience' },
             { pt: 'Engenharia de Software para Inteligência Artificial e Inteligência Artificial para Engenharia de Software', en: 'Software Engineering for Artificial Intelligence and Artificial Intelligence for Software Engineering' },
             { pt: 'Arquiteturas para sistemas multi-cloud', en: 'Architectures for multi-cloud systems' },
             { pt: 'Engenharia de software seguro', en: 'Secure software engineering' },
-            { pt: 'Engenharia para sustentabilidade e otimização energética', en: 'Engineering for sustainability and energy optimisation' },
+            { pt: 'Engenharia para sustentabilidade e otimização energética', en: 'Engineering for sustainability and energy optimization' },
             { pt: 'Reflexões sobre interação academia-indústria, modelos, métodos, e lições aprendidas', en: 'Reflections on academia-industry interaction, models, methods and lessons learned' },
           ],
         },
@@ -1964,7 +1964,7 @@ const SBES_INDUSTRY_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'Note que os trabalhos também podem ser submetidos mesmo sem a participação de pessoas da academia. Caso o time de autores ou a empresa tenha interesse em submeter, mas não tenha experiência em escrever trabalhos para essa trilha, os organizadores estão à disposição para conversar.',
-            en: 'Note that papers can also be submitted without any academic co-authors. If the author team or company is interested in submitting but has no experience writing papers for this track, the organisers are happy to talk.',
+            en: 'Note that papers can also be submitted without any academic co-authors. If the author team or company is interested in submitting but has no experience writing papers for this track, the organizers are happy to talk.',
           },
         },
         {
@@ -1984,7 +1984,7 @@ const SBES_INDUSTRY_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'É obrigatório o envio do Termo de Autorização de Publicação de Artigos da SBC, o qual deve ser assinado por um dos autores de cada artigo aceito. É necessário também preencher o formulário eletrônico de coleta de metadados para cada artigo aceito.',
-            en: 'The SBC Paper Publication Authorisation Form must be sent, signed by one of the authors of each accepted paper. The electronic metadata collection form must also be filled in for each accepted paper.',
+            en: 'The SBC Paper Publication Authorization Form must be sent, signed by one of the authors of each accepted paper. The electronic metadata collection form must also be filled in for each accepted paper.',
           },
         },
       ],
@@ -2010,15 +2010,15 @@ const SBES_CTIC_CALL: SymposiumCall = {
   intro: [
     {
       pt: 'O VIII Concurso de Trabalhos de Iniciação Científica do Simpósio Brasileiro de Engenharia de Software (CTIC-ES) é um evento que visa promover a discussão e divulgação de trabalhos de pesquisa em Engenharia de Software realizados no escopo da graduação e ensino médio (ou técnico). Além disso, o concurso busca a integração entre pesquisadores e futuros pesquisadores durante o Congresso Brasileiro de Software (CBSoft 2027), em datas a definir.',
-      en: 'The 8th Undergraduate Research Competition of the Brazilian Symposium on Software Engineering (CTIC-ES) aims to promote the discussion and dissemination of Software Engineering research carried out in undergraduate and high-school (or technical school) programmes. The competition also seeks to bring researchers and future researchers together during the Brazilian Conference on Software (CBSoft 2027), on dates to be announced.',
+      en: 'The 8th Undergraduate Research Competition of the Brazilian Symposium on Software Engineering (CTIC-ES) aims to promote the discussion and dissemination of Software Engineering research carried out in undergraduate and high-school (or technical school) programs. The competition also seeks to bring researchers and future researchers together during the Brazilian Conference on Software (CBSoft 2027), on dates to be announced.',
     },
     {
       pt: 'O CTIC-ES busca selecionar trabalhos desenvolvidos por discentes de graduação e ensino médio (ou técnico) que serão premiados e publicados nos anais do CBSoft 2027. Assim, o CTIC-ES tem como objetivo incentivar alunos de todos os cursos de graduação em Computação e áreas afins, bem como estudantes do ensino médio ou técnico na área de Computação, a produzir e submeter textos científicos originais sobre trabalhos realizados por eles em temas relacionados à Engenharia de Software. Os trabalhos podem ser resultantes de participação em programas de iniciação científica, iniciação tecnológica ou trabalhos de conclusão de curso.',
-      en: 'CTIC-ES selects work by undergraduate and high-school (or technical school) students, which will be awarded and published in the CBSoft 2027 proceedings. CTIC-ES thus aims to encourage students from every undergraduate programme in Computing and related fields, as well as high-school or technical students in Computing, to write and submit original scientific texts about their own work on Software Engineering topics. The work may come from undergraduate research programmes, technology initiation programmes or final-year projects.',
+      en: 'CTIC-ES selects work by undergraduate and high-school (or technical school) students, which will be awarded and published in the CBSoft 2027 proceedings. CTIC-ES thus aims to encourage students from every undergraduate program in Computing and related fields, as well as high-school or technical students in Computing, to write and submit original scientific texts about their own work on Software Engineering topics. The work may come from undergraduate research programs, technology initiation programs or final-year projects.',
     },
     {
       pt: 'No caso de dúvidas, contactar os organizadores, xxxxxx (xxxxxx) e xxxxxx (xxxxxx).',
-      en: 'For questions, contact the organisers, xxxxxx (xxxxxx) and xxxxxx (xxxxxx).',
+      en: 'For questions, contact the organizers, xxxxxx (xxxxxx) and xxxxxx (xxxxxx).',
     },
   ],
   sections: [
@@ -2090,7 +2090,7 @@ const SBES_CTIC_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'Podem participar do VIII CTIC-ES estudantes matriculados em cursos de graduação, ensino médio ou técnico nos anos de 2026 ou 2027 em Instituições de Ensino Superior (IES), Escolas de Ensino Médio ou Instituições de Ensino Técnico brasileiras. A situação de aluno regularmente matriculado ou recém-formado deve ser comprovada com documentação apropriada, ou seja:',
-            en: 'The 8th CTIC-ES is open to students enrolled in undergraduate, high-school or technical programmes in 2026 or 2027 at Brazilian Higher Education Institutions, High Schools or Technical Schools. Current enrolment or recent graduation must be proven with appropriate documents, namely:',
+            en: 'The 8th CTIC-ES is open to students enrolled in undergraduate, high-school or technical programs in 2026 or 2027 at Brazilian Higher Education Institutions, High Schools or Technical Schools. Current enrolment or recent graduation must be proven with appropriate documents, namely:',
           },
         },
         {
@@ -2216,14 +2216,14 @@ const SBES_CTIC_CALL: SymposiumCall = {
             { pt: '**Inovação e Originalidade:** Analisa o grau de inovação e originalidade do trabalho, considerando a contribuição que ele traz, enquanto escopo específico de uma pesquisa de graduação, ao campo da Engenharia de Software.', en: '**Innovation and Originality:** The degree of innovation and originality of the work, considering its contribution to Software Engineering within the specific scope of undergraduate research.' },
             { pt: '**Relevância e Clareza do Escopo:** Avalia a importância do problema abordado e a contribuição apresentada para a comunidade científica e prática na área de Engenharia de Software. O escopo do trabalho está bem definido e, caso necessário, é delimitado dentro do contexto do projeto maior.', en: '**Relevance and Clarity of Scope:** The importance of the problem addressed and the contribution to the Software Engineering research and practice communities. The scope of the work is well defined and, if needed, delimited within the larger project.' },
             { pt: '**Rigor e Transparência:** Analisa o nível de rigor metodológico e científico empregado no trabalho, incluindo a escolha e aplicação adequadas de métodos e técnicas. Além disso, examina a clareza com que os dados, métodos e resultados são apresentados, permitindo a reprodução ou verificação do estudo, conforme viável no contexto investigado.', en: '**Rigour and Transparency:** The level of methodological and scientific rigour, including the proper choice and application of methods and techniques, and how clearly the data, methods and results are presented so the study can be reproduced or verified, as feasible in the context studied.' },
-            { pt: '**Qualidade da Apresentação:** Avalia a organização, clareza, redação e formatação do artigo, considerando a capacidade de comunicar ideias de forma objetiva e bem estruturada.', en: '**Presentation Quality:** The organisation, clarity, writing and formatting of the paper, considering its ability to communicate ideas in an objective, well-structured way.' },
+            { pt: '**Qualidade da Apresentação:** Avalia a organização, clareza, redação e formatação do artigo, considerando a capacidade de comunicar ideias de forma objetiva e bem estruturada.', en: '**Presentation Quality:** The organization, clarity, writing and formatting of the paper, considering its ability to communicate ideas in an objective, well-structured way.' },
           ],
         },
         { kind: 'p', text: { pt: '**Fase 2 (Avaliação da Apresentação Oral):**', en: '**Phase 2 (Oral Presentation Evaluation):**' } },
         {
           kind: 'list',
           items: [
-            { pt: '**Clareza na Comunicação:** Avalia a organização lógica da apresentação e a habilidade do apresentador em transmitir ideias de forma clara, acessível e objetiva no contexto de Engenharia de Software.', en: '**Clear Communication:** The logical organisation of the talk and the presenter\'s ability to convey ideas clearly, accessibly and objectively in the Software Engineering context.' },
+            { pt: '**Clareza na Comunicação:** Avalia a organização lógica da apresentação e a habilidade do apresentador em transmitir ideias de forma clara, acessível e objetiva no contexto de Engenharia de Software.', en: '**Clear Communication:** The logical organization of the talk and the presenter\'s ability to convey ideas clearly, accessibly and objectively in the Software Engineering context.' },
             { pt: '**Domínio do Trabalho:** Avalia a capacidade da pessoa apresentadora em responder perguntas com segurança e profundidade.', en: '**Command of the Work:** The presenter\'s ability to answer questions confidently and in depth.' },
             { pt: '**Uso de Recursos Visuais:** Considera a qualidade e a relevância dos slides ou materiais de apoio, incluindo o uso adequado de gráficos, tabelas e ilustrações para complementar a apresentação.', en: '**Use of Visual Aids:** The quality and relevance of the slides or supporting materials, including proper use of charts, tables and illustrations to complement the talk.' },
             { pt: '**Evolução Profissional:** Examina evidências de aprendizado e crescimento acadêmico ou profissional ao longo da pesquisa, incluindo reflexões sobre desafios enfrentados e lições aprendidas.', en: '**Professional Growth:** Evidence of learning and academic or professional growth during the research, including reflections on challenges faced and lessons learned.' },
@@ -2234,7 +2234,7 @@ const SBES_CTIC_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'A organização orienta fortemente que as pessoas autoras se atentem aos critérios detalhados para cada fase do processo. Por sua vez, as pessoas avaliadoras serão instruídas a considerar os critérios de maneira alinhada ao contexto e escopo de uma pesquisa de iniciação científica, buscando uma avaliação justa, consistente e coerente.',
-            en: 'The organisers strongly advise authors to pay attention to the detailed criteria for each phase. Reviewers, in turn, will be instructed to apply the criteria in line with the context and scope of undergraduate research, aiming for a fair, consistent and coherent evaluation.',
+            en: 'The organizers strongly advise authors to pay attention to the detailed criteria for each phase. Reviewers, in turn, will be instructed to apply the criteria in line with the context and scope of undergraduate research, aiming for a fair, consistent and coherent evaluation.',
           },
         },
       ],
@@ -2395,7 +2395,7 @@ const SBES_CTD_CALL: SymposiumCall = {
           kind: 'p',
           text: {
             pt: 'As teses e dissertações submetidas ao CTD-ES passarão por um processo de avaliação em duas etapas, descrito abaixo. A avaliação será realizada por um comitê composto por profissionais de instituições de ensino e pesquisa com reconhecida atuação na área de Engenharia de Software. Membros do Comitê de Avaliação que foram orientadores(as) de candidatos(as) concorrendo em uma das categorias (Mestrado ou Doutorado) avaliarão trabalhos apenas da outra categoria.',
-            en: 'Theses and dissertations submitted to CTD-ES go through the two-stage evaluation described below, carried out by a committee of professionals from teaching and research institutions with recognised work in Software Engineering. Evaluation Committee members who advised candidates in one category (Master\'s or PhD) will only evaluate work in the other category.',
+            en: 'Theses and dissertations submitted to CTD-ES go through the two-stage evaluation described below, carried out by a committee of professionals from teaching and research institutions with recognized work in Software Engineering. Evaluation Committee members who advised candidates in one category (Master\'s or PhD) will only evaluate work in the other category.',
           },
         },
         {

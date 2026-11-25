@@ -32,20 +32,20 @@ export interface AboutSymposium {
 
 const DESCRIPTIONS: Record<SymposiumId, Localized> = {
   sbes: {
-    pt: 'o principal evento de Engenharia de Software na América Latina',
-    en: 'the leading Software Engineering event in Latin America',
+    pt: 'dedicado à pesquisa e à prática em Engenharia de Software',
+    en: 'dedicated to research and practice in Software Engineering',
   },
   sblp: {
     pt: 'que reúne pesquisadores e profissionais interessados no projeto, na implementação e na teoria de linguagens de programação',
     en: 'bringing together researchers and practitioners interested in the design, implementation and theory of programming languages',
   },
   sbcars: {
-    pt: 'que agrega tópicos como linhas de produto de software, desenvolvimento de software baseado em componentes, arquiteturas de software e reutilização',
+    pt: 'que abrange temas como linhas de produto de software, desenvolvimento de software baseado em componentes, arquiteturas de software e reutilização',
     en: 'covering topics such as software product lines, component-based software development, software architectures and reuse',
   },
   sast: {
-    pt: 'que versa sobre questões relacionadas à sistematização e automação da atividade de teste de software',
-    en: 'addressing the systematisation and automation of software testing',
+    pt: 'dedicado à sistematização e à automação do teste de software',
+    en: 'dedicated to the systematization and automation of software testing',
   },
 };
 

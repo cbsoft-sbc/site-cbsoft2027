@@ -66,11 +66,20 @@ export const SEARCH_ENTRIES: SearchEntry[] = [
     keywords: ['sobre', 'sbes', 'sblp', 'sbcars', 'sast', 'simpósio', 'sbc', 'identidade', 'about', 'symposium'],
   },
   {
+    href: '/programacao',
+    title: { pt: 'Programação', en: 'Schedule' },
+    description: {
+      pt: 'Sessões, palestras e atividades do CBSoft 2027 por dia — em breve.',
+      en: 'CBSoft 2027 sessions, talks and activities by day — coming soon.',
+    },
+    keywords: ['programação', 'programa', 'sessões', 'palestras', 'horários', 'salas', 'program', 'schedule', 'sessions', 'talks'],
+  },
+  {
     href: '#agenda',
     title: { pt: 'Agenda', en: 'Agenda' },
     description: {
-      pt: 'Programação e datas do evento.',
-      en: 'Event schedule and dates.',
+      pt: 'Datas importantes dos simpósios.',
+      en: 'Important dates of the symposia.',
     },
     keywords: ['programação', 'palestras', 'eventos', 'datas', 'program', 'schedule', 'talks', 'dates'],
   },
@@ -78,14 +87,14 @@ export const SEARCH_ENTRIES: SearchEntry[] = [
     href: '#local',
     title: { pt: 'Local do evento', en: 'Venue' },
     description: {
-      pt: 'Campus Lourdes da PUC Minas, em Belo Horizonte.',
-      en: 'PUC Minas Lourdes Campus, in Belo Horizonte.',
+      pt: 'PUC Minas, Campus Coração Eucarístico, em Belo Horizonte.',
+      en: 'PUC Minas, Coração Eucarístico Campus, in Belo Horizonte.',
     },
     keywords: ['localização', 'onde', 'endereço', 'mapa', 'puc', 'location', 'where', 'address', 'map'],
   },
   {
     href: '#patrocinio',
-    title: { pt: 'Patrocínio e realização', en: 'Sponsorship and organizers' },
+    title: { pt: 'Organização e apoio', en: 'Organization and support' },
     description: {
       pt: 'Instituições que realizam e apoiam o CBSoft 2027.',
       en: 'Institutions that organize and support CBSoft 2027.',

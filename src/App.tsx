@@ -9,6 +9,8 @@ import { PageMetadata } from '@/components/layout/PageMetadata';
 import { RegistrationPage } from '@/pages/RegistrationPage';
 import { ConductPage } from '@/pages/ConductPage';
 import { AccommodationPage } from '@/pages/AccommodationPage';
+import { ExperiencesPage } from '@/pages/ExperiencesPage';
+import { ProgramPage } from '@/pages/ProgramPage';
 import { OrganizationPage } from '@/pages/OrganizationPage';
 import { VolunteersPage } from '@/pages/VolunteersPage';
 import { AcceptedPapersPage } from '@/pages/AcceptedPapersPage';
@@ -17,6 +19,7 @@ import { SymposiumCallPage } from '@/pages/SymposiumCallPage';
 import { SYMPOSIA } from '@/data/symposia';
 import { SBES_TRACKS } from '@/data/sbesTracks';
 import { sbesTrackCallPath, symposiumCallPath } from '@/data/symposiumCalls';
+import { PAPERS_SYMPOSIA, symposiumPapersPath } from '@/data/acceptedPapers';
 
 export function App() {
   return (
@@ -27,6 +30,8 @@ export function App() {
         <Route path="/" element={<Home />} />
         <Route path="/local" element={<LocationPage />} />
         <Route path="/acomodacoes" element={<AccommodationPage />} />
+        <Route path="/experiencias" element={<ExperiencesPage />} />
+        <Route path="/programacao" element={<ProgramPage />} />
         <Route path="/sobre" element={<AboutPage />} />
         <Route path="/edicoes-anteriores" element={<PreviousEditionsPage />} />
         <Route path="/inscricoes" element={<RegistrationPage />} />
@@ -35,6 +40,9 @@ export function App() {
         <Route path="/voluntarios" element={<VolunteersPage />} />
         <Route path="/artigos-aceitos" element={<AcceptedPapersPage />} />
         <Route path="/sbes/:track/artigos-aceitos" element={<AcceptedPapersPage />} />
+        {PAPERS_SYMPOSIA.map((id) => (
+          <Route key={id} path={symposiumPapersPath(id)} element={<AcceptedPapersPage symposium={id} />} />
+        ))}
         <Route path="/workshops/chamada" element={<WorkshopsCallPage />} />
         {SYMPOSIA.map(({ id }) => (
           <Route key={id} path={symposiumCallPath(id)} element={<SymposiumCallPage id={id} />} />

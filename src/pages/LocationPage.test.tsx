@@ -30,7 +30,7 @@ describe('event locality', () => {
     render(<App />);
     fireEvent.click(screen.getByRole('link', { name: 'Endereço, orientações e mapa' }));
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}local`);
-    expect(screen.getByRole('heading', { level: 1, name: 'Local do evento' })).toBeTruthy();
+    expect(screen.getByRole('heading', { level: 1, name: 'Local do Evento' })).toBeTruthy();
     expect(screen.getByText(/Av\. Dom José Gaspar, 500/)).toBeTruthy();
     const map = screen.getByRole('link', { name: /Traçar rota no Google Maps/ });
     const destination = new URL(map.getAttribute('href')!).searchParams.get('destination');
@@ -46,8 +46,8 @@ describe('event locality', () => {
     expect(container.querySelector('.yt-poster')).toBeNull();
     const fallback = screen.getByRole('link', { name: /Assistir no YouTube/ });
     expect(fallback.getAttribute('href')).toBe('https://www.youtube.com/watch?v=HPzwyRFs37I');
-    fireEvent.click(screen.getByRole('button', { name: 'Reproduzir o vídeo do CBSOFT 2027' }));
-    const player = screen.getByTitle('CBSOFT 2027 em Belo Horizonte');
+    fireEvent.click(screen.getByRole('button', { name: 'Reproduzir o vídeo do CBSoft 2027' }));
+    const player = screen.getByTitle('CBSoft 2027 em Belo Horizonte');
     expect(player.getAttribute('src')).toContain('youtube-nocookie.com/embed/HPzwyRFs37I');
     expect(player.getAttribute('loading')).toBe('lazy');
     expect(screen.getByRole('link', { name: /Assistir no YouTube/ })).toBeTruthy();
@@ -56,11 +56,11 @@ describe('event locality', () => {
   it('provides English directions and preserves pending event access details', async () => {
     renderPage();
     await act(async () => { await i18n.changeLanguage('en'); });
-    expect(screen.getByRole('heading', { level: 1, name: 'Event venue' })).toBeTruthy();
+    expect(screen.getByRole('heading', { level: 1, name: 'Event Venue' })).toBeTruthy();
     expect(screen.getByText('Event access details to be confirmed')).toBeTruthy();
     expect(screen.getByText(/Gameleira station/)).toBeTruthy();
     expect(screen.getByRole('link', { name: /Get directions on Google Maps/ })).toBeTruthy();
-    expect(screen.getByRole('button', { name: 'Play the CBSOFT 2027 video' })).toBeTruthy();
+    expect(screen.getByRole('button', { name: 'Play the CBSoft 2027 video' })).toBeTruthy();
   });
 
   it('hides address, transport and navigation if the venue is no longer confirmed', () => {

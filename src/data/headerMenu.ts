@@ -7,8 +7,11 @@ export type HeaderMenuId =
     | 'workshops'
     | 'more';
 
-import { SBES_TRACKS, type SbesTrackId } from './sbesTracks';
+import { SBES_TRACKS, acceptedPapersPath, type SbesTrack } from './sbesTracks';
+import { symposiumPapersPath } from './acceptedPapers';
 import { sbesTrackCallPath, symposiumCallPath } from './symposiumCalls';
+import { EXPERIENCES_PATH } from './experiences';
+import { PROGRAM_PATH, programPath } from './program';
 
 export interface HeaderMenuSubLink {
     href: string;
@@ -46,16 +49,17 @@ const link = (key: string, href: string, external = false): HeaderMenuLink => ({
  *  page (symposiumCallPath). */
 export const CALL_FOR_PAPERS_PATH = '/workshops/chamada';
 
-/** Likewise, every "Artigos Aceitos" link shares one page for now; the
- *  per-track pages (/sbes/<slug>/artigos-aceitos) are ready for later. */
+/** General accepted-papers page (CBSOFT'27 menu). Each symposium has its
+ *  own page — /sblp/artigos-aceitos, /sbes/<track>/artigos-aceitos… — so
+ *  the header highlights the symposium being viewed. */
 export const ACCEPTED_PAPERS_PATH = '/artigos-aceitos';
 
 /** An SBES track: its call for papers and its accepted-papers page. */
-const sbesTrack = (id: SbesTrackId): HeaderMenuLink => ({
-    ...link(`sbes.tracks.${id}`, sbesTrackCallPath(id)),
+const sbesTrack = (track: SbesTrack): HeaderMenuLink => ({
+    ...link(`sbes.tracks.${track.id}`, sbesTrackCallPath(track.id)),
     children: [
-        { href: sbesTrackCallPath(id), titleKey: 'headerMenu.sbes.trackCall' },
-        { href: ACCEPTED_PAPERS_PATH, titleKey: 'headerMenu.sbes.trackPapers' },
+        { href: sbesTrackCallPath(track.id), titleKey: 'headerMenu.sbes.trackCall' },
+        { href: acceptedPapersPath(track), titleKey: 'headerMenu.sbes.trackPapers' },
     ],
 });
 
@@ -65,8 +69,8 @@ const symposiumMenu = (id: 'sblp' | 'sbcars' | 'sast'): HeaderMenuDefinition => 
         titleKey: `headerMenu.${id}.title`,
         links: [
             link(`${id}.call`, symposiumCallPath(id)),
-            //link(`${id}.program`, '#agenda'),
-            link(`${id}.papers`, ACCEPTED_PAPERS_PATH),
+            link(`${id}.program`, programPath(id)),
+            link(`${id}.papers`, symposiumPapersPath(id)),
         ],
     }]],
 });
@@ -92,7 +96,7 @@ export const HEADER_MENUS: Record<HeaderMenuId, HeaderMenuDefinition> = {
                         link('guide.venue', '/local'),
                         link('guide.map', '/local#mapa'),
                         link('guide.accommodation', '/acomodacoes'),
-                        // link('guide.experiences', '#experiencias-bh'),
+                        link('guide.experiences', EXPERIENCES_PATH),
                     ],
                 },
                 {
@@ -104,7 +108,7 @@ export const HEADER_MENUS: Record<HeaderMenuId, HeaderMenuDefinition> = {
                 {
                     titleKey: 'headerMenu.program.title',
                     links: [
-                        //link('program.schedule', '#agenda'),
+                        link('program.schedule', PROGRAM_PATH),
                         link('program.articles', ACCEPTED_PAPERS_PATH),
                         // link('program.special', '#eventos'),
                     ],
@@ -125,12 +129,12 @@ export const HEADER_MENUS: Record<HeaderMenuId, HeaderMenuDefinition> = {
         columns: [[
             {
                 titleKey: 'headerMenu.sbes.tracksTitle',
-                links: SBES_TRACKS.map((track) => sbesTrack(track.id)),
+                links: SBES_TRACKS.map(sbesTrack),
             },
-            /*{
+            {
                 titleKey: 'headerMenu.sbes.programTitle',
-                links: [link('sbes.program', '#agenda')],
-            },*/
+                links: [link('sbes.program', programPath('sbes'))],
+            },
         ]],
     },
     sblp: symposiumMenu('sblp'),
@@ -143,7 +147,7 @@ export const HEADER_MENUS: Record<HeaderMenuId, HeaderMenuDefinition> = {
             links: [
                 link('workshops.call', '/workshops/chamada'),
                 // link('workshops.accepted', '#workshops-aceitos'),
-                // link('workshops.program', '#agenda'),
+                link('workshops.program', programPath('workshops')),
                 // link('workshops.papers', '#artigos-aceitos'),
             ],
         }]],

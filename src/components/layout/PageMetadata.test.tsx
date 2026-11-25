@@ -18,8 +18,8 @@ afterEach(() => description.remove());
 
 describe('PageMetadata', () => {
   it.each([
-    ['/sobre', "Sobre o CBSoft — CBSOFT'27", "About CBSoft — CBSOFT'27", 'Learn about CBSoft'],
-    ['/workshops/chamada/', "Chamada de Trabalhos — Workshops — CBSOFT'27", "Call for Papers — Workshops — CBSOFT'27", 'Explore the call for papers'],
+    ['/sobre', "Sobre o CBSoft — CBSOFT'27", "About CBSoft — CBSOFT'27", 'About CBSoft, the Brazilian Conference'],
+    ['/workshops/chamada/', "Chamada de Workshops — CBSOFT'27", "Call for Workshops — CBSOFT'27", 'CBSoft 2027 call for workshops'],
   ])('translates the title and description of %s on language changes', async (path, ptTitle, enTitle, enDescription) => {
     render(<MemoryRouter initialEntries={[path]}><PageMetadata /></MemoryRouter>);
     expect(document.title).toBe(ptTitle);
@@ -39,8 +39,8 @@ describe('PageMetadata', () => {
     );
     await act(async () => { await i18n.changeLanguage('en'); });
     fireEvent.click(screen.getByRole('link', { name: 'Workshops' }));
-    expect(document.title).toBe("Call for Papers — Workshops — CBSOFT'27");
-    expect(description.content).toContain('Explore the call for papers');
+    expect(document.title).toBe("Call for Workshops — CBSOFT'27");
+    expect(description.content).toContain('CBSoft 2027 call for workshops');
     fireEvent.click(screen.getByRole('link', { name: 'Home' }));
     expect(document.title).toBe("CBSOFT'27 — Brazilian Conference on Software");
     expect(description.content).toContain('Brazilian Computer Society');
