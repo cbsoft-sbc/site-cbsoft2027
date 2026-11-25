@@ -27,7 +27,7 @@ describe('PreviousEditionsPage', () => {
     expect(cards[4].getAttribute('href')).toBe('https://cbsoft2022.facom.ufu.br/');
     expect(cards[8].getAttribute('href')).toBe('https://cbsoft.sbc.org.br/2018/');
     expect(cards[16].getAttribute('href')).toBe('https://cbsoft.sbc.org.br/2010/');
-    expect(screen.getByText('São Paulo, São Paulo')).toBeTruthy();
+    expect(screen.getAllByText('São Paulo, São Paulo')).toHaveLength(2); // 2026 and 2011
     expect(screen.getByText('Campo Grande, Mato Grosso do Sul')).toBeTruthy();
     expect(screen.getAllByText('(Online)')).toHaveLength(3);
   });
@@ -50,11 +50,11 @@ describe('PreviousEditionsPage', () => {
     document.head.append(meta);
     try {
       render(<App />);
-      expect(document.title).toBe("Edições Anteriores - CBSOFT'27");
+      expect(document.title).toBe("Edições Anteriores — CBSOFT'27");
       await act(async () => { await i18n.changeLanguage('en'); });
       expect(screen.getByRole('heading', { level: 1, name: 'Previous Editions' })).toBeTruthy();
       expect(screen.getAllByText('Visit edition')).toHaveLength(17);
-      expect(document.title).toBe("Previous Editions - CBSOFT'27");
+      expect(document.title).toBe("Previous Editions — CBSOFT'27");
       expect(meta.content).toContain('2010 to 2026');
       expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}edicoes-anteriores`);
     } finally {

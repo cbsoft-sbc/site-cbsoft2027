@@ -21,6 +21,10 @@ describe('Header current section', () => {
     ['/sblp/chamada', 'SBLP'],
     ['/sbcars/chamada', 'SBCARS'],
     ['/sast/chamada', 'SAST'],
+    ['/sblp/artigos-aceitos', 'SBLP'],
+    ['/sbcars/artigos-aceitos', 'SBCARS'],
+    ['/sast/artigos-aceitos', 'SAST'],
+    ['/artigos-aceitos', "CBSOFT'27"],
     ['/workshops/chamada', 'WORKSHOPS'],
   ])('marks only the current section at %s', (path, label) => {
     const { container } = renderHeader(path);
@@ -65,5 +69,46 @@ describe('Header current section', () => {
     const updatedMenu = screen.getByRole('navigation', { name: 'Navegação móvel' });
     expect(within(updatedMenu).getByRole('button', { name: 'SBCARS' }).getAttribute('aria-current')).toBe('location');
     expect(within(updatedMenu).getByRole('button', { name: 'SBES' }).hasAttribute('aria-current')).toBe(false);
+  });
+});
+
+describe('Header current section on accepted-papers pages', () => {
+  const current = (root: HTMLElement = document.body) =>
+    within(root)
+      .getAllByRole('button')
+      .filter((button) => button.getAttribute('aria-current') === 'location')
+      .map((button) => button.textContent);
+
+  it('highlights no symposium on the general list', () => {
+    renderHeader('/artigos-aceitos');
+    expect(current()).toEqual(["CBSOFT'27"]);
+  });
+
+  it('follows the symposium when moving between accepted-papers pages', () => {
+    renderHeader('/');
+    for (const symposium of ['SBCARS', 'SBLP', 'SAST']) {
+      fireEvent.click(screen.getByRole('button', { name: symposium }));
+      fireEvent.click(screen.getByRole('link', { name: /Artigos Aceitos/ }));
+      expect(current()).toEqual([symposium]);
+    }
+  });
+
+  it("highlights SBES from a track's accepted papers", () => {
+    renderHeader('/sbcars/artigos-aceitos');
+    fireEvent.click(screen.getByRole('button', { name: 'SBES' }));
+    fireEvent.mouseEnter(screen.getByRole('button', { name: /Trilha de Pesquisa/ }));
+    fireEvent.click(screen.getByRole('link', { name: 'Artigos Aceitos' }));
+    expect(current()).toEqual(['SBES']);
+  });
+
+  it('highlights the symposium in the mobile menu', () => {
+    renderHeader('/');
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir menu' }));
+    let menu = screen.getByRole('navigation', { name: 'Navegação móvel' });
+    fireEvent.click(within(menu).getByRole('button', { name: 'SBCARS' }));
+    fireEvent.click(within(menu).getByRole('link', { name: /Artigos Aceitos/ }));
+    fireEvent.click(screen.getByRole('button', { name: 'Abrir menu' }));
+    menu = screen.getByRole('navigation', { name: 'Navegação móvel' });
+    expect(current(menu)).toEqual(['SBCARS']);
   });
 });

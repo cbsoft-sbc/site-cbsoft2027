@@ -52,9 +52,8 @@
   "about": {
     "eyebrow": "ABOUT",
     "title": "What is CBSoft?",
-    "p1": "The Brazilian Conference on Software: Theory and Practice (CBSoft) is held every year by the Brazilian Computer Society (SBC). Since 2010 it has brought together the Brazilian symposia in the software field, and it has become one of the main events of the Brazilian scientific community in Computing.",
-    "p2": "In 2027 the congress arrives in Belo Horizonte, one of Brazil's most active innovation and startup hubs — with a program that mixes scientific tracks, an industry track, tutorials, tool demonstrations and a thesis & dissertation contest.",
-    "statSymposia": "co-located symposia",
+    "p1": "The Brazilian Conference on Software: Theory and Practice (CBSoft) is held annually by the Brazilian Computer Society (SBC). Since 2010, it has brought together the Brazilian software symposia promoted by SBC and has become one of the main events of the Brazilian Computing research community.",
+    "statSymposia": "integrated symposia",
     "statYears": "years of history",
     "statDays": "days of program",
     "locationLabel": "Location",
@@ -68,64 +67,62 @@
     "cta": "Register here",
     "ctaSoon": "Registration opening soon",
     "soon": "Registration will be handled through the SBC system. Dates, categories and fees will be published here once approved.",
-    "p1": "The Brazilian Conference on Software (CBSoft) is held by the <sbc>Brazilian Computer Society (SBC)</sbc>. SBC is a non-profit civil association that brings together students, teachers, professionals, researchers and Computing enthusiasts from all over Brazil, and is the largest scientific society in the field in South America.",
-    "p2": "Founded in 1978, SBC fosters scientific and technological development in the country, promoting digital inclusion, encouraging teaching, research and development in Computing in Brazil and contributing to the education of socially responsible Computing professionals.",
+    "p1": "The Brazilian Conference on Software: Theory and Practice (CBSoft) is held by the <sbc>Brazilian Computer Society (SBC)</sbc>, a non-profit civil association that brings together students, professors, professionals, researchers and enthusiasts in Computing from all over Brazil.",
+    "p2": "Founded in 1978, SBC fosters scientific and technological development in Brazil, promotes digital inclusion, encourages teaching, research and development in Computing, and contributes to the education of socially responsible Computing professionals.",
     "p3": "Registration fees for <b>CBSoft 2027</b> are listed below.",
-    "p4": "Students and professionals who are not SBC members can join or renew their membership at a discount during registration.",
-    "p5": "The <b>combo option (registration + SBC membership)</b> is the best deal, offering the lowest total cost plus the benefits of membership."
+    "p4": "Students and professionals who are not SBC members can join or renew their membership, at a discount, during registration.",
+    "p5": "The <b>combo option (registration + SBC membership)</b> has the lowest total cost and includes the benefits of membership."
   },
   "aboutPage": {
     "metaTitle": "About CBSoft — CBSOFT'27",
     "title": "About CBSoft",
-    "p1": "The Brazilian Conference on Software: Theory and Practice (CBSoft) is held annually by the Brazilian Computer Society (SBC) to foster and encourage the exchange of experiences among researchers and professionals from industry and academia on the latest practical and theoretical research, trends and innovations in software. Held since 2010 as the umbrella event for the Brazilian software symposia promoted by SBC, CBSoft has become one of the leading events of the Brazilian scientific community in Computing.",
-    "p2": "In 2027, the XVIII edition of CBSoft will be held in person in Belo Horizonte, Minas Gerais, from September 27 to October 1. This edition brings together four traditional events held annually by the Brazilian Software Engineering community:",
-    "activitiesLead": "The CBSoft program includes technical sessions with scientific paper presentations, keynotes by renowned Brazilian and international researchers, panel discussions, workshops, and tool demonstrations.",
-    "activitiesClosing": "All of these activities, of interest to the Software Engineering community and related areas of software systems development, aim to disseminate knowledge and discuss important questions related to research, development and innovation, both in Brazil and worldwide.",
-    "metaDescription": "Learn about CBSoft, the Brazilian Conference on Software: Theory and Practice, its integrated symposia and the activities of the 2027 edition in Belo Horizonte.",
+    "p1": "The Brazilian Conference on Software: Theory and Practice (CBSoft) is held annually by the Brazilian Computer Society (SBC) to promote the exchange of experience among researchers and practitioners from academia and industry on research, trends and innovations, both theoretical and practical, in software. Held since 2010, CBSoft brings together the Brazilian software symposia promoted by SBC and has become one of the main events of the Brazilian Computing research community.",
+    "p2": "In 2027, the 18th edition of CBSoft will be held in person in Belo Horizonte, Minas Gerais, from September 27 to October 1, bringing together four symposia held annually by the Brazilian software community:",
+    "metaDescription": "About CBSoft, the Brazilian Conference on Software: Theory and Practice, its symposia and the activities of the 2027 edition in Belo Horizonte.",
     "listAnd": "and",
-    "program": "The CBSoft program includes technical sessions with scientific paper presentations, keynotes by renowned Brazilian and international researchers, panel discussions, workshops, and tool demonstrations. All of these activities, of interest to the Software Engineering community and related areas of software systems development, aim to disseminate knowledge and discuss important questions related to research, development and innovation, both in Brazil and worldwide."
+    "program": "The program includes technical sessions with paper presentations, keynotes by researchers from Brazil and abroad, panel discussions, workshops and tool demonstrations. These activities foster the dissemination of knowledge and the discussion of research, development and innovation in software."
   },
   "visualIdentity": {
-    "title": "CBSOFT 2027 Visual Identity",
-    "intro": "The CBSOFT 2027 visual identity connects technology, architecture and the identity of Belo Horizonte. Inspired by the Niemeyer Building, the brand uses its curves to represent movement, creativity, innovation and connection with the city.",
+    "title": "CBSoft 2027 Visual Identity",
+    "intro": "The CBSoft 2027 visual identity relates technology, architecture and the urban landscape of Belo Horizonte, drawing on the curves of the Niemeyer Building.",
     "photoAlt": "The Niemeyer Building in Belo Horizonte, with its curved façade and flowering trees in the foreground",
     "photoCaption": "Niemeyer Building — Oscar Niemeyer, 1954 · Belo Horizonte, MG",
     "logoAlt": "Official CBSOFT'27 logo — Brazilian Conference on Software, Belo Horizonte, Minas Gerais",
     "conceptTitle": "Brand concept",
-    "conceptP1": "The brand's main visual inspiration is the Niemeyer Building, designed by Oscar Niemeyer in 1954 and located near Praça da Liberdade, in the heart of Belo Horizonte. Its curved lines echo the lightness and fluidity of modernist architecture and evoke the silhouette of the mountains of Minas Gerais.",
-    "conceptP2": "This balance between softness and structure reflects the very nature of software: a field that demands technical robustness, but also creativity, adaptability and constant innovation."
+    "conceptP1": "The brand’s main visual reference is the Niemeyer Building, designed by Oscar Niemeyer in 1954 and located near Praça da Liberdade, in central Belo Horizonte. Its curved lines express the lightness and fluidity of modernist architecture and recall the mountainous landscape of Minas Gerais.",
+    "conceptP2": "This balance between lightness and structure echoes software development, which demands technical rigor as well as creativity and adaptability."
   },
   "aboutSbc": {
     "title": "About SBC",
-    "p1": "The <b>Brazilian Computer Society (SBC)</b> is a non-profit scientific society, founded in July 1978, that brings together students, professors, professionals, researchers and enthusiasts in Computing and Informatics from all over the country.",
-    "p2": "SBC's role is to foster access to information and culture through computing, promote digital inclusion, encourage research and teaching in computing in Brazil, and contribute to the education of socially responsible computing professionals.",
-    "p3": "To organise and promote scientific, technical, educational and political activities, actions and events, SBC maintains three types of Thematic Groups (GT): the Major Areas (GA), the Special Committees (CE) and the Interest Groups (GI). These groups bring together members with common interests in subfields of computing.",
-    "p4": "You are visiting the website of an event of one of <b>SBC's Special Committees (CE)</b>, each representing a group of SBC members who share interests and values in a given area of Computing. Current members can subscribe to the <lists>Special Committees (CE) mailing lists</lists> for the area they wish to follow. If you are not yet a member or wish to renew your membership, <join>click here</join> and become part of the largest and most important scientific society in computing in Latin America!"
+    "p1": "The <b>Brazilian Computer Society (SBC)</b> is a non-profit scientific society, founded in July 1978, that brings together students, professors, professionals, researchers and enthusiasts in Computing from all over the country.",
+    "p2": "SBC aims to foster access to information and culture through Computing, promote digital inclusion, encourage research and teaching in Computing in Brazil, and contribute to the education of socially responsible Computing professionals.",
+    "p3": "To organize and promote scientific, technical, educational and political activities, actions and events, SBC maintains three types of Thematic Groups (GT): the Major Areas (GA), the Special Committees (CE) and the Interest Groups (GI), which bring together members with common interests in subfields of Computing.",
+    "p4": "This is the website of an event promoted by <b>SBC Special Committees (CE)</b>, which bring together members who share interests in a given area of Computing. Members in good standing can subscribe to the <lists>Special Committees mailing lists</lists> for the areas they wish to follow. To join SBC or renew your membership, <join>visit the membership page</join>."
   },
   "symposiumCallPage": {
     "metaTitle": "Call for Papers — {{acronym}} — CBSOFT'27",
-    "metaDescription": "Read the call for papers ({{acronym}}) of CBSoft 2027: topics of interest, submission guidelines, important dates and organisation.",
+    "metaDescription": "{{acronym}} call for papers at CBSoft 2027: topics of interest, submission guidelines, important dates and organization.",
     "comingSoon": "The {{acronym}} {{year}} call for papers will be announced soon.",
     "trackComingSoon": "{{track}}, SBES {{year}}: the call for papers will be announced soon.",
     "datesTitle": "Important Dates",
     "tbd": "TBD",
     "hardDeadline": "Hard deadline",
-    "organizationTitle": "Organisation",
+    "organizationTitle": "Organization",
     "chairsTitle": "Program Committee Chairs",
     "committeeTitle": "Program Committee"
   },
   "workshopsCallPage": {
-    "metaTitle": "Call for Papers — Workshops — CBSOFT'27",
+    "metaTitle": "Call for Workshops — CBSOFT'27",
     "title": "Call for Workshops",
     "contextTitle": "Context and Goals",
-    "contextP1": "The Brazilian Congress on Software: Theory and Practice (CBSoft) is an annual event promoted by the Brazilian Computer Society (SBC) to foster the exchange of experiences among researchers and practitioners from industry and academia on recent research, trends and innovations in software. Held since 2010 as an umbrella event for the Brazilian symposia promoted by SBC in the software area, CBSoft has become one of the main events of the Computing community in Brazil.",
-    "contextP2": "In 2027, the eighteenth edition of CBSoft will be held in person in Belo Horizonte (MG), from September 27 to October 1, bringing together four traditional annual events:",
+    "contextP1": "The Brazilian Conference on Software: Theory and Practice (CBSoft) is held annually by the Brazilian Computer Society (SBC) to promote the exchange of experience among researchers and practitioners from academia and industry on research, trends and innovations in software. Held since 2010, CBSoft brings together the Brazilian software symposia promoted by SBC and has become one of the main events of the Brazilian Computing community.",
+    "contextP2": "In 2027, the 18th edition of CBSoft will be held in person in Belo Horizonte (MG), from September 27 to October 1, bringing together four symposia held annually:",
     "contextP3": "In addition, CBSoft includes workshops related to the topics of these events. The goal is to create a space where members of academia and industry can exchange and discuss experiences and ideas. Workshops traditionally held at CBSoft may be promoted to pre-approved workshops (see details below).",
     "datesTitle": "Important Dates",
     "milestones": {
       "proposals": "Workshop proposal submission",
       "notification": "Acceptance notification",
-      "finalVersion": "Final version of papers (for Workshop Chairs)"
+      "finalVersion": "Final version of papers (sent by the workshop chairs)"
     },
     "tbd": "To be announced",
     "generalTitle": "General Information",
@@ -140,7 +137,7 @@
     "schedule": "Workshops will be held in person, on dates to be announced.",
     "preferredDate": "Organizers may indicate a preferred date, but the final schedule will be defined by the Workshops Committee in coordination with the CBSoft 2027 organization.",
     "importantLabel": "IMPORTANT:",
-    "important": "The workshop proceedings will be prepared jointly by the workshop organizers and the CBSoft proceedings chairs. The deadlines for sending workshop papers to the CBSoft organization must be followed.",
+    "important": "The workshop proceedings will be prepared jointly by the organizers of each workshop and the CBSoft proceedings chairs. The deadlines for sending workshop papers to the CBSoft organization must be strictly observed.",
     "submissionTitle": "Submission Instructions",
     "submissionPreApproved": "(See the next section for pre-approved workshops.)",
     "submissionWhere": "Workshop proposals must be submitted at:",
@@ -235,12 +232,12 @@
     "ethics": "All submitted papers must comply with the <a>Code of Conduct for Authors in Publications of the Brazilian Computer Society (SBC)</a>.",
     "organizationTitle": "Organization",
     "chairsTitle": "Workshops Committee Chairs",
-    "metaDescription": "Explore the call for papers for the CBSOFT 2027 workshops, including proposal and submission guidelines, selection criteria and important dates."
+    "metaDescription": "CBSoft 2027 call for workshops: proposal guidelines, selection criteria and important dates."
   },
   "events": {
     "eyebrow": "SYMPOSIA",
     "title": "Four symposia, one program",
-    "intro": "CBSOFT co-locates the following national symposia, each with its own program committee and proceedings.",
+    "intro": "CBSoft brings together the following national symposia, each with its own program committee and proceedings.",
     "complementary": "Complementary tracks"
   },
   "cfp": {
@@ -284,21 +281,21 @@
     "eyebrow": "LOCATION",
     "city": "Belo Horizonte, MG, Brazil",
     "noticeTitle": "Event access details to be confirmed",
-    "notice": "The campus is confirmed. The building, rooms, registration desk and recommended entrance for CBSOFT 2027 will be announced after confirmation by the organizers.",
+    "notice": "The campus is confirmed. The building, rooms, registration desk and recommended entrance for CBSoft 2027 will be announced after confirmation by the organizers.",
     "unconfirmed": "Venue to be confirmed",
     "unconfirmedNotice": "The venue name and address will be published after confirmation by the organizers.",
     "transitHeading": "Getting there",
     "moreInfo": "Address, directions and map",
-    "videoTitle": "CBSOFT 2027 in Belo Horizonte",
-    "playAria": "Play the CBSOFT 2027 video",
+    "videoTitle": "CBSoft 2027 in Belo Horizonte",
+    "playAria": "Play the CBSoft 2027 video",
     "videoFallback": "Video not loading? Watch on YouTube",
     "consultTransport": "Check transport services ↗",
     "transitSource": "Transport references published by PUC Minas ↗",
-    "transitNote": "These references serve the campus area. Check stops, routes and timetables before travelling; event-specific access details will be announced."
+    "transitNote": "These references serve the campus area. Check stops, routes and timetables before traveling; event-specific access details will be announced."
   },
   "locationPage": {
-    "metaTitle": "Event venue | CBSOFT 2027",
-    "title": "Event venue",
+    "metaTitle": "Event Venue — CBSOFT'27",
+    "title": "Event Venue",
     "mapTitle": "Map and directions",
     "mapDescription": "Use the campus address as your destination in Google Maps. Directions depend on your starting point. The event entrance, building and rooms are still to be confirmed.",
     "directions": "Get directions on Google Maps ↗",
@@ -307,7 +304,7 @@
   },
   "committee": {
     "eyebrow": "ORGANIZING COMMITTEE",
-    "title": "Who is organizing CBSOFT 2027",
+    "title": "Who is organizing CBSoft 2027",
     "note": "Names below are placeholders pending confirmation by SBC and the local organizing institutions.",
     "generalChairs": "General Chairs",
     "pcChairs": "Program Committee Chairs",
@@ -317,30 +314,87 @@
   },
   "accommodationPage": {
     "metaTitle": "Accommodation — CBSOFT'27",
-    "metaDescription": "Accommodation information for CBSOFT 2027 in Belo Horizonte, to be announced.",
+    "metaDescription": "Accommodation information for CBSoft 2027 in Belo Horizonte, to be announced.",
     "title": "Accommodation",
     "pending": "Accommodation to be announced"
   },
+  "experiencesPage": {
+    "metaTitle": "Experiences — CBSOFT'27",
+    "metaDescription": "Experiences for CBSoft 2027 participants in Belo Horizonte, to be announced.",
+    "title": "Experiences",
+    "intro": "Suggestions for sightseeing, culture and food in Belo Horizonte for CBSoft 2027 participants.",
+    "pending": "Coming soon",
+    "moreInfo": "Learn more",
+    "categories": {
+      "turismo": "Tourism in BH",
+      "shows": "Shows and Concerts",
+      "gastronomia": "Food in BH"
+    }
+  },
+  "programPage": {
+    "metaTitle": "Schedule — CBSOFT'27",
+    "metaDescription": "Official CBSoft 2027 schedule: sessions, talks and activities by day, with search and filters.",
+    "title": "Schedule",
+    "pendingTitle": "Coming soon",
+    "pendingText": "The official CBSoft 2027 schedule will be published here as soon as it is defined by the coordination.",
+    "searchLabel": "Search",
+    "searchPlaceholder": "Title or speaker",
+    "eventLabel": "Symposium or event",
+    "allEvents": "All",
+    "trackLabel": "SBES track",
+    "allTracks": "All",
+    "categoryLabel": "Category",
+    "allCategories": "All",
+    "clearFilters": "Clear filters",
+    "daysAria": "Program days",
+    "viewAria": "View",
+    "viewList": "List",
+    "viewGrid": "Grid by room",
+    "results_one": "{{count}} activity",
+    "results_other": "{{count}} activities",
+    "noResults": "No activities found on this day with the current filters.",
+    "timeTba": "Time to be confirmed",
+    "time": "Time",
+    "room": "Room",
+    "chair": "Chair",
+    "addToCalendar": "Add to calendar",
+    "events": {
+      "cbsoft": "CBSoft (general)",
+      "workshops": "Workshops"
+    },
+    "categories": {
+      "opening": "Opening",
+      "keynote": "Keynote",
+      "papers": "Technical session",
+      "panel": "Panel",
+      "tutorial": "Tutorial",
+      "workshop": "Workshop",
+      "tools": "Tools",
+      "competition": "Competition",
+      "social": "Social",
+      "break": "Break"
+    }
+  },
   "organizationPage": {
     "metaTitle": "Organization — CBSOFT'27",
-    "metaDescription": "Meet the institutions and the team organizing CBSOFT 2027 in Belo Horizonte.",
+    "metaDescription": "Institutions and team organizing CBSoft 2027 in Belo Horizonte.",
     "title": "Organization"
   },
   "sponsorship": {
-    "eyebrow": "WHO IS CONTRIBUTING",
-    "title": "Who is contributing",
-    "organization": "Organisation",
+    "eyebrow": "ORGANIZATION AND SUPPORT",
+    "title": "Organization and support",
+    "organization": "Organization",
     "realization": "Promoted by",
     "support": "Sponsorship & support",
     "cta": {
-      "action": "Contact the committee",
+      "action": "Contact the organizers",
       "sponsor": {
         "title": "Become a sponsor",
-        "text": "Associate your brand with Brazil's leading software congress and reach researchers and practitioners from across the country."
+        "text": "Support CBSoft 2027 and connect your organization with the Brazilian software research and development community."
       },
       "supporter": {
         "title": "Become a supporter",
-        "text": "Support the event with infrastructure, grants or outreach and join the software research community."
+        "text": "Support the event with infrastructure, grants or outreach."
       }
     }
   },
@@ -364,11 +418,11 @@
       "title": "Event",
       "about": {
         "title": "About",
-        "description": "Discover the Brazilian Conference on Software."
+        "description": "The conference, its symposia and its history."
       },
       "organization": {
         "title": "Organization",
-        "description": "Meet the team organizing CBSOFT’27."
+        "description": "Institutions and team behind CBSoft 2027."
       },
       "speakers": {
         "title": "Speakers",
@@ -379,41 +433,41 @@
       "title": "Participant guide",
       "venue": {
         "title": "Venue",
-        "description": "Find out where CBSOFT’27 takes place and how to get there."
+        "description": "Where CBSoft 2027 takes place and how to get there."
       },
       "map": {
         "title": "Map",
-        "description": "Find the event spaces and activities."
+        "description": "Campus map and directions."
       },
       "accommodation": {
         "title": "Accommodation",
-        "description": "Places to stay in Belo Horizonte, to be announced."
+        "description": "Places to stay in Belo Horizonte (to be announced)."
       },
       "social": {
         "title": "Social Events",
         "description": "Meet people, exchange ideas and build connections."
       },
       "experiences": {
-        "title": "Experience BH",
-        "description": "Discover Belo Horizonte’s culture, food and attractions."
+        "title": "Experiences",
+        "description": "Sightseeing, culture and food in Belo Horizonte."
       }
     },
     "history": {
       "title": "History",
       "previous": {
-        "title": "Previous editions",
-        "description": "Explore the history and past editions of CBSOFT."
+        "title": "Previous Editions",
+        "description": "Venues and websites of every edition since 2010."
       }
     },
     "program": {
       "title": "Program",
       "schedule": {
         "title": "Schedule",
-        "description": "Explore the conference timetable and activities."
+        "description": "Conference sessions and activities, by day."
       },
       "articles": {
         "title": "Accepted Papers",
-        "description": "Discover the papers selected for the event."
+        "description": "Papers accepted at the symposia and tracks."
       },
       "special": {
         "title": "Special Activities",
@@ -424,11 +478,11 @@
       "title": "Participation",
       "volunteers": {
         "title": "Call for Volunteers",
-        "description": "Learn how to contribute to CBSOFT’27."
+        "description": "How to volunteer at CBSoft 2027."
       },
       "conduct": {
         "title": "Code of Conduct",
-        "description": "Guidelines for a respectful and inclusive event."
+        "description": "Expected behavior and how to report incidents."
       }
     },
     "sbes": {
@@ -466,7 +520,7 @@
       },
       "program": {
         "title": "Schedule",
-        "description": "Explore SBES sessions and activities."
+        "description": "SBES sessions and activities."
       },
       "trackCall": "Call for Papers",
       "trackPapers": "Accepted Papers"
@@ -475,52 +529,52 @@
       "title": "SBLP",
       "call": {
         "title": "Call for Papers",
-        "description": "Guidelines for submitting Programming Languages research."
+        "description": "SBLP topics, deadlines and submission guidelines."
       },
       "program": {
         "title": "Schedule",
-        "description": "Explore SBLP sessions and activities."
+        "description": "SBLP sessions and activities."
       },
       "papers": {
         "title": "Accepted Papers",
-        "description": "Discover the papers selected for SBLP."
+        "description": "Papers accepted at SBLP."
       }
     },
     "sbcars": {
       "title": "SBCARS",
       "call": {
         "title": "Call for Papers",
-        "description": "Submit research on Software Components, Architectures and Reuse."
+        "description": "SBCARS topics, deadlines and submission guidelines."
       },
       "program": {
         "title": "Schedule",
-        "description": "Explore SBCARS sessions and activities."
+        "description": "SBCARS sessions and activities."
       },
       "papers": {
         "title": "Accepted Papers",
-        "description": "Discover the papers selected for SBCARS."
+        "description": "Papers accepted at SBCARS."
       }
     },
     "sast": {
       "title": "SAST",
       "call": {
         "title": "Call for Papers",
-        "description": "Guidelines for work on Software Testing and Analysis."
+        "description": "SAST topics, deadlines and submission guidelines."
       },
       "program": {
         "title": "Schedule",
-        "description": "Explore SAST sessions and activities."
+        "description": "SAST sessions and activities."
       },
       "papers": {
         "title": "Accepted Papers",
-        "description": "Discover the papers selected for SAST."
+        "description": "Papers accepted at SAST."
       }
     },
     "workshops": {
       "title": "Workshops",
       "call": {
-        "title": "Call for Papers",
-        "description": "Find guidelines for participating in the workshops."
+        "title": "Call for Workshops",
+        "description": "How to propose a workshop, criteria and deadlines."
       },
       "accepted": {
         "title": "Accepted Workshops",
@@ -528,7 +582,7 @@
       },
       "program": {
         "title": "Schedule",
-        "description": "Explore workshop timetables and activities."
+        "description": "Workshop sessions and activities."
       },
       "papers": {
         "title": "Accepted Papers",
@@ -567,15 +621,15 @@
   },
   "homePage": {
     "metaTitle": "CBSOFT'27 — Brazilian Conference on Software",
-    "metaDescription": "CBSOFT 2027, organized by the Brazilian Computer Society (SBC), brings together the SBES, SBLP, SBCARS and SAST symposia in Belo Horizonte, Brazil."
+    "metaDescription": "CBSoft 2027, promoted by the Brazilian Computer Society (SBC), brings together the SBES, SBLP, SBCARS and SAST symposia in Belo Horizonte, Brazil, from September 27 to October 1, 2027."
   },
   "conductPage": {
     "metaTitle": "Code of Conduct — CBSOFT'27",
     "title": "Code of Conduct",
-    "p1": "The open exchange of ideas and the freedom of thought and expression are central to the goals of CBSoft. This requires an environment that recognizes the inherent worth of every person and group, that fosters dignity, understanding and mutual respect, and that embraces diversity. For these reasons, CBSoft is dedicated to providing a harassment-free experience for participants at the event and on its official communication channels, including social media. The goal is for every participant to feel welcome, included, respected and safe. There is zero tolerance for hostile or unwelcome behavior, or for speech that intimidates, creates discomfort or interferes with anyone's participation in the event.",
+    "p1": "The open exchange of ideas and the freedom of thought and expression are central to the goals of CBSoft. This requires an environment that recognizes the worth of every person and group, fosters dignity, understanding and mutual respect, and embraces diversity. For these reasons, CBSoft is committed to providing a harassment-free experience for participants, both at the event and on its official communication channels, including social media. The goal is for every participant to feel welcome, included, respected and safe. Hostile or unwelcome behavior, and any speech that intimidates, creates discomfort or interferes with anyone’s participation in the event, will not be tolerated.",
     "p2": "<b>Unacceptable behavior includes:</b> abusive or degrading language, sustained disruption of a talk, discussion or other activity, discrimination, deliberate intimidation, stalking, harassing photography or recording, inappropriate physical contact, sexual imagery or unwelcome sexual attention.",
     "p3": "<b>Harassment includes:</b> derogatory comments, writings or actions related to race, color, sex, gender, sexual orientation, gender identity or expression, age, marital status, religion, nationality, disability, pregnancy, medical conditions, veteran status or any other status protected by Brazilian law.",
-    "p4": "Anyone who witnesses or is subjected to unacceptable behavior or harassment should notify a member of the CBSoft 2027 Organizing Committee or event security. Responses that the participant was \"joking\" or that the behavior was \"just a joke\" will not be accepted. Individuals who violate these standards may be sanctioned or excluded from the event, without any refund or compensation, at the discretion of the CBSoft 2027 Organizing Committee."
+    "p4": "Anyone who witnesses or is subjected to unacceptable behavior or harassment should report it to a member of the CBSoft 2027 Organizing Committee or to event security. Claims that the behavior was “just a joke” will not be accepted. Anyone who violates these standards may be sanctioned or excluded from the event, without any refund or compensation, at the discretion of the CBSoft 2027 Organizing Committee."
   },
   "volunteersPage": {
     "metaTitle": "Call for Volunteers — CBSOFT'27",
@@ -644,7 +698,9 @@
     "notFound": "Track not found.",
     "generalMetaTitle": "Accepted Papers — CBSOFT'27",
     "generalEyebrow": "CBSoft 2027",
-    "generalPending": "The list of accepted papers will be published after authors are notified."
+    "generalPending": "The list of accepted papers will be published after authors are notified.",
+    "symposiumMetaTitle": "Accepted Papers — {{acronym}} — CBSOFT'27",
+    "symposiumPending": "The list of papers accepted at {{acronym}} will be published after authors are notified."
   },
   "previousEditionsPage": {
     "title": "Previous Editions",
@@ -652,7 +708,7 @@
     "online": "(Online)",
     "visit": "Visit edition",
     "newTab": "(opens in a new tab)",
-    "metaTitle": "Previous Editions - CBSOFT'27",
+    "metaTitle": "Previous Editions — CBSOFT'27",
     "metaDescription": "Explore previous CBSoft editions, from 2010 to 2026, with their locations and links to each conference website."
   }
 }

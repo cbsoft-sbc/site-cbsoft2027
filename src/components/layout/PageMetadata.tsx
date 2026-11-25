@@ -9,6 +9,8 @@ const PAGE_KEYS: Record<string, string> = {
   '/': 'homePage',
   '/sobre': 'aboutPage',
   '/acomodacoes': 'accommodationPage',
+  '/experiencias': 'experiencesPage',
+  '/programacao': 'programPage',
   '/organizacao': 'organizationPage',
   '/edicoes-anteriores': 'previousEditionsPage',
   '/workshops/chamada': 'workshopsCallPage',

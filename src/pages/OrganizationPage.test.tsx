@@ -21,7 +21,7 @@ describe('OrganizationPage', () => {
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}organizacao`);
     expect(screen.getByRole('heading', { level: 1, name: 'Organização' })).toBeTruthy();
     expect(screen.getByText('Realização')).toBeTruthy();
-    expect(screen.getByRole('heading', { name: 'Quem organiza o CBSOFT 2027' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Quem organiza o CBSoft 2027' })).toBeTruthy();
   });
 
   it('renders on direct access in English', async () => {
@@ -30,7 +30,7 @@ describe('OrganizationPage', () => {
     render(<App />);
     expect(screen.getByRole('heading', { level: 1, name: 'Organization' })).toBeTruthy();
     expect(screen.getByText('Promoted by')).toBeTruthy();
-    expect(screen.getByRole('heading', { name: 'Who is organizing CBSOFT 2027' })).toBeTruthy();
+    expect(screen.getByRole('heading', { name: 'Who is organizing CBSoft 2027' })).toBeTruthy();
   });
 
   it('scrolls to the committee when opened with #comite', () => {

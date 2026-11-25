@@ -34,7 +34,7 @@ describe('HeaderMegaMenu — SBES tracks', () => {
     const links = flyout.querySelectorAll('a');
     expect(links[0].textContent).toBe('Chamada de Trabalhos');
     expect(links[0].getAttribute('href')).toBe('/sbes/educacao/chamada');
-    expect(links[1].getAttribute('href')).toBe('/artigos-aceitos');
+    expect(links[1].getAttribute('href')).toBe('/sbes/educacao/artigos-aceitos');
 
     fireEvent.scroll(container.querySelector('.header-mega-menu__content')!);
     expect(screen.queryByRole('group')).toBeNull();
@@ -44,6 +44,6 @@ describe('HeaderMegaMenu — SBES tracks', () => {
   it('expands the links inline on mobile', () => {
     renderSbes(true);
     fireEvent.click(screen.getByRole('button', { name: /Trilha de Pesquisa/ }));
-    expect(screen.getByRole('link', { name: 'Artigos Aceitos' }).getAttribute('href')).toBe('/artigos-aceitos');
+    expect(screen.getByRole('link', { name: 'Artigos Aceitos' }).getAttribute('href')).toBe('/sbes/pesquisa/artigos-aceitos');
   });
 });

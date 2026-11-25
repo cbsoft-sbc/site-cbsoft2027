@@ -52,9 +52,8 @@
   "about": {
     "eyebrow": "SOBRE",
     "title": "O que é o CBSoft?",
-    "p1": "O Congresso Brasileiro de Software: Teoria e Prática (CBSoft) é um evento realizado anualmente pela Sociedade Brasileira de Computação (SBC) desde 2010 como agregador de simpósios brasileiros da área de software. O CBSoft tornou-se um dos principais eventos da comunidade científica brasileira na área de Computação.",
-    "p2": "Em 2027 o congresso chega a Belo Horizonte — na PUC, um dos polos de inovação e startups mais ativos do Brasil — com uma programação que combina trilhas científicas, trilha de indústria, cursos, sessão de ferramentas e concurso de teses e dissertações.",
-    "statSymposia": "simpósios coalocados",
+    "p1": "O Congresso Brasileiro de Software: Teoria e Prática (CBSoft) é realizado anualmente pela Sociedade Brasileira de Computação (SBC). Desde 2010, reúne os simpósios brasileiros da área de software promovidos pela SBC e tornou-se um dos principais eventos da comunidade científica brasileira de Computação.",
+    "statSymposia": "simpósios integrados",
     "statYears": "anos de história",
     "statDays": "dias de programação",
     "locationLabel": "Localização",
@@ -68,43 +67,41 @@
     "cta": "Inscreva-se aqui",
     "ctaSoon": "Inscrições em breve",
     "soon": "As inscrições serão feitas pelo sistema da SBC. Datas, categorias e valores serão divulgados aqui assim que forem aprovados.",
-    "p1": "O Congresso Brasileiro de Software (CBSoft) é um evento realizado pela <sbc>Sociedade Brasileira de Computação (SBC)</sbc>. A SBC é uma associação civil sem fins lucrativos que reúne estudantes, professores, profissionais, pesquisadores e entusiastas em Computação de todo o Brasil, sendo a maior sociedade científica da área na América do Sul.",
-    "p2": "Fundada em 1978, a SBC estimula o desenvolvimento científico e tecnológico no país, promovendo a inclusão digital, incentivando atividades de ensino, pesquisa e desenvolvimento em Computação no Brasil e contribuindo para a formação do profissional de Computação com responsabilidade social.",
+    "p1": "O Congresso Brasileiro de Software: Teoria e Prática (CBSoft) é realizado pela <sbc>Sociedade Brasileira de Computação (SBC)</sbc>, associação civil sem fins lucrativos que reúne estudantes, professores, profissionais, pesquisadores e entusiastas da área de Computação de todo o Brasil.",
+    "p2": "Fundada em 1978, a SBC estimula o desenvolvimento científico e tecnológico do país, promove a inclusão digital, incentiva atividades de ensino, pesquisa e desenvolvimento em Computação e contribui para a formação de profissionais de Computação com responsabilidade social.",
     "p3": "Os valores de inscrição no <b>CBSoft 2027</b> estão listados a seguir.",
-    "p4": "Estudantes e profissionais não associados à SBC podem se associar ou renovar sua associação durante o processo de inscrição com desconto.",
-    "p5": "A opção <b>combo (inscrição + associação à SBC)</b> é a mais vantajosa, pois oferece menor custo total e acesso aos benefícios da associação."
+    "p4": "Estudantes e profissionais não associados à SBC podem se associar ou renovar a associação, com desconto, durante a inscrição.",
+    "p5": "A opção <b>combo (inscrição + associação à SBC)</b> tem o menor custo total e inclui os benefícios da associação."
   },
   "aboutPage": {
     "metaTitle": "Sobre o CBSoft — CBSOFT'27",
     "title": "Sobre o CBSoft",
-    "p1": "O Congresso Brasileiro de Software: Teoria e Prática (CBSoft) é um evento realizado anualmente pela Sociedade Brasileira de Computação (SBC) com o objetivo de promover e incentivar a troca de experiências entre pesquisadores e profissionais da indústria e academia sobre as mais recentes pesquisas, tendências e inovações práticas e teóricas sobre software. Realizado desde 2010 como evento agregador de simpósios brasileiros promovidos pela SBC na área de software, o CBSoft tornou-se um dos principais eventos da comunidade científica brasileira na área de Computação.",
-    "p2": "Em 2027, a XVIII edição do CBSoft será realizada presencialmente em Belo Horizonte, Minas Gerais, de 27 de setembro a 1 de outubro. A edição integra quatro eventos tradicionais realizados anualmente pela comunidade brasileira em Engenharia de Software:",
-    "activitiesLead": "A programação do CBSoft incluirá sessões técnicas com apresentações de artigos científicos, palestras proferidas por pesquisadores brasileiros e estrangeiros de renome nacional e internacional, painéis de discussão, workshops, e demonstrações de ferramentas.",
-    "activitiesClosing": "Todas essas diversas atividades de interesse da comunidade de Engenharia de Software e de áreas relacionadas ao desenvolvimento de sistemas de software direcionam-se para a difusão do conhecimento e discussão de questões importantes relacionadas à pesquisa, desenvolvimento e inovação, tanto no Brasil quanto no mundo.",
-    "metaDescription": "Conheça o CBSoft, o Congresso Brasileiro de Software: Teoria e Prática, seus simpósios integrados e as atividades da edição de 2027 em Belo Horizonte.",
+    "p1": "O Congresso Brasileiro de Software: Teoria e Prática (CBSoft) é realizado anualmente pela Sociedade Brasileira de Computação (SBC) com o objetivo de promover a troca de experiências entre pesquisadores e profissionais da academia e da indústria sobre pesquisas, tendências e inovações, teóricas e práticas, em software. Realizado desde 2010, o CBSoft reúne os simpósios brasileiros da área de software promovidos pela SBC e tornou-se um dos principais eventos da comunidade científica brasileira de Computação.",
+    "p2": "Em 2027, a XVIII edição do CBSoft será realizada presencialmente em Belo Horizonte, Minas Gerais, de 27 de setembro a 1º de outubro, e reunirá quatro simpósios realizados anualmente pela comunidade brasileira de software:",
+    "metaDescription": "Conheça o CBSoft, Congresso Brasileiro de Software: Teoria e Prática, os simpósios que o integram e as atividades da edição de 2027, em Belo Horizonte.",
     "listAnd": "e",
-    "program": "A programação do CBSoft incluirá sessões técnicas com apresentações de artigos científicos, palestras proferidas por pesquisadores brasileiros e estrangeiros de renome nacional e internacional, painéis de discussão, workshops, e demonstrações de ferramentas. Todas essas diversas atividades de interesse da comunidade de Engenharia de Software e de áreas relacionadas ao desenvolvimento de sistemas de software direcionam-se para a difusão do conhecimento e discussão de questões importantes relacionadas à pesquisa, desenvolvimento e inovação, tanto no Brasil quanto no mundo."
+    "program": "A programação inclui sessões técnicas com apresentação de artigos científicos, palestras de pesquisadores do Brasil e do exterior, painéis de discussão, workshops e demonstrações de ferramentas. Essas atividades promovem a difusão do conhecimento e o debate sobre pesquisa, desenvolvimento e inovação em software."
   },
   "visualIdentity": {
-    "title": "Identidade Visual do CBSOFT 2027",
-    "intro": "A identidade visual do CBSOFT 2027 conecta tecnologia, arquitetura e a identidade de Belo Horizonte. Inspirada no Edifício Niemeyer, a marca utiliza suas curvas para representar movimento, criatividade, inovação e conexão com a cidade.",
+    "title": "Identidade Visual do CBSoft 2027",
+    "intro": "A identidade visual do CBSoft 2027 relaciona tecnologia, arquitetura e a paisagem urbana de Belo Horizonte, tomando como referência as curvas do Edifício Niemeyer.",
     "photoAlt": "Edifício Niemeyer, em Belo Horizonte, com sua fachada de linhas curvas e árvores floridas em primeiro plano",
     "photoCaption": "Edifício Niemeyer — Oscar Niemeyer, 1954 · Belo Horizonte, MG",
     "logoAlt": "Logo oficial do CBSOFT'27 — Congresso Brasileiro de Software, Belo Horizonte, Minas Gerais",
     "conceptTitle": "Conceito da marca",
-    "conceptP1": "A principal inspiração visual da marca é o Edifício Niemeyer, projetado por Oscar Niemeyer em 1954 e situado próximo à Praça da Liberdade, no coração de Belo Horizonte. Suas linhas curvas dialogam com a leveza e a fluidez da arquitetura modernista e evocam a silhueta das montanhas de Minas Gerais.",
-    "conceptP2": "Essa relação entre suavidade e estrutura traduz o próprio universo do software: um campo que exige robustez técnica, mas também criatividade, adaptação e inovação constante."
+    "conceptP1": "A principal referência visual da marca é o Edifício Niemeyer, projetado por Oscar Niemeyer em 1954 e situado próximo à Praça da Liberdade, na região central de Belo Horizonte. Suas linhas curvas expressam a leveza e a fluidez da arquitetura modernista e remetem ao relevo montanhoso de Minas Gerais.",
+    "conceptP2": "A relação entre leveza e estrutura remete ao desenvolvimento de software, que exige rigor técnico e, ao mesmo tempo, criatividade e capacidade de adaptação."
   },
   "aboutSbc": {
     "title": "Sobre a SBC",
-    "p1": "A <b>Sociedade Brasileira de Computação - SBC</b> é uma Sociedade Científica sem fins lucrativos, fundada em julho de 1978, que reúne estudantes, professores, profissionais, pesquisadores e entusiastas da área da Computação e Informática de todo o país.",
-    "p2": "A SBC tem como função fomentar o acesso à informação e cultura por meio da informática, promover a inclusão digital, incentivar a pesquisa e o ensino em computação no Brasil, e contribuir para a formação do profissional da computação com responsabilidade social.",
-    "p3": "Para organização e divulgação de atividades, ações e eventos científicos, técnicos, educacionais e políticos, a SBC mantém uma estrutura de três tipos de Grupos Temáticos (GT), que são as Grandes Áreas (GA), as Comissões Especiais (CE) e os Grupos de Interesses (GI). Estes grupos reúnem associados com interesses comuns em subáreas da computação.",
-    "p4": "Aqui, você está acessando o site do evento de uma das <b>Comissões Especiais (CE) da SBC</b>, que representa um grupo de associados da SBC que compartilham dos interesses e valores em determinada área da Computação. Associados vigentes podem se inscrever nas <lists>listas de e-mail das Comissões Especiais (CE)</lists> da área que deseja acompanhar. Se você ainda não é um associado ou deseja renovar sua associação à nossa comunidade <join>clique aqui</join> e venha fazer parte da maior e mais importante sociedade científica na área de computação da América Latina!"
+    "p1": "A <b>Sociedade Brasileira de Computação (SBC)</b> é uma sociedade científica sem fins lucrativos, fundada em julho de 1978, que reúne estudantes, professores, profissionais, pesquisadores e entusiastas da área de Computação de todo o país.",
+    "p2": "A SBC tem como objetivos fomentar o acesso à informação e à cultura por meio da Computação, promover a inclusão digital, incentivar a pesquisa e o ensino de Computação no Brasil e contribuir para a formação de profissionais de Computação com responsabilidade social.",
+    "p3": "Para organizar e divulgar atividades, ações e eventos científicos, técnicos, educacionais e políticos, a SBC mantém três tipos de Grupos Temáticos (GT): as Grandes Áreas (GA), as Comissões Especiais (CE) e os Grupos de Interesse (GI), que reúnem associados com interesses comuns em subáreas da Computação.",
+    "p4": "Este é o site de um evento promovido por <b>Comissões Especiais (CE) da SBC</b>, que reúnem associados com interesses em comum em determinada área da Computação. Associados em dia podem se inscrever nas <lists>listas de e-mail das Comissões Especiais</lists> das áreas que desejam acompanhar. Para se associar à SBC ou renovar sua associação, <join>acesse a página de associação</join>."
   },
   "symposiumCallPage": {
     "metaTitle": "Chamada de Trabalhos — {{acronym}} — CBSOFT'27",
-    "metaDescription": "Confira a chamada de trabalhos ({{acronym}}) do CBSoft 2027: tópicos de interesse, diretrizes de submissão, datas importantes e organização.",
+    "metaDescription": "Chamada de trabalhos do {{acronym}} no CBSoft 2027: tópicos de interesse, diretrizes de submissão, datas importantes e organização.",
     "comingSoon": "A chamada de trabalhos do {{acronym}} {{year}} será divulgada em breve.",
     "trackComingSoon": "{{track}} do SBES {{year}}: a chamada de trabalhos será divulgada em breve.",
     "datesTitle": "Datas Importantes",
@@ -115,17 +112,17 @@
     "committeeTitle": "Comitê de Programa"
   },
   "workshopsCallPage": {
-    "metaTitle": "Chamada de Trabalhos — Workshops — CBSOFT'27",
+    "metaTitle": "Chamada de Workshops — CBSOFT'27",
     "title": "Chamada de Workshops",
     "contextTitle": "Contexto e Objetivo",
-    "contextP1": "O Congresso Brasileiro de Software: Teoria e Prática (CBSoft) é um evento promovido anualmente pela Sociedade Brasileira de Computação (SBC), com o objetivo de promover a troca de experiências entre pesquisadores e profissionais da indústria e da academia sobre pesquisas recentes, tendências e inovações em software. Realizado desde 2010 como um evento agregador dos simpósios brasileiros promovidos pela SBC na área de software, o CBSoft tornou-se um dos principais eventos da comunidade de Computação no Brasil.",
-    "contextP2": "Em 2027, a décima oitava edição do CBSoft será realizada presencialmente em Belo Horizonte (MG), de 27 de setembro a 1 de outubro, integrando quatro eventos anuais tradicionais:",
+    "contextP1": "O Congresso Brasileiro de Software: Teoria e Prática (CBSoft) é realizado anualmente pela Sociedade Brasileira de Computação (SBC) com o objetivo de promover a troca de experiências entre pesquisadores e profissionais da academia e da indústria sobre pesquisas, tendências e inovações em software. Realizado desde 2010, o CBSoft reúne os simpósios brasileiros da área de software promovidos pela SBC e tornou-se um dos principais eventos da comunidade brasileira de Computação.",
+    "contextP2": "Em 2027, a XVIII edição do CBSoft será realizada presencialmente em Belo Horizonte (MG), de 27 de setembro a 1º de outubro, e reunirá quatro simpósios realizados anualmente:",
     "contextP3": "Além disso, o CBSoft inclui workshops relacionados aos temas desses eventos. O objetivo é criar um espaço para que membros da academia e da indústria troquem e discutam experiências e ideias. Workshops tradicionalmente realizados no CBSoft podem ser promovidos a workshops pré-aprovados (ver detalhes abaixo).",
     "datesTitle": "Datas Importantes",
     "milestones": {
       "proposals": "Submissão de propostas de workshop",
       "notification": "Notificação de aceitação",
-      "finalVersion": "Versão final dos artigos (para Chairs de Workshops)"
+      "finalVersion": "Versão final dos artigos (enviada pelos coordenadores dos workshops)"
     },
     "tbd": "A definir",
     "generalTitle": "Informações Gerais",
@@ -140,7 +137,7 @@
     "schedule": "Os workshops serão realizados presencialmente, em datas a definir.",
     "preferredDate": "Os organizadores podem indicar uma data preferencial, mas a programação final será definida pelo Comitê de Workshops em coordenação com a organização do CBSoft 2027.",
     "importantLabel": "IMPORTANTE:",
-    "important": "Os anais dos workshops serão preparados em conjunto pelos organizadores do workshop e pelos chairs dos anais do CBSoft. Os prazos para envio dos artigos dos workshops à organização do CBSoft devem ser seguidos.",
+    "important": "Os anais dos workshops serão preparados em conjunto pelos organizadores de cada workshop e pelos coordenadores de anais do CBSoft. Os prazos de envio dos artigos dos workshops à organização do CBSoft devem ser rigorosamente observados.",
     "submissionTitle": "Instruções de Submissão",
     "submissionPreApproved": "(Consulte a próxima seção para workshops pré-aprovados.)",
     "submissionWhere": "As propostas de workshop devem ser submetidas em:",
@@ -235,12 +232,12 @@
     "ethics": "Todos os trabalhos submetidos devem estar em conformidade com o <a>Código de Conduta para Autores em Publicações da Sociedade Brasileira de Computação (SBC)</a>.",
     "organizationTitle": "Organização",
     "chairsTitle": "Coordenadores do Comitê de Workshops",
-    "metaDescription": "Confira a chamada de trabalhos dos workshops do CBSOFT 2027, com orientações para propostas, submissões, critérios de seleção e datas importantes."
+    "metaDescription": "Chamada de workshops do CBSoft 2027: orientações para propostas, critérios de seleção e datas importantes."
   },
   "events": {
     "eyebrow": "EVENTOS",
     "title": "Quatro simpósios, uma única programação",
-    "intro": "O CBSOFT coaloca os seguintes simpósios nacionais, cada um com comitê de programa e anais próprios.",
+    "intro": "O CBSoft reúne os seguintes simpósios nacionais, cada um com comitê de programa e anais próprios.",
     "complementary": "Trilhas complementares"
   },
   "cfp": {
@@ -284,21 +281,21 @@
     "eyebrow": "LOCALIZAÇÃO",
     "city": "Belo Horizonte, MG",
     "noticeTitle": "Orientações do evento a confirmar",
-    "notice": "O campus está confirmado. Prédio, salas, credenciamento e entrada recomendada para o CBSOFT 2027 serão divulgados após confirmação da organização.",
+    "notice": "O campus está confirmado. Prédio, salas, credenciamento e entrada recomendada para o CBSoft 2027 serão divulgados após confirmação da organização.",
     "unconfirmed": "Local a confirmar",
     "unconfirmedNotice": "O nome e o endereço do local serão publicados após confirmação da organização.",
     "transitHeading": "Como chegar",
     "moreInfo": "Endereço, orientações e mapa",
-    "videoTitle": "CBSOFT 2027 em Belo Horizonte",
-    "playAria": "Reproduzir o vídeo do CBSOFT 2027",
+    "videoTitle": "CBSoft 2027 em Belo Horizonte",
+    "playAria": "Reproduzir o vídeo do CBSoft 2027",
     "videoFallback": "Vídeo não carregou? Assistir no YouTube",
     "consultTransport": "Consultar transporte ↗",
     "transitSource": "Referências de transporte divulgadas pela PUC Minas ↗",
     "transitNote": "As referências acima atendem a região do campus. Confirme pontos, itinerários e horários antes da viagem; o acesso específico do evento ainda será informado."
   },
   "locationPage": {
-    "metaTitle": "Local do evento | CBSOFT 2027",
-    "title": "Local do evento",
+    "metaTitle": "Local do Evento — CBSOFT'27",
+    "title": "Local do Evento",
     "mapTitle": "Mapa e navegação",
     "mapDescription": "Use o endereço do campus como destino no Google Maps. A rota depende do seu ponto de partida. A entrada, o prédio e as salas do evento ainda serão confirmados.",
     "directions": "Traçar rota no Google Maps ↗",
@@ -307,7 +304,7 @@
   },
   "committee": {
     "eyebrow": "COMITÊ ORGANIZADOR",
-    "title": "Quem organiza o CBSOFT 2027",
+    "title": "Quem organiza o CBSoft 2027",
     "note": "Os nomes abaixo são provisórios, pendentes de confirmação pela SBC e pelas instituições locais organizadoras.",
     "generalChairs": "Coordenação Geral",
     "pcChairs": "Coordenação do Programa Científico",
@@ -317,30 +314,87 @@
   },
   "accommodationPage": {
     "metaTitle": "Acomodações — CBSOFT'27",
-    "metaDescription": "Informações de hospedagem do CBSOFT 2027, em Belo Horizonte, a serem divulgadas.",
+    "metaDescription": "Informações de hospedagem para o CBSoft 2027, em Belo Horizonte, a serem divulgadas.",
     "title": "Acomodações",
     "pending": "Acomodações a serem divulgadas"
   },
+  "experiencesPage": {
+    "metaTitle": "Experiências — CBSOFT'27",
+    "metaDescription": "Experiências para participantes do CBSoft 2027, em Belo Horizonte, a serem divulgadas.",
+    "title": "Experiências",
+    "intro": "Sugestões de turismo, cultura e gastronomia em Belo Horizonte para os participantes do CBSoft 2027.",
+    "pending": "Em breve",
+    "moreInfo": "Saiba mais",
+    "categories": {
+      "turismo": "Turismo em BH",
+      "shows": "Shows e Concertos",
+      "gastronomia": "Gastronomia em BH"
+    }
+  },
+  "programPage": {
+    "metaTitle": "Programação — CBSOFT'27",
+    "metaDescription": "Programação oficial do CBSoft 2027: sessões, palestras e atividades por dia, com busca e filtros.",
+    "title": "Programação",
+    "pendingTitle": "Em breve",
+    "pendingText": "A programação oficial do CBSoft 2027 será publicada aqui assim que for definida pela coordenação.",
+    "searchLabel": "Buscar",
+    "searchPlaceholder": "Título ou palestrante",
+    "eventLabel": "Simpósio ou evento",
+    "allEvents": "Todos",
+    "trackLabel": "Trilha do SBES",
+    "allTracks": "Todas",
+    "categoryLabel": "Categoria",
+    "allCategories": "Todas",
+    "clearFilters": "Limpar filtros",
+    "daysAria": "Dias da programação",
+    "viewAria": "Visualização",
+    "viewList": "Lista",
+    "viewGrid": "Grade por sala",
+    "results_one": "{{count}} atividade",
+    "results_other": "{{count}} atividades",
+    "noResults": "Nenhuma atividade encontrada neste dia com os filtros atuais.",
+    "timeTba": "Horário a confirmar",
+    "time": "Horário",
+    "room": "Sala",
+    "chair": "Coordenação",
+    "addToCalendar": "Adicionar ao calendário",
+    "events": {
+      "cbsoft": "CBSoft (geral)",
+      "workshops": "Workshops"
+    },
+    "categories": {
+      "opening": "Abertura",
+      "keynote": "Palestra",
+      "papers": "Sessão técnica",
+      "panel": "Painel",
+      "tutorial": "Minicurso",
+      "workshop": "Workshop",
+      "tools": "Ferramentas",
+      "competition": "Concurso",
+      "social": "Social",
+      "break": "Intervalo"
+    }
+  },
   "organizationPage": {
     "metaTitle": "Organização — CBSOFT'27",
-    "metaDescription": "Conheça as instituições e a equipe que organizam o CBSOFT 2027, em Belo Horizonte.",
+    "metaDescription": "Instituições e equipe responsáveis pela organização do CBSoft 2027, em Belo Horizonte.",
     "title": "Organização"
   },
   "sponsorship": {
-    "eyebrow": "QUEM ESTÁ CONTRIBUINDO",
-    "title": "Quem está contribuindo",
+    "eyebrow": "ORGANIZAÇÃO E APOIO",
+    "title": "Organização e apoio",
     "organization": "Organização",
     "realization": "Realização",
     "support": "Patrocínio e apoio",
     "cta": {
-      "action": "Fale com o comitê",
+      "action": "Fale com a organização",
       "sponsor": {
         "title": "Seja nosso patrocinador",
-        "text": "Associe sua marca ao principal congresso brasileiro de software e alcance pesquisadores e profissionais de todo o país."
+        "text": "Apoie o CBSoft 2027 e aproxime sua instituição da comunidade brasileira de pesquisa e desenvolvimento de software."
       },
       "supporter": {
         "title": "Seja nosso apoiador",
-        "text": "Apoie a realização do evento com infraestrutura, bolsas ou divulgação e faça parte da comunidade científica de software."
+        "text": "Apoie a realização do evento com infraestrutura, bolsas ou divulgação."
       }
     }
   },
@@ -364,11 +418,11 @@
       "title": "Evento",
       "about": {
         "title": "Sobre",
-        "description": "Conheça o Congresso Brasileiro de Software."
+        "description": "O congresso, seus simpósios e sua história."
       },
       "organization": {
         "title": "Organização",
-        "description": "Conheça a equipe que organiza o CBSOFT’27."
+        "description": "Instituições e equipe responsáveis pelo CBSoft 2027."
       },
       "speakers": {
         "title": "Palestrantes",
@@ -379,41 +433,41 @@
       "title": "Guia do participante",
       "venue": {
         "title": "Local do Evento",
-        "description": "Veja onde acontece o CBSOFT’27 e como chegar."
+        "description": "Onde será o CBSoft 2027 e como chegar."
       },
       "map": {
         "title": "Mapa",
-        "description": "Encontre os espaços e as atividades do evento."
+        "description": "Mapa do campus e rotas até o local."
       },
       "accommodation": {
         "title": "Acomodações",
-        "description": "Opções de hospedagem em Belo Horizonte, a serem divulgadas."
+        "description": "Opções de hospedagem em Belo Horizonte (a divulgar)."
       },
       "social": {
         "title": "Eventos Sociais",
         "description": "Encontros para conversar e ampliar conexões."
       },
       "experiences": {
-        "title": "Experiências em BH",
-        "description": "Descubra a cultura, os sabores e os passeios de BH."
+        "title": "Experiências",
+        "description": "Turismo, cultura e gastronomia em Belo Horizonte."
       }
     },
     "history": {
       "title": "Histórico",
       "previous": {
-        "title": "Edições anteriores",
-        "description": "Relembre a trajetória e as edições do CBSOFT."
+        "title": "Edições Anteriores",
+        "description": "Locais e sites das edições desde 2010."
       }
     },
     "program": {
       "title": "Programa",
       "schedule": {
         "title": "Programação",
-        "description": "Explore os horários e as atividades do congresso."
+        "description": "Sessões e atividades do congresso, por dia."
       },
       "articles": {
-        "title": "Artigos aceitos",
-        "description": "Conheça os trabalhos selecionados para o evento."
+        "title": "Artigos Aceitos",
+        "description": "Trabalhos aceitos nos simpósios e trilhas."
       },
       "special": {
         "title": "Atividades especiais",
@@ -424,11 +478,11 @@
       "title": "Participação",
       "volunteers": {
         "title": "Chamada para Voluntários",
-        "description": "Saiba como colaborar com o CBSOFT’27."
+        "description": "Como atuar como voluntário no CBSoft 2027."
       },
       "conduct": {
         "title": "Código de Conduta",
-        "description": "Orientações para um evento respeitoso e inclusivo."
+        "description": "Normas de convivência e como relatar ocorrências."
       }
     },
     "sbes": {
@@ -460,13 +514,13 @@
           "description": "Pesquisas de estudantes que iniciam sua trajetória científica."
         },
         "ctd": {
-          "title": "Concursos de Teses e Dissertações em Engenharia de Software",
+          "title": "Concurso de Teses e Dissertações em Engenharia de Software",
           "description": "Contribuições de mestrado e doutorado para a Engenharia de Software."
         }
       },
       "program": {
         "title": "Programação",
-        "description": "Confira as sessões e atividades do SBES."
+        "description": "Sessões e atividades do SBES."
       },
       "trackCall": "Chamada de Trabalhos",
       "trackPapers": "Artigos Aceitos"
@@ -475,52 +529,52 @@
       "title": "SBLP",
       "call": {
         "title": "Chamada de Trabalhos",
-        "description": "Orientações para submeter pesquisas em Linguagens de Programação."
+        "description": "Tópicos, prazos e normas de submissão do SBLP."
       },
       "program": {
         "title": "Programação",
-        "description": "Confira as sessões e atividades do SBLP."
+        "description": "Sessões e atividades do SBLP."
       },
       "papers": {
         "title": "Artigos Aceitos",
-        "description": "Conheça os trabalhos selecionados para o SBLP."
+        "description": "Trabalhos aceitos no SBLP."
       }
     },
     "sbcars": {
       "title": "SBCARS",
       "call": {
         "title": "Chamada de Trabalhos",
-        "description": "Submeta trabalhos sobre Componentes, Arquiteturas e Reutilização de Software."
+        "description": "Tópicos, prazos e normas de submissão do SBCARS."
       },
       "program": {
         "title": "Programação",
-        "description": "Confira as sessões e atividades do SBCARS."
+        "description": "Sessões e atividades do SBCARS."
       },
       "papers": {
         "title": "Artigos Aceitos",
-        "description": "Conheça os trabalhos selecionados para o SBCARS."
+        "description": "Trabalhos aceitos no SBCARS."
       }
     },
     "sast": {
       "title": "SAST",
       "call": {
         "title": "Chamada de Trabalhos",
-        "description": "Orientações para trabalhos em Teste e Análise de Software."
+        "description": "Tópicos, prazos e normas de submissão do SAST."
       },
       "program": {
         "title": "Programação",
-        "description": "Confira as sessões e atividades do SAST."
+        "description": "Sessões e atividades do SAST."
       },
       "papers": {
         "title": "Artigos Aceitos",
-        "description": "Conheça os trabalhos selecionados para o SAST."
+        "description": "Trabalhos aceitos no SAST."
       }
     },
     "workshops": {
       "title": "Workshops",
       "call": {
-        "title": "Chamada de Trabalhos",
-        "description": "Conheça as orientações para participar dos workshops."
+        "title": "Chamada de Workshops",
+        "description": "Como propor um workshop, critérios e prazos."
       },
       "accepted": {
         "title": "Workshops Aceitos",
@@ -528,7 +582,7 @@
       },
       "program": {
         "title": "Programação",
-        "description": "Confira os horários e as atividades dos workshops."
+        "description": "Sessões e atividades dos workshops."
       },
       "papers": {
         "title": "Artigos Aceitos",
@@ -567,15 +621,15 @@
   },
   "homePage": {
     "metaTitle": "CBSOFT'27 — Congresso Brasileiro de Software",
-    "metaDescription": "CBSOFT 2027, promovido pela Sociedade Brasileira de Computação (SBC), reúne os simpósios SBES, SBLP, SBCARS e SAST em Belo Horizonte, MG."
+    "metaDescription": "O CBSoft 2027, promovido pela Sociedade Brasileira de Computação (SBC), reúne os simpósios SBES, SBLP, SBCARS e SAST em Belo Horizonte (MG), de 27 de setembro a 1º de outubro de 2027."
   },
   "conductPage": {
     "metaTitle": "Código de Conduta — CBSOFT'27",
     "title": "Código de Conduta",
-    "p1": "A troca aberta de ideias e a liberdade de pensamento e expressão são fundamentais para os objetivos do CBSoft. Isso requer um ambiente que reconheça o valor inerente de cada pessoa e grupo, que promova a dignidade, a compreensão e o respeito mútuo e que envolva a diversidade. Por essas razões, o CBSoft dedica-se a proporcionar uma experiência livre de assédio aos participantes do evento e em seus canais oficiais de comunicação, incluindo mídias sociais. A meta é que todo e qualquer participante sinta-se bem-vindo, incluído, respeitado e seguro. Não há qualquer tipo de tolerância para comportamento hostil ou indesejado ou para discurso que intimide, crie desconforto ou interfira na participação de alguém no evento.",
+    "p1": "A troca aberta de ideias e a liberdade de pensamento e de expressão são fundamentais para os objetivos do CBSoft. Isso requer um ambiente que reconheça o valor de cada pessoa e grupo, promova a dignidade, a compreensão e o respeito mútuo e acolha a diversidade. Por essas razões, o CBSoft compromete-se a proporcionar uma experiência livre de assédio aos participantes, tanto no evento quanto em seus canais oficiais de comunicação, incluindo as redes sociais. O objetivo é que todos os participantes se sintam bem-vindos, incluídos, respeitados e seguros. Não serão tolerados comportamentos hostis ou indesejados, nem manifestações que intimidem, causem desconforto ou interfiram na participação de alguém no evento.",
     "p2": "<b>Comportamentos inaceitáveis incluem:</b> linguagem abusiva ou degradante, interrupção prolongada de uma palestra, discussão ou outra atividade, discriminação, intimidação deliberada, perseguição, gravação de vídeo ou imagens com viés de assédio, contato físico inapropriado, imagens sexuais ou atenção sexual indesejada.",
     "p3": "<b>Assédio inclui:</b> comentários pejorativos, escritos ou ações relacionadas a raça, cor, sexo, gênero, orientação sexual, identidade de gênero ou expressão, idade, estado civil, religião, nacionalidade, deficiência, gravidez, condições médicas, status de veterano ou qualquer outro status protegido pelas leis brasileiras.",
-    "p4": "Qualquer pessoa que testemunhe ou seja vítima de comportamento inaceitável ou assédio deve notificar um membro do Comitê Organizador do CBSoft 2027 ou segurança do evento. Respostas do tipo que o participante estava \"brincando\" ou que o comportamento em questão tenha sido uma \"brincadeira\" não serão aceitas. Os indivíduos que violarem esses padrões poderão ser punidos ou excluídos de participarem do evento, sem qualquer tipo de reembolso ou compensação, a critério do Comitê Organizador do CBSoft 2027."
+    "p4": "Qualquer pessoa que testemunhe ou sofra comportamento inaceitável ou assédio deve comunicar o fato a um membro do Comitê Organizador do CBSoft 2027 ou à equipe de segurança do evento. Justificativas de que o comportamento foi uma “brincadeira” não serão aceitas. Quem violar estas normas poderá sofrer sanções ou ser excluído do evento, sem reembolso ou compensação de qualquer natureza, a critério do Comitê Organizador do CBSoft 2027."
   },
   "volunteersPage": {
     "metaTitle": "Chamada para Voluntários — CBSOFT'27",
@@ -626,7 +680,7 @@
     },
     "coordinationTitle": "Coordenação de voluntários",
     "questions": "Em caso de dúvidas, por favor, entre em contato conosco.",
-    "closing": "Esperamos receber sua inscrição e encontrá-lo em Belo Horizonte!"
+    "closing": "Aguardamos sua inscrição e esperamos encontrar você em Belo Horizonte!"
   },
   "search": {
     "title": "Não encontrou o que procurava?",
@@ -644,7 +698,9 @@
     "notFound": "Trilha não encontrada.",
     "generalMetaTitle": "Artigos Aceitos — CBSOFT'27",
     "generalEyebrow": "CBSoft 2027",
-    "generalPending": "A lista de artigos aceitos será divulgada após a notificação dos autores."
+    "generalPending": "A lista de artigos aceitos será divulgada após a notificação dos autores.",
+    "symposiumMetaTitle": "Artigos Aceitos — {{acronym}} — CBSOFT'27",
+    "symposiumPending": "A lista de artigos aceitos no {{acronym}} será divulgada após a notificação dos autores."
   },
   "previousEditionsPage": {
     "title": "Edições Anteriores",
@@ -652,7 +708,7 @@
     "online": "(Online)",
     "visit": "Acessar edição",
     "newTab": "(abre em uma nova aba)",
-    "metaTitle": "Edições Anteriores - CBSOFT'27",
+    "metaTitle": "Edições Anteriores — CBSOFT'27",
     "metaDescription": "Explore as edições anteriores do CBSoft, de 2010 a 2026, com seus locais e links para os sites de cada congresso."
   }
 }
