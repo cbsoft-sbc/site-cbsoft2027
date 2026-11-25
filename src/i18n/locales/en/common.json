@@ -32,13 +32,24 @@
       "sec": "Seconds"
     },
     "carousel": {
-      "label": "Praça da Liberdade photos",
+      "label": "Belo Horizonte photos",
       "previous": "Previous photo",
       "next": "Next photo",
       "goTo": "Show photo {{number}}",
       "pause": "Pause",
       "play": "Play",
-      "position": "Photo {{number}} of {{total}}"
+      "position": "Photo {{number}} of {{total}}",
+      "photoInfo": "Photo credits and licence",
+      "photoEdits": "Resized and reframed WebP",
+      "photos": {
+        "fontes-praca-liberdade": "Fountains and gardens at Praça da Liberdade in Belo Horizonte",
+        "coreto-praca-liberdade": "Bandstand at Praça da Liberdade with the Niemeyer Building behind it",
+        "secretaria-da-fazenda": "Historic facade of the State Finance Department at Praça da Liberdade",
+        "igreja-da-pampulha": "Aerial view of the Church of São Francisco de Assis beside Pampulha Lagoon",
+        "cidade-administrativa-mg": "Tiradentes Palace lit up at dusk and reflected in the lake at the Minas Gerais Administrative Complex",
+        "mercado-central": "Facade of Belo Horizonte’s Central Market seen from the tree-lined plaza in front of the entrance",
+        "palacio-tiradentes": "Tiradentes Palace seen from across the lake at the Minas Gerais Administrative Complex"
+      }
     }
   },
   "agenda": {

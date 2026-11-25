@@ -81,10 +81,6 @@ export const IMAGES = {
   // visual identity section (up to 416px). Originals stay as PNG.
   logo_horizontal_header: asset('assets/images/logo-horizontal-440.webp'),
   logo_horizontal_large: asset('assets/images/logo-horizontal-840.webp'),
-  // Hero photos: WebP at the original 1920px width (JPGs kept as sources).
-  praca: asset('assets/images/praca-liberdade-1920.webp'),
-  praca2: asset('assets/images/praca-liberdade-2-1920.webp'),
-  praca3: asset('assets/images/praca-liberdade-3-1920.webp'),
   edificio_niemeyer: asset('assets/images/edificio-niemeyer.jpg'),
   mapa_puc: asset('assets/images/mapa-puc-coracao-eucaristico.png'),
   sbc_logo: asset('assets/images/sbc-logo.svg'),

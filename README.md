@@ -42,6 +42,7 @@ src/
 - **Textos de interface** (menus, botões, títulos de seção): `src/i18n/locales/{pt,en}/common.json`.
 - **Datas, valores, simpósios, comitê**: arquivos em `src/data/`. Campos
   bilíngues usam o par `{ pt, en }` (`Localized` em `src/lib/localized.ts`).
+- [**Créditos e licenças das imagens**](CREDITOS-IMAGENS.md).
 - **Prazo do contador regressivo**: `COUNTDOWN_DEADLINE` em `src/data/config.ts`.
 
 ## Deploy

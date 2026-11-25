@@ -22,7 +22,8 @@ export function Header() {
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const focusFirstItem = useRef(false);
-  const showSbc = useTopScrollReveal(key);
+  const isHome = pathname === '/';
+  const showSbc = useTopScrollReveal(isHome ? key : null);
 
   function cancelClose() {
     if (closeTimer.current !== null) {
@@ -98,21 +99,23 @@ export function Header() {
         closeAllMenus();
       }}
     >
-      <div key={key} className="site-header__sbc" aria-hidden={!showSbc}>
-        <div className="site-header__sbc-inner">
-          <span className="site-header__sbc-label">{t('header.organizedBy')}</span>
-          <a
-            href="https://www.sbc.org.br/"
-            className="site-header__sbc-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t('header.sbcAria')}
-            tabIndex={showSbc ? undefined : -1}
-          >
-            <img src={IMAGES.sbc_logo} alt="" width={597} height={288} />
-          </a>
+      {isHome && (
+        <div key={key} className="site-header__sbc" aria-hidden={!showSbc}>
+          <div className="site-header__sbc-inner">
+            <span className="site-header__sbc-label">{t('header.organizedBy')}</span>
+            <a
+              href="https://www.sbc.org.br/"
+              className="site-header__sbc-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t('header.sbcAria')}
+              tabIndex={showSbc ? undefined : -1}
+            >
+              <img src={IMAGES.sbc_logo} alt="" width={597} height={288} />
+            </a>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="site-header__inner">
         <Link
