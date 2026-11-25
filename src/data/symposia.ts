@@ -12,12 +12,13 @@ export interface Symposium {
   /** Official name, without acronym or edition. Single source for every
    *  page, menu and description that names the symposium. */
   title: Localized;
-  /** 2027 edition: roman numeral (pt) and ordinal (en). Confirm with each
-   *  steering committee before launch. */
+/** 2027 edition: ordinal in Portuguese (pt) and English (en). Confirm with each
+ *  steering committee before launch. */
   edition: Localized;
   /** "Official name (ACRONYM)". */
   name: Localized;
   blurb: Localized;
+  
 }
 
 type SymposiumSource = Omit<Symposium, 'name'>;
@@ -38,7 +39,7 @@ export const SYMPOSIA: Symposium[] = ([
       pt: 'Simpósio Brasileiro de Engenharia de Software',
       en: 'Brazilian Symposium on Software Engineering',
     },
-    edition: { pt: 'XLI', en: '41st' },
+    edition: { pt: '41º', en: '41st' },
     blurb: {
       pt: 'Pesquisa e prática em Engenharia de Software.',
       en: 'Research and practice in Software Engineering.',
@@ -53,7 +54,7 @@ export const SYMPOSIA: Symposium[] = ([
       pt: 'Simpósio Brasileiro de Linguagens de Programação',
       en: 'Brazilian Symposium on Programming Languages',
     },
-    edition: { pt: 'XXXI', en: '31st' },
+    edition: { pt: '31º', en: '31st' },
     blurb: {
       pt: 'Projeto, implementação, semântica e análise de linguagens de programação.',
       en: 'Design, implementation, semantics and analysis of programming languages.',
@@ -68,7 +69,7 @@ export const SYMPOSIA: Symposium[] = ([
       pt: 'Simpósio Brasileiro de Componentes, Arquiteturas e Reutilização de Software',
       en: 'Brazilian Symposium on Software Components, Architectures, and Reuse',
     },
-    edition: { pt: 'XXI', en: '21st' },
+    edition: { pt: '21º', en: '21st' },
     blurb: {
       pt: 'Linhas de produto, componentes, arquiteturas de software e reutilização.',
       en: 'Product lines, components, software architectures and reuse.',
@@ -83,7 +84,7 @@ export const SYMPOSIA: Symposium[] = ([
       pt: 'Simpósio Brasileiro de Teste de Software Sistemático e Automatizado',
       en: 'Brazilian Symposium on Systematic and Automated Software Testing',
     },
-    edition: { pt: 'XII', en: '12th' },
+    edition: { pt: '12º', en: '12th' },
     blurb: {
       pt: 'Sistematização e automação da atividade de teste de software.',
       en: 'Systematization and automation of software testing.',

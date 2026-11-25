@@ -6,10 +6,10 @@ import './AcceptedPapersPage.css';
 
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { BrandBar } from '@/components/ui/BrandBar';
 import { SYMPOSIUM_PAPERS, type PapersSymposiumId } from '@/data/acceptedPapers';
-import { SBES_TRACKS, acceptedPapersPath, type AcceptedPaper } from '@/data/sbesTracks';
+import { SBES_TRACKS, type AcceptedPaper } from '@/data/sbesTracks';
 import { SYMPOSIA } from '@/data/symposia';
 
 function PaperList({ papers, pending }: { papers: AcceptedPaper[]; pending: string }) {
@@ -75,20 +75,6 @@ export function AcceptedPapersPage({ symposium }: { symposium?: PapersSymposiumI
               </p>
 
               <PaperList papers={track.papers} pending={t('acceptedPapersPage.pending')} />
-
-              <h2 className="about-h2 wcall-h2">
-                <BrandBar />
-                {t('acceptedPapersPage.otherTracks')}
-              </h2>
-              <ul className="papers-tracks">
-                {SBES_TRACKS.filter((item) => item.id !== track.id).map((item) => (
-                  <li key={item.id}>
-                    <Link to={acceptedPapersPath(item)} className="wcall-link">
-                      {t(`headerMenu.sbes.tracks.${item.id}.title`)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
             </>
           )}
         </div>
