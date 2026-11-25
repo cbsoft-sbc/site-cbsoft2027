@@ -139,7 +139,7 @@ export function WorkshopsCallPage() {
               <ul className="wcall-symposia">
                 {ABOUT_SYMPOSIA.map((symposium) => {
                   const meta = SYMPOSIA.find((item) => item.id === symposium.id);
-                  // "XLI Simpósio …" → edition "XLI" + full name "Simpósio …".
+                  // "41º Simpósio …" → edition "41º" + full name "Simpósio …".
                   const [edition, ...rest] = pick(symposium.name, lang).split(' ');
                   return (
                     <li

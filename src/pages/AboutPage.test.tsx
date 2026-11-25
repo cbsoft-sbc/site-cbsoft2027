@@ -23,9 +23,9 @@ describe('AboutPage', () => {
 
     const items = container.querySelectorAll('.about-symposia li');
     expect(items).toHaveLength(4);
-    expect(items[0].textContent).toMatch(/^XLI Simpósio Brasileiro de Engenharia de Software, .*;$/);
+    expect(items[0].textContent).toMatch(/^41º Simpósio Brasileiro de Engenharia de Software, .*;$/);
     expect(items[2].textContent).toMatch(/; e$/);
-    expect(items[3].textContent).toMatch(/^XII Simpósio Brasileiro de Teste de Software.*\.$/);
+    expect(items[3].textContent).toMatch(/^12º Simpósio Brasileiro de Teste de Software.*\.$/);
 
     expect(screen.getByText(/A programação inclui sessões técnicas/)).toBeTruthy();
   });
@@ -95,7 +95,7 @@ describe('AboutPage', () => {
   it('presents the 2027 edition with the confirmed congress period', () => {
     const { container } = renderPage();
     const text = container.textContent ?? '';
-    expect(text).toMatch(/XVIII edição do CBSoft/);
+    expect(text).toMatch(/18ª edição do CBSoft/);
     expect(text).toMatch(/Belo Horizonte/);
     expect(text).toContain('de 27 de setembro a 1º de outubro');
   });

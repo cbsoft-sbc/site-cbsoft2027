@@ -46,11 +46,13 @@ describe('AcceptedPapersPage', () => {
     expect(heading.firstElementChild?.matches('.brand-bar[aria-hidden="true"]')).toBe(true);
     expect(heading.nextElementSibling).toBe(screen.getByText(`SBES · ${current}`));
     expect(screen.getByText(notice)).toBeTruthy();
-    expect(screen.getByRole('link', { name: other }).getAttribute('href')).toBe(
-      '/sbes/pesquisa/artigos-aceitos',
-    );
-    expect(screen.getAllByRole('link')).toHaveLength(6);
-  });
+  expect(screen.queryByRole('link', { name: other })).toBeNull();
+  expect(
+    screen.queryByRole('heading', {
+      name: i18n.t('acceptedPapersPage.otherTracks'),
+    }),
+  ).toBeNull();
+    });
 
   it('lists article titles and authors when papers are available', () => {
     const track = SBES_TRACKS.find(({ id }) => id === 'research')!;

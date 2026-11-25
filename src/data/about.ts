@@ -10,7 +10,7 @@ import { SYMPOSIA, type SymposiumId } from './symposia';
  * must not name an institution.
  */
 export const ABOUT_CONGRESS = {
-  /** Roman-numeral form, e.g. used as "XVIII edição do CBSoft". */
+  /** Roman-numeral form, e.g. used as "18ª edição do CBSoft". */
   editionRoman: 'XVIII',
   /** Ordinal form, e.g. used as "18ª edição do CBSoft". */
   editionOrdinal: '18ª',
