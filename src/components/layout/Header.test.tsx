@@ -1,6 +1,6 @@
 import { fireEvent, render, screen, within } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { MemoryRouter, useNavigate } from 'react-router-dom';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import i18n from '@/i18n';
 import { Header } from './Header';
 
@@ -11,6 +11,79 @@ beforeEach(async () => {
 function renderHeader(path: string) {
   return render(<MemoryRouter initialEntries={[path]}><Header /></MemoryRouter>);
 }
+
+function BackButton() {
+  const navigate = useNavigate();
+  return <button onClick={() => navigate(-1)}>Voltar</button>;
+}
+
+it('reveals the SBC logo only when scrolling up at the top of the current visit', () => {
+  const sbcLink = () => screen.queryByRole('link', { name: /Sociedade Brasileira de Computação/ });
+  vi.stubGlobal('scrollY', 0);
+  try {
+    render(
+      <MemoryRouter initialEntries={['/sobre']}>
+        <Header />
+        <BackButton />
+      </MemoryRouter>,
+    );
+    expect(sbcLink()).toBeNull();
+
+    fireEvent.wheel(window, { deltaY: 20 });
+    vi.stubGlobal('scrollY', 120);
+    fireEvent.scroll(window);
+    expect(sbcLink()).toBeNull();
+
+    fireEvent.wheel(window, { deltaY: -20 });
+    vi.stubGlobal('scrollY', 100);
+    fireEvent.scroll(window);
+    expect(sbcLink()).toBeNull();
+
+    vi.stubGlobal('scrollY', 0);
+    fireEvent.scroll(window);
+    expect(sbcLink()).toBeTruthy();
+
+    fireEvent.wheel(window, { deltaY: 20 });
+    expect(sbcLink()).toBeNull();
+
+    fireEvent.keyDown(document.body, { key: 'ArrowUp' });
+    expect(sbcLink()).toBeTruthy();
+
+    fireEvent.click(screen.getByRole('link', { name: 'Inscreva-se' }));
+    fireEvent.scroll(window);
+    expect(sbcLink()).toBeNull();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Voltar' }));
+    fireEvent.scroll(window);
+    expect(sbcLink()).toBeNull();
+
+    fireEvent.wheel(window, { deltaY: -20 });
+    expect(sbcLink()).toBeTruthy();
+  } finally {
+    vi.unstubAllGlobals();
+  }
+});
+
+it('opens the desktop menu and track with the arrow keys and restores focus with Escape', () => {
+  renderHeader('/');
+  const sbes = screen.getByRole('button', { name: 'SBES' });
+  sbes.focus();
+  fireEvent.keyDown(sbes, { key: 'ArrowDown' });
+
+  const track = screen.getByRole('button', { name: 'Trilha de Pesquisa' });
+  expect(document.activeElement).toBe(track);
+  fireEvent.keyDown(track, { key: 'ArrowRight' });
+
+  const call = screen.getByRole('link', { name: 'Chamada de Trabalhos' });
+  expect(document.activeElement).toBe(call);
+  fireEvent.keyDown(call, { key: 'Escape' });
+  expect(document.activeElement).toBe(track);
+  expect(track.getAttribute('aria-expanded')).toBe('false');
+
+  fireEvent.keyDown(track, { key: 'Escape' });
+  expect(document.activeElement).toBe(sbes);
+  expect(sbes.getAttribute('aria-expanded')).toBe('false');
+});
 
 describe('Header current section', () => {
   it.each([
@@ -96,7 +169,7 @@ describe('Header current section on accepted-papers pages', () => {
   it("highlights SBES from a track's accepted papers", () => {
     renderHeader('/sbcars/artigos-aceitos');
     fireEvent.click(screen.getByRole('button', { name: 'SBES' }));
-    fireEvent.mouseEnter(screen.getByRole('button', { name: /Trilha de Pesquisa/ }));
+    fireEvent.click(screen.getByRole('button', { name: /Trilha de Pesquisa/ }));
     fireEvent.click(screen.getByRole('link', { name: 'Artigos Aceitos' }));
     expect(current()).toEqual(['SBES']);
   });

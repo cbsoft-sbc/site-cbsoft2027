@@ -22,8 +22,8 @@ export function getCurrentHeaderMenu(pathname: string): HeaderMenuId | null {
   const symposium = NAV_ITEMS.find((item) => item.id !== 'cbsoft' && item.id === section);
   if (symposium) return symposium.id;
 
-  const isCongressPage = pathname === '/' || HEADER_MENUS.cbsoft.columns.some((sections) =>
-    sections.some(({ links }) => links.some((link) => link.href.split('#')[0] === pathname)),
+  const isCongressPage = pathname === '/' || HEADER_MENUS.cbsoft.some(({ links }) =>
+    links.some((link) => link.href.split('#')[0] === pathname),
   );
   return isCongressPage ? 'cbsoft' : null;
 }

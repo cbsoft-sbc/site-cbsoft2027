@@ -11,8 +11,10 @@
 @media (max-width: 1023px) {
 
   .site-header__mobile-menu {
+    position: absolute;
+    inset: 100% 0 auto;
     display: block;
-    max-height: calc(100dvh - var(--site-header-offset, 12rem));
+    max-height: calc(100dvh - var(--site-header-offset, 3rem));
     padding: 0.5rem 1.25rem 1.5rem;
     overflow-y: auto;
     overscroll-behavior: contain;

@@ -1,6 +1,6 @@
 import './HeaderMegaMenu.css';
 
-import { useRef, useState, type MouseEvent, type ReactNode } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import type {
@@ -17,32 +17,32 @@ interface HeaderMegaMenuProps {
     mobile?: boolean;
 }
 
-/** Route paths ("/sobre") navigate client-side; hash anchors and external
- *  URLs stay plain links. */
 function MenuLink({
     link,
+    label,
     onNavigate,
-    onMouseEnter,
-    children,
 }: {
     link: HeaderMenuSubLink & { external?: boolean };
+    label: string;
     onNavigate: () => void;
-    onMouseEnter?: () => void;
-    children: ReactNode;
 }) {
+    const contents = (
+        <>
+            {label}
+            <span className="header-mega-menu__chevron" aria-hidden="true">›</span>
+        </>
+    );
+
     return link.href.startsWith('/') ? (
-        <Link to={link.href} onClick={onNavigate} onMouseEnter={onMouseEnter}>
-            {children}
-        </Link>
+        <Link to={link.href} onClick={onNavigate}>{contents}</Link>
     ) : (
         <a
             href={link.href}
             onClick={onNavigate}
-            onMouseEnter={onMouseEnter}
             target={link.external ? '_blank' : undefined}
             rel={link.external ? 'noopener noreferrer' : undefined}
         >
-            {children}
+            {contents}
         </a>
     );
 }
@@ -55,118 +55,148 @@ export function HeaderMegaMenu({
 }: HeaderMegaMenuProps) {
     const { t } = useTranslation();
     const prefix = mobile ? 'mobile-header' : 'header';
-    const rootRef = useRef<HTMLDivElement>(null);
+    const panelId = `${prefix}-mega-menu-${id}`;
+    const panelRef = useRef<HTMLDivElement>(null);
     const flyoutRef = useRef<HTMLDivElement>(null);
-    // Group (e.g. an SBES track) whose links are showing, and — on desktop —
-    // how far down the menu its side flyout should sit.
+    const focusFirstChild = useRef(false);
     const [openGroup, setOpenGroup] = useState<HeaderMenuLink | null>(null);
-    const [flyoutTop, setFlyoutTop] = useState(0);
-    const flyoutId = `${prefix}-mega-menu-${id}-flyout`;
 
-    function showGroup(link: HeaderMenuLink, trigger: HTMLElement) {
-        const root = rootRef.current;
-        if (root) {
-            setFlyoutTop(trigger.getBoundingClientRect().top - root.getBoundingClientRect().top);
-        }
-        setOpenGroup(link);
-    }
+    useLayoutEffect(() => {
+        const panel = panelRef.current;
+        const flyout = flyoutRef.current;
+        if (!openGroup || !panel || !flyout) return;
 
-    function onGroupClick(link: HeaderMenuLink, event: MouseEvent<HTMLButtonElement>) {
-        if (mobile) {
-            setOpenGroup(openGroup === link ? null : link);
-            return;
+        const placeFlyout = () => {
+            const trigger = flyout.previousElementSibling;
+            if (!trigger) return;
+
+            const { left, right } = panel.getBoundingClientRect();
+            const width = flyout.offsetWidth;
+            const edge = 8;
+            const fitsOnRight = right + width <= document.documentElement.clientWidth - edge;
+            const x = fitsOnRight ? right : left - width;
+            const y = Math.min(trigger.getBoundingClientRect().top, window.innerHeight - flyout.offsetHeight - edge);
+            flyout.style.left = `${Math.max(edge, x)}px`;
+            flyout.style.top = `${Math.max(edge, y)}px`;
+        };
+
+        if (!mobile) placeFlyout();
+        if (focusFirstChild.current) {
+            flyout.querySelector('a')?.focus();
+            focusFirstChild.current = false;
         }
-        showGroup(link, event.currentTarget);
-        // Keyboard activation (detail 0): move focus into the flyout.
-        if (event.detail === 0) {
-            requestAnimationFrame(() => flyoutRef.current?.querySelector<HTMLElement>('a')?.focus());
-        }
-    }
+        if (mobile) return;
+
+        const onScroll = () => {
+            if (flyout.contains(document.activeElement)) {
+                placeFlyout();
+            } else {
+                setOpenGroup(null);
+            }
+        };
+        const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(placeFlyout);
+        const header = panel.closest('header');
+        if (header) observer?.observe(header);
+        observer?.observe(flyout);
+        panel.addEventListener('scroll', onScroll);
+        window.addEventListener('resize', placeFlyout);
+        return () => {
+            observer?.disconnect();
+            panel.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', placeFlyout);
+        };
+    }, [mobile, openGroup]);
 
     return (
         <div
-            ref={rootRef}
-            id={`${prefix}-mega-menu-${id}`}
-            className={`header-mega-menu header-mega-menu--${menu.variant}${mobile ? ' header-mega-menu--mobile' : ''
-                }`}
+            id={panelId}
+            className={`header-mega-menu${mobile ? ' header-mega-menu--mobile' : ''}`}
             role="region"
             aria-labelledby={`${prefix}-trigger-${id}`}
         >
-            {!mobile && <span className="header-mega-menu__arrow" aria-hidden="true" />}
+            <div className="header-mega-menu__content" ref={panelRef}>
+                {menu.map((section) => (
+                    <section className="header-mega-menu__section" key={section.titleKey}>
+                        <h2>{t(section.titleKey)}</h2>
+                        <ul className="header-mega-menu__links">
+                            {section.links.map((link) => {
+                                const label = t(link.titleKey);
+                                if (!link.children) {
+                                    return (
+                                        <li key={link.titleKey}>
+                                            <MenuLink link={link} label={label} onNavigate={onNavigate} />
+                                        </li>
+                                    );
+                                }
 
-            <div className="header-mega-menu__content" onScroll={() => setOpenGroup(null)}>
-                {menu.columns.map((sections, columnIndex) => (
-                    <div className="header-mega-menu__column" key={`${id}-${columnIndex}`}>
-                        {sections.map((section) => (
-                            <section className="header-mega-menu__section" key={section.titleKey}>
-                                <h2>{t(section.titleKey)}</h2>
-
-                                <div className="header-mega-menu__links">
-                                    {section.links.map((link) => {
-                                        if (link.children) {
-                                            const open = openGroup === link;
-                                            return (
-                                                <div className="header-mega-menu__group" key={link.titleKey}>
-                                                    <button
-                                                        type="button"
-                                                        className={`header-mega-menu__group-trigger${open ? ' is-open' : ''}`}
-                                                        aria-expanded={open}
-                                                        aria-controls={flyoutId}
-                                                        onMouseEnter={(event) => !mobile && showGroup(link, event.currentTarget)}
-                                                        onClick={(event) => onGroupClick(link, event)}
-                                                    >
-                                                        <strong>{t(link.titleKey)}</strong>
-                                                        <span aria-hidden="true">›</span>
-                                                    </button>
-                                                    {mobile && open && (
-                                                        <div id={flyoutId} className="header-mega-menu__sublinks">
-                                                            {link.children.map((child) => (
-                                                                <MenuLink key={child.href} link={child} onNavigate={onNavigate}>
-                                                                    {t(child.titleKey)}
-                                                                </MenuLink>
-                                                            ))}
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            );
-                                        }
-
-                                        return (
-                                            <MenuLink
-                                                key={link.titleKey}
-                                                link={link}
-                                                onNavigate={onNavigate}
-                                                onMouseEnter={() => setOpenGroup(null)}
+                                const open = openGroup === link;
+                                const flyoutId = `${panelId}-${link.titleKey}`;
+                                return (
+                                    <li
+                                        className="header-mega-menu__group"
+                                        key={link.titleKey}
+                                        onPointerEnter={(event) => {
+                                            if (!mobile && event.pointerType === 'mouse') setOpenGroup(link);
+                                        }}
+                                        onBlur={(event) => {
+                                            if (!event.currentTarget.contains(event.relatedTarget)) {
+                                                setOpenGroup((current) => current === link ? null : current);
+                                            }
+                                        }}
+                                        onKeyDown={(event) => {
+                                            if (event.key === 'Escape' && open) {
+                                                event.preventDefault();
+                                                event.stopPropagation();
+                                                event.currentTarget.querySelector('button')?.focus();
+                                                setOpenGroup(null);
+                                            }
+                                        }}
+                                    >
+                                        <button
+                                            type="button"
+                                            className="header-mega-menu__group-trigger"
+                                            aria-expanded={open}
+                                            aria-controls={open ? flyoutId : undefined}
+                                            onClick={(event) => {
+                                                const mouse = 'pointerType' in event.nativeEvent && event.nativeEvent.pointerType === 'mouse';
+                                                setOpenGroup((current) => current === link && (mobile || !mouse) ? null : link);
+                                            }}
+                                            onKeyDown={(event) => {
+                                                if (event.key !== 'ArrowRight') return;
+                                                event.preventDefault();
+                                                if (open) {
+                                                    flyoutRef.current?.querySelector('a')?.focus();
+                                                } else {
+                                                    focusFirstChild.current = true;
+                                                    setOpenGroup(link);
+                                                }
+                                            }}
+                                        >
+                                            {label}
+                                            <span className="header-mega-menu__chevron" aria-hidden="true">
+                                                {open && !mobile ? '»' : '›'}
+                                            </span>
+                                        </button>
+                                        {open && (
+                                            <div
+                                                ref={flyoutRef}
+                                                id={flyoutId}
+                                                className={mobile ? 'header-mega-menu__sublinks' : 'header-mega-menu__flyout'}
+                                                role="group"
+                                                aria-label={label}
                                             >
-                                                <strong>{t(link.titleKey)}</strong>
-                                                <span>{t(link.descriptionKey)}</span>
-                                            </MenuLink>
-                                        );
-                                    })}
-                                </div>
-                            </section>
-                        ))}
-                    </div>
+                                                {link.children.map((child) => (
+                                                    <MenuLink key={child.href} link={child} label={t(child.titleKey)} onNavigate={onNavigate} />
+                                                ))}
+                                            </div>
+                                        )}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </section>
                 ))}
             </div>
-
-            {/* Side flyout, outside the scrollable panel so it is not clipped. */}
-            {!mobile && openGroup?.children && (
-                <div
-                    ref={flyoutRef}
-                    id={flyoutId}
-                    className="header-mega-menu__flyout"
-                    style={{ top: flyoutTop }}
-                    role="group"
-                    aria-label={t(openGroup.titleKey)}
-                >
-                    {openGroup.children.map((child) => (
-                        <MenuLink key={child.href} link={child} onNavigate={onNavigate}>
-                            {t(child.titleKey)}
-                        </MenuLink>
-                    ))}
-                </div>
-            )}
         </div>
     );
 }

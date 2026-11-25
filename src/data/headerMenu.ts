@@ -12,6 +12,7 @@ import { symposiumPapersPath } from './acceptedPapers';
 import { sbesTrackCallPath, symposiumCallPath } from './symposiumCalls';
 import { EXPERIENCES_PATH } from './experiences';
 import { PROGRAM_PATH, programPath } from './program';
+import { CAMPUS_MAP_PATH } from './venue';
 
 export interface HeaderMenuSubLink {
     href: string;
@@ -21,7 +22,6 @@ export interface HeaderMenuSubLink {
 export interface HeaderMenuLink {
     href: string;
     titleKey: string;
-    descriptionKey: string;
     external?: boolean;
     /** When set, the item is a group label and these are its links. */
     children?: HeaderMenuSubLink[];
@@ -32,16 +32,11 @@ export interface HeaderMenuSection {
     links: HeaderMenuLink[];
 }
 
-export interface HeaderMenuDefinition {
-    variant: 'cbsoft' | 'compact' | 'more' | 'tracks';
-    columns: HeaderMenuSection[][];
-}
+export type HeaderMenuDefinition = HeaderMenuSection[];
 
-/** Every item has its own title AND description in common.json. */
 const link = (key: string, href: string, external = false): HeaderMenuLink => ({
     href,
     titleKey: `headerMenu.${key}.title`,
-    descriptionKey: `headerMenu.${key}.description`,
     external,
 });
 
@@ -63,86 +58,72 @@ const sbesTrack = (track: SbesTrack): HeaderMenuLink => ({
     ],
 });
 
-const symposiumMenu = (id: 'sblp' | 'sbcars' | 'sast'): HeaderMenuDefinition => ({
-    variant: 'compact',
-    columns: [[{
+const symposiumMenu = (id: 'sblp' | 'sbcars' | 'sast'): HeaderMenuDefinition => [
+    {
         titleKey: `headerMenu.${id}.title`,
         links: [
             link(`${id}.call`, symposiumCallPath(id)),
             link(`${id}.program`, programPath(id)),
             link(`${id}.papers`, symposiumPapersPath(id)),
         ],
-    }]],
-});
+    },
+];
 
-// The current app is a single page. Keep its anchor navigation; connect
-// dedicated pages here when their routes and 2027 content are available.
 export const HEADER_MENUS: Record<HeaderMenuId, HeaderMenuDefinition> = {
-    cbsoft: {
-        variant: 'cbsoft',
-        columns: [
-            [
-                {
-                    titleKey: 'headerMenu.event.title',
-                    links: [
-                        link('event.about', '/sobre'),
-                        link('event.organization', '/organizacao'),
-                        // link('event.speakers', '#palestrantes'),
-                    ],
-                },
-                {
-                    titleKey: 'headerMenu.guide.title',
-                    links: [
-                        link('guide.venue', '/local'),
-                        link('guide.map', '/local#mapa'),
-                        link('guide.accommodation', '/acomodacoes'),
-                        link('guide.experiences', EXPERIENCES_PATH),
-                    ],
-                },
-                {
-                    titleKey: 'headerMenu.history.title',
-                    links: [link('history.previous', '/edicoes-anteriores')],
-                },
+    cbsoft: [
+        {
+            titleKey: 'headerMenu.event.title',
+            links: [
+                link('event.about', '/sobre'),
+                link('event.organization', '/organizacao'),
+                // link('event.speakers', '#palestrantes'),
             ],
-            [
-                {
-                    titleKey: 'headerMenu.program.title',
-                    links: [
-                        link('program.schedule', PROGRAM_PATH),
-                        link('program.articles', ACCEPTED_PAPERS_PATH),
-                        // link('program.special', '#eventos'),
-                    ],
-                },
-                {
-                    titleKey: 'headerMenu.participation.title',
-                    links: [
-                        // link('participation.volunteers', '/voluntarios'),
-                        link('participation.conduct', '/codigo-de-conduta'),
-                    ],
-                },
+        },
+        {
+            titleKey: 'headerMenu.program.title',
+            links: [
+                link('program.schedule', PROGRAM_PATH),
+                link('program.articles', ACCEPTED_PAPERS_PATH),
+                // link('program.special', '#eventos'),
             ],
-        ],
-    },
+        },
+        {
+            titleKey: 'headerMenu.participation.title',
+            links: [
+                // link('participation.volunteers', '/voluntarios'),
+                link('participation.conduct', '/codigo-de-conduta'),
+            ],
+        },
+        {
+            titleKey: 'headerMenu.guide.title',
+            links: [
+                link('guide.venue', '/local#mapa'),
+                link('guide.map', CAMPUS_MAP_PATH),
+                link('guide.accommodation', '/acomodacoes'),
+                link('guide.experiences', EXPERIENCES_PATH),
+            ],
+        },
+        {
+            titleKey: 'headerMenu.history.title',
+            links: [link('history.previous', '/edicoes-anteriores')],
+        },
+    ],
     // One list of tracks; each opens a side flyout with its two links.
-    sbes: {
-        variant: 'tracks',
-        columns: [[
-            {
-                titleKey: 'headerMenu.sbes.tracksTitle',
-                links: SBES_TRACKS.map(sbesTrack),
-            },
-            {
-                titleKey: 'headerMenu.sbes.programTitle',
-                links: [link('sbes.program', programPath('sbes'))],
-            },
-        ]],
-    },
+    sbes: [
+        {
+            titleKey: 'headerMenu.sbes.tracksTitle',
+            links: SBES_TRACKS.map(sbesTrack),
+        },
+        {
+            titleKey: 'headerMenu.sbes.programTitle',
+            links: [link('sbes.program', programPath('sbes'))],
+        },
+    ],
     sblp: symposiumMenu('sblp'),
     sbcars: symposiumMenu('sbcars'),
     sast: symposiumMenu('sast'),
-    workshops: {
-        variant: 'compact',
-        columns: [[{
+    workshops: [
+        {
             titleKey: 'headerMenu.workshops.title',
             links: [
                 link('workshops.call', '/workshops/chamada'),
@@ -150,26 +131,23 @@ export const HEADER_MENUS: Record<HeaderMenuId, HeaderMenuDefinition> = {
                 link('workshops.program', programPath('workshops')),
                 // link('workshops.papers', '#artigos-aceitos'),
             ],
-        }]],
-    },
-    more: {
-        variant: 'more',
-        columns: [
-            [{
-                titleKey: 'headerMenu.more.communityTitle',
-                links: [
-                    link('more.artifacts', '#artefatos'),
-                    link('more.latam', '#latam-school'),
-                    link('more.highSchool', '#ensino-medio'),
-                ],
-            }],
-            [{
-                titleKey: 'headerMenu.more.eventsTitle',
-                links: [
-                    link('more.aiware', 'https://aiware-latam.github.io/', true),
-                    link('more.freeSoftware', '#software-livre'),
-                ],
-            }],
-        ],
-    },
+        },
+    ],
+    more: [
+        {
+            titleKey: 'headerMenu.more.communityTitle',
+            links: [
+                link('more.artifacts', '#artefatos'),
+                link('more.latam', '#latam-school'),
+                link('more.highSchool', '#ensino-medio'),
+            ],
+        },
+        {
+            titleKey: 'headerMenu.more.eventsTitle',
+            links: [
+                link('more.aiware', 'https://aiware-latam.github.io/', true),
+                link('more.freeSoftware', '#software-livre'),
+            ],
+        },
+    ],
 };

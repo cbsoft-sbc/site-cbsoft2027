@@ -18,8 +18,6 @@ export function VisualIdentity() {
           <BrandBar />
           {t('visualIdentity.title')}
         </h2>
-        <p className="about-prose brand-id__intro">{t('visualIdentity.intro')}</p>
-
         <div className="brand-id__layout">
           <figure className="brand-id__photo">
             <img
@@ -41,7 +39,10 @@ export function VisualIdentity() {
               height={1802}
               loading="lazy"
             />
-            <h3 className="brand-id__h3">{t('visualIdentity.conceptTitle')}</h3>
+            <h3 className="brand-id__h3">
+              <BrandBar />
+              {t('visualIdentity.conceptTitle')}
+            </h3>
             <div className="about-prose">
               <p>{t('visualIdentity.conceptP1')}</p>
               <p>{t('visualIdentity.conceptP2')}</p>

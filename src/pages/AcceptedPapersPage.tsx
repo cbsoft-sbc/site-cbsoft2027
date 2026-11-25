@@ -34,6 +34,7 @@ export function AcceptedPapersPage({ symposium }: { symposium?: PapersSymposiumI
   const { t } = useTranslation();
   const { track: slug } = useParams();
   const track = SBES_TRACKS.find((item) => item.slug === slug);
+  const trackNotFound = Boolean(slug && !track);
   const trackTitle = track ? t(`headerMenu.sbes.tracks.${track.id}.title`) : '';
   const acronym = symposium ? SYMPOSIA.find((s) => s.id === symposium)?.acronym ?? '' : '';
 
@@ -52,33 +53,26 @@ export function AcceptedPapersPage({ symposium }: { symposium?: PapersSymposiumI
     <main className="about-page" id="artigos-aceitos">
       <section className="about-section about-top" aria-labelledby="artigos-titulo">
         <div className="container-xl">
+          <h1 id="artigos-titulo" className="about-title">
+            {!trackNotFound && <BrandBar />}
+            {t(trackNotFound ? 'acceptedPapersPage.notFound' : 'acceptedPapersPage.title')}
+          </h1>
+
           {symposium ? (
             <>
-              <p className="about-eyebrow">{acronym} 2027</p>
-              <h1 id="artigos-titulo" className="about-title papers-title">
-                {t('acceptedPapersPage.title')}
-              </h1>
+              <p className="papers-track">{acronym} 2027</p>
               <PaperList
                 papers={SYMPOSIUM_PAPERS[symposium]}
                 pending={t('acceptedPapersPage.symposiumPending', { acronym })}
               />
             </>
           ) : !slug ? (
+            <p className="papers-pending">{t('acceptedPapersPage.generalPending')}</p>
+          ) : track && (
             <>
-              <p className="about-eyebrow">{t('acceptedPapersPage.generalEyebrow')}</p>
-              <h1 id="artigos-titulo" className="about-title papers-title">
-                {t('acceptedPapersPage.title')}
-              </h1>
-              <p className="papers-pending">{t('acceptedPapersPage.generalPending')}</p>
-            </>
-          ) : track ? (
-            <>
-              <p className="about-eyebrow">
-                {t('acceptedPapersPage.eyebrow')} · {trackTitle}
+              <p className="papers-track">
+                {t('acceptedPapersPage.trackLabel', { track: trackTitle })}
               </p>
-              <h1 id="artigos-titulo" className="about-title papers-title">
-                {t('acceptedPapersPage.title')}
-              </h1>
 
               <PaperList papers={track.papers} pending={t('acceptedPapersPage.pending')} />
 
@@ -96,10 +90,6 @@ export function AcceptedPapersPage({ symposium }: { symposium?: PapersSymposiumI
                 ))}
               </ul>
             </>
-          ) : (
-            <h1 id="artigos-titulo" className="about-title">
-              {t('acceptedPapersPage.notFound')}
-            </h1>
           )}
         </div>
       </section>

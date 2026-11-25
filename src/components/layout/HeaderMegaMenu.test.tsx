@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it } from 'vitest';
 import i18n from '@/i18n';
@@ -7,6 +7,27 @@ import { HeaderMegaMenu } from './HeaderMegaMenu';
 
 beforeEach(async () => {
   await i18n.changeLanguage('pt');
+});
+
+it.each([
+  ['pt', 'Sobre', 'Acomodações', 'Programação', 'Experiências'],
+  ['en', 'About', 'Accommodation', 'Schedule', 'Experiences'],
+])('shows only the translated labels and keeps the congress destinations in %s', async (lang, about, accommodation, program, experiences) => {
+  await i18n.changeLanguage(lang);
+  render(
+    <MemoryRouter>
+      <HeaderMegaMenu id="cbsoft" menu={HEADER_MENUS.cbsoft} onNavigate={() => {}} />
+    </MemoryRouter>,
+  );
+  expect(screen.getByRole('link', { name: about }).getAttribute('href')).toBe('/sobre');
+  expect(screen.getByRole('link', { name: accommodation }).getAttribute('href')).toBe('/acomodacoes');
+  expect(screen.getByRole('link', { name: program }).getAttribute('href')).toBe('/programacao');
+  expect(screen.getByRole('link', { name: experiences }).getAttribute('href')).toBe('/experiencias');
+  const links = screen.getAllByRole('link');
+  expect(links).toHaveLength(10);
+  for (const link of links) {
+    expect(link.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
+  }
 });
 
 function renderSbes(mobile = false) {
@@ -27,23 +48,31 @@ describe('HeaderMegaMenu — SBES tracks', () => {
   it('opens a track flyout on hover and closes it when the menu scrolls', () => {
     const { container } = renderSbes();
     const trigger = screen.getByRole('button', { name: /Trilha de Educação/ });
-    fireEvent.mouseEnter(trigger);
+    const chevron = trigger.querySelector('[aria-hidden="true"]');
+    expect(chevron?.textContent).toBe('›');
+    fireEvent(trigger, Object.assign(new MouseEvent('pointerover', { bubbles: true }), { pointerType: 'mouse' }));
     expect(trigger.getAttribute('aria-expanded')).toBe('true');
+    expect(chevron?.textContent).toBe('»');
 
     const flyout = screen.getByRole('group', { name: 'Trilha de Educação' });
-    const links = flyout.querySelectorAll('a');
-    expect(links[0].textContent).toBe('Chamada de Trabalhos');
-    expect(links[0].getAttribute('href')).toBe('/sbes/educacao/chamada');
-    expect(links[1].getAttribute('href')).toBe('/sbes/educacao/artigos-aceitos');
+    const call = within(flyout).getByRole('link', { name: 'Chamada de Trabalhos' });
+    const papers = within(flyout).getByRole('link', { name: 'Artigos Aceitos' });
+    expect(call.getAttribute('href')).toBe('/sbes/educacao/chamada');
+    expect(papers.getAttribute('href')).toBe('/sbes/educacao/artigos-aceitos');
+    expect(call.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
+    expect(papers.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
 
     fireEvent.scroll(container.querySelector('.header-mega-menu__content')!);
     expect(screen.queryByRole('group')).toBeNull();
     expect(trigger.getAttribute('aria-expanded')).toBe('false');
+    expect(chevron?.textContent).toBe('›');
   });
 
   it('expands the links inline on mobile', () => {
     renderSbes(true);
-    fireEvent.click(screen.getByRole('button', { name: /Trilha de Pesquisa/ }));
+    const trigger = screen.getByRole('button', { name: /Trilha de Pesquisa/ });
+    fireEvent.click(trigger);
+    expect(trigger.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
     expect(screen.getByRole('link', { name: 'Artigos Aceitos' }).getAttribute('href')).toBe('/sbes/pesquisa/artigos-aceitos');
   });
 });

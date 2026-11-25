@@ -51,8 +51,10 @@ describe('PreviousEditionsPage', () => {
     try {
       render(<App />);
       expect(document.title).toBe("Edições Anteriores — CBSOFT'27");
+      expect(screen.queryByText(/Conheça a história do CBSoft/)).toBeNull();
       await act(async () => { await i18n.changeLanguage('en'); });
       expect(screen.getByRole('heading', { level: 1, name: 'Previous Editions' })).toBeTruthy();
+      expect(screen.queryByText(/Discover the history of CBSoft/)).toBeNull();
       expect(screen.getAllByText('Visit edition')).toHaveLength(17);
       expect(document.title).toBe("Previous Editions — CBSOFT'27");
       expect(meta.content).toContain('2010 to 2026');

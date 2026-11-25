@@ -1,24 +1,54 @@
-import type { ReactNode } from 'react';
+import './Committee.css';
+
+import { useId, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Reveal } from '@/components/ui/Reveal';
-import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useLang } from '@/hooks/useLang';
 import { pick } from '@/lib/localized';
 import {
   GENERAL_CHAIRS,
   LOCAL_COMMITTEE_ROLES,
   PC_CHAIR_SYMPOSIA,
+  WEBSITE_TEAM,
+  type CommitteePerson,
 } from '@/data/committee';
+
+function PortraitGroup({ title, people }: { title: string; people: readonly CommitteePerson[] }) {
+  const headingId = useId();
+
+  return (
+    <section className="committee-portraits" aria-labelledby={headingId}>
+      <h2 id={headingId} className="committee-portraits__title">{title}</h2>
+      <ul className="committee-portraits__list" role="list">
+        {people.map(({ name, affiliation, photo }) => (
+          <li key={photo} className="committee-portraits__person">
+            <img
+              className="committee-portraits__photo"
+              src={`${import.meta.env.BASE_URL}images/organization/${photo}`}
+              width={460}
+              height={460}
+              loading="lazy"
+              decoding="async"
+              alt=""
+            />
+            <p>{name}</p>
+            <p className="committee-portraits__affiliation">{affiliation}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
 
 function Group({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div>
-      <h3
+      <h2
         className="font-mono text-xs uppercase tracking-[.12em] pb-3 mb-4 border-b"
         style={{ borderColor: 'var(--line)', color: 'var(--purple)' }}
       >
         {title}
-      </h3>
+      </h2>
       <ul className="space-y-3 text-sm">{children}</ul>
     </div>
   );
@@ -29,24 +59,14 @@ export function Committee() {
   const lang = useLang();
 
   return (
-    <Reveal id="comite" className="py-20 md:py-28" style={{ background: 'var(--surface-alt)' }}>
+    <Reveal id="comite" className="committee-section">
       <div className="container-xl">
-        <SectionHeading number="06" eyebrow={t('committee.eyebrow')} title={t('committee.title')} />
-        <p className="mt-3 max-w-2xl text-sm" style={{ color: 'var(--slate-soft)' }}>
-          {t('committee.note')}
-        </p>
+        <div className="committee-portraits__groups">
+          <PortraitGroup title={t('committee.generalChairs')} people={GENERAL_CHAIRS} />
+          <PortraitGroup title={t('committee.website')} people={WEBSITE_TEAM} />
+        </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mt-10">
-          <Group title={t('committee.generalChairs')}>
-            {GENERAL_CHAIRS.map((person, i) => (
-              <li key={i}>
-                <span className="font-medium">{pick(person.name, lang)}</span>
-                <br />
-                <span style={{ color: 'var(--slate)' }}>{pick(person.detail, lang)}</span>
-              </li>
-            ))}
-          </Group>
-
+        <div className="grid md:grid-cols-2 gap-8 mt-14">
           <Group title={t('committee.pcChairs')}>
             {PC_CHAIR_SYMPOSIA.map((acronym) => (
               <li key={acronym}>

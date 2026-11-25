@@ -27,11 +27,9 @@ describe('CBSOFT\'27 menu → Experiências', () => {
     await setLang(lang);
     window.history.replaceState(null, '', BASE);
     render(<App />);
-    fireEvent.click(screen.getAllByRole('button', { name: menu })[0]);
-    // Same pattern as the other items: a link with title and description.
-    const link = screen.getByRole('link', { name: new RegExp(`^${label}`) });
-    expect(link.querySelector('strong')?.textContent).toBe(label);
-    expect(link.querySelector('span')?.textContent).toBeTruthy();
+    const trigger = screen.getAllByRole('button', { name: menu })[0];
+    fireEvent(trigger, Object.assign(new MouseEvent('pointerover', { bubbles: true }), { pointerType: 'mouse' }));
+    const link = screen.getByRole('link', { name: label });
     fireEvent.click(link);
     expect(window.location.pathname).toBe(`${BASE}experiencias`);
     expect(screen.getByRole('heading', { level: 1, name: label })).toBeTruthy();

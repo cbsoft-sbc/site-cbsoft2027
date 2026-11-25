@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it } from 'vitest';
 import i18n from '@/i18n';
@@ -42,13 +42,42 @@ describe('AboutPage', () => {
     expect(items[3].textContent).toMatch(/\.$/);
   });
 
-  it('renders the visual identity section with the photo and logo', () => {
+  it.each([
+    {
+      lang: 'pt',
+      title: 'Identidade Visual do CBSoft 2027',
+      concept: 'Conceito da marca',
+      photo: /Edifício Niemeyer/,
+      logo: /Logo oficial do CBSOFT'27/,
+      caption: 'Edifício Niemeyer, Oscar Niemeyer, 1954, Belo Horizonte, Minas Gerais',
+      intro: /identidade visual.*(conecta|relaciona) tecnologia, arquitetura/i,
+    },
+    {
+      lang: 'en',
+      title: 'CBSoft 2027 Visual Identity',
+      concept: 'Brand concept',
+      photo: /Niemeyer Building/,
+      logo: /Official CBSOFT'27 logo/,
+      caption: 'Niemeyer Building, Oscar Niemeyer, 1954, Belo Horizonte, Minas Gerais',
+      intro: /visual identity (connects|relates) technology, architecture/i,
+    },
+  ])('shows the visual identity with heading bars and a single photo caption in $lang', async ({
+    lang, title, concept, photo, logo, caption, intro,
+  }) => {
+    await i18n.changeLanguage(lang);
     renderPage();
-    expect(
-      screen.getByRole('heading', { level: 2, name: 'Identidade Visual do CBSoft 2027' }),
-    ).toBeTruthy();
-    expect(screen.getByAltText(/Edifício Niemeyer/)).toBeTruthy();
-    expect(screen.getByAltText(/Logo oficial do CBSOFT'27/)).toBeTruthy();
+
+    const identity = within(screen.getByRole('region', { name: title }));
+    for (const name of [title, concept]) {
+      expect(identity.getByRole('heading', { name }).firstElementChild?.matches('.brand-bar')).toBe(true);
+    }
+    expect(identity.getByAltText(photo)).toBeTruthy();
+    expect(identity.getByAltText(logo)).toBeTruthy();
+    expect(identity.queryByText(intro)).toBeNull();
+
+    const captions = identity.getByRole('figure').querySelectorAll('figcaption');
+    expect(captions).toHaveLength(1);
+    expect(captions[0].textContent).toBe(caption);
   });
 
   it('renders the "Sobre a SBC" section with working SBC links', () => {

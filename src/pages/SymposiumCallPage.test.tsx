@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it } from 'vitest';
 import i18n from '@/i18n';
@@ -82,7 +82,12 @@ describe('SymposiumCallPage', () => {
       expect(screen.getByRole('heading', { level: 2, name: section.title.pt })).toBeTruthy();
     }
     expect(container.textContent).toContain('41st Brazilian Symposium on Software Engineering');
-    expect(container.textContent).not.toMatch(/São Paulo|forms\.gle|Monalessa/);
+    expect(container.textContent).not.toMatch(/São Paulo|forms\.gle|Monalessa|\bx{3,}\b/i);
+    const organization = within(screen.getByRole('complementary', { name: 'Organização' }));
+    for (const chair of organization.getAllByRole('listitem')) {
+      expect(chair.textContent).toBe('A Definir');
+    }
+    expect(organization.getAllByRole('listitem')).toHaveLength(call.chairs.length);
   });
 
   it('shows the SBES Education Track call with the shared SBES sections', () => {

@@ -1,12 +1,12 @@
 import './Header.css';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { HEADER_MENUS, type HeaderMenuId } from '@/data/headerMenu';
 import { getCurrentHeaderMenu, NAV_ITEMS } from '@/data/nav';
 import { IMAGES } from '@/data/config';
-import { useScrolledPastTop } from '@/hooks/useScrolledPastTop';
+import { useTopScrollReveal } from '@/hooks/useTopScrollReveal';
 import { useOnClickOutside } from '@/hooks/useOnClickOutside';
 import { HeaderMegaMenu } from './HeaderMegaMenu';
 import { MobileMenu } from './MobileMenu';
@@ -14,16 +14,15 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function Header() {
   const { t } = useTranslation();
-  const { pathname } = useLocation();
+  const { key, pathname } = useLocation();
   const currentMenu = getCurrentHeaderMenu(pathname);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<HeaderMenuId | null>(null);
   const headerRef = useRef<HTMLElement>(null);
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const focusFirstLink = useRef(false);
-  // The SBC strip only shows at the top of the page.
-  const sbcHidden = useScrolledPastTop();
+  const focusFirstItem = useRef(false);
+  const showSbc = useTopScrollReveal(key);
 
   function cancelClose() {
     if (closeTimer.current !== null) {
@@ -34,7 +33,7 @@ export function Header() {
 
   function closeMegaMenu() {
     cancelClose();
-    focusFirstLink.current = false;
+    focusFirstItem.current = false;
     setActiveMenu(null);
   }
 
@@ -50,11 +49,11 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (activeMenu && focusFirstLink.current) {
+    if (activeMenu && focusFirstItem.current) {
       headerRef.current
-        ?.querySelector<HTMLElement>(`#header-mega-menu-${activeMenu} a`)
+        ?.querySelector<HTMLElement>(`#header-mega-menu-${activeMenu} :is(a, button)`)
         ?.focus();
-      focusFirstLink.current = false;
+      focusFirstItem.current = false;
     }
   }, [activeMenu]);
 
@@ -68,49 +67,38 @@ export function Header() {
     return () => breakpoint.removeEventListener('change', onChange);
   }, []);
 
-  // Publish how far the fixed header reaches down the viewport (main bar,
-  // plus the SBC strip while it is shown) as --site-header-offset, so content
-  // such as scroll targets can stop just below it. Measured
-  // from the main bar, not the header box, so an open mega menu is ignored.
-  useEffect(() => {
+  // Anchor targets and the mobile menu clear the full visible header.
+  useLayoutEffect(() => {
     const header = headerRef.current;
-    const strip = header?.querySelector<HTMLElement>('.site-header__sbc');
-    const bar = header?.querySelector<HTMLElement>('.site-header__inner');
-    if (!header || !strip || !bar) return;
+    if (!header) return;
 
+    const rootStyle = document.documentElement.style;
     const update = () => {
-      const style = getComputedStyle(header);
-      const bottom =
-        bar.offsetTop +
-        bar.offsetHeight +
-        parseFloat(style.paddingBottom) +
-        parseFloat(style.borderBottomWidth) -
-        (sbcHidden ? strip.offsetHeight : 0);
-      document.documentElement.style.setProperty('--site-header-offset', `${bottom}px`);
+      rootStyle.setProperty('--site-header-offset', `${header.offsetHeight}px`);
     };
 
     update();
-    if (typeof ResizeObserver === 'undefined') return;
-    const observer = new ResizeObserver(update);
-    observer.observe(strip);
-    observer.observe(bar);
-    return () => observer.disconnect();
-  }, [sbcHidden]);
+    const observer = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(update);
+    observer?.observe(header);
+    return () => {
+      observer?.disconnect();
+      rootStyle.removeProperty('--site-header-offset');
+    };
+  }, [key]);
 
   return (
     <header
       ref={headerRef}
-      className={`site-header${sbcHidden ? ' is-sbc-hidden' : ''}`}
+      className="site-header"
       onKeyDown={(event) => {
-        if (event.key === 'Escape' && mobileMenuOpen) {
-          event.preventDefault();
-          closeAllMenus();
-          mobileTriggerRef.current?.focus();
-        }
+        if (event.key !== 'Escape' || !mobileMenuOpen) return;
+        event.preventDefault();
+        event.stopPropagation();
+        mobileTriggerRef.current?.focus();
+        closeAllMenus();
       }}
     >
-      {/* "Realização: SBC" strip — slides away once the page scrolls. */}
-      <div className="site-header__sbc" aria-hidden={sbcHidden || undefined}>
+      <div key={key} className="site-header__sbc" aria-hidden={!showSbc}>
         <div className="site-header__sbc-inner">
           <span className="site-header__sbc-label">{t('header.organizedBy')}</span>
           <a
@@ -119,7 +107,7 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t('header.sbcAria')}
-            tabIndex={sbcHidden ? -1 : undefined}
+            tabIndex={showSbc ? undefined : -1}
           >
             <img src={IMAGES.sbc_logo} alt="" width={597} height={288} />
           </a>
@@ -163,24 +151,26 @@ export function Header() {
                 }}
                 onPointerLeave={(event) => {
                   if (event.pointerType !== 'mouse') return;
+                  const panel = event.currentTarget.querySelector('.header-mega-menu');
                   cancelClose();
                   closeTimer.current = setTimeout(() => {
-                    setActiveMenu((current) => current === item.id ? null : current);
                     closeTimer.current = null;
+                    if (!panel?.contains(document.activeElement)) {
+                      setActiveMenu((current) => current === item.id ? null : current);
+                    }
                   }, 150);
                 }}
                 onBlurCapture={(event) => {
-                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+                  if (open && !event.currentTarget.contains(event.relatedTarget)) {
                     closeMegaMenu();
                   }
                 }}
                 onKeyDown={(event) => {
-                  if (event.key === 'Escape' && open) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    closeMegaMenu();
-                    event.currentTarget.querySelector('button')?.focus();
-                  }
+                  if (event.key !== 'Escape' || !open) return;
+                  event.preventDefault();
+                  event.stopPropagation();
+                  event.currentTarget.querySelector('button')?.focus();
+                  closeMegaMenu();
                 }}
               >
                 <button
@@ -189,19 +179,22 @@ export function Header() {
                   className={`site-header__nav-item${open ? ' is-active' : ''}${currentMenu === item.id ? ' is-current' : ''}`}
                   aria-current={currentMenu === item.id ? 'location' : undefined}
                   aria-expanded={open}
-                  aria-controls={`header-mega-menu-${item.id}`}
-                  onClick={() => {
+                  aria-controls={open ? `header-mega-menu-${item.id}` : undefined}
+                  onClick={(event) => {
                     cancelClose();
-                    setActiveMenu((current) => current === item.id ? null : item.id);
+                    const mouse = 'pointerType' in event.nativeEvent && event.nativeEvent.pointerType === 'mouse';
+                    setActiveMenu((current) => current === item.id && !mouse ? null : item.id);
                   }}
                   onKeyDown={(event) => {
                     if (event.key === 'ArrowDown') {
                       event.preventDefault();
                       cancelClose();
                       if (open) {
-                        event.currentTarget.parentElement?.querySelector('a')?.focus();
+                        event.currentTarget.parentElement
+                          ?.querySelector<HTMLElement>('.header-mega-menu :is(a, button)')
+                          ?.focus();
                       } else {
-                        focusFirstLink.current = true;
+                        focusFirstItem.current = true;
                         setActiveMenu(item.id);
                       }
                     }
@@ -237,7 +230,7 @@ export function Header() {
           className={`site-header__mobile-toggle${mobileMenuOpen ? ' is-open' : ''}`}
           aria-label={t(mobileMenuOpen ? 'header.closeMenu' : 'header.openMenu')}
           aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-menu"
+          aria-controls={mobileMenuOpen ? 'mobile-menu' : undefined}
           onClick={() => {
             closeMegaMenu();
             setMobileMenuOpen((open) => !open);

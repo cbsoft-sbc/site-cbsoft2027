@@ -22,8 +22,8 @@
     "sbcAria": "Brazilian Computer Society (opens in a new tab)"
   },
   "hero": {
-    "countdownTitle": "Coming in",
-    "countdownAria": "Time remaining until the submission deadline",
+    "countdownTitle": "The congress starts in",
+    "countdownAria": "Time remaining until the congress begins",
     "units": {
       "days": "Days",
       "hours": "Hours",
@@ -84,9 +84,8 @@
   },
   "visualIdentity": {
     "title": "CBSoft 2027 Visual Identity",
-    "intro": "The CBSoft 2027 visual identity relates technology, architecture and the urban landscape of Belo Horizonte, drawing on the curves of the Niemeyer Building.",
     "photoAlt": "The Niemeyer Building in Belo Horizonte, with its curved façade and flowering trees in the foreground",
-    "photoCaption": "Niemeyer Building — Oscar Niemeyer, 1954 · Belo Horizonte, MG",
+    "photoCaption": "Niemeyer Building, Oscar Niemeyer, 1954, Belo Horizonte, Minas Gerais",
     "logoAlt": "Official CBSOFT'27 logo — Brazilian Conference on Software, Belo Horizonte, Minas Gerais",
     "conceptTitle": "Brand concept",
     "conceptP1": "The brand’s main visual reference is the Niemeyer Building, designed by Oscar Niemeyer in 1954 and located near Praça da Liberdade, in central Belo Horizonte. Its curved lines express the lightness and fluidity of modernist architecture and recall the mountainous landscape of Minas Gerais.",
@@ -107,6 +106,7 @@
     "datesTitle": "Important Dates",
     "tbd": "TBD",
     "hardDeadline": "Hard deadline",
+    "memberTbd": "TBD",
     "organizationTitle": "Organization",
     "chairsTitle": "Program Committee Chairs",
     "committeeTitle": "Program Committee"
@@ -297,16 +297,22 @@
     "metaTitle": "Event Venue — CBSOFT'27",
     "title": "Event Venue",
     "mapTitle": "Map and directions",
+    "mapEmbedTitle": "Google Maps: PUC Minas — Coração Eucarístico Campus",
     "mapDescription": "Use the campus address as your destination in Google Maps. Directions depend on your starting point. The event entrance, building and rooms are still to be confirmed.",
     "directions": "Get directions on Google Maps ↗",
-    "openMap": "Open the campus map ↗",
+    "openMap": "Open in Google Maps ↗",
+    "openCampusMap": "View PUC Campus Map",
     "officialLocation": "Check the address on the official PUC Minas website ↗"
   },
+  "campusMapPage": {
+    "metaTitle": "PUC Campus Map | CBSOFT 2027",
+    "metaDescription": "Map of PUC Minas Coração Eucarístico campus, with entrances, numbered buildings and a legend.",
+    "fullSize": "View full-size campus map ↗",
+    "imageAlt": "PUC Minas Coração Eucarístico campus plan with entrances, numbered buildings and a legend."
+  },
   "committee": {
-    "eyebrow": "ORGANIZING COMMITTEE",
-    "title": "Who is organizing CBSoft 2027",
-    "note": "Names below are placeholders pending confirmation by SBC and the local organizing institutions.",
     "generalChairs": "General Chairs",
+    "website": "Website Development",
     "pcChairs": "Program Committee Chairs",
     "localCommittee": "Local Committee",
     "chairTbc": "chair to be confirmed",
@@ -436,8 +442,8 @@
         "description": "Where CBSoft 2027 takes place and how to get there."
       },
       "map": {
-        "title": "Map",
-        "description": "Campus map and directions."
+        "title": "PUC Campus Map",
+        "description": "See the entrances and buildings of the Coração Eucarístico campus."
       },
       "accommodation": {
         "title": "Accommodation",
@@ -691,20 +697,18 @@
   },
   "acceptedPapersPage": {
     "metaTitle": "Accepted Papers — {{track}} — SBES — CBSOFT'27",
-    "eyebrow": "SBES 2027",
+    "trackLabel": "SBES · {{track}}",
     "title": "Accepted Papers",
     "pending": "The list of papers accepted in this track will be published after authors are notified.",
     "otherTracks": "Other SBES tracks",
     "notFound": "Track not found.",
     "generalMetaTitle": "Accepted Papers — CBSOFT'27",
-    "generalEyebrow": "CBSoft 2027",
     "generalPending": "The list of accepted papers will be published after authors are notified.",
     "symposiumMetaTitle": "Accepted Papers — {{acronym}} — CBSOFT'27",
     "symposiumPending": "The list of papers accepted at {{acronym}} will be published after authors are notified."
   },
   "previousEditionsPage": {
     "title": "Previous Editions",
-    "description": "Discover the history of CBSoft and visit the websites of previous conference editions.",
     "online": "(Online)",
     "visit": "Visit edition",
     "newTab": "(opens in a new tab)",

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { LocationPage } from '@/pages/LocationPage';
+import { CampusMapPage } from '@/pages/CampusMapPage';
 import { Home } from '@/pages/Home';
 import { AboutPage } from '@/pages/AboutPage';
 import { WorkshopsCallPage } from '@/pages/WorkshopsCallPage';
@@ -18,6 +19,7 @@ import { PreviousEditionsPage } from '@/pages/PreviousEditionsPage';
 import { SymposiumCallPage } from '@/pages/SymposiumCallPage';
 import { SYMPOSIA } from '@/data/symposia';
 import { SBES_TRACKS } from '@/data/sbesTracks';
+import { CAMPUS_MAP_PATH } from '@/data/venue';
 import { sbesTrackCallPath, symposiumCallPath } from '@/data/symposiumCalls';
 import { PAPERS_SYMPOSIA, symposiumPapersPath } from '@/data/acceptedPapers';
 
@@ -29,6 +31,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/local" element={<LocationPage />} />
+        <Route path={CAMPUS_MAP_PATH} element={<CampusMapPage />} />
         <Route path="/acomodacoes" element={<AccommodationPage />} />
         <Route path="/experiencias" element={<ExperiencesPage />} />
         <Route path="/programacao" element={<ProgramPage />} />

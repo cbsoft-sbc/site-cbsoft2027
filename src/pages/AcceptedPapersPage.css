@@ -1,6 +1,7 @@
 /* Artigos Aceitos (/artigos-aceitos, /sbes/:track/artigos-aceitos) */
-.papers-title {
+.papers-track {
   margin-top: 0.75rem;
+  color: var(--slate);
 }
 
 .papers-pending {

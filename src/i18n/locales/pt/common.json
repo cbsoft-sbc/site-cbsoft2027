@@ -22,8 +22,8 @@
     "sbcAria": "Sociedade Brasileira de Computação (abre em nova aba)"
   },
   "hero": {
-    "countdownTitle": "Faltam",
-    "countdownAria": "Tempo restante até o prazo de submissão",
+    "countdownTitle": "O congresso começa em",
+    "countdownAria": "Tempo restante até o início do congresso",
     "units": {
       "days": "Dias",
       "hours": "Horas",
@@ -84,9 +84,8 @@
   },
   "visualIdentity": {
     "title": "Identidade Visual do CBSoft 2027",
-    "intro": "A identidade visual do CBSoft 2027 relaciona tecnologia, arquitetura e a paisagem urbana de Belo Horizonte, tomando como referência as curvas do Edifício Niemeyer.",
     "photoAlt": "Edifício Niemeyer, em Belo Horizonte, com sua fachada de linhas curvas e árvores floridas em primeiro plano",
-    "photoCaption": "Edifício Niemeyer — Oscar Niemeyer, 1954 · Belo Horizonte, MG",
+    "photoCaption": "Edifício Niemeyer, Oscar Niemeyer, 1954, Belo Horizonte, Minas Gerais",
     "logoAlt": "Logo oficial do CBSOFT'27 — Congresso Brasileiro de Software, Belo Horizonte, Minas Gerais",
     "conceptTitle": "Conceito da marca",
     "conceptP1": "A principal referência visual da marca é o Edifício Niemeyer, projetado por Oscar Niemeyer em 1954 e situado próximo à Praça da Liberdade, na região central de Belo Horizonte. Suas linhas curvas expressam a leveza e a fluidez da arquitetura modernista e remetem ao relevo montanhoso de Minas Gerais.",
@@ -107,6 +106,7 @@
     "datesTitle": "Datas Importantes",
     "tbd": "A definir",
     "hardDeadline": "Prazo final (hard deadline)",
+    "memberTbd": "A Definir",
     "organizationTitle": "Organização",
     "chairsTitle": "Coordenadores do Comitê de Programa",
     "committeeTitle": "Comitê de Programa"
@@ -297,16 +297,22 @@
     "metaTitle": "Local do Evento — CBSOFT'27",
     "title": "Local do Evento",
     "mapTitle": "Mapa e navegação",
+    "mapEmbedTitle": "Google Maps: PUC Minas — Campus Coração Eucarístico",
     "mapDescription": "Use o endereço do campus como destino no Google Maps. A rota depende do seu ponto de partida. A entrada, o prédio e as salas do evento ainda serão confirmados.",
     "directions": "Traçar rota no Google Maps ↗",
-    "openMap": "Abrir mapa do campus ↗",
+    "openMap": "Abrir no Google Maps ↗",
+    "openCampusMap": "Ver Mapa PUC",
     "officialLocation": "Conferir endereço no site oficial da PUC Minas ↗"
   },
+  "campusMapPage": {
+    "metaTitle": "Mapa PUC | CBSOFT 2027",
+    "metaDescription": "Mapa do campus Coração Eucarístico da PUC Minas, com portarias, prédios numerados e legenda.",
+    "fullSize": "Ver mapa em tamanho original ↗",
+    "imageAlt": "Planta do campus Coração Eucarístico da PUC Minas, com portarias, prédios numerados e legenda."
+  },
   "committee": {
-    "eyebrow": "COMITÊ ORGANIZADOR",
-    "title": "Quem organiza o CBSoft 2027",
-    "note": "Os nomes abaixo são provisórios, pendentes de confirmação pela SBC e pelas instituições locais organizadoras.",
     "generalChairs": "Coordenação Geral",
+    "website": "Website",
     "pcChairs": "Coordenação do Programa Científico",
     "localCommittee": "Comitê Local",
     "chairTbc": "coordenação a confirmar",
@@ -436,8 +442,8 @@
         "description": "Onde será o CBSoft 2027 e como chegar."
       },
       "map": {
-        "title": "Mapa",
-        "description": "Mapa do campus e rotas até o local."
+        "title": "Mapa PUC",
+        "description": "Veja as portarias e os prédios do campus Coração Eucarístico."
       },
       "accommodation": {
         "title": "Acomodações",
@@ -691,20 +697,18 @@
   },
   "acceptedPapersPage": {
     "metaTitle": "Artigos Aceitos — {{track}} — SBES — CBSOFT'27",
-    "eyebrow": "SBES 2027",
+    "trackLabel": "SBES · {{track}}",
     "title": "Artigos Aceitos",
     "pending": "A lista de artigos aceitos nesta trilha será divulgada após a notificação dos autores.",
     "otherTracks": "Outras trilhas do SBES",
     "notFound": "Trilha não encontrada.",
     "generalMetaTitle": "Artigos Aceitos — CBSOFT'27",
-    "generalEyebrow": "CBSoft 2027",
     "generalPending": "A lista de artigos aceitos será divulgada após a notificação dos autores.",
     "symposiumMetaTitle": "Artigos Aceitos — {{acronym}} — CBSOFT'27",
     "symposiumPending": "A lista de artigos aceitos no {{acronym}} será divulgada após a notificação dos autores."
   },
   "previousEditionsPage": {
     "title": "Edições Anteriores",
-    "description": "Conheça a história do CBSoft e acesse os sites das edições anteriores do congresso.",
     "online": "(Online)",
     "visit": "Acessar edição",
     "newTab": "(abre em uma nova aba)",

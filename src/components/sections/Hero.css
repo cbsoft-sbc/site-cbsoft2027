@@ -20,7 +20,6 @@
   inset-inline: 0;
   bottom: -1px;
   height: clamp(10rem, 22vw, 20rem);
-  background: linear-gradient(to bottom, transparent 0%, var(--paper) 100%);
   pointer-events: none;
 }
 

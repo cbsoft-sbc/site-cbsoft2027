@@ -1,6 +1,5 @@
-/* Call pages have no page header, so clear the fixed site header directly. */
 .wcall-top {
-  padding-top: clamp(9rem, 14vw, 12rem);
+  padding-top: clamp(3rem, 4.5vw, 4rem);
 }
 
 .wcall-layout {

@@ -62,13 +62,12 @@ export function PreviousEditionsPage() {
   }, []);
 
   return (
-    <main className="previous-editions-page" id="edicoes-anteriores">
+    <main className="previous-editions-page about-top" id="edicoes-anteriores">
       <section className="container-xl" aria-labelledby="previous-editions-title">
-        <header className="previous-editions-page__heading">
+        <h1 id="previous-editions-title" className="about-title previous-editions-page__heading">
           <BrandBar />
-          <h1 id="previous-editions-title" className="about-title">{t('previousEditionsPage.title')}</h1>
-          <p>{t('previousEditionsPage.description')}</p>
-        </header>
+          {t('previousEditionsPage.title')}
+        </h1>
         <ul className="previous-editions-grid">
           {PREVIOUS_EDITIONS.map((edition) => <EditionCard key={edition.year} edition={edition} />)}
         </ul>

@@ -24,14 +24,24 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
       {NAV_ITEMS.map((item) => {
         const open = activeMenu === item.id;
         return (
-          <div className="site-header__mobile-group" key={item.id}>
+          <div
+            className="site-header__mobile-group"
+            key={item.id}
+            onKeyDown={(event) => {
+              if (event.key !== 'Escape' || !open) return;
+              event.preventDefault();
+              event.stopPropagation();
+              event.currentTarget.querySelector('button')?.focus();
+              setActiveMenu(null);
+            }}
+          >
             <button
               id={`mobile-header-trigger-${item.id}`}
               type="button"
               className={`site-header__nav-item${open ? ' is-active' : ''}${currentMenu === item.id ? ' is-current' : ''}`}
               aria-current={currentMenu === item.id ? 'location' : undefined}
               aria-expanded={open}
-              aria-controls={`mobile-header-mega-menu-${item.id}`}
+              aria-controls={open ? `mobile-header-mega-menu-${item.id}` : undefined}
               onClick={() => setActiveMenu(open ? null : item.id)}
             >
               <span>{t(item.key)}</span>

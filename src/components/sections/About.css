@@ -3,26 +3,32 @@
 }
 
 /* ---------- Home: "O que é o CBSoft?" + simpósios ---------- */
-/* Anchors land below the fixed header instead of under it. */
+/* Keep anchored sections below the sticky header. */
 .home-about,
 .home-about__symposia {
   scroll-margin-top: var(--site-header-offset, 7rem);
 }
 
-.home-about__grid {
+.home-about__stack {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 3rem;
+  grid-template-columns: minmax(0, 46rem);
+  justify-content: center;
+  gap: clamp(2rem, 4vw, 3rem);
 }
+
 @media (min-width: 1024px) {
-  .home-about__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 34rem);
-    gap: clamp(3rem, 5vw, 6rem);
-    align-items: start;
+  .home-about__stack {
+    grid-template-columns: minmax(0, 1fr);
   }
-}
-@media (min-width: 640px) and (max-width: 1023px) {
-  .home-about__symposia {
-    max-width: 36rem;
+
+  .home-about__intro {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    align-items: start;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  .home-about__intro > .home-event-cards {
+    margin-top: 0;
   }
 }

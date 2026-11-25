@@ -1,12 +1,3 @@
-.about-eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--pink-deep);
-}
-
 /* ---------- About page (/sobre) ---------- */
 .about-page {
   /* Comfortable measure for running paragraphs, narrower than the container. */
@@ -19,15 +10,6 @@
 
 .about-section+.about-section {
   border-top: 1px solid var(--line-soft);
-}
-
-.about-eyebrow {
-  font-family: 'IBM Plex Mono', ui-monospace, monospace;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--pink-deep);
 }
 
 .about-h2 {
@@ -50,12 +32,15 @@
   margin-top: 1.15rem;
 }
 
-/* Single "Sobre o CBSoft" section; clears the fixed site header. */
 .about-top {
-  padding-top: clamp(9rem, 14vw, 12rem);
+  padding-top: clamp(3rem, 4.5vw, 4rem);
 }
 
-/* /organizacao#comite lands below the fixed header. */
+.organization-people {
+  background: var(--surface-alt);
+}
+
+/* /organizacao#comite lands below the sticky site header. */
 #comite {
   scroll-margin-top: var(--site-header-offset, 7rem);
 }
