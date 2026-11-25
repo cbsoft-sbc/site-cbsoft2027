@@ -52,6 +52,11 @@ describe('event locality', () => {
       'https://www.google.com/maps?cid=5139803446538321391',
     );
     expect(screen.queryByText(/Campus Lourdes|Estação Central|Linha 4403|Raul Soares/)).toBeNull();
+    expect(screen.queryByRole('img', { name: /Planta do campus/ })).toBeNull();
+    fireEvent.click(screen.getByRole('link', { name: 'Ver Mapa PUC' }));
+    expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}mapa-puc`);
+    expect(screen.getByRole('heading', { level: 1, name: 'Mapa PUC' })).toBeTruthy();
+    expect(screen.queryByTitle(/Google Maps: PUC Minas/)).toBeNull();
   });
 
   it('loads the approved player only on demand and retains its YouTube fallback after poster failure', () => {
@@ -77,7 +82,9 @@ describe('event locality', () => {
     expect(screen.getByText(/The event entrance, building and rooms are still to be confirmed/)).toBeTruthy();
     expect(screen.getByRole('link', { name: /Get directions on Google Maps/ })).toBeTruthy();
     expect(screen.getByTitle('Google Maps: PUC Minas — Coração Eucarístico Campus')).toBeTruthy();
-    expect(screen.getByRole('heading', { name: 'PUC Campus Map' })).toBeTruthy();
+    expect(screen.getByRole('link', { name: 'View PUC Campus Map' }).getAttribute('href')).toBe(
+      '/mapa-puc',
+    );
   });
 
   it('hides address, transport and navigation if the venue is no longer confirmed', () => {
@@ -89,7 +96,7 @@ describe('event locality', () => {
     expect(container.querySelector('.venue-transit')).toBeNull();
     expect(screen.queryByRole('link', { name: /Traçar rota/ })).toBeNull();
     expect(screen.queryByTitle(/Google Maps: PUC Minas/)).toBeNull();
-    expect(screen.queryByRole('heading', { name: 'Mapa PUC' })).toBeNull();
+    expect(screen.queryByRole('link', { name: 'Ver Mapa PUC' })).toBeNull();
   });
 
   it.each(['desktop', 'mobile'])('opens each map from the %s navigation', (mode) => {
@@ -118,15 +125,26 @@ describe('event locality', () => {
 
       openMenu();
       fireEvent.click(screen.getByRole('link', { name: 'Mapa PUC' }));
-      expect(window.location.hash).toBe('#mapa-puc');
+      expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}mapa-puc`);
+      expect(window.location.hash).toBe('');
       const campusMap = screen.getByRole('region', { name: 'Mapa PUC' });
-      expect(scroll.mock.contexts.at(-1)).toBe(campusMap);
       const image = within(campusMap).getByRole('img', { name: /Planta do campus/ });
       const path = `${import.meta.env.BASE_URL}assets/images/mapa-puc-coracao-eucaristico.png`;
       expect(image.getAttribute('src')).toBe(path);
+      expect(image.getAttribute('width')).toBe('768');
+      expect(image.getAttribute('height')).toBe('1024');
       expect(within(campusMap).getByRole('link', { name: /Ver mapa em tamanho original/ }).getAttribute('href')).toBe(path);
     } finally {
       Element.prototype.scrollIntoView = previous;
     }
+  });
+
+  it('redirects the former campus-map anchor to the dedicated page', () => {
+    window.history.replaceState(null, '', `${import.meta.env.BASE_URL}local#mapa-puc`);
+    render(<App />);
+    expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}mapa-puc`);
+    expect(window.location.hash).toBe('');
+    expect(document.title).toBe('Mapa PUC | CBSOFT 2027');
+    expect(screen.getByRole('heading', { level: 1, name: 'Mapa PUC' })).toBeTruthy();
   });
 });

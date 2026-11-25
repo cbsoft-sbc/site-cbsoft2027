@@ -304,9 +304,14 @@
     "mapDescription": "Use the campus address as your destination in Google Maps. Directions depend on your starting point. The event entrance, building and rooms are still to be confirmed.",
     "directions": "Get directions on Google Maps ↗",
     "openMap": "Open in Google Maps ↗",
-    "officialLocation": "Check the address on the official PUC Minas website ↗",
-    "campusMapFullSize": "View full-size campus map ↗",
-    "campusMapAlt": "PUC Minas Coração Eucarístico campus plan with entrances, numbered buildings and a legend."
+    "openCampusMap": "View PUC Campus Map",
+    "officialLocation": "Check the address on the official PUC Minas website ↗"
+  },
+  "campusMapPage": {
+    "metaTitle": "PUC Campus Map | CBSOFT 2027",
+    "metaDescription": "Map of PUC Minas Coração Eucarístico campus, with entrances, numbered buildings and a legend.",
+    "fullSize": "View full-size campus map ↗",
+    "imageAlt": "PUC Minas Coração Eucarístico campus plan with entrances, numbered buildings and a legend."
   },
   "committee": {
     "eyebrow": "ORGANIZING COMMITTEE",

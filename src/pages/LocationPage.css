@@ -11,21 +11,13 @@
   margin-top: 1rem;
 }
 
-.venue-map__embed,
-.venue-map__image {
+.venue-map__embed {
   display: block;
   width: 100%;
-  margin-top: 1.25rem;
-  border-radius: 0.75rem;
-}
-
-.venue-map__embed {
   height: clamp(18rem, 48vw, 28rem);
+  margin-top: 1.25rem;
   border: 0;
-}
-
-.venue-map__image {
-  height: auto;
+  border-radius: 0.75rem;
 }
 
 .venue-map-actions {

@@ -4,10 +4,12 @@ import { useLocation } from 'react-router-dom';
 import { SYMPOSIA } from '@/data/symposia';
 import { SBES_TRACKS } from '@/data/sbesTracks';
 import { sbesTrackCallPath, symposiumCallPath } from '@/data/symposiumCalls';
+import { CAMPUS_MAP_PATH } from '@/data/venue';
 
 const PAGE_KEYS: Record<string, string> = {
   '/': 'homePage',
   '/sobre': 'aboutPage',
+  [CAMPUS_MAP_PATH]: 'campusMapPage',
   '/acomodacoes': 'accommodationPage',
   '/organizacao': 'organizationPage',
   '/edicoes-anteriores': 'previousEditionsPage',

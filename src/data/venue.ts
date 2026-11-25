@@ -28,6 +28,8 @@ const destination = encodeURIComponent(
   'PUC Minas Coração Eucarístico, Avenida Dom José Gaspar, 500, Belo Horizonte, MG, Brasil',
 );
 
+export const CAMPUS_MAP_PATH = '/mapa-puc';
+
 /** Campus and video confirmed by the organizing team in issue #9.
  * Address: PUC Minas, Localização e Acesso.
  * Regional transit: PUC Minas, Concertos Dominicais Peter Lund (28/05/2026).
