@@ -32,14 +32,14 @@ export function ExperiencesPage() {
     cultura: (
       <p className="guide-more">
         <a href={BH_TOURISM_PORTAL_URL} target="_blank" rel="noopener noreferrer" className="wcall-link">
-          {t('experiencesPage.portal')} ↗
+          {t('experiencesPage.portal')}
         </a>
       </p>
     ),
     deslocamento: (
       <p className="guide-more">
         <Link to={VENUE.infoUrl} className="wcall-link">
-          {t('experiencesPage.venueLink')} →
+          {t('experiencesPage.venueLink')}
         </Link>
       </p>
     ),

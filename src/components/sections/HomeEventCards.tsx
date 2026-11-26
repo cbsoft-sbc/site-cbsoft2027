@@ -67,7 +67,6 @@ export function HomeEventCards() {
       {VENUE.name ? (
         <Link to={VENUE.infoUrl} className="home-event-card home-event-card--location">
           {locationContent}
-          <span className="home-event-card__arrow" aria-hidden="true">↗</span>
         </Link>
       ) : (
         <div className="home-event-card home-event-card--location">{locationContent}</div>

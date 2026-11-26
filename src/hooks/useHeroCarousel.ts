@@ -3,6 +3,12 @@ import { useEffect, useState } from 'react';
 export const HERO_SLIDE_INTERVAL = 8_000;
 const REDUCED_MOTION = '(prefers-reduced-motion: reduce)';
 
+/** State updater that adds the given slide indexes to the requested list. */
+const withRequested = (...indexes: number[]) => (previous: number[]) => {
+  const missing = indexes.filter((index) => !previous.includes(index));
+  return missing.length ? [...previous, ...missing] : previous;
+};
+
 /** Keep the previous photo visible while the requested photo loads. */
 export function useHeroCarousel(slideCount: number) {
   const [active, setActive] = useState(0);
@@ -45,7 +51,7 @@ export function useHeroCarousel(slideCount: number) {
         const next = (active + offset) % slideCount;
         if (!failed.includes(next)) {
           setActive(next);
-          setRequested((previous) => previous.includes(next) ? previous : [...previous, next]);
+          setRequested(withRequested(next));
           break;
         }
       }
@@ -54,13 +60,17 @@ export function useHeroCarousel(slideCount: number) {
   }, [active, failed, rotating, slideCount]);
 
   useEffect(() => {
-    if (loaded.includes(active)) setVisible(active);
-  }, [active, loaded]);
+    if (!loaded.includes(active)) return;
+    setVisible(active);
+    // Once the current photo is on screen, fetch its neighbours so the
+    // previous/next arrows (and the timer) swap without waiting on the network.
+    setRequested(withRequested((active + 1) % slideCount, (active - 1 + slideCount) % slideCount));
+  }, [active, loaded, slideCount]);
 
   function select(index: number) {
     if (failed.includes(index)) return;
     setActive(index);
-    setRequested((previous) => previous.includes(index) ? previous : [...previous, index]);
+    setRequested(withRequested(index));
   }
 
   function move(direction: number) {
@@ -84,6 +94,6 @@ export function useHeroCarousel(slideCount: number) {
 
   return {
     active, visible, requested, failed, rotating, paused, reducedMotion,
-    select, move, onLoad, onError, setHovered, setFocused, setInteracting, setPaused,
+    select, move, prefetch: (index: number) => setRequested(withRequested(index)), onLoad, onError, setHovered, setFocused, setInteracting, setPaused,
   };
 }

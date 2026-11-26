@@ -93,9 +93,6 @@ export function Sponsorship() {
           </div>
           <a href={`mailto:${CONTACT_EMAIL}`} className="contrib-cta">
             {t('sponsorship.cta.action')}
-            <span className="contrib-cta__arrow" aria-hidden="true">
-              →
-            </span>
           </a>
         </div>
       </div>

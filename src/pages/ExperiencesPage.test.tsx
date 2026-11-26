@@ -20,7 +20,7 @@ async function setLang(lang: 'pt' | 'en') {
   await act(async () => { await i18n.changeLanguage(lang); });
 }
 
-describe('CBSOFT\'27 menu → Experiências', () => {
+describe('CBSOFT\'27 menu: Experiências', () => {
   it.each([
     ['pt', "CBSOFT'27", 'Experiências'],
     ['en', "CBSOFT'27", 'Experiences'],

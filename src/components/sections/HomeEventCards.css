@@ -66,7 +66,6 @@
   color: var(--slate);
 }
 
-.home-event-card__arrow,
 .home-event-card__chevron {
   flex: none;
   margin-left: auto;

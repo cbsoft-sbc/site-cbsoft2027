@@ -10,8 +10,8 @@ afterEach(async () => {
 
 describe('CampusMapPage', () => {
   it.each([
-    ['pt', 'Ver mapa em tamanho original ↗'],
-    ['en', 'View full-size campus map ↗'],
+    ['pt', 'Ver mapa em tamanho original'],
+    ['en', 'View full-size campus map'],
   ])('offers the original image only on the mobile layout (%s)', async (lang, label) => {
     await i18n.changeLanguage(lang);
     render(<CampusMapPage />);

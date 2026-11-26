@@ -2267,7 +2267,7 @@ const SBES_CTIC_CALL: SymposiumCall = {
     { label: { pt: 'Notificação de aceitação', en: 'Notification of acceptance' }, date: null },
     { label: { pt: 'Data limite para envio da versão final', en: 'Camera-ready deadline' }, date: null },
   ],
-  chairs: [],
+  chairs: [PENDING_MEMBER],
   committees: [{ members: PENDING_COMMITTEE }],
 };
 

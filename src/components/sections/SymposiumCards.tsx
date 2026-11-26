@@ -81,7 +81,6 @@ export function SymposiumCards({
             {linkToCall && (
               <span className="symposium-card__cta">
                 {t('symposiumCards.callForPapers')}
-                <span aria-hidden="true"> →</span>
               </span>
             )}
           </>

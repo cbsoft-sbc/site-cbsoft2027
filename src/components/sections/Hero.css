@@ -1,8 +1,7 @@
 /* ---------- Hero ---------- */
 .home-hero {
-  --hero-wave-height: clamp(12rem, 28vw, 25rem);
+  --hero-wave-height: clamp(9rem, 20vw, 18rem);
   position: relative;
-  min-height: 100svh;
   /* Vertical overflow stays visible (the countdown hangs below the hero);
      horizontal overflow — the wider wave on phones — is clipped, otherwise
      mobile browsers zoom the whole page out to fit it. */
@@ -63,14 +62,15 @@
     rgba(16, 9, 22, 0.40);
 }
 
-/* The first grid line anchors the countdown's center at half the viewport.
-   The details stay in flow so short screens grow without clipping controls. */
+/* The first grid line anchors the countdown's center. The hero's height
+   comes from its content (no full-screen minimum), so on a laptop the whole
+   hero, wave included, fits under the header; short screens still grow
+   without clipping the controls. */
 .home-hero__content {
   position: relative;
   z-index: 2;
-  min-height: 100vh;
   display: grid;
-  grid-template-rows: 40svh auto;
+  grid-template-rows: clamp(11rem, 30svh, 20rem) auto;
   align-content: start;
   justify-items: center;
   padding-inline: 1.25rem;
@@ -84,7 +84,9 @@
   gap: clamp(1rem, 2vw, 1.5rem);
   width: 100%;
   padding-top: clamp(5rem, 8vw, 7rem);
-  padding-bottom: calc(var(--hero-wave-height) + 2rem);
+  /* The wave's top edge is mostly transparent, so the controls may sit over
+     its upper part; only its lower ~60% needs clearing. */
+  padding-bottom: calc(var(--hero-wave-height) * 0.6 + 1rem);
 }
 
 /* The CTA sits directly under the countdown, so it reads as part of that
@@ -236,24 +238,34 @@
   background: #fff;
 }
 
+/* Sits in the top-right corner of the photo. */
 .home-hero__photo-info {
-  --photo-info-inset: clamp(0.875rem, 2vw, 1.25rem);
+  --photo-info-inset: clamp(0.75rem, 2vw, 1.25rem);
   position: absolute;
   z-index: 3;
   inset-block-start: var(--photo-info-inset);
-  inset-inline-start: var(--photo-info-inset);
+  inset-inline-end: var(--photo-info-inset);
 }
 
 .home-hero__photo-info-button {
+  position: relative;
   display: grid;
   place-items: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.45);
   border-radius: 50%;
-  background: rgba(16, 9, 22, 0.65);
+  background: rgba(16, 9, 22, 0.5);
   color: #fff;
   cursor: pointer;
+}
+
+/* Keeps a 44px touch target around the smaller visible circle. */
+.home-hero__photo-info-button::before {
+  content: '';
+  position: absolute;
+  inset: -0.625rem;
 }
 
 .home-hero__photo-info-button:hover,
@@ -264,7 +276,7 @@
 .home-hero__photo-credit-panel {
   position: absolute;
   inset-block-start: 100%;
-  inset-inline-start: 0;
+  inset-inline-end: 0;
   width: min(19rem, calc(100vw - 2 * var(--photo-info-inset)));
   padding-block-start: 0.375rem;
 }
