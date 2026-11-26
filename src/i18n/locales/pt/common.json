@@ -302,8 +302,8 @@
     "videoTitle": "CBSoft 2027 em Belo Horizonte",
     "playAria": "Reproduzir o vídeo do CBSoft 2027",
     "videoFallback": "Vídeo não carregou? Assistir no YouTube",
-    "consultTransport": "Consultar transporte ↗",
-    "transitSource": "Referências de transporte divulgadas pela PUC Minas ↗",
+    "consultTransport": "Consultar transporte",
+    "transitSource": "Referências de transporte divulgadas pela PUC Minas",
     "transitNote": "As referências acima atendem a região do campus. Confirme pontos, itinerários e horários antes da viagem; o acesso específico do evento ainda será informado."
   },
   "locationPage": {
@@ -312,15 +312,15 @@
     "mapTitle": "Mapa e navegação",
     "mapEmbedTitle": "Google Maps: PUC Minas — Campus Coração Eucarístico",
     "mapDescription": "Use o endereço do campus como destino no Google Maps. A rota depende do seu ponto de partida. A entrada, o prédio e as salas do evento ainda serão confirmados.",
-    "directions": "Traçar rota no Google Maps ↗",
-    "openMap": "Abrir no Google Maps ↗",
+    "directions": "Traçar rota no Google Maps",
+    "openMap": "Abrir no Google Maps",
     "openCampusMap": "Ver Mapa PUC",
-    "officialLocation": "Conferir endereço no site oficial da PUC Minas ↗"
+    "officialLocation": "Conferir endereço no site oficial da PUC Minas"
   },
   "campusMapPage": {
     "metaTitle": "Mapa PUC | CBSOFT 2027",
     "metaDescription": "Mapa do campus Coração Eucarístico da PUC Minas, com portarias, prédios numerados e legenda.",
-    "fullSize": "Ver mapa em tamanho original ↗",
+    "fullSize": "Ver mapa em tamanho original",
     "imageAlt": "Planta do campus Coração Eucarístico da PUC Minas, com portarias, prédios numerados e legenda."
   },
   "committee": {

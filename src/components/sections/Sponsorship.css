@@ -220,17 +220,9 @@ a.contrib-logo--puc-minas:hover {
   }
 }
 
-.contrib-cta__arrow {
-  transition: transform 0.18s ease;
-}
-
 .contrib-cta:hover {
   color: var(--pink-deep);
   border-bottom-color: currentColor;
-}
-
-.contrib-cta:hover .contrib-cta__arrow {
-  transform: translateX(4px);
 }
 
 @media (max-width: 640px) {

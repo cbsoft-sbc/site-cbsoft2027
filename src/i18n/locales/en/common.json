@@ -302,8 +302,8 @@
     "videoTitle": "CBSoft 2027 in Belo Horizonte",
     "playAria": "Play the CBSoft 2027 video",
     "videoFallback": "Video not loading? Watch on YouTube",
-    "consultTransport": "Check transport services ↗",
-    "transitSource": "Transport references published by PUC Minas ↗",
+    "consultTransport": "Check transport services",
+    "transitSource": "Transport references published by PUC Minas",
     "transitNote": "These references serve the campus area. Check stops, routes and timetables before traveling; event-specific access details will be announced."
   },
   "locationPage": {
@@ -312,15 +312,15 @@
     "mapTitle": "Map and directions",
     "mapEmbedTitle": "Google Maps: PUC Minas — Coração Eucarístico Campus",
     "mapDescription": "Use the campus address as your destination in Google Maps. Directions depend on your starting point. The event entrance, building and rooms are still to be confirmed.",
-    "directions": "Get directions on Google Maps ↗",
-    "openMap": "Open in Google Maps ↗",
+    "directions": "Get directions on Google Maps",
+    "openMap": "Open in Google Maps",
     "openCampusMap": "View PUC Campus Map",
-    "officialLocation": "Check the address on the official PUC Minas website ↗"
+    "officialLocation": "Check the address on the official PUC Minas website"
   },
   "campusMapPage": {
     "metaTitle": "PUC Campus Map | CBSOFT 2027",
     "metaDescription": "Map of PUC Minas Coração Eucarístico campus, with entrances, numbered buildings and a legend.",
-    "fullSize": "View full-size campus map ↗",
+    "fullSize": "View full-size campus map",
     "imageAlt": "PUC Minas Coração Eucarístico campus plan with entrances, numbered buildings and a legend."
   },
   "committee": {
