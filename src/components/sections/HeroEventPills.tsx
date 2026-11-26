@@ -82,7 +82,6 @@ export function HeroEventPills() {
         <Link to={VENUE.infoUrl} className="hero-pill hero-pill__trigger">
           <PillIcon />
           <span>{t('hero.venueShort')}</span>
-          <span className="hero-pill__arrow" aria-hidden="true">↗</span>
         </Link>
       ) : (
         <p className="hero-pill hero-pill__trigger">

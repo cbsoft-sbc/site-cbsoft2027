@@ -67,10 +67,6 @@ summary.hero-pill__trigger:hover,
   transform: rotate(180deg);
 }
 
-.hero-pill__arrow {
-  font-size: 0.9em;
-}
-
 /* Floats below the pill so opening it never shifts the hero layout. */
 .hero-pill__menu {
   position: absolute;
