@@ -106,6 +106,21 @@ describe('Hero carousel', () => {
     expect(currentPhoto()).toBe('Mostrar foto 2');
   });
 
+  it('preloads the neighbouring photos once the current one loads, and a dot on hover', () => {
+    renderHero();
+    expect(photos()).toHaveLength(1);
+    fireEvent.load(photos()[0]);
+    const sources = () => Array.from(photos(), (photo) => photo.getAttribute('src'));
+    expect(sources()).toEqual([
+      expect.stringContaining('fontes-praca-liberdade.webp'),
+      expect.stringContaining('coreto-praca-liberdade.webp'),
+      expect.stringContaining('palacio-tiradentes.webp'),
+    ]);
+    fireEvent.pointerEnter(screen.getByRole('button', { name: 'Mostrar foto 4' }));
+    expect(sources()).toContainEqual(expect.stringContaining('igreja-da-pampulha.webp'));
+    expect(currentPhoto()).toBe('Mostrar foto 1');
+  });
+
   it('keeps the previous image and credit visible until the selected photo loads', () => {
     renderHero();
     fireEvent.load(photos()[0]);

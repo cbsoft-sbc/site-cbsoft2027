@@ -60,7 +60,7 @@ function HeroPhotoCredit({ photo, onOpenChange }: {
         aria-controls={open ? creditId : undefined}
         onClick={() => updateOpen(!open)}
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
           <circle cx="12" cy="12" r="9" />
           <path d="M12 11v5m0-8.5h.01" />
         </svg>
@@ -155,7 +155,9 @@ export function Hero() {
               <button key={id} type="button" className="home-hero__indicator"
                 aria-label={t('hero.carousel.goTo', { number: index + 1 })}
                 aria-controls="hero-photos" aria-current={carousel.active === index ? 'true' : undefined}
-                disabled={carousel.failed.includes(index)} onClick={() => carousel.select(index)}>
+                disabled={carousel.failed.includes(index)}
+                onPointerEnter={() => carousel.prefetch(index)} onFocus={() => carousel.prefetch(index)}
+                onClick={() => carousel.select(index)}>
                 <span aria-hidden="true" />
               </button>
             ))}

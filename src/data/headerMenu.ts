@@ -123,7 +123,6 @@ export const HEADER_MENUS: Record<HeaderMenuId, HeaderMenuDefinition> = {
     sast: symposiumMenu('sast'),
     workshops: [
         {
-            titleKey: 'headerMenu.workshops.title',
             links: [
                 link('workshops.call', '/workshops/chamada'),
                 // link('workshops.accepted', '#workshops-aceitos'),

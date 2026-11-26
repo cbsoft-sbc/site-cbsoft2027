@@ -128,13 +128,14 @@ describe('SymposiumCallPage', () => {
     expect(container.textContent).not.toMatch(/2026|Aniche|Alura|Nubank/);
   });
 
-  it('shows the CTIC-ES call without an organisation card or named organisers', () => {
+  it('shows the CTIC-ES call with a pending organisation card and no named organisers', () => {
     const call = SBES_TRACK_CALLS.ctic!;
     const { container } = renderPage('sbes', 'ctic');
     for (const section of call.sections) {
       expect(screen.getByRole('heading', { level: 2, name: section.title.pt })).toBeTruthy();
     }
-    expect(screen.queryByRole('heading', { name: 'Organização' })).toBeNull();
+    expect(screen.getByRole('heading', { level: 2, name: 'Organização' })).toBeTruthy();
+    expect(screen.getAllByText('A definir')).toHaveLength(call.milestones.length + call.chairs.length + memberCount(call));
     expect(container.textContent).toContain('VIII CTIC-ES');
     expect(container.textContent).not.toMatch(/VII CTIC|Accioly|phyllipe|setembro de 2026/);
   });
