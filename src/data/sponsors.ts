@@ -25,13 +25,13 @@ export const ORGANIZERS: OrgEntry[] = [
     id: 'ufmg',
     name: 'UFMG',
     // Cropped to the mark itself, so it can sit on the PUC Minas baseline.
-    logo: '/assets/images/ufmg-logo-trim.png',
+    logo: '/assets/images/ufmg-logo-trim-360.webp',
     url: 'https://ufmg.br/',
   },
   {
     id: 'puc-minas',
     name: 'PUC Minas',
-    logo: '/assets/images/puc-minas-brasao.png',
+    logo: '/assets/images/puc-minas-brasao-240.webp',
     url: 'https://www.pucminas.br/',
   },
 ];
@@ -41,7 +41,7 @@ export const REALIZATION: OrgEntry[] = [
   {
     id: 'sbc',
     name: 'SBC — Sociedade Brasileira de Computação',
-    logo: '/assets/images/sbc.png',
+    logo: '/assets/images/sbc-336.webp',
     url: 'https://www.sbc.org.br/',
   },
 ];

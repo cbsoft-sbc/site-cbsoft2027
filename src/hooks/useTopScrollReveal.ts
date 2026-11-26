@@ -8,12 +8,14 @@ function isInsideMenu(target: EventTarget | null) {
   return target instanceof Element && target.closest('.header-mega-menu, .site-header__mobile-menu');
 }
 
-/** Show the organizer only when the user scrolls up at the top of this visit. */
-export function useTopScrollReveal(locationKey: string): boolean {
+/** Show the organizer on an upward scroll at the top of an enabled visit. */
+export function useTopScrollReveal(locationKey: string | null): boolean {
   const [visibleOn, setVisibleOn] = useState<string | null>(null);
 
   useLayoutEffect(() => {
     setVisibleOn(null);
+    if (locationKey === null) return;
+
     let lastUpInput = -Infinity;
     let touchY: number | undefined;
     const atTop = () => window.scrollY <= 0;
@@ -78,5 +80,5 @@ export function useTopScrollReveal(locationKey: string): boolean {
     };
   }, [locationKey]);
 
-  return visibleOn === locationKey;
+  return locationKey !== null && visibleOn === locationKey;
 }

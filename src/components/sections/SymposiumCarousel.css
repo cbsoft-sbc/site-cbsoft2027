@@ -10,28 +10,35 @@
   margin-top: 1.25rem;
   padding: 2.75rem 2rem 1.5rem;
   border-radius: 1.5rem;
-  background: var(--surface-alt);
-  transition: background-color 0.3s ease;
+  /* Left-to-right wash of the symposium colour: strongest behind the
+     title, fading out behind the dates so they stay easy to read. */
+  --symp-tint: var(--purple);
   --symp-accent: var(--purple);
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--symp-tint) 44%, var(--surface)) 0%,
+    color-mix(in srgb, var(--symp-tint) 29%, var(--surface)) 55%,
+    color-mix(in srgb, var(--symp-tint) 16%, var(--surface)) 100%
+  );
 }
 
 .symp-card[data-symp='sbes'] {
-  background: color-mix(in srgb, var(--cyan) 13%, var(--surface));
+  --symp-tint: var(--cyan);
   --symp-accent: var(--purple);
 }
 
 .symp-card[data-symp='sblp'] {
-  background: color-mix(in srgb, var(--purple) 13%, var(--surface));
+  --symp-tint: var(--purple);
   --symp-accent: var(--cyan-deep);
 }
 
 .symp-card[data-symp='sbcars'] {
-  background: color-mix(in srgb, var(--leaf) 15%, var(--surface));
+  --symp-tint: var(--leaf);
   --symp-accent: var(--leaf-deep);
 }
 
 .symp-card[data-symp='sast'] {
-  background: color-mix(in srgb, var(--pink) 11%, var(--surface));
+  --symp-tint: var(--pink);
   --symp-accent: var(--pink-deep);
 }
 
@@ -168,6 +175,58 @@
 
 .symp-alldates:hover {
   opacity: 0.8;
+}
+
+/* Wide screens: title and "Leia mais" on the left with the arrows below
+   them; dates on the right with "Todas as datas importantes" below. */
+@media (min-width: 900px) {
+  .symp-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    grid-template-areas:
+      'left right'
+      'nav  link';
+    column-gap: clamp(2.5rem, 6vw, 6rem);
+    row-gap: 1.75rem;
+    padding: 3.5rem 3rem 2.25rem;
+  }
+
+  .symp-slide,
+  .symp-footer {
+    display: contents;
+  }
+
+  .symp-left {
+    grid-area: left;
+    align-self: center;
+  }
+
+  .symp-right {
+    grid-area: right;
+  }
+
+  .symp-nav {
+    grid-area: nav;
+    align-self: end;
+  }
+
+  .symp-alldates {
+    grid-area: link;
+    justify-self: end;
+    align-self: end;
+  }
+
+  .symp-title {
+    font-size: clamp(1.9rem, 2.6vw, 2.4rem);
+  }
+
+  .symp-right .cal-list {
+    border-top: 0;
+  }
+
+  .symp-right .cal-item:last-child {
+    border-bottom: 0;
+  }
 }
 
 @media (max-width: 640px) {

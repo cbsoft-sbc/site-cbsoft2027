@@ -77,3 +77,8 @@ table {
   border-collapse: separate;
   border-spacing: 0;
 }
+
+/* Placeholder while a lazily loaded page's code arrives (see App.tsx). */
+.route-loading {
+  min-height: 100vh;
+}

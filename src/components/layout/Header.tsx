@@ -22,7 +22,8 @@ export function Header() {
   const mobileTriggerRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const focusFirstItem = useRef(false);
-  const showSbc = useTopScrollReveal(key);
+  const isHome = pathname === '/';
+  const showSbc = useTopScrollReveal(isHome ? key : null);
 
   function cancelClose() {
     if (closeTimer.current !== null) {
@@ -98,21 +99,23 @@ export function Header() {
         closeAllMenus();
       }}
     >
-      <div key={key} className="site-header__sbc" aria-hidden={!showSbc}>
-        <div className="site-header__sbc-inner">
-          <span className="site-header__sbc-label">{t('header.organizedBy')}</span>
-          <a
-            href="https://www.sbc.org.br/"
-            className="site-header__sbc-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={t('header.sbcAria')}
-            tabIndex={showSbc ? undefined : -1}
-          >
-            <img src={IMAGES.sbc_logo} alt="" width={597} height={288} />
-          </a>
+      {isHome && (
+        <div key={key} className="site-header__sbc" aria-hidden={!showSbc}>
+          <div className="site-header__sbc-inner">
+            <span className="site-header__sbc-label">{t('header.organizedBy')}</span>
+            <a
+              href="https://www.sbc.org.br/"
+              className="site-header__sbc-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={t('header.sbcAria')}
+              tabIndex={showSbc ? undefined : -1}
+            >
+              <img src={IMAGES.sbc_logo} alt="" width={597} height={288} />
+            </a>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="site-header__inner">
         <Link
@@ -125,13 +128,13 @@ export function Header() {
               screens have room for. Smaller screens use the typographic-only
               signature, as the manual prescribes below that size. */}
           <picture>
-            <source media="(min-width: 1280px)" srcSet={IMAGES.logo_horizontal} width={5196} height={1802} />
+            <source media="(min-width: 1280px)" srcSet={IMAGES.logo_horizontal_header} width={440} height={152} />
             <img
               className="site-header__logo"
               src={IMAGES.logo_wordmark}
               alt=""
-              width={2059}
-              height={310}
+              width={432}
+              height={65}
             />
           </picture>
         </Link>

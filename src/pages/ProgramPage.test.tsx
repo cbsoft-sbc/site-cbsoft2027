@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import i18n from '@/i18n';
-import { App } from '@/App';
+import { renderApp } from '@/test/renderApp';
 import { PROGRAM_FIXTURE } from '@/test/programFixture';
 import { ProgramPage } from './ProgramPage';
 
@@ -35,9 +35,9 @@ afterEach(() => {
 });
 
 describe('ProgramPage — pending', () => {
-  it('shows "Em breve" at /programacao while the official program is pending', () => {
+  it('shows "Em breve" at /programacao while the official program is pending', async () => {
     window.history.replaceState(null, '', `${import.meta.env.BASE_URL}programacao`);
-    render(<App />);
+    await renderApp();
     expect(screen.getByRole('heading', { level: 1, name: 'Programação' })).toBeTruthy();
     expect(screen.getByText('Em breve')).toBeTruthy();
     expect(screen.queryByRole('search')).toBeNull();
@@ -47,7 +47,7 @@ describe('ProgramPage — pending', () => {
   it('shows "Coming soon" in English', async () => {
     await act(async () => { await i18n.changeLanguage('en'); });
     window.history.replaceState(null, '', `${import.meta.env.BASE_URL}programacao`);
-    render(<App />);
+    await renderApp();
     expect(screen.getByRole('heading', { level: 1, name: 'Schedule' })).toBeTruthy();
     expect(screen.getByText('Coming soon')).toBeTruthy();
   });

@@ -23,8 +23,8 @@ describe('VolunteersPage', () => {
     // Both forms stay unlinked until the 2027 URLs exist.
     expect(screen.getAllByText('link a ser divulgado')).toHaveLength(2);
     expect(container.querySelector('a[href*="forms.gle"]')).toBeNull();
-    // Sidebar + "Datas importantes" section, two milestones each.
-    expect(screen.getAllByText('A definir')).toHaveLength(4);
+    // Both sets of milestones and the pending volunteer coordination.
+    expect(screen.getAllByText('A definir')).toHaveLength(5);
     expect(screen.getByRole('heading', { level: 2, name: 'Coordenação de voluntários' })).toBeTruthy();
     expect(container.querySelector('a[href^="mailto:"]')).toBeNull();
 

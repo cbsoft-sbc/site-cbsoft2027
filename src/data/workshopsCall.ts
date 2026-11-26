@@ -22,15 +22,12 @@ export const WORKSHOP_SUBMISSION_URL: string | null = null;
 export const SBC_AUTHOR_CONDUCT_URL = 'https://sol.sbc.org.br/index.php/indice/conduta';
 
 export interface WorkshopChair {
-  name: string;
-  affiliation: string;
-  email: string;
+  name: string | null;
+  affiliation: string | null;
+  email: string | null;
 }
 
-/** Workshops Committee chairs. Placeholders ("xxxxx") until the 2027 chairs
- *  are confirmed; the 2026 call listed Genaína Nunes Rodrigues (UnB) and
- *  Nabor das Chagas Mendonça (UNIFOR). */
+/** Workshop coordination is pending confirmation for 2027. */
 export const WORKSHOP_CHAIRS: WorkshopChair[] = [
-  { name: 'xxxxx', affiliation: 'xxxxx', email: 'xxxxx' },
-  { name: 'xxxxx', affiliation: 'xxxxx', email: 'xxxxx' },
+  { name: null, affiliation: null, email: null },
 ];

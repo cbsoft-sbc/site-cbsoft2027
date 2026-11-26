@@ -23,6 +23,7 @@
   },
   "hero": {
     "countdownTitle": "The congress starts in",
+    "venueShort": "PUC Minas · Belo Horizonte",
     "countdownAria": "Time remaining until the congress begins",
     "units": {
       "days": "Days",
@@ -31,13 +32,24 @@
       "sec": "Seconds"
     },
     "carousel": {
-      "label": "Praça da Liberdade photos",
+      "label": "Belo Horizonte photos",
       "previous": "Previous photo",
       "next": "Next photo",
       "goTo": "Show photo {{number}}",
       "pause": "Pause",
       "play": "Play",
-      "position": "Photo {{number}} of {{total}}"
+      "position": "Photo {{number}} of {{total}}",
+      "photoInfo": "Photo credits and licence",
+      "photoEdits": "Resized and reframed WebP",
+      "photos": {
+        "fontes-praca-liberdade": "Fountains and gardens at Praça da Liberdade in Belo Horizonte",
+        "coreto-praca-liberdade": "Bandstand at Praça da Liberdade with the Niemeyer Building behind it",
+        "secretaria-da-fazenda": "Historic facade of the State Finance Department at Praça da Liberdade",
+        "igreja-da-pampulha": "Aerial view of the Church of São Francisco de Assis beside Pampulha Lagoon",
+        "cidade-administrativa-mg": "Tiradentes Palace lit up at dusk and reflected in the lake at the Minas Gerais Administrative Complex",
+        "mercado-central": "Facade of Belo Horizonte’s Central Market seen from the tree-lined plaza in front of the entrance",
+        "palacio-tiradentes": "Tiradentes Palace seen from across the lake at the Minas Gerais Administrative Complex"
+      }
     }
   },
   "agenda": {
@@ -73,13 +85,15 @@
     "p4": "Students and professionals who are not SBC members can join or renew their membership, at a discount, during registration.",
     "p5": "The <b>combo option (registration + SBC membership)</b> has the lowest total cost and includes the benefits of membership."
   },
+  "symposiumCards": {
+    "callForPapers": "Call for Papers"
+  },
   "aboutPage": {
     "metaTitle": "About CBSoft — CBSOFT'27",
     "title": "About CBSoft",
     "p1": "The Brazilian Conference on Software: Theory and Practice (CBSoft) is held annually by the Brazilian Computer Society (SBC) to promote the exchange of experience among researchers and practitioners from academia and industry on research, trends and innovations, both theoretical and practical, in software. Held since 2010, CBSoft brings together the Brazilian software symposia promoted by SBC and has become one of the main events of the Brazilian Computing research community.",
     "p2": "In 2027, the 18th edition of CBSoft will be held in person in Belo Horizonte, Minas Gerais, from September 27 to October 1, bringing together four symposia held annually by the Brazilian software community:",
     "metaDescription": "About CBSoft, the Brazilian Conference on Software: Theory and Practice, its symposia and the activities of the 2027 edition in Belo Horizonte.",
-    "listAnd": "and",
     "program": "The program includes technical sessions with paper presentations, keynotes by researchers from Brazil and abroad, panel discussions, workshops and tool demonstrations. These activities foster the dissemination of knowledge and the discussion of research, development and innovation in software."
   },
   "visualIdentity": {
@@ -106,7 +120,6 @@
     "datesTitle": "Important Dates",
     "tbd": "TBD",
     "hardDeadline": "Hard deadline",
-    "memberTbd": "TBD",
     "organizationTitle": "Organization",
     "chairsTitle": "Program Committee Chairs",
     "committeeTitle": "Program Committee"
@@ -311,12 +324,10 @@
     "imageAlt": "PUC Minas Coração Eucarístico campus plan with entrances, numbered buildings and a legend."
   },
   "committee": {
-    "generalChairs": "General Chairs",
+    "generalOrganization": "General Organization",
     "website": "Website Development",
-    "pcChairs": "Program Committee Chairs",
-    "localCommittee": "Local Committee",
-    "chairTbc": "chair to be confirmed",
-    "tbc": "to be confirmed"
+    "sbesTrackChairs": "SBES Track Chairs",
+    "tbc": "To be determined"
   },
   "accommodationPage": {
     "metaTitle": "Accommodation — CBSOFT'27",
@@ -326,16 +337,29 @@
   },
   "experiencesPage": {
     "metaTitle": "Experiences — CBSOFT'27",
-    "metaDescription": "Experiences for CBSoft 2027 participants in Belo Horizonte, to be announced.",
+    "metaDescription": "Belo Horizonte tourism guide for CBSoft 2027 participants: Pampulha, sights, food, culture and getting around.",
     "title": "Experiences",
-    "intro": "Suggestions for sightseeing, culture and food in Belo Horizonte for CBSoft 2027 participants.",
+    "intro": "Make the most of CBSoft 2027 to get to know Belo Horizonte, one of Brazil's most welcoming state capitals. The city offers cultural attractions, historic sites, green spaces and nationally renowned food.",
+    "introGuide": "Here are some suggestions, grouped by area and interest, so you can enjoy the city beyond the academic programme.",
     "pending": "Coming soon",
     "moreInfo": "Learn more",
     "categories": {
-      "turismo": "Tourism in BH",
-      "shows": "Shows and Concerts",
-      "gastronomia": "Food in BH"
-    }
+      "pampulha": "Pampulha Ensemble",
+      "turismo": "Sights",
+      "gastronomia": "Food and nightlife",
+      "cultura": "Cultural outings",
+      "deslocamento": "Getting around"
+    },
+    "categoryIntros": {
+      "pampulha": "Home to the Pampulha Modern Ensemble, designed by Oscar Niemeyer and listed as a UNESCO World Heritage Site. A good choice for a free afternoon or early evening.",
+      "turismo": "Cultural and historic attractions and viewpoints across the city.",
+      "gastronomia": "Belo Horizonte is known as Brazil's capital of botecos (neighbourhood bars). Take the chance to try Minas Gerais cooking and the city's main food districts.",
+      "cultura": "Experiences worth your free days or the weekend around the congress.",
+      "deslocamento": "Ways to get between the event venue, hotels and attractions."
+    },
+    "portal": "More routes and attractions on Belo Horizonte's official tourism portal",
+    "venueLink": "How to get to the event venue",
+    "dishes": "Don't miss pão de queijo (cheese bread), feijão-tropeiro, chicken with okra, tutu à mineira and the famous doce de leite."
   },
   "programPage": {
     "metaTitle": "Schedule — CBSOFT'27",
@@ -532,7 +556,6 @@
       "trackPapers": "Accepted Papers"
     },
     "sblp": {
-      "title": "SBLP",
       "call": {
         "title": "Call for Papers",
         "description": "SBLP topics, deadlines and submission guidelines."
@@ -547,7 +570,6 @@
       }
     },
     "sbcars": {
-      "title": "SBCARS",
       "call": {
         "title": "Call for Papers",
         "description": "SBCARS topics, deadlines and submission guidelines."
@@ -562,7 +584,6 @@
       }
     },
     "sast": {
-      "title": "SAST",
       "call": {
         "title": "Call for Papers",
         "description": "SAST topics, deadlines and submission guidelines."

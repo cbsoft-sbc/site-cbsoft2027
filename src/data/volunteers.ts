@@ -20,15 +20,12 @@ export const VOLUNTEER_APPLICATION_FORM_URL: string | null = null;
 export const VOLUNTEER_RECOMMENDATION_FORM_URL: string | null = null;
 
 export interface VolunteerCoordinator {
-  name: string;
-  affiliation: string;
-  email: string;
+  name: string | null;
+  affiliation: string | null;
+  email: string | null;
 }
 
-/** Volunteer coordination. Placeholders ("xxxxx") until the 2027 team is
- *  confirmed; the 2026 call listed Kelly Braghetto, Lilian Passos Scatalon
- *  and David Tadokoro (IME-USP). */
+/** Volunteer coordination is pending confirmation for 2027. */
 export const VOLUNTEER_COORDINATORS: VolunteerCoordinator[] = [
-  { name: 'xxxxx', affiliation: 'xxxxx', email: 'xxxxx' },
-  { name: 'xxxxx', affiliation: 'xxxxx', email: 'xxxxx' },
+  { name: null, affiliation: null, email: null },
 ];

@@ -36,9 +36,8 @@ describe('SymposiumCallPage', () => {
       expect(screen.getByRole('heading', { level: 2, name: section.title.pt })).toBeTruthy();
     }
     expect(screen.getByRole('heading', { level: 2, name: 'Comitê de Programa' })).toBeTruthy();
-    expect(screen.getAllByText('A definir')).toHaveLength(call.milestones.length);
+    expect(screen.getAllByText('A definir')).toHaveLength(call.milestones.length + memberCount(call));
     expect(screen.queryByText('Roberta Coelho')).toBeNull();
-    expect(screen.getAllByText('xxxxxx')).toHaveLength((call.chairs.length + memberCount(call)) * 2);
     expect(
       screen.getByRole('link', { name: /Código de Conduta para Autores/ }).getAttribute('href'),
     ).toBe('https://sol.sbc.org.br/index.php/indice/conduta');
@@ -62,6 +61,8 @@ describe('SymposiumCallPage', () => {
     renderPage('sast');
     expect(screen.getByRole('heading', { level: 2, name: 'Topics of Interest' })).toBeTruthy();
     expect(screen.getByText('AI-assisted software testing')).toBeTruthy();
+    expect(screen.getByText('Adenilso Simão')).toBeTruthy();
+    expect(screen.getByText('To be determined')).toBeTruthy();
   });
 
   it('shows the SBLP call with its dates note and no named contact', () => {
@@ -83,11 +84,6 @@ describe('SymposiumCallPage', () => {
     }
     expect(container.textContent).toContain('41st Brazilian Symposium on Software Engineering');
     expect(container.textContent).not.toMatch(/São Paulo|forms\.gle|Monalessa|\bx{3,}\b/i);
-    const organization = within(screen.getByRole('complementary', { name: 'Organização' }));
-    for (const chair of organization.getAllByRole('listitem')) {
-      expect(chair.textContent).toBe('A Definir');
-    }
-    expect(organization.getAllByRole('listitem')).toHaveLength(call.chairs.length);
   });
 
   it('shows the SBES Education Track call with the shared SBES sections', () => {
@@ -121,14 +117,14 @@ describe('SymposiumCallPage', () => {
     expect(container.textContent).not.toMatch(/sigconf,anonymous|São Paulo|SBES 2026|Edna/);
   });
 
-  it('shows the SBES Industry Track call with three placeholder chairs', () => {
+  it('shows the SBES Industry Track call with coordination still pending', () => {
     const call = SBES_TRACK_CALLS.industry!;
     const { container } = renderPage('sbes', 'industry');
     for (const section of call.sections) {
       expect(screen.getByRole('heading', { level: 2, name: section.title.pt })).toBeTruthy();
     }
     expect(screen.getByText(call.datesNote!.pt)).toBeTruthy();
-    expect(screen.getAllByText('xxxxxx')).toHaveLength((call.chairs.length + memberCount(call)) * 2);
+    expect(screen.getAllByText('A definir')).toHaveLength(call.milestones.length + call.chairs.length + memberCount(call));
     expect(container.textContent).not.toMatch(/2026|Aniche|Alura|Nubank/);
   });
 
@@ -151,9 +147,32 @@ describe('SymposiumCallPage', () => {
     }
     expect(screen.getByRole('heading', { level: 2, name: 'Comitê Avaliador das Dissertações' })).toBeTruthy();
     expect(screen.getByRole('heading', { level: 2, name: 'Comitê Avaliador das Teses' })).toBeTruthy();
-    expect(screen.getAllByText('xxxxxx')).toHaveLength((call.chairs.length + memberCount(call)) * 2);
+    expect(screen.getAllByText('A definir')).toHaveLength(call.milestones.length + call.chairs.length + memberCount(call));
     expect(container.textContent).not.toMatch(/2025|SBES 2026|\bII Mostra|Felizardo|Travassos/);
   });
+
+  it.each([
+    { id: 'sblp', people: [['Fernando Pereira', 'UFMG']] },
+    { id: 'sast', people: [['Patricia Machado', 'UFCG'], ['Adenilso Simão', 'ICMC/USP']] },
+    { id: 'sbcars', people: [['Larissa Rocha', 'UEFS'], ['Matheus Paixão', 'UECE']] },
+    { id: 'sbes', track: 'research', people: [['Thelma Colanzi', 'UEM'], ['Cleidson de Souza', 'UFPA']] },
+    { id: 'sbes', track: 'ideas', people: [['Edna', 'UnB'], ['Rodrigo Santos', 'UNIRIO']] },
+    { id: 'sbes', track: 'tools', people: [['Simone Souza', 'ICMC/USP'], ['Davi Viana', 'UFMA']] },
+    { id: 'sbes', track: 'education', people: [['Patricia Matsubara', 'UFMS'], ['Allyson Araújo', 'UFCA']] },
+  ] satisfies { id: SymposiumId; track?: SbesTrackId; people: string[][] }[])(
+    'shows the confirmed chairs in the $id $track call',
+    ({ id, track, people }) => {
+      const { container } = renderPage(id, track);
+      const organization = within(screen.getByRole('complementary', { name: 'Organização' }));
+      const chairs = organization.getAllByRole('listitem');
+      expect(chairs).toHaveLength(people.length);
+      people.forEach(([name, affiliation], index) => {
+        expect(within(chairs[index]).getByText(name)).toBeTruthy();
+        expect(within(chairs[index]).getByText(affiliation)).toBeTruthy();
+      });
+      expect(container.textContent).not.toMatch(/\bx{3,}\b/i);
+    },
+  );
 
   it('announces a call that is not out yet', () => {
     renderPage('sbes');

@@ -17,12 +17,12 @@ function BackButton() {
   return <button onClick={() => navigate(-1)}>Voltar</button>;
 }
 
-it('reveals the SBC logo only when scrolling up at the top of the current visit', () => {
+it('reveals the SBC logo only on upward scroll at the top of the home page', () => {
   const sbcLink = () => screen.queryByRole('link', { name: /Sociedade Brasileira de Computação/ });
   vi.stubGlobal('scrollY', 0);
   try {
-    render(
-      <MemoryRouter initialEntries={['/sobre']}>
+    const { container } = render(
+      <MemoryRouter initialEntries={['/']}>
         <Header />
         <BackButton />
       </MemoryRouter>,
@@ -50,6 +50,8 @@ it('reveals the SBC logo only when scrolling up at the top of the current visit'
     expect(sbcLink()).toBeTruthy();
 
     fireEvent.click(screen.getByRole('link', { name: 'Inscreva-se' }));
+    expect(container.querySelector('.site-header__sbc')).toBeNull();
+    fireEvent.wheel(window, { deltaY: -20 });
     fireEvent.scroll(window);
     expect(sbcLink()).toBeNull();
 
@@ -62,6 +64,39 @@ it('reveals the SBC logo only when scrolling up at the top of the current visit'
   } finally {
     vi.unstubAllGlobals();
   }
+});
+
+it('reveals the English home strip with a touch gesture and resets it on return', async () => {
+  await i18n.changeLanguage('en');
+  const { container } = render(
+    <MemoryRouter>
+      <Header />
+      <BackButton />
+    </MemoryRouter>,
+  );
+  const sbcLink = () => screen.queryByRole('link', { name: /Brazilian Computer Society/ });
+  const pullDown = () => {
+    fireEvent.touchStart(document.body, { touches: [{ clientY: 80 }] });
+    fireEvent.touchMove(document.body, { touches: [{ clientY: 140 }] });
+    fireEvent.touchEnd(document.body);
+  };
+
+  expect(sbcLink()).toBeNull();
+  pullDown();
+  expect(sbcLink()).toBeTruthy();
+  expect(screen.getByText('Organised by:')).toBeTruthy();
+
+  fireEvent.click(screen.getByRole('button', { name: 'Open menu' }));
+  const menu = screen.getByRole('navigation', { name: 'Mobile navigation' });
+  fireEvent.click(within(menu).getByRole('button', { name: "CBSOFT'27" }));
+  fireEvent.click(within(menu).getByRole('link', { name: 'About' }));
+  pullDown();
+  expect(container.querySelector('.site-header__sbc')).toBeNull();
+
+  fireEvent.click(screen.getByRole('button', { name: 'Voltar' }));
+  expect(sbcLink()).toBeNull();
+  pullDown();
+  expect(sbcLink()).toBeTruthy();
 });
 
 it('opens the desktop menu and track with the arrow keys and restores focus with Escape', () => {
@@ -88,6 +123,7 @@ it('opens the desktop menu and track with the arrow keys and restores focus with
 describe('Header current section', () => {
   it.each([
     ['/', "CBSOFT'27"],
+    ['/local', "CBSOFT'27"],
     ['/local#mapa', "CBSOFT'27"],
     ['/sbes/educacao/chamada', 'SBES'],
     ['/sbes/pesquisa/artigos-aceitos', 'SBES'],

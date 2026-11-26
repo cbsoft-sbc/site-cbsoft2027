@@ -9,7 +9,7 @@ export type HeaderMenuId =
 
 import { SBES_TRACKS, acceptedPapersPath, type SbesTrack } from './sbesTracks';
 import { symposiumPapersPath } from './acceptedPapers';
-import { sbesTrackCallPath, symposiumCallPath } from './symposiumCalls';
+import { sbesTrackCallPath, symposiumCallPath } from './callPaths';
 import { EXPERIENCES_PATH } from './experiences';
 import { PROGRAM_PATH, programPath } from './program';
 import { CAMPUS_MAP_PATH } from './venue';
@@ -28,7 +28,7 @@ export interface HeaderMenuLink {
 }
 
 export interface HeaderMenuSection {
-    titleKey: string;
+    titleKey?: string;
     links: HeaderMenuLink[];
 }
 
@@ -60,7 +60,6 @@ const sbesTrack = (track: SbesTrack): HeaderMenuLink => ({
 
 const symposiumMenu = (id: 'sblp' | 'sbcars' | 'sast'): HeaderMenuDefinition => [
     {
-        titleKey: `headerMenu.${id}.title`,
         links: [
             link(`${id}.call`, symposiumCallPath(id)),
             link(`${id}.program`, programPath(id)),
@@ -97,7 +96,7 @@ export const HEADER_MENUS: Record<HeaderMenuId, HeaderMenuDefinition> = {
         {
             titleKey: 'headerMenu.guide.title',
             links: [
-                link('guide.venue', '/local#mapa'),
+                link('guide.venue', '/local'),
                 link('guide.map', CAMPUS_MAP_PATH),
                 link('guide.accommodation', '/acomodacoes'),
                 link('guide.experiences', EXPERIENCES_PATH),

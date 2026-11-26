@@ -21,17 +21,20 @@ export function CampusMapPage() {
             <BrandBar />
             {t('headerMenu.guide.map.title')}
           </h1>
-          <div className="mt-6">
+          {/* Phones and tablets only: on wide screens the map below is already
+              shown at its original size, and display:none also keeps the
+              link out of the keyboard order there. */}
+          <div className="mt-6 lg:hidden">
             <Button variant="outline" href={IMAGES.mapa_puc} target="_blank" rel="noopener noreferrer">
               {t('campusMapPage.fullSize')}
             </Button>
           </div>
           <img
-            className="mt-5 block h-auto w-full max-w-3xl rounded-xl"
+            className="mt-5 block h-auto w-full max-w-[1200px] rounded-xl lg:mt-8"
             src={IMAGES.mapa_puc}
             alt={t('campusMapPage.imageAlt')}
-            width={768}
-            height={1024}
+            width={1200}
+            height={849}
           />
         </div>
       </section>

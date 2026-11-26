@@ -3,11 +3,10 @@ import './HomeEventCards.css';
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ABOUT_CONGRESS } from '@/data/about';
 import { PUBLICATION } from '@/data/publication';
 import { VENUE } from '@/data/venue';
 import { useLang } from '@/hooks/useLang';
-import { buildCalendarLinks } from '@/lib/calendar';
+import { useCongressCalendarLinks } from '@/hooks/useCongressCalendarLinks';
 
 function CardIcon({ calendar = false }: { calendar?: boolean }) {
   return (
@@ -38,23 +37,7 @@ export function HomeEventCards() {
   const dateLabel = start && end
     ? formatter.formatRange(new Date(start), new Date(end))
     : t('agenda.tbd');
-  const links = start && end && VENUE.name && VENUE.address
-    ? buildCalendarLinks({
-      title: {
-        pt: t('about.calendarTitle', { lng: 'pt', year: ABOUT_CONGRESS.year }),
-        en: t('about.calendarTitle', { lng: 'en', year: ABOUT_CONGRESS.year }),
-      },
-      description: {
-        pt: t('about.p1', { lng: 'pt' }),
-        en: t('about.p1', { lng: 'en' }),
-      },
-      start,
-      end,
-      allDay: true,
-      location: `${VENUE.name[lang]} — ${VENUE.address[lang]}`,
-      url: import.meta.env.BASE_URL,
-    }, lang)
-    : null;
+  const links = useCongressCalendarLinks();
 
   const locationContent = (
     <>

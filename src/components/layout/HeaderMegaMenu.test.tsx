@@ -26,53 +26,77 @@ it.each([
   const links = screen.getAllByRole('link');
   expect(links).toHaveLength(10);
   for (const link of links) {
-    expect(link.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
+    expect(link.querySelector('.header-mega-menu__chevron')).toBeNull();
   }
 });
 
-function renderSbes(mobile = false) {
+function renderSymposiumMenu(id: 'sbes' | 'sblp' | 'sbcars' | 'sast', mobile = false) {
   return render(
     <MemoryRouter>
-      <HeaderMegaMenu id="sbes" menu={HEADER_MENUS.sbes} onNavigate={() => {}} mobile={mobile} />
+      <HeaderMegaMenu id={id} menu={HEADER_MENUS[id]} onNavigate={() => {}} mobile={mobile} />
     </MemoryRouter>,
   );
 }
 
+it.each([
+  ['pt', false, 'Trilhas do SBES', 'Programa'],
+  ['en', true, 'SBES tracks', 'Program'],
+])('keeps the SBES headings and shows SBLP, SBCARS, and SAST links without headings in %s', async (lang, mobile, tracksTitle, programTitle) => {
+  await i18n.changeLanguage(lang);
+  const sbes = renderSymposiumMenu('sbes', mobile);
+  expect(screen.getAllByRole('heading').map((heading) => heading.textContent)).toEqual([tracksTitle, programTitle]);
+  expect(screen.getByRole('link', { name: lang === 'pt' ? 'Programação' : 'Schedule' }).getAttribute('href'))
+    .toBe('/programacao?simposio=sbes');
+  sbes.unmount();
+
+  for (const id of ['sblp', 'sbcars', 'sast'] as const) {
+    const menu = renderSymposiumMenu(id, mobile);
+    expect(screen.queryByRole('heading')).toBeNull();
+    expect(screen.getAllByRole('link').map((link) => link.getAttribute('href'))).toEqual([
+      `/${id}/chamada`,
+      `/programacao?simposio=${id}`,
+      `/${id}/artigos-aceitos`,
+    ]);
+    menu.unmount();
+  }
+});
+
 describe('HeaderMegaMenu — SBES tracks', () => {
   it('lists the seven tracks without the special 40-year track', () => {
-    const { container } = renderSbes();
+    const { container } = renderSymposiumMenu('sbes');
     expect(container.querySelectorAll('.header-mega-menu__group-trigger')).toHaveLength(7);
     expect(container.textContent).not.toMatch(/Especial|40 Anos/);
   });
 
   it('opens a track flyout on hover and closes it when the menu scrolls', () => {
-    const { container } = renderSbes();
+    const { container } = renderSymposiumMenu('sbes');
     const trigger = screen.getByRole('button', { name: /Trilha de Educação/ });
     const chevron = trigger.querySelector('[aria-hidden="true"]');
-    expect(chevron?.textContent).toBe('›');
+    expect(chevron?.textContent).toBe('>');
     fireEvent(trigger, Object.assign(new MouseEvent('pointerover', { bubbles: true }), { pointerType: 'mouse' }));
     expect(trigger.getAttribute('aria-expanded')).toBe('true');
-    expect(chevron?.textContent).toBe('»');
 
     const flyout = screen.getByRole('group', { name: 'Trilha de Educação' });
     const call = within(flyout).getByRole('link', { name: 'Chamada de Trabalhos' });
     const papers = within(flyout).getByRole('link', { name: 'Artigos Aceitos' });
     expect(call.getAttribute('href')).toBe('/sbes/educacao/chamada');
     expect(papers.getAttribute('href')).toBe('/sbes/educacao/artigos-aceitos');
-    expect(call.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
-    expect(papers.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
+    expect(call.querySelector('.header-mega-menu__chevron')).toBeNull();
+    expect(papers.querySelector('.header-mega-menu__chevron')).toBeNull();
 
     fireEvent.scroll(container.querySelector('.header-mega-menu__content')!);
     expect(screen.queryByRole('group')).toBeNull();
     expect(trigger.getAttribute('aria-expanded')).toBe('false');
-    expect(chevron?.textContent).toBe('›');
+    expect(chevron?.textContent).toBe('>');
   });
 
   it('expands the links inline on mobile', () => {
-    renderSbes(true);
+    renderSymposiumMenu('sbes', true);
     const trigger = screen.getByRole('button', { name: /Trilha de Pesquisa/ });
     fireEvent.click(trigger);
-    expect(trigger.querySelector('[aria-hidden="true"]')?.textContent).toBe('›');
-    expect(screen.getByRole('link', { name: 'Artigos Aceitos' }).getAttribute('href')).toBe('/sbes/pesquisa/artigos-aceitos');
+    expect(trigger.querySelector('[aria-hidden="true"]')?.textContent).toBe('>');
+    const papers = screen.getByRole('link', { name: 'Artigos Aceitos' });
+    expect(papers.getAttribute('href')).toBe('/sbes/pesquisa/artigos-aceitos');
+    expect(papers.querySelector('.header-mega-menu__chevron')).toBeNull();
   });
 });

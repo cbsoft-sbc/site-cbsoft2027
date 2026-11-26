@@ -1,6 +1,7 @@
 import type { Localized } from '@/lib/localized';
 import type { SymposiumId } from './symposia';
-import { SBES_TRACKS, type SbesTrackId } from './sbesTracks';
+import type { SbesTrackId } from './sbesTracks';
+import { PROGRAM_CHAIRS, SBES_TRACK_CHAIRS } from './committee';
 
 /**
  * Per-symposium calls for papers (/<symposium>/chamada). A symposium whose
@@ -49,11 +50,8 @@ export interface CallCommittee {
   members: CallMember[];
 }
 
-/** Stands in for every chair and committee member until the 2027 names
- *  are confirmed. */
-const PLACEHOLDER_MEMBER: CallMember = { name: 'xxxxxx', affiliation: 'xxxxxx' };
-const PLACEHOLDER_COMMITTEE: CallMember[] = [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER];
-const UNANNOUNCED_MEMBER: CallMember = { name: null, affiliation: null };
+const PENDING_MEMBER: CallMember = { name: null, affiliation: null };
+const PENDING_COMMITTEE: CallMember[] = [PENDING_MEMBER];
 
 const SBC_AUTHOR_CONDUCT_URL = 'https://sol.sbc.org.br/index.php/indice/conduta';
 
@@ -252,8 +250,8 @@ const SAST_CALL: SymposiumCall = {
     { label: { pt: 'Notificação de Aceitação', en: 'Notification of Acceptance' }, date: null },
     { label: { pt: 'Submissão da Versão Final', en: 'Camera-ready Submission' }, date: null },
   ],
-  chairs: [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER],
-  committees: [{ members: PLACEHOLDER_COMMITTEE }],
+  chairs: PROGRAM_CHAIRS.sast,
+  committees: [{ members: PENDING_COMMITTEE }],
 };
 
 /**
@@ -532,8 +530,8 @@ const SBCARS_CALL: SymposiumCall = {
     { label: { pt: 'Envio da versão final (camera-ready)', en: 'Camera-ready submission' }, date: null },
     { label: { pt: 'Datas do simpósio', en: 'Symposium dates' }, date: null },
   ],
-  chairs: [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER],
-  committees: [{ members: PLACEHOLDER_COMMITTEE }],
+  chairs: PROGRAM_CHAIRS.sbcars,
+  committees: [{ members: PENDING_COMMITTEE }],
 };
 
 /**
@@ -756,8 +754,8 @@ const SBLP_CALL: SymposiumCall = {
         {
           kind: 'p',
           text: {
-            pt: 'Todas as dúvidas sobre submissões ou sobre a organização do SBLP 2027 devem ser enviadas por e-mail para xxxxxx em xxxxxx.',
-            en: 'All questions about submissions or the organization of SBLP 2027 should be sent by e-mail to xxxxxx at xxxxxx.',
+            pt: 'O e-mail de contato para dúvidas sobre submissões ou sobre a organização do SBLP 2027 está a definir.',
+            en: 'The contact email for questions about submissions or the organization of SBLP 2027 is to be determined.',
           },
         },
       ],
@@ -773,8 +771,8 @@ const SBLP_CALL: SymposiumCall = {
     pt: 'O envio de resumos serve para registrar o artigo (título, autores e resumo), enquanto o envio de artigos é para submeter o PDF completo do trabalho. Todos os prazos são firmes e não serão prorrogados.',
     en: 'The abstract submission registers the paper (title, authors and abstract), while the paper submission is for uploading the full PDF. All deadlines are firm and will not be extended.',
   },
-  chairs: [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER],
-  committees: [{ members: PLACEHOLDER_COMMITTEE }],
+  chairs: PROGRAM_CHAIRS.sblp,
+  committees: [{ members: PENDING_COMMITTEE }],
 };
 
 /* SBES tracks share most of their call text; only the track name changes.
@@ -1261,8 +1259,8 @@ const SBES_RESEARCH_CALL: SymposiumCall = {
     },
   ],
   milestones: sbesMilestones(),
-  chairs: [UNANNOUNCED_MEMBER, UNANNOUNCED_MEMBER],
-  committees: [{ members: [UNANNOUNCED_MEMBER, UNANNOUNCED_MEMBER, UNANNOUNCED_MEMBER] }],
+  chairs: SBES_TRACK_CHAIRS.research,
+  committees: [{ members: PENDING_COMMITTEE }],
 };
 
 /** SBES 2027 Education Track (formerly FEES). */
@@ -1407,8 +1405,8 @@ const SBES_EDUCATION_CALL: SymposiumCall = {
     sbesReviewerAward(SBES_EDUCATION),
   ],
   milestones: sbesMilestones(),
-  chairs: [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER],
-  committees: [{ members: PLACEHOLDER_COMMITTEE }],
+  chairs: SBES_TRACK_CHAIRS.education,
+  committees: [{ members: PENDING_COMMITTEE }],
 };
 
 /** SBES 2027 New Ideas and Emerging Results Track (IIER). */
@@ -1680,8 +1678,8 @@ const SBES_IDEAS_CALL: SymposiumCall = {
     { label: { pt: 'Envio de notificação aos autores', en: 'Author notification' }, date: null },
     { label: { pt: 'Submissão da versão final', en: 'Camera-ready submission' }, date: null },
   ],
-  chairs: [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER],
-  committees: [{ members: PLACEHOLDER_COMMITTEE }],
+  chairs: SBES_TRACK_CHAIRS.ideas,
+  committees: [{ members: PENDING_COMMITTEE }],
 };
 
 /** SBES 2027 Tools Track (single-anonymous, paper + demo video). */
@@ -1847,8 +1845,8 @@ const SBES_TOOLS_CALL: SymposiumCall = {
     { label: { pt: 'Envio de notificação aos autores', en: 'Author notification' }, date: null },
     { label: { pt: 'Submissão da versão final', en: 'Camera-ready submission' }, date: null },
   ],
-  chairs: [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER],
-  committees: [{ members: PLACEHOLDER_COMMITTEE }],
+  chairs: SBES_TRACK_CHAIRS.tools,
+  committees: [{ members: PENDING_COMMITTEE }],
 };
 
 /** SBES 2027 Industry Track (industry talks, extended abstracts). */
@@ -2001,8 +1999,8 @@ const SBES_INDUSTRY_CALL: SymposiumCall = {
     pt: 'Nota: Os deadlines de todas as datas são fixos e eles não serão postergados.',
     en: 'Note: all deadlines are fixed and will not be extended.',
   },
-  chairs: [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER],
-  committees: [{ members: PLACEHOLDER_COMMITTEE }],
+  chairs: [PENDING_MEMBER],
+  committees: [{ members: PENDING_COMMITTEE }],
 };
 
 /** VIII CTIC-ES (undergraduate and high-school research competition). The
@@ -2018,8 +2016,8 @@ const SBES_CTIC_CALL: SymposiumCall = {
       en: 'CTIC-ES selects work by undergraduate and high-school (or technical school) students, which will be awarded and published in the CBSoft 2027 proceedings. CTIC-ES thus aims to encourage students from every undergraduate program in Computing and related fields, as well as high-school or technical students in Computing, to write and submit original scientific texts about their own work on Software Engineering topics. The work may come from undergraduate research programs, technology initiation programs or final-year projects.',
     },
     {
-      pt: 'No caso de dúvidas, contactar os organizadores, xxxxxx (xxxxxx) e xxxxxx (xxxxxx).',
-      en: 'For questions, contact the organizers, xxxxxx (xxxxxx) and xxxxxx (xxxxxx).',
+      pt: 'Os contatos dos organizadores estão a definir.',
+      en: 'The organizers’ contact details are to be determined.',
     },
   ],
   sections: [
@@ -2270,7 +2268,7 @@ const SBES_CTIC_CALL: SymposiumCall = {
     { label: { pt: 'Data limite para envio da versão final', en: 'Camera-ready deadline' }, date: null },
   ],
   chairs: [],
-  committees: [{ members: PLACEHOLDER_COMMITTEE }],
+  committees: [{ members: PENDING_COMMITTEE }],
 };
 
 /** CTD-ES (theses and dissertations competition). The 2027 edition covers
@@ -2429,15 +2427,15 @@ const SBES_CTD_CALL: SymposiumCall = {
     { label: { pt: 'Notificação de classificação', en: 'Ranking notification' }, date: null },
     { label: { pt: 'Data-limite para envio da versão final', en: 'Camera-ready deadline' }, date: null },
   ],
-  chairs: [PLACEHOLDER_MEMBER, PLACEHOLDER_MEMBER],
+  chairs: [PENDING_MEMBER],
   committees: [
     {
       title: { pt: 'Comitê Avaliador das Dissertações', en: 'Dissertations Evaluation Committee' },
-      members: PLACEHOLDER_COMMITTEE,
+      members: PENDING_COMMITTEE,
     },
     {
       title: { pt: 'Comitê Avaliador das Teses', en: 'Theses Evaluation Committee' },
-      members: PLACEHOLDER_COMMITTEE,
+      members: PENDING_COMMITTEE,
     },
   ],
 };
@@ -2460,7 +2458,4 @@ export const SYMPOSIUM_CALLS: Record<SymposiumId, SymposiumCall | null> = {
   sast: SAST_CALL,
 };
 
-export const symposiumCallPath = (id: SymposiumId) => `/${id}/chamada`;
-
-export const sbesTrackCallPath = (id: SbesTrackId) =>
-  `/sbes/${SBES_TRACKS.find((track) => track.id === id)!.slug}/chamada`;
+export { sbesTrackCallPath, symposiumCallPath } from './callPaths';

@@ -3,6 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import i18n from '@/i18n';
 import { App } from '@/App';
+import { renderApp } from '@/test/renderApp';
 import { VENUE } from '@/data/venue';
 import { LocationPage } from './LocationPage';
 
@@ -26,7 +27,7 @@ function renderPage() {
 }
 
 describe('event locality', () => {
-  it('navigates from the home section to the venue route and provides a real map destination', () => {
+  it('navigates from the home section to the venue route and provides a real map destination', async () => {
     render(<App />);
     expect(screen.getByRole('link', { name: /Localização.*PUC Minas/i }).getAttribute('href')).toBe(
       `${import.meta.env.BASE_URL}local`,
@@ -34,7 +35,7 @@ describe('event locality', () => {
     expect(screen.getByText('Ônibus — 5401, 9410, 4110 e 4111')).toBeTruthy();
     fireEvent.click(screen.getByRole('link', { name: 'Endereço, orientações e mapa' }));
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}local`);
-    const heading = screen.getByRole('heading', { level: 1, name: 'Local do Evento' });
+    const heading = await screen.findByRole('heading', { level: 1, name: 'Local do Evento' });
     expect(heading.previousElementSibling).toBeNull();
     expect(heading.firstElementChild?.matches('.brand-bar[aria-hidden="true"]')).toBe(true);
     expect(screen.queryByText(/Av\. Dom José Gaspar, 500/)).toBeNull();
@@ -55,7 +56,7 @@ describe('event locality', () => {
     expect(screen.queryByRole('img', { name: /Planta do campus/ })).toBeNull();
     fireEvent.click(screen.getByRole('link', { name: 'Ver Mapa PUC' }));
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}mapa-puc`);
-    expect(screen.getByRole('heading', { level: 1, name: 'Mapa PUC' })).toBeTruthy();
+    expect(await screen.findByRole('heading', { level: 1, name: 'Mapa PUC' })).toBeTruthy();
     expect(screen.queryByTitle(/Google Maps: PUC Minas/)).toBeNull();
   });
 
@@ -99,7 +100,7 @@ describe('event locality', () => {
     expect(screen.queryByRole('link', { name: 'Ver Mapa PUC' })).toBeNull();
   });
 
-  it.each(['desktop', 'mobile'])('opens each map from the %s navigation', (mode) => {
+  it.each(['desktop', 'mobile'])('opens each map from the %s navigation', async (mode) => {
     const scroll = vi.fn();
     const previous = Element.prototype.scrollIntoView;
     Element.prototype.scrollIntoView = scroll;
@@ -113,35 +114,65 @@ describe('event locality', () => {
       }
     };
 
+    const scrollTo = vi.spyOn(window, 'scrollTo');
     try {
       render(<App />);
       openMenu();
       expect(screen.queryByRole('link', { name: /Eventos sociais/i })).toBeNull();
       fireEvent.click(screen.getByRole('link', { name: 'Local do Evento' }));
-      expect(window.location.hash).toBe('#mapa');
-      const googleMap = screen.getByRole('region', { name: 'Mapa e navegação' });
-      expect(scroll.mock.contexts.at(-1)).toBe(googleMap);
+      // The menu opens the page at the top (title first), not at the map.
+      expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}local`);
+      expect(window.location.hash).toBe('');
+      const googleMap = await screen.findByRole('region', { name: 'Mapa e navegação' });
+      expect(scroll).not.toHaveBeenCalled();
+      expect(scrollTo).toHaveBeenLastCalledWith(0, 0);
       expect(within(googleMap).getByTitle(/Google Maps: PUC Minas/)).toBeTruthy();
 
       openMenu();
       fireEvent.click(screen.getByRole('link', { name: 'Mapa PUC' }));
       expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}mapa-puc`);
       expect(window.location.hash).toBe('');
-      const campusMap = screen.getByRole('region', { name: 'Mapa PUC' });
+      const campusMap = await screen.findByRole('region', { name: 'Mapa PUC' });
       const image = within(campusMap).getByRole('img', { name: /Planta do campus/ });
       const path = `${import.meta.env.BASE_URL}assets/images/mapa-puc-coracao-eucaristico.png`;
       expect(image.getAttribute('src')).toBe(path);
-      expect(image.getAttribute('width')).toBe('768');
-      expect(image.getAttribute('height')).toBe('1024');
+      expect(image.getAttribute('width')).toBe('1200');
+      expect(image.getAttribute('height')).toBe('849');
       expect(within(campusMap).getByRole('link', { name: /Ver mapa em tamanho original/ }).getAttribute('href')).toBe(path);
     } finally {
       Element.prototype.scrollIntoView = previous;
+      scrollTo.mockRestore();
     }
   });
 
-  it('redirects the former campus-map anchor to the dedicated page', () => {
+  it.each(['/local', '/local#mapa'])('opens %s from the URL at the right place', async (url) => {
+    const scroll = vi.fn();
+    const previous = Element.prototype.scrollIntoView;
+    Element.prototype.scrollIntoView = scroll;
+    const scrollTo = vi.spyOn(window, 'scrollTo');
+    try {
+      window.history.replaceState(null, '', `${import.meta.env.BASE_URL}${url.slice(1)}`);
+      await renderApp();
+      expect(screen.getByRole('heading', { level: 1, name: 'Local do Evento' })).toBeTruthy();
+      const googleMap = screen.getByRole('region', { name: 'Mapa e navegação' });
+      if (url.endsWith('#mapa')) {
+        // Links that ask for the map explicitly still land on it.
+        expect(scroll.mock.contexts.at(-1)).toBe(googleMap);
+      } else {
+        expect(scroll).not.toHaveBeenCalled();
+        expect(scrollTo).toHaveBeenLastCalledWith(0, 0);
+      }
+    } finally {
+      Element.prototype.scrollIntoView = previous;
+      scrollTo.mockRestore();
+      window.history.replaceState(null, '', import.meta.env.BASE_URL);
+    }
+  });
+
+  it('redirects the former campus-map anchor to the dedicated page', async () => {
     window.history.replaceState(null, '', `${import.meta.env.BASE_URL}local#mapa-puc`);
-    render(<App />);
+    await renderApp();
+    await screen.findByRole('heading', { level: 1, name: 'Mapa PUC' });
     expect(window.location.pathname).toBe(`${import.meta.env.BASE_URL}mapa-puc`);
     expect(window.location.hash).toBe('');
     expect(document.title).toBe('Mapa PUC | CBSOFT 2027');
